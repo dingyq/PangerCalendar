@@ -14,10 +14,11 @@ class PRDatabaseOperate {
     var db :OpaquePointer? = nil
     
     class func shareMgr() -> PRDatabaseOperate {
+        s_Instance.initDB()
         return s_Instance
     }
     
-    func testDB() -> () {
+    func initDB() {
         //打开数据库，指定数据库文件路径，如果文件不存在后先创建文件，再打开，所以无需手动创建文件
         let sqlitepath = Bundle.main.path(forResource: "huangli", ofType: "sqlite")!
         print(sqlitepath)
@@ -27,33 +28,29 @@ class PRDatabaseOperate {
         }else{
             print("打开数据库失败")
         }
-        
+    }
+    
+    func queryDataWithDate(year: String, month: String, day: String) -> [String: String] {
         var statement:OpaquePointer? = nil
         //查询数据
-        let query = "select * from 黄历数据库"
+        let query = "select * from 黄历数据库 where 字段1="+year+" and 字段2="+month+" and 字段3="+day
         //这条执行后，数据就已经在sattement中了
         sqlite3_prepare_v2(db, query, -1, &statement, nil)
         while sqlite3_step(statement) == SQLITE_ROW{
-            let id = sqlite3_column_int(statement, 0)
-            let id1 = sqlite3_column_int(statement, 1)
-            let id2 = sqlite3_column_int(statement, 2)
-            let id3 = sqlite3_column_int(statement, 3)
-        
-            let tmp1 = sqlite3_column_text(statement, 4)
-            
-            var id4 = ""
-            if (tmp1 != nil) {
-                id4 = String(cString: tmp1!)
+            let id4 = sqlite3_column_text(statement, 4)
+            var fitThing = ""
+            if (id4 != nil) {
+                fitThing = String(cString: id4!)
             }
             
-            let tmp2 = sqlite3_column_text(statement, 5)
-            var id5 = ""
-            if tmp2 != nil {
-                id5 = String(cString: tmp2!)
+            let id5 = sqlite3_column_text(statement, 5)
+            var avoidThing = ""
+            if id5 != nil {
+                avoidThing = String(cString: id5!)
             }
-            
-            print(id, id1, id2, id3, id4, id5 )
+            return ["fit": fitThing, "avoid": avoidThing]
         }
+        return ["fit": "", "avoid": ""]
     }
     
     func ReadAllFromDB() -> [String: AnyObject] {

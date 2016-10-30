@@ -14,13 +14,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        print("test")
-//        let sqlitePath = NSHomeDirectory() + "/Resource/huangli.mdb"
-//        print(sqlitePath)
-//        var db :OpaquePointer? = nil
-        //数据库存放路径
-//        let sqlitepath = NSHomeDirectory().stringByAppendingPathComponent("Documents/sqlite3.db")
-        PRDatabaseOperate.shareMgr().testDB()
+        let result = PRDatabaseOperate.shareMgr().queryDataWithDate(year: "1991", month: "5", day: "25")
+        print(result["fit"], result["avoid"])
     }
 
     override func didReceiveMemoryWarning() {
