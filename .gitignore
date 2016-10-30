@@ -1,0 +1,5 @@
+# ignore
+.DS_Store
+
+.xcuserstate
+.xcbkptlist
