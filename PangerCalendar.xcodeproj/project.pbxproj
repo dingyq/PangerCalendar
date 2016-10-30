@@ -1,0 +1,598 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E35460311DC5FDB800C05867 /* huangli.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = E35460301DC5FDB800C05867 /* huangli.sqlite */; };
+		E376A0001DC5AEDA00C2B383 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3769FFF1DC5AEDA00C2B383 /* AppDelegate.swift */; };
+		E376A0021DC5AEDA00C2B383 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E376A0011DC5AEDA00C2B383 /* ViewController.swift */; };
+		E376A0051DC5AEDA00C2B383 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E376A0031DC5AEDA00C2B383 /* Main.storyboard */; };
+		E376A0071DC5AEDA00C2B383 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E376A0061DC5AEDA00C2B383 /* Assets.xcassets */; };
+		E376A00A1DC5AEDA00C2B383 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E376A0081DC5AEDA00C2B383 /* LaunchScreen.storyboard */; };
+		E376A0151DC5AEDA00C2B383 /* PangerCalendarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E376A0141DC5AEDA00C2B383 /* PangerCalendarTests.swift */; };
+		E376A0201DC5AEDA00C2B383 /* PangerCalendarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E376A01F1DC5AEDA00C2B383 /* PangerCalendarUITests.swift */; };
+		E3856A791DC5D28500FEAD80 /* PRDatabaseOperate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3856A781DC5D28500FEAD80 /* PRDatabaseOperate.swift */; };
+		E3856A7B1DC5D69300FEAD80 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E3856A7A1DC5D69300FEAD80 /* libsqlite3.tbd */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E376A0111DC5AEDA00C2B383 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E3769FF41DC5AEDA00C2B383 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E3769FFB1DC5AEDA00C2B383;
+			remoteInfo = PangerCalendar;
+		};
+		E376A01C1DC5AEDA00C2B383 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E3769FF41DC5AEDA00C2B383 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E3769FFB1DC5AEDA00C2B383;
+			remoteInfo = PangerCalendar;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		32B029AB8610374CAB58A966 /* Pods_PangerCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PangerCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E35460301DC5FDB800C05867 /* huangli.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = huangli.sqlite; sourceTree = "<group>"; };
+		E3769FFC1DC5AEDA00C2B383 /* PangerCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PangerCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3769FFF1DC5AEDA00C2B383 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E376A0011DC5AEDA00C2B383 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E376A0041DC5AEDA00C2B383 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E376A0061DC5AEDA00C2B383 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E376A0091DC5AEDA00C2B383 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E376A00B1DC5AEDA00C2B383 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E376A0101DC5AEDA00C2B383 /* PangerCalendarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PangerCalendarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E376A0141DC5AEDA00C2B383 /* PangerCalendarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PangerCalendarTests.swift; sourceTree = "<group>"; };
+		E376A0161DC5AEDA00C2B383 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E376A01B1DC5AEDA00C2B383 /* PangerCalendarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PangerCalendarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E376A01F1DC5AEDA00C2B383 /* PangerCalendarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PangerCalendarUITests.swift; sourceTree = "<group>"; };
+		E376A0211DC5AEDA00C2B383 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E3856A781DC5D28500FEAD80 /* PRDatabaseOperate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRDatabaseOperate.swift; sourceTree = "<group>"; };
+		E3856A7A1DC5D69300FEAD80 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		E3856A7C1DC5D71600FEAD80 /* PRBridgeHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRBridgeHeader.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E3769FF91DC5AEDA00C2B383 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3856A7B1DC5D69300FEAD80 /* libsqlite3.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E376A00D1DC5AEDA00C2B383 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E376A0181DC5AEDA00C2B383 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CFE0C8695219B46EEBF7C746 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E3856A7A1DC5D69300FEAD80 /* libsqlite3.tbd */,
+				32B029AB8610374CAB58A966 /* Pods_PangerCalendar.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E3769FF31DC5AEDA00C2B383 = {
+			isa = PBXGroup;
+			children = (
+				E3769FFE1DC5AEDA00C2B383 /* PangerCalendar */,
+				E376A0131DC5AEDA00C2B383 /* PangerCalendarTests */,
+				E376A01E1DC5AEDA00C2B383 /* PangerCalendarUITests */,
+				E3769FFD1DC5AEDA00C2B383 /* Products */,
+				CFE0C8695219B46EEBF7C746 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		E3769FFD1DC5AEDA00C2B383 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E3769FFC1DC5AEDA00C2B383 /* PangerCalendar.app */,
+				E376A0101DC5AEDA00C2B383 /* PangerCalendarTests.xctest */,
+				E376A01B1DC5AEDA00C2B383 /* PangerCalendarUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E3769FFE1DC5AEDA00C2B383 /* PangerCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				E3856A741DC5D20D00FEAD80 /* Class */,
+				E3856A711DC5D10200FEAD80 /* Resource */,
+				E3769FFF1DC5AEDA00C2B383 /* AppDelegate.swift */,
+				E376A0011DC5AEDA00C2B383 /* ViewController.swift */,
+				E376A0031DC5AEDA00C2B383 /* Main.storyboard */,
+				E376A0061DC5AEDA00C2B383 /* Assets.xcassets */,
+				E376A0081DC5AEDA00C2B383 /* LaunchScreen.storyboard */,
+				E376A00B1DC5AEDA00C2B383 /* Info.plist */,
+				E3856A7C1DC5D71600FEAD80 /* PRBridgeHeader.h */,
+			);
+			path = PangerCalendar;
+			sourceTree = "<group>";
+		};
+		E376A0131DC5AEDA00C2B383 /* PangerCalendarTests */ = {
+			isa = PBXGroup;
+			children = (
+				E376A0141DC5AEDA00C2B383 /* PangerCalendarTests.swift */,
+				E376A0161DC5AEDA00C2B383 /* Info.plist */,
+			);
+			path = PangerCalendarTests;
+			sourceTree = "<group>";
+		};
+		E376A01E1DC5AEDA00C2B383 /* PangerCalendarUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E376A01F1DC5AEDA00C2B383 /* PangerCalendarUITests.swift */,
+				E376A0211DC5AEDA00C2B383 /* Info.plist */,
+			);
+			path = PangerCalendarUITests;
+			sourceTree = "<group>";
+		};
+		E3856A711DC5D10200FEAD80 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				E35460301DC5FDB800C05867 /* huangli.sqlite */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		E3856A741DC5D20D00FEAD80 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				E3856A751DC5D24B00FEAD80 /* Controller */,
+				E3856A761DC5D24B00FEAD80 /* Model */,
+				E3856A771DC5D24B00FEAD80 /* Utils */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
+		E3856A751DC5D24B00FEAD80 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E3856A761DC5D24B00FEAD80 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E3856A771DC5D24B00FEAD80 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E3856A781DC5D28500FEAD80 /* PRDatabaseOperate.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E3769FFB1DC5AEDA00C2B383 /* PangerCalendar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E376A0241DC5AEDA00C2B383 /* Build configuration list for PBXNativeTarget "PangerCalendar" */;
+			buildPhases = (
+				E3769FF81DC5AEDA00C2B383 /* Sources */,
+				E3769FF91DC5AEDA00C2B383 /* Frameworks */,
+				E3769FFA1DC5AEDA00C2B383 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PangerCalendar;
+			productName = PangerCalendar;
+			productReference = E3769FFC1DC5AEDA00C2B383 /* PangerCalendar.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E376A00F1DC5AEDA00C2B383 /* PangerCalendarTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E376A0271DC5AEDA00C2B383 /* Build configuration list for PBXNativeTarget "PangerCalendarTests" */;
+			buildPhases = (
+				E376A00C1DC5AEDA00C2B383 /* Sources */,
+				E376A00D1DC5AEDA00C2B383 /* Frameworks */,
+				E376A00E1DC5AEDA00C2B383 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E376A0121DC5AEDA00C2B383 /* PBXTargetDependency */,
+			);
+			name = PangerCalendarTests;
+			productName = PangerCalendarTests;
+			productReference = E376A0101DC5AEDA00C2B383 /* PangerCalendarTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E376A01A1DC5AEDA00C2B383 /* PangerCalendarUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E376A02A1DC5AEDA00C2B383 /* Build configuration list for PBXNativeTarget "PangerCalendarUITests" */;
+			buildPhases = (
+				E376A0171DC5AEDA00C2B383 /* Sources */,
+				E376A0181DC5AEDA00C2B383 /* Frameworks */,
+				E376A0191DC5AEDA00C2B383 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E376A01D1DC5AEDA00C2B383 /* PBXTargetDependency */,
+			);
+			name = PangerCalendarUITests;
+			productName = PangerCalendarUITests;
+			productReference = E376A01B1DC5AEDA00C2B383 /* PangerCalendarUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E3769FF41DC5AEDA00C2B383 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = panger;
+				TargetAttributes = {
+					E3769FFB1DC5AEDA00C2B383 = {
+						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
+					};
+					E376A00F1DC5AEDA00C2B383 = {
+						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
+						TestTargetID = E3769FFB1DC5AEDA00C2B383;
+					};
+					E376A01A1DC5AEDA00C2B383 = {
+						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
+						TestTargetID = E3769FFB1DC5AEDA00C2B383;
+					};
+				};
+			};
+			buildConfigurationList = E3769FF71DC5AEDA00C2B383 /* Build configuration list for PBXProject "PangerCalendar" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E3769FF31DC5AEDA00C2B383;
+			productRefGroup = E3769FFD1DC5AEDA00C2B383 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E3769FFB1DC5AEDA00C2B383 /* PangerCalendar */,
+				E376A00F1DC5AEDA00C2B383 /* PangerCalendarTests */,
+				E376A01A1DC5AEDA00C2B383 /* PangerCalendarUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E3769FFA1DC5AEDA00C2B383 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E376A00A1DC5AEDA00C2B383 /* LaunchScreen.storyboard in Resources */,
+				E376A0071DC5AEDA00C2B383 /* Assets.xcassets in Resources */,
+				E35460311DC5FDB800C05867 /* huangli.sqlite in Resources */,
+				E376A0051DC5AEDA00C2B383 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E376A00E1DC5AEDA00C2B383 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E376A0191DC5AEDA00C2B383 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E3769FF81DC5AEDA00C2B383 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E376A0021DC5AEDA00C2B383 /* ViewController.swift in Sources */,
+				E3856A791DC5D28500FEAD80 /* PRDatabaseOperate.swift in Sources */,
+				E376A0001DC5AEDA00C2B383 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E376A00C1DC5AEDA00C2B383 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E376A0151DC5AEDA00C2B383 /* PangerCalendarTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E376A0171DC5AEDA00C2B383 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E376A0201DC5AEDA00C2B383 /* PangerCalendarUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E376A0121DC5AEDA00C2B383 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E3769FFB1DC5AEDA00C2B383 /* PangerCalendar */;
+			targetProxy = E376A0111DC5AEDA00C2B383 /* PBXContainerItemProxy */;
+		};
+		E376A01D1DC5AEDA00C2B383 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E3769FFB1DC5AEDA00C2B383 /* PangerCalendar */;
+			targetProxy = E376A01C1DC5AEDA00C2B383 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E376A0031DC5AEDA00C2B383 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E376A0041DC5AEDA00C2B383 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E376A0081DC5AEDA00C2B383 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E376A0091DC5AEDA00C2B383 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E376A0221DC5AEDA00C2B383 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E376A0231DC5AEDA00C2B383 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E376A0251DC5AEDA00C2B383 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PangerCalendar/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.panger.PangerCalendar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = PangerCalendar/PRBridgeHeader.h;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		E376A0261DC5AEDA00C2B383 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = PangerCalendar/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.panger.PangerCalendar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = PangerCalendar/PRBridgeHeader.h;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		E376A0281DC5AEDA00C2B383 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = PangerCalendarTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.panger.PangerCalendarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PangerCalendar.app/PangerCalendar";
+			};
+			name = Debug;
+		};
+		E376A0291DC5AEDA00C2B383 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = PangerCalendarTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.panger.PangerCalendarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PangerCalendar.app/PangerCalendar";
+			};
+			name = Release;
+		};
+		E376A02B1DC5AEDA00C2B383 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = PangerCalendarUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.panger.PangerCalendarUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = PangerCalendar;
+			};
+			name = Debug;
+		};
+		E376A02C1DC5AEDA00C2B383 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = PangerCalendarUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.panger.PangerCalendarUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = PangerCalendar;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E3769FF71DC5AEDA00C2B383 /* Build configuration list for PBXProject "PangerCalendar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E376A0221DC5AEDA00C2B383 /* Debug */,
+				E376A0231DC5AEDA00C2B383 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E376A0241DC5AEDA00C2B383 /* Build configuration list for PBXNativeTarget "PangerCalendar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E376A0251DC5AEDA00C2B383 /* Debug */,
+				E376A0261DC5AEDA00C2B383 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E376A0271DC5AEDA00C2B383 /* Build configuration list for PBXNativeTarget "PangerCalendarTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E376A0281DC5AEDA00C2B383 /* Debug */,
+				E376A0291DC5AEDA00C2B383 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E376A02A1DC5AEDA00C2B383 /* Build configuration list for PBXNativeTarget "PangerCalendarUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E376A02B1DC5AEDA00C2B383 /* Debug */,
+				E376A02C1DC5AEDA00C2B383 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E3769FF41DC5AEDA00C2B383 /* Project object */;
+}
