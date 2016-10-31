@@ -18,16 +18,14 @@ class PRDatabaseOperate {
         return s_Instance
     }
     
-    private func initDB() -> Bool {
+    private func initDB() {
         //打开数据库，指定数据库文件路径，如果文件不存在后先创建文件，再打开，所以无需手动创建文件
         let sqlitepath = Bundle.main.path(forResource: "huangli", ofType: "sqlite")!
         let state = sqlite3_open(sqlitepath, &db)
         if state == SQLITE_OK{
             print("打开数据库成功")
-            return true
         }else{
             print("打开数据库失败")
-            return false
         }
     }
     
