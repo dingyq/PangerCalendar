@@ -16,6 +16,11 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         let result = PRDatabaseOperate.shareMgr().queryDataWithDate(year: "1991", month: "5", day: "25")
         print(result["fit"], result["avoid"])
+        
+        let result1 = PRDatabaseManager.manager.queryDataWithDate(year: "1991", month: "5", day: "25")
+        for dic in result1 {
+            print(dic["fit"], dic["avoid"])
+        }
     }
 
     override func didReceiveMemoryWarning() {

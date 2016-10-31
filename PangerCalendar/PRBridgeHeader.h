@@ -10,5 +10,7 @@
 #define PRBridgeHeader_h
 
 #include "sqlite3.h"
+//#import "FMDB.h"
+//#import <FMDB/FMDB.h>
 
 #endif /* PRBridgeHeader_h */
