@@ -11,6 +11,7 @@
 		95FC42C4B463245E45BF8348 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 443C559FBC59C3C193A0D790 /* Pods.framework */; };
 		E35460311DC5FDB800C05867 /* huangli.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = E35460301DC5FDB800C05867 /* huangli.sqlite */; };
 		E35460371DC7A08F00C05867 /* PRDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35460361DC7A08F00C05867 /* PRDatabaseManager.swift */; };
+		E354603C1DCBA92800C05867 /* PRSolarTermsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E354603B1DCBA92800C05867 /* PRSolarTermsManager.swift */; };
 		E376A0001DC5AEDA00C2B383 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3769FFF1DC5AEDA00C2B383 /* AppDelegate.swift */; };
 		E376A0021DC5AEDA00C2B383 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E376A0011DC5AEDA00C2B383 /* ViewController.swift */; };
 		E376A0051DC5AEDA00C2B383 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E376A0031DC5AEDA00C2B383 /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 		E35460301DC5FDB800C05867 /* huangli.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = huangli.sqlite; sourceTree = "<group>"; };
 		E35460331DC7A00C00C05867 /* PRBridgeHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRBridgeHeader.h; sourceTree = "<group>"; };
 		E35460361DC7A08F00C05867 /* PRDatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRDatabaseManager.swift; sourceTree = "<group>"; };
+		E354603B1DCBA92800C05867 /* PRSolarTermsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRSolarTermsManager.swift; sourceTree = "<group>"; };
 		E3769FFC1DC5AEDA00C2B383 /* PangerCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PangerCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3769FFF1DC5AEDA00C2B383 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E376A0011DC5AEDA00C2B383 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 			children = (
 				E3856A781DC5D28500FEAD80 /* PRDatabaseOperate.swift */,
 				E35460361DC7A08F00C05867 /* PRDatabaseManager.swift */,
+				E354603B1DCBA92800C05867 /* PRSolarTermsManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				E376A0021DC5AEDA00C2B383 /* ViewController.swift in Sources */,
 				E3856A791DC5D28500FEAD80 /* PRDatabaseOperate.swift in Sources */,
 				E376A0001DC5AEDA00C2B383 /* AppDelegate.swift in Sources */,
+				E354603C1DCBA92800C05867 /* PRSolarTermsManager.swift in Sources */,
 				E35460371DC7A08F00C05867 /* PRDatabaseManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -481,6 +485,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -531,6 +536,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

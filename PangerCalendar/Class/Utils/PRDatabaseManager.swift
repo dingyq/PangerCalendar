@@ -28,7 +28,6 @@ class PRDatabaseManager: NSObject {
         }
         
         if !createTable() {
-            print("创建数据库失败")
             return
         }
     }
@@ -50,7 +49,6 @@ class PRDatabaseManager: NSObject {
         //查询数据
         let sql = "select * from 黄历数据库 where 字段1="+year+" and 字段2="+month+" and 字段3="+day
 
-        
         var resultArray: [[String: String]] = []
         if let rs = db?.executeQuery(sql, withArgumentsIn: nil) {
             while rs.next() {
