@@ -12,6 +12,7 @@
 		E35460311DC5FDB800C05867 /* huangli.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = E35460301DC5FDB800C05867 /* huangli.sqlite */; };
 		E35460371DC7A08F00C05867 /* PRDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35460361DC7A08F00C05867 /* PRDatabaseManager.swift */; };
 		E354603C1DCBA92800C05867 /* PRSolarTermsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E354603B1DCBA92800C05867 /* PRSolarTermsManager.swift */; };
+		E35D7F931DF71AD000F803C7 /* PRSolarTermsFormulaCompute.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35D7F921DF71AD000F803C7 /* PRSolarTermsFormulaCompute.swift */; };
 		E376A0001DC5AEDA00C2B383 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3769FFF1DC5AEDA00C2B383 /* AppDelegate.swift */; };
 		E376A0021DC5AEDA00C2B383 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E376A0011DC5AEDA00C2B383 /* ViewController.swift */; };
 		E376A0051DC5AEDA00C2B383 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E376A0031DC5AEDA00C2B383 /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 		E35460331DC7A00C00C05867 /* PRBridgeHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRBridgeHeader.h; sourceTree = "<group>"; };
 		E35460361DC7A08F00C05867 /* PRDatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRDatabaseManager.swift; sourceTree = "<group>"; };
 		E354603B1DCBA92800C05867 /* PRSolarTermsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRSolarTermsManager.swift; sourceTree = "<group>"; };
+		E35D7F921DF71AD000F803C7 /* PRSolarTermsFormulaCompute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRSolarTermsFormulaCompute.swift; sourceTree = "<group>"; };
 		E3769FFC1DC5AEDA00C2B383 /* PangerCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PangerCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3769FFF1DC5AEDA00C2B383 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E376A0011DC5AEDA00C2B383 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				E3856A781DC5D28500FEAD80 /* PRDatabaseOperate.swift */,
 				E35460361DC7A08F00C05867 /* PRDatabaseManager.swift */,
 				E354603B1DCBA92800C05867 /* PRSolarTermsManager.swift */,
+				E35D7F921DF71AD000F803C7 /* PRSolarTermsFormulaCompute.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E35D7F931DF71AD000F803C7 /* PRSolarTermsFormulaCompute.swift in Sources */,
 				E376A0021DC5AEDA00C2B383 /* ViewController.swift in Sources */,
 				E3856A791DC5D28500FEAD80 /* PRDatabaseOperate.swift in Sources */,
 				E376A0001DC5AEDA00C2B383 /* AppDelegate.swift in Sources */,
