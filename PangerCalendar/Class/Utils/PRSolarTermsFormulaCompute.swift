@@ -53,15 +53,15 @@ private let s_SolarTermCValues21 : [Double] = [3.87, 18.73, 5.63, 20.646, 4.81, 
                                      7.438, 22.36, 7.18, 21.94, 5.4055, 20.12]
 
 private let kSolarTermIndex : String = "kSolarTermIndex"
-private let kSolarTermCValue20 : String = "kSolarTermCValue20"
-private let kSolarTermCValue21 : String = "kSolarTermCValue21"
+let kSolarTermMonth: String = "kSolarTermMonth"
+let kSolarTermDay: String = "kSolarTermDay"
+
 
 private let s_Instance: PRSolarTermsFormulaCompute = PRSolarTermsFormulaCompute()
 
 class PRSolarTermsFormulaCompute : NSObject {
     
 //    计算公式：[Y*D+C]-L
-    var solarTermsParams = [Dictionary<String, AnyObject>]()
     
     class func shareMgr() -> PRSolarTermsFormulaCompute {
         return s_Instance;
@@ -69,15 +69,40 @@ class PRSolarTermsFormulaCompute : NSObject {
     
     override init() {
         super.init()
-        for index in 0...23 {
-            var tmpDic = Dictionary<String, AnyObject>()
-            tmpDic = [kSolarTermIndex : index as AnyObject,
-                      kSolarTermCValue20 : s_SolarTermCValues20[index] as AnyObject,
-                      kSolarTermCValue21 : s_SolarTermCValues21[index] as AnyObject]
-            solarTermsParams.append(tmpDic)
-//            solarTermsParams += tmpDic
+    }
+    
+    private func decomposeCenturyAndYear(year: Int) -> (century: Int, yearLeft: Int) {
+        if year < 1900 || year > 2100 {
+            return (0, 0)
         }
-        
+        let century: Int = year / 100
+        let yearLeft: Int = year % 100
+        return (century, yearLeft)
+    }
+    
+    func calculateSoloarTerms(year: Int) -> Array<Dictionary<String, AnyObject>> {
+        var solarTerms = [Dictionary<String, AnyObject>]()
+        let result = self.decomposeCenturyAndYear(year: year)
+        var solarTermCValues = s_SolarTermCValues20
+        if result.century == 20 {
+            solarTermCValues = s_SolarTermCValues21
+        }
+        for index in 0...23 {
+            let month = (index/2 + 1) % 12 + 1
+            var leapYear = result.yearLeft / 4
+            if index < 2 {
+                leapYear = (result.yearLeft - 1) / 4
+            }
+            let day = Int(Double(result.yearLeft) * s_SolarTermDValue + solarTermCValues[index]) - leapYear
+//            var tmpDic = Dictionary<String, AnyObject>()
+            let tmpDic = [kSolarTermIndex : index as AnyObject,
+                      kSolarTermMonth : month as AnyObject,
+                      kSolarTermDay : day as AnyObject]
+            solarTerms.append(tmpDic)
+        }
+//        let springBegins = solarTerms[0]
+//        print(springBegins[kSolarTermMonth] as Any, springBegins[kSolarTermDay] as Any)
+        return solarTerms
     }
     
 }
