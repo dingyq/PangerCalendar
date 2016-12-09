@@ -22,6 +22,8 @@ class ViewController: UIViewController {
 //            print(dic["fit"]!, dic["avoid"]!)
 //        }
         
+        self.view.addSubview(PRCalendarView(frame: CGRect(x: 0, y: 0, width: 100, height: 100)))
+        
         let solarTerms = PRSolarTermsFormulaCompute.shareMgr().calculateSoloarTerms(year: 2016)
         for solar in solarTerms {
             print(solar[kSolarTermMonth]!, solar[kSolarTermDay]!)
