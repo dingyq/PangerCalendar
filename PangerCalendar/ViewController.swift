@@ -21,6 +21,7 @@ class ViewController: UIViewController {
 //        for dic in result1 {
 //            print(dic["fit"]!, dic["avoid"]!)
 //        }
+       print(PRChineseFestivals.shareMgr().festival(month: 5, day: 1))
         
         self.view.addSubview(PRCalendarView(frame: CGRect(x: 0, y: 0, width: 100, height: 100)))
         
