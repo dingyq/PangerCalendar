@@ -6,11 +6,11 @@
 //  Copyright © 2016年 panger. All rights reserved.
 //
 
+// 简单公式计算，准确度有限，暂未使用
+
 import Foundation
 
-
-
-enum PRSolarTerms : Int {
+private enum PRSolarTerms : Int {
     case SpringBegins = 0           // 立春
     case RainWater = 1              // 雨水
     case InsectsAwaken = 2          // 惊蛰

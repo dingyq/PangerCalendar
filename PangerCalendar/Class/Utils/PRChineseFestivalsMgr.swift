@@ -1,5 +1,5 @@
 //
-//  PRChineseFestivals.swift
+//  PRChineseFestivalsMgr.swift
 //  PangerCalendar
 //
 //  Created by bigqiang on 2016/12/12.
@@ -23,11 +23,11 @@ import Foundation
 //    case ChristmasDay = 1225            // 圣诞节
 //}
 
-private let s_Instance: PRChineseFestivals = PRChineseFestivals()
+private let s_Instance: PRChineseFestivalsMgr = PRChineseFestivalsMgr()
 
-class PRChineseFestivals: NSObject {
+class PRChineseFestivalsMgr: NSObject {
     
-    class func shareMgr() -> PRChineseFestivals {
+    class func shareMgr() -> PRChineseFestivalsMgr {
         return s_Instance
     }
     

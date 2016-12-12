@@ -6,34 +6,37 @@
 //  Copyright © 2016年 panger. All rights reserved.
 //
 
+
+// 高精度24节气算法，可精确到具体时间，缺少必要计算参数，暂未使用
+
 import Foundation
 
-let JD2000:Double = 2000
-let MATH_PI:Double = 3.1415926
-let RADIAN_PER_ANGLE:Double = 180/MATH_PI
+private let JD2000:Double = 2000
+private let MATH_PI:Double = 3.1415926
+private let RADIAN_PER_ANGLE:Double = 180/MATH_PI
 
-let nutation:[Dictionary<String, Double>] = []
+private let nutation:[Dictionary<String, Double>] = []
 
 typealias VSOP87_COEFFICIENT = Dictionary<String, Double>
 
-let Earth_L0:[VSOP87_COEFFICIENT] = []
-let Earth_L1:[VSOP87_COEFFICIENT] = []
-let Earth_L2:[VSOP87_COEFFICIENT] = []
-let Earth_L3:[VSOP87_COEFFICIENT] = []
-let Earth_L4:[VSOP87_COEFFICIENT] = []
-let Earth_L5:[VSOP87_COEFFICIENT] = []
+private let Earth_L0:[VSOP87_COEFFICIENT] = []
+private let Earth_L1:[VSOP87_COEFFICIENT] = []
+private let Earth_L2:[VSOP87_COEFFICIENT] = []
+private let Earth_L3:[VSOP87_COEFFICIENT] = []
+private let Earth_L4:[VSOP87_COEFFICIENT] = []
+private let Earth_L5:[VSOP87_COEFFICIENT] = []
 
-let Earth_R0:[VSOP87_COEFFICIENT] = []
-let Earth_R1:[VSOP87_COEFFICIENT] = []
-let Earth_R2:[VSOP87_COEFFICIENT] = []
-let Earth_R3:[VSOP87_COEFFICIENT] = []
-let Earth_R4:[VSOP87_COEFFICIENT] = []
+private let Earth_R0:[VSOP87_COEFFICIENT] = []
+private let Earth_R1:[VSOP87_COEFFICIENT] = []
+private let Earth_R2:[VSOP87_COEFFICIENT] = []
+private let Earth_R3:[VSOP87_COEFFICIENT] = []
+private let Earth_R4:[VSOP87_COEFFICIENT] = []
 
-let Earth_B0:[VSOP87_COEFFICIENT] = []
-let Earth_B1:[VSOP87_COEFFICIENT] = []
-let Earth_B2:[VSOP87_COEFFICIENT] = []
-let Earth_B3:[VSOP87_COEFFICIENT] = []
-let Earth_B4:[VSOP87_COEFFICIENT] = []
+private let Earth_B0:[VSOP87_COEFFICIENT] = []
+private let Earth_B1:[VSOP87_COEFFICIENT] = []
+private let Earth_B2:[VSOP87_COEFFICIENT] = []
+private let Earth_B3:[VSOP87_COEFFICIENT] = []
+private let Earth_B4:[VSOP87_COEFFICIENT] = []
 
 
 class PRSolarTermsManager: NSObject {
@@ -246,7 +249,6 @@ class PRSolarTermsManager: NSObject {
         return solarTermsJD;
         
     }
-    
     
     func calculateSolarTermsNewton(year: Int, angle: Int) -> Double {
         var JD0:Double = 0.0

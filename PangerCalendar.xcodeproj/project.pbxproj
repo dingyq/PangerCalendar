@@ -23,7 +23,8 @@
 		E3856A791DC5D28500FEAD80 /* PRDatabaseOperate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3856A781DC5D28500FEAD80 /* PRDatabaseOperate.swift */; };
 		E3856A7B1DC5D69300FEAD80 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E3856A7A1DC5D69300FEAD80 /* libsqlite3.tbd */; };
 		E3EAAE3A1DFB22E3001478E4 /* PRCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EAAE391DFB22E3001478E4 /* PRCalendarView.swift */; };
-		E3EAAE3E1DFDC1D3001478E4 /* PRChineseFestivals.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EAAE3D1DFDC1D3001478E4 /* PRChineseFestivals.swift */; };
+		E3EAAE3E1DFDC1D3001478E4 /* PRChineseFestivalsMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EAAE3D1DFDC1D3001478E4 /* PRChineseFestivalsMgr.swift */; };
+		E3EAAE431DFF0081001478E4 /* PRSolarTermsMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EAAE421DFF0081001478E4 /* PRSolarTermsMgr.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +69,8 @@
 		E3856A781DC5D28500FEAD80 /* PRDatabaseOperate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRDatabaseOperate.swift; sourceTree = "<group>"; };
 		E3856A7A1DC5D69300FEAD80 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		E3EAAE391DFB22E3001478E4 /* PRCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRCalendarView.swift; sourceTree = "<group>"; };
-		E3EAAE3D1DFDC1D3001478E4 /* PRChineseFestivals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRChineseFestivals.swift; sourceTree = "<group>"; };
+		E3EAAE3D1DFDC1D3001478E4 /* PRChineseFestivalsMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRChineseFestivalsMgr.swift; sourceTree = "<group>"; };
+		E3EAAE421DFF0081001478E4 /* PRSolarTermsMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRSolarTermsMgr.swift; sourceTree = "<group>"; };
 		F225879225420D2BCA9191F4 /* Pods-PangerCalendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PangerCalendar.release.xcconfig"; path = "Pods/Target Support Files/Pods-PangerCalendar/Pods-PangerCalendar.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -220,6 +222,8 @@
 			isa = PBXGroup;
 			children = (
 				E3EAAE381DFB2255001478E4 /* Calendar */,
+				E3856A781DC5D28500FEAD80 /* PRDatabaseOperate.swift */,
+				E35460361DC7A08F00C05867 /* PRDatabaseManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -236,10 +240,6 @@
 			isa = PBXGroup;
 			children = (
 				E3EAAE3F1DFDC1DA001478E4 /* ChinaCalendar */,
-				E3856A781DC5D28500FEAD80 /* PRDatabaseOperate.swift */,
-				E35460361DC7A08F00C05867 /* PRDatabaseManager.swift */,
-				E354603B1DCBA92800C05867 /* PRSolarTermsManager.swift */,
-				E35D7F921DF71AD000F803C7 /* PRSolarTermsFormulaCompute.swift */,
 			);
 			name = Calendar;
 			sourceTree = "<group>";
@@ -247,7 +247,10 @@
 		E3EAAE3F1DFDC1DA001478E4 /* ChinaCalendar */ = {
 			isa = PBXGroup;
 			children = (
-				E3EAAE3D1DFDC1D3001478E4 /* PRChineseFestivals.swift */,
+				E3EAAE3D1DFDC1D3001478E4 /* PRChineseFestivalsMgr.swift */,
+				E3EAAE421DFF0081001478E4 /* PRSolarTermsMgr.swift */,
+				E354603B1DCBA92800C05867 /* PRSolarTermsManager.swift */,
+				E35D7F921DF71AD000F803C7 /* PRSolarTermsFormulaCompute.swift */,
 			);
 			name = ChinaCalendar;
 			sourceTree = "<group>";
@@ -444,9 +447,10 @@
 				E35D7F931DF71AD000F803C7 /* PRSolarTermsFormulaCompute.swift in Sources */,
 				E376A0021DC5AEDA00C2B383 /* ViewController.swift in Sources */,
 				E3856A791DC5D28500FEAD80 /* PRDatabaseOperate.swift in Sources */,
+				E3EAAE431DFF0081001478E4 /* PRSolarTermsMgr.swift in Sources */,
 				E376A0001DC5AEDA00C2B383 /* AppDelegate.swift in Sources */,
 				E3EAAE3A1DFB22E3001478E4 /* PRCalendarView.swift in Sources */,
-				E3EAAE3E1DFDC1D3001478E4 /* PRChineseFestivals.swift in Sources */,
+				E3EAAE3E1DFDC1D3001478E4 /* PRChineseFestivalsMgr.swift in Sources */,
 				E354603C1DCBA92800C05867 /* PRSolarTermsManager.swift in Sources */,
 				E35460371DC7A08F00C05867 /* PRDatabaseManager.swift in Sources */,
 			);
