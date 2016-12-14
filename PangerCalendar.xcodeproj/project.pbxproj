@@ -25,6 +25,7 @@
 		E3EAAE3A1DFB22E3001478E4 /* PRCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EAAE391DFB22E3001478E4 /* PRCalendarView.swift */; };
 		E3EAAE3E1DFDC1D3001478E4 /* PRChineseFestivalsMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EAAE3D1DFDC1D3001478E4 /* PRChineseFestivalsMgr.swift */; };
 		E3EAAE431DFF0081001478E4 /* PRSolarTermsMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EAAE421DFF0081001478E4 /* PRSolarTermsMgr.swift */; };
+		E3EAAE451E004BCF001478E4 /* PRLunarDateMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EAAE441E004BCF001478E4 /* PRLunarDateMgr.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		E3EAAE391DFB22E3001478E4 /* PRCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRCalendarView.swift; sourceTree = "<group>"; };
 		E3EAAE3D1DFDC1D3001478E4 /* PRChineseFestivalsMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRChineseFestivalsMgr.swift; sourceTree = "<group>"; };
 		E3EAAE421DFF0081001478E4 /* PRSolarTermsMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRSolarTermsMgr.swift; sourceTree = "<group>"; };
+		E3EAAE441E004BCF001478E4 /* PRLunarDateMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRLunarDateMgr.swift; sourceTree = "<group>"; };
 		F225879225420D2BCA9191F4 /* Pods-PangerCalendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PangerCalendar.release.xcconfig"; path = "Pods/Target Support Files/Pods-PangerCalendar/Pods-PangerCalendar.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -196,6 +198,7 @@
 		E3856A741DC5D20D00FEAD80 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				E3EAAE461E005930001478E4 /* Module */,
 				E3EAAE371DFB2249001478E4 /* View */,
 				E3856A751DC5D24B00FEAD80 /* Controller */,
 				E3856A761DC5D24B00FEAD80 /* Model */,
@@ -221,7 +224,6 @@
 		E3856A771DC5D24B00FEAD80 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				E3EAAE381DFB2255001478E4 /* Calendar */,
 				E3856A781DC5D28500FEAD80 /* PRDatabaseOperate.swift */,
 				E35460361DC7A08F00C05867 /* PRDatabaseManager.swift */,
 			);
@@ -242,6 +244,7 @@
 				E3EAAE3F1DFDC1DA001478E4 /* ChinaCalendar */,
 			);
 			name = Calendar;
+			path = ../Utils;
 			sourceTree = "<group>";
 		};
 		E3EAAE3F1DFDC1DA001478E4 /* ChinaCalendar */ = {
@@ -251,8 +254,17 @@
 				E3EAAE421DFF0081001478E4 /* PRSolarTermsMgr.swift */,
 				E354603B1DCBA92800C05867 /* PRSolarTermsManager.swift */,
 				E35D7F921DF71AD000F803C7 /* PRSolarTermsFormulaCompute.swift */,
+				E3EAAE441E004BCF001478E4 /* PRLunarDateMgr.swift */,
 			);
 			name = ChinaCalendar;
+			sourceTree = "<group>";
+		};
+		E3EAAE461E005930001478E4 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				E3EAAE381DFB2255001478E4 /* Calendar */,
+			);
+			path = Module;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -445,6 +457,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E35D7F931DF71AD000F803C7 /* PRSolarTermsFormulaCompute.swift in Sources */,
+				E3EAAE451E004BCF001478E4 /* PRLunarDateMgr.swift in Sources */,
 				E376A0021DC5AEDA00C2B383 /* ViewController.swift in Sources */,
 				E3856A791DC5D28500FEAD80 /* PRDatabaseOperate.swift in Sources */,
 				E3EAAE431DFF0081001478E4 /* PRSolarTermsMgr.swift in Sources */,
