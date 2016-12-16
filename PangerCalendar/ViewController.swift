@@ -44,6 +44,11 @@ class ViewController: UIViewController {
         print(lunarMgr.lunarDateZodiac(lunarYear: lunar.year))
         print(lunarMgr.lunarDateMonth(lunarMonth: lunar.month))
         print(lunarMgr.lunarDateDay(lunarDay: lunar.day))
+        
+//        ---
+//        var cLogic1 = PRCalendarLogic().referenceDate
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
