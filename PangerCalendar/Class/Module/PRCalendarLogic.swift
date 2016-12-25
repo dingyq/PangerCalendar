@@ -54,14 +54,14 @@ class PRCalendarLogic: NSObject {
     }
     
     // 返回当前日期
-    public func dateForToday() -> Date {
+    class public func dateForToday() -> Date {
         let components = Calendar.current.dateComponents([Calendar.Component.day, Calendar.Component.month, Calendar.Component.year], from: Date())
         // 返回日期（统一格式）
         return Calendar.current.date(from: components)!
     }
     
     // 构造一个日期。aWeekday－星期几，aWeek－第几周（今年），aReferenceDate－日期（只含月和年）
-    public func date(weekday: Int, week: Int, referenceDate: Date) -> Date {
+   class public func date(weekday: Int, week: Int, referenceDate: Date) -> Date {
         // 使用参数aReferenceDate构造日期组件
         let components = Calendar.current.dateComponents([Calendar.Component.month, Calendar.Component.year], from: referenceDate)
         let month = components.month!
@@ -70,7 +70,7 @@ class PRCalendarLogic: NSObject {
     }
     
     // 构造一个日期。weekday－星期几，week－第几周（今年），month－月，year－年
-    public func date(weekday: Int, week: Int, month: Int, year: Int) -> Date {
+   class public func date(weekday: Int, week: Int, month: Int, year: Int) -> Date {
         let calendar = Calendar.current
         // Select first 'firstWeekDay' in this month
         // 构造一个NSDateComponents

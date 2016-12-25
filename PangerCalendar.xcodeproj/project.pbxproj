@@ -33,11 +33,12 @@
 		E3EAAE481E01B0DC001478E4 /* PRCalendarLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EAAE471E01B0DC001478E4 /* PRCalendarLogic.swift */; };
 		E3EAAE4F1E01B12E001478E4 /* PRCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EAAE491E01B12E001478E4 /* PRCalendarView.swift */; };
 		E3EAAE501E01B12E001478E4 /* PRChineseFestivalsMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EAAE4A1E01B12E001478E4 /* PRChineseFestivalsMgr.swift */; };
-		E3EAAE511E01B12E001478E4 /* PRLunarDateMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EAAE4B1E01B12E001478E4 /* PRLunarDateMgr.swift */; };
+		E3EAAE511E01B12E001478E4 /* PRLunarDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EAAE4B1E01B12E001478E4 /* PRLunarDate.swift */; };
 		E3EAAE521E01B12E001478E4 /* PRSolarTermsFormulaCompute.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EAAE4C1E01B12E001478E4 /* PRSolarTermsFormulaCompute.swift */; };
 		E3EAAE531E01B12E001478E4 /* PRSolarTermsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EAAE4D1E01B12E001478E4 /* PRSolarTermsManager.swift */; };
 		E3EAAE541E01B12E001478E4 /* PRSolarTermsMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EAAE4E1E01B12E001478E4 /* PRSolarTermsMgr.swift */; };
 		E3EAAE561E01B19D001478E4 /* PRCalendarLogicDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EAAE551E01B19D001478E4 /* PRCalendarLogicDelegate.swift */; };
+		E3F288FE1E0FAFF600974C67 /* PRLunarDateAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F288FD1E0FAFF600974C67 /* PRLunarDateAlgorithm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,11 +94,12 @@
 		E3EAAE471E01B0DC001478E4 /* PRCalendarLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRCalendarLogic.swift; path = PangerCalendar/Class/Module/PRCalendarLogic.swift; sourceTree = SOURCE_ROOT; };
 		E3EAAE491E01B12E001478E4 /* PRCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRCalendarView.swift; path = PangerCalendar/Class/Module/PRCalendarView.swift; sourceTree = SOURCE_ROOT; };
 		E3EAAE4A1E01B12E001478E4 /* PRChineseFestivalsMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRChineseFestivalsMgr.swift; path = PangerCalendar/Class/Module/PRChineseFestivalsMgr.swift; sourceTree = SOURCE_ROOT; };
-		E3EAAE4B1E01B12E001478E4 /* PRLunarDateMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRLunarDateMgr.swift; path = PangerCalendar/Class/Module/PRLunarDateMgr.swift; sourceTree = SOURCE_ROOT; };
+		E3EAAE4B1E01B12E001478E4 /* PRLunarDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRLunarDate.swift; path = PangerCalendar/Class/Module/PRLunarDate.swift; sourceTree = SOURCE_ROOT; };
 		E3EAAE4C1E01B12E001478E4 /* PRSolarTermsFormulaCompute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRSolarTermsFormulaCompute.swift; path = PangerCalendar/Class/Module/PRSolarTermsFormulaCompute.swift; sourceTree = SOURCE_ROOT; };
 		E3EAAE4D1E01B12E001478E4 /* PRSolarTermsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRSolarTermsManager.swift; path = PangerCalendar/Class/Module/PRSolarTermsManager.swift; sourceTree = SOURCE_ROOT; };
 		E3EAAE4E1E01B12E001478E4 /* PRSolarTermsMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRSolarTermsMgr.swift; path = PangerCalendar/Class/Module/PRSolarTermsMgr.swift; sourceTree = SOURCE_ROOT; };
 		E3EAAE551E01B19D001478E4 /* PRCalendarLogicDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRCalendarLogicDelegate.swift; sourceTree = "<group>"; };
+		E3F288FD1E0FAFF600974C67 /* PRLunarDateAlgorithm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRLunarDateAlgorithm.swift; sourceTree = "<group>"; };
 		F225879225420D2BCA9191F4 /* Pods-PangerCalendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PangerCalendar.release.xcconfig"; path = "Pods/Target Support Files/Pods-PangerCalendar/Pods-PangerCalendar.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -297,7 +299,8 @@
 			isa = PBXGroup;
 			children = (
 				E3EAAE4A1E01B12E001478E4 /* PRChineseFestivalsMgr.swift */,
-				E3EAAE4B1E01B12E001478E4 /* PRLunarDateMgr.swift */,
+				E3F288FD1E0FAFF600974C67 /* PRLunarDateAlgorithm.swift */,
+				E3EAAE4B1E01B12E001478E4 /* PRLunarDate.swift */,
 				E3EAAE4C1E01B12E001478E4 /* PRSolarTermsFormulaCompute.swift */,
 				E3EAAE4D1E01B12E001478E4 /* PRSolarTermsManager.swift */,
 				E3EAAE4E1E01B12E001478E4 /* PRSolarTermsMgr.swift */,
@@ -514,6 +517,7 @@
 			files = (
 				E376A0021DC5AEDA00C2B383 /* ViewController.swift in Sources */,
 				E3EAAE531E01B12E001478E4 /* PRSolarTermsManager.swift in Sources */,
+				E3F288FE1E0FAFF600974C67 /* PRLunarDateAlgorithm.swift in Sources */,
 				E3856A791DC5D28500FEAD80 /* PRDatabaseOperate.swift in Sources */,
 				E376A0001DC5AEDA00C2B383 /* AppDelegate.swift in Sources */,
 				E3EAAE481E01B0DC001478E4 /* PRCalendarLogic.swift in Sources */,
@@ -524,7 +528,7 @@
 				E3EAAE501E01B12E001478E4 /* PRChineseFestivalsMgr.swift in Sources */,
 				E3EAAE561E01B19D001478E4 /* PRCalendarLogicDelegate.swift in Sources */,
 				E35460371DC7A08F00C05867 /* PRDatabaseManager.swift in Sources */,
-				E3EAAE511E01B12E001478E4 /* PRLunarDateMgr.swift in Sources */,
+				E3EAAE511E01B12E001478E4 /* PRLunarDate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

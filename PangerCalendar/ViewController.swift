@@ -37,8 +37,8 @@ class ViewController: UIViewController {
 //        print(PRSolarTermsMgr.shareMgr().solartermName(index: index))
         
 //        ---
-        let lunarMgr = PRLunarDateMgr.shareMgr()
-        let lunar: PRLunarDate = lunarMgr.lunardateFromSolar(year: 2016, month: 12, day: 14)
+        let lunarMgr = PRLunarDateAlgorithm.shareMgr()
+        let lunar = lunarMgr.lunardateFromSolar(year: 2016, month: 12, day: 14)
         print(lunarMgr.lunarDateTianGan(lunarYear: lunar.year))
         print(lunarMgr.lunarDateDiZhi(lunarYear: lunar.year))
         print(lunarMgr.lunarDateZodiac(lunarYear: lunar.year))
