@@ -16,7 +16,6 @@ enum PRDatePriorityLabelType: Int {
     case festival
 }
 
-
 class PRLunarDate: NSObject {
     //日
     public private(set) var iday: Int?
@@ -125,9 +124,11 @@ class PRLunarDate: NSObject {
             self.priorityLabelType = PRDatePriorityLabelType.solarterm
             return self.solarterm;
         } else if (!self.day.isEmpty) {
+            //日期
             self.priorityLabelType = PRDatePriorityLabelType.day
             return self.day;
         } else {
+            //无效
             self.priorityLabelType = PRDatePriorityLabelType.null
             return ""
         }

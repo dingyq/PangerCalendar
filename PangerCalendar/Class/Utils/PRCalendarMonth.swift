@@ -20,13 +20,13 @@ fileprivate let S_CALENDARDAYBUTTOMFOUNTSIZESCALE: CGFloat = 0.25    //日期按
 
 class PRCalendarMonth: UIView {
     public var calendarLogic: PRCalendarLogic?             // 日历逻辑
-    public var datesIndex: Array<Date>?                     // 日期数组
-    public var buttonsIndex: Array<UIButton>?                   // 按钮数组
-    public var markDict: NSMutableDictionary?          // 标记字典（日期作为索引）
+    public var datesIndex: Array<Date>!                     // 日期数组
+    public var buttonsIndex: Array<UIButton>!                   // 按钮数组
+    public var markDict: NSMutableDictionary = NSMutableDictionary()        // 标记字典（日期作为索引）
     
     public var numberOfDaysInWeek: Int!                    // 每周几天
     public var numberOfWeeks: Int!                         // 当前月历页面中有几周（行数）
-    public var selectedButton: Int?                        // 选中的按钮索引
+    public var selectedButton: Int!                        // 选中的按钮索引
     public var selectedDate: Date?                         // 选中的日期
     
     public var headerFrame: CGRect!                        // 日历头大小和位置
@@ -241,7 +241,7 @@ class PRCalendarMonth: UIView {
                 //插入到视图
                 dayButton.insertSubview(bottomLabel, at: 0)
                 //给按钮添加响应动作
-                dayButton.addTarget(self, action: "dayButtonPressed:", for: UIControlEvents.touchUpInside)
+                dayButton.addTarget(self, action: #selector(PRCalendarMonth.dayButtonPressed), for: .touchUpInside)
                 //添加到视图
                 self.addSubview(dayButton)
                 
@@ -254,15 +254,113 @@ class PRCalendarMonth: UIView {
         //保存日历逻辑
         self.calendarLogic = logic
         //保存日期数组
-        self.datesIndex = NSArray(array: aDatesIndex) as? Array<Date> 
+        self.datesIndex = NSArray(array: aDatesIndex) as! Array<Date>
         //保存按钮数组
-        self.buttonsIndex = NSArray(array: aButtonsIndex) as? Array<UIButton>
+        self.buttonsIndex = NSArray(array: aButtonsIndex) as! Array<UIButton>
     }
     
+    // 通过日期查找视图中的日期索引，不存在则返－1
+    func findIndex(date: Date) -> Int {
+        for i in 0...(self.datesIndex.count - 1) {
+            let tmpDate = self.datesIndex[i]
+            if tmpDate.compare(date) == ComparisonResult.orderedSame {
+                return i
+            }
+        }
+        return -1
+    }
+    
+    // 删除指定日期上指定位置的标记，aDate－日期，loca－相对位置
+    func removeMark(date: Date, location: PRCalendarMonthMarkLocation) {
+        let remark:UIImageView? = self.markDict.object(forKey: date) as? UIImageView
+        if remark != nil {
+            remark?.removeFromSuperview()
+            self.markDict.removeObject(forKey: date)
+        }
+    }
+    
+    // 在指定日期上添加一个标记，aDate－日期，imgName－用做标记的图片，loca－相对位置
+    func addMark(date: Date, imageName: String, location: PRCalendarMonthMarkLocation) {
+        let dateIndex = self.findIndex(date: date)
+        if dateIndex == -1 {
+            return;
+        }
+        let button = self.buttonsIndex[dateIndex]
+        self.removeMark(date: date, location: PRCalendarMonthMarkLocation.defaultt)
+        let mark = UIImageView(image: UIImage(named: imageName))
+        switch location {
+        case .topRight:
+
+            break
+        case .bottomRight:
+
+            break
+        case .defaultt:
+            mark.frame = CGRect(x: 0, y: button.frame.size.height/2, width: button.frame.size.width, height: S_CALENDARDAYMARKHEIGHT)
+            //mark.autoresizingMask = UIViewAutoresizing.None
+            break
+        }
+        //保存
+        self.markDict[date] = mark
+        //插入到视图
+        button.insertSubview(mark, at: 0)
+    }
+    
+    //选中指定日期
+    func selectButton(date: Date?) {
+        // 如果当前有选择，则先取消
+        if self.selectedButton >= 0 {
+            // 获得今天的期日
+            let todayDate = PRCalendarLogic.dateForToday()
+            // 获得当前选择的按钮（通过当前选择按钮索引）
+            let button = self.buttonsIndex[self.selectedButton]
+            // 获得当前选择按钮的位置
+            var selectedFrame = button.frame
+            if self.selectedDate?.compare(todayDate) != ComparisonResult.orderedSame {
+                // 计算弹起后位置
+                selectedFrame.origin.y += 1
+                selectedFrame.size.width = self.calendarDayWidth
+                selectedFrame.size.height = self.calendarDayHeight
+            }
+            // 取消选择
+            button.isSelected = false;           // 按钮处于未选中状态，样式会随之更改
+            // 重置位置（弹起）
+            button.frame = selectedFrame;
+            // 当前选择置空
+            self.selectedButton = -1;
+            self.selectedDate = nil;
+        }
+        //如果要选中的期日不为空
+        if date != nil {
+            // Save
+            // 保存当前选择的按钮索引和日期
+            self.selectedButton = self.calendarLogic?.indexOfCalendar(date: date!)
+            self.selectedDate = date;
+            
+            // 获得今天的日期和当前被选中的按钮
+            let todayDate = PRCalendarLogic.dateForToday()
+            let button = self.buttonsIndex[self.selectedButton] //通过刚保存的按钮索引获得
+            // 获得被选中按钮的位置
+            let selectedFrame = button.frame;
+            // 如果被选中的不是今天
+            if date?.compare(todayDate) != ComparisonResult.orderedSame {
+                // 计算压入后位置
+                //selectedFrame.origin.y = selectedFrame.origin.y - 1
+                //selectedFrame.size.width = calendarDayWidth + 1
+                //selectedFrame.size.height = calendarDayHeight + 1
+            }
+            
+            // 按钮被选择
+            button.isSelected = true;          //按钮处于被选中状态，样式会随之更改
+            button.frame = selectedFrame;
+            //将button显示在当前视图的前面
+            //[self bringSubviewToFront:button];
+        }
+    }
+
     //日期被点击
-    private func dayButtonPressed(sender: UIButton) {
+    func dayButtonPressed(sender: UIButton) {
         //设置日历逻辑的参考日期为被选择的日期（被选择按钮的tag对应的日期）
         self.calendarLogic?.referenceDate = self.datesIndex?[sender.tag];
     }
-    
 }

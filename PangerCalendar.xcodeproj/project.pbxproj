@@ -39,6 +39,7 @@
 		E3EAAE541E01B12E001478E4 /* PRSolarTermsMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EAAE4E1E01B12E001478E4 /* PRSolarTermsMgr.swift */; };
 		E3EAAE561E01B19D001478E4 /* PRCalendarLogicDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EAAE551E01B19D001478E4 /* PRCalendarLogicDelegate.swift */; };
 		E3F288FE1E0FAFF600974C67 /* PRLunarDateAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F288FD1E0FAFF600974C67 /* PRLunarDateAlgorithm.swift */; };
+		E3F289001E15777800974C67 /* PRCalendarMonthMarkLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F288FF1E15777800974C67 /* PRCalendarMonthMarkLocation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		E3EAAE4E1E01B12E001478E4 /* PRSolarTermsMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRSolarTermsMgr.swift; path = PangerCalendar/Class/Module/PRSolarTermsMgr.swift; sourceTree = SOURCE_ROOT; };
 		E3EAAE551E01B19D001478E4 /* PRCalendarLogicDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRCalendarLogicDelegate.swift; sourceTree = "<group>"; };
 		E3F288FD1E0FAFF600974C67 /* PRLunarDateAlgorithm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRLunarDateAlgorithm.swift; sourceTree = "<group>"; };
+		E3F288FF1E15777800974C67 /* PRCalendarMonthMarkLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRCalendarMonthMarkLocation.swift; sourceTree = "<group>"; };
 		F225879225420D2BCA9191F4 /* Pods-PangerCalendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PangerCalendar.release.xcconfig"; path = "Pods/Target Support Files/Pods-PangerCalendar/Pods-PangerCalendar.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -290,6 +292,7 @@
 				E3EAAE551E01B19D001478E4 /* PRCalendarLogicDelegate.swift */,
 				E30612171E059CCC00EE83FC /* PRCalendarMonth.swift */,
 				E3EAAE491E01B12E001478E4 /* PRCalendarView.swift */,
+				E3F288FF1E15777800974C67 /* PRCalendarMonthMarkLocation.swift */,
 			);
 			name = Calendar;
 			path = ../Utils;
@@ -526,6 +529,7 @@
 				E3EAAE541E01B12E001478E4 /* PRSolarTermsMgr.swift in Sources */,
 				E30612181E059CCC00EE83FC /* PRCalendarMonth.swift in Sources */,
 				E3EAAE501E01B12E001478E4 /* PRChineseFestivalsMgr.swift in Sources */,
+				E3F289001E15777800974C67 /* PRCalendarMonthMarkLocation.swift in Sources */,
 				E3EAAE561E01B19D001478E4 /* PRCalendarLogicDelegate.swift in Sources */,
 				E35460371DC7A08F00C05867 /* PRDatabaseManager.swift in Sources */,
 				E3EAAE511E01B12E001478E4 /* PRLunarDate.swift in Sources */,
