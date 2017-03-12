@@ -69,8 +69,12 @@ class PRLunarDateAlgorithm: NSObject {
         var monthT: Int = month
         var dayT: Int = day
         
+        if yearT < 1901 || yearT > 2050 {
+            return PRLunarDateStruct(year: 1991, month: 5, day: 25, isLeap: true)
+        }
+        
         var lunar: PRLunarDateStruct = PRLunarDateStruct(year: 1991, month: 5, day: 25, isLeap: true)
-        lunar.isLeap = monthT == ((s_LunarCalendarTable[yearT - 1901] & 0xF00000) >> 20);
+        lunar.isLeap = monthT == ((s_LunarCalendarTable[yearT - 1901] & 0xF00000) >> 20)
         
         var spring_NY: Int, sun_NY: Int, staticDayCount: Int
         var index: Int, flag: Int
@@ -80,9 +84,9 @@ class PRLunarDateAlgorithm: NSObject {
         if ((s_LunarCalendarTable[yearT - 1901] & 0x0060) >> 5) == 1 {
             spring_NY = (s_LunarCalendarTable[yearT - 1901] & 0x001F) - 1
         } else {
-            spring_NY = (s_LunarCalendarTable[yearT - 1901] & 0x001F) - 1 + 31;
+            spring_NY = (s_LunarCalendarTable[yearT - 1901] & 0x001F) - 1 + 31
         }
-        sun_NY = s_MonthAdd[monthT - 1] + day - 1;
+        sun_NY = s_MonthAdd[monthT - 1] + day - 1
         if (!(yearT % 4 != 0)) && (monthT > 2) {
             sun_NY += 1;
         }

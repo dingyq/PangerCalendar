@@ -12,7 +12,8 @@ class PRCalendarLogic: NSObject {
  
     var calendarLogicDelegate: PRCalendarLogicDelegate?
     private var _referenceDate: Date?
-    public var referenceDate: Date! {
+
+    var referenceDate: Date! {
         set(newDate) {
             if (newDate == nil) {
                 self.calendarLogicDelegate?.calendarLogic(aLogic: self, dateSelected: nil)
@@ -43,25 +44,30 @@ class PRCalendarLogic: NSObject {
         }
     }
  
-    // 初始化，aDelegate－日历逻辑代理。aDate－基准日期
+    /// 初始化，aDelegate－日历逻辑代理。aDate－基准日期
+    ///
+    /// - Parameters:
+    ///   - delegate:
+    ///   - aDate:
     init(delegate: PRCalendarLogicDelegate, aDate: Date) {
         super.init()
         self.calendarLogicDelegate = delegate;
         //创建一个创建一个日期组件，并赋予要设置的日期
-        let components = Calendar.current.dateComponents([Calendar.Component.day, Calendar.Component.month], from: aDate)
+        let components = Calendar.current.dateComponents([Calendar.Component.day, Calendar.Component.month, Calendar.Component.year], from: aDate)
         // 返回日期（统一格式）
         _referenceDate = Calendar.current.date(from: components)
     }
     
-    // 返回当前日期
-    class public func dateForToday() -> Date {
+    // MARK: class function
+    /// 返回当前日期
+    class func dateForToday() -> Date {
         let components = Calendar.current.dateComponents([Calendar.Component.day, Calendar.Component.month, Calendar.Component.year], from: Date())
         // 返回日期（统一格式）
         return Calendar.current.date(from: components)!
     }
     
-    // 构造一个日期。aWeekday－星期几，aWeek－第几周（今年），aReferenceDate－日期（只含月和年）
-   class public func date(weekday: Int, week: Int, referenceDate: Date) -> Date {
+    /// 构造一个日期。aWeekday－星期几，aWeek－第几周（今年），aReferenceDate－日期（只含月和年）
+    class func date(weekday: Int, week: Int, referenceDate: Date) -> Date {
         // 使用参数aReferenceDate构造日期组件
         let components = Calendar.current.dateComponents([Calendar.Component.month, Calendar.Component.year], from: referenceDate)
         let month = components.month!
@@ -69,15 +75,15 @@ class PRCalendarLogic: NSObject {
         return self.date(weekday: weekday, week: week, month: month, year: year)
     }
     
-    // 构造一个日期。weekday－星期几，week－第几周（今年），month－月，year－年
-   class public func date(weekday: Int, week: Int, month: Int, year: Int) -> Date {
+    /// 构造一个日期。weekday－星期几，week－第几周（今年），month－月，year－年
+    class func date(weekday: Int, week: Int, month: Int, year: Int) -> Date {
         let calendar = Calendar.current
         // Select first 'firstWeekDay' in this month
         // 构造一个NSDateComponents
         var firstStartDayComponents = DateComponents()
         firstStartDayComponents.month = month
         firstStartDayComponents.year = year
-        firstStartDayComponents.weekday = weekday
+        firstStartDayComponents.weekday = calendar.firstWeekday
         firstStartDayComponents.weekdayOrdinal = 1  // 这个月的第几周
         let firstDayDate = calendar.date(from: firstStartDayComponents)
         
@@ -99,8 +105,14 @@ class PRCalendarLogic: NSObject {
         return calendar.date(from: components)!
     }
     
-    // 返回指定日期的索引（在当前日历页中）
-    public func indexOfCalendar(date: Date) -> Int {
+    
+    // MARK: private mehtod
+    
+    /// 返回指定日期的索引（在当前日历页中）
+    ///
+    /// - Parameter date: <#date description#>
+    /// - Returns: <#return value description#>
+    func indexOfCalendar(date: Date) -> Int {
         let calendar = Calendar.current
         let components = calendar.dateComponents([Calendar.Component.month, Calendar.Component.weekday, Calendar.Component.weekOfYear, Calendar.Component.year], from: date)
         // Select this month in this year.
@@ -120,11 +132,14 @@ class PRCalendarLogic: NSObject {
             weekday += 7
         }
         
-        return (weekday + (components.weekday! - firstWeek) * 7) - calendar.firstWeekday
+        return (weekday + (components.weekOfYear! - firstWeek) * 7) - calendar.firstWeekday
     }
     
-    // 返回指定日期aDate于当前基准日期的间隔月份（正负＋距离）
-    public func distanceOfDateFromCurrentMonth(date: Date?) -> Int {
+    /// 返回指定日期aDate于当前基准日期的间隔月份（正负＋距离）
+    ///
+    /// - Parameter date:
+    /// - Returns:
+    func distanceOfDateFromCurrentMonth(date: Date?) -> Int {
         if date == nil {
             return -1
         }
@@ -148,16 +163,16 @@ class PRCalendarLogic: NSObject {
         return distance
     }
     
-    // 选择前一个月
-    public func selectPreviousMonth() {
+    /// 选择前一个月
+    func selectPreviousMonth() {
         var components = DateComponents()
         components.month = -1
         _referenceDate = Calendar.current.date(byAdding: components, to: _referenceDate!)
         self.calendarLogicDelegate?.calendarLogic(aLogic: self, monthChangeDirection: -1)
     }
     
-    // 选择下一个月
-    public func selectNextMonth() {
+    /// 选择下一个月
+    func selectNextMonth() {
         var components = DateComponents()
         components.month = 1
         _referenceDate = Calendar.current.date(byAdding: components, to: _referenceDate!)
