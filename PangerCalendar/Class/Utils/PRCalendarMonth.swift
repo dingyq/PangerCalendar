@@ -325,6 +325,11 @@ class PRCalendarMonth: UIView {
     ///
     /// - Parameter date:
     func selectButton(date: Date?) {
+//        if self.selectedDate != nil {
+//            if ((date?.compare(self.selectedDate!)) == ComparisonResult.orderedSame) {
+//                return
+//            }
+//        }
         // 如果当前有选择，则先取消
         if self.selectedButton >= 0 {
             // 获得今天的期日
@@ -335,7 +340,7 @@ class PRCalendarMonth: UIView {
             var selectedFrame = button.frame
             if self.selectedDate?.compare(todayDate) != ComparisonResult.orderedSame {
                 // 计算弹起后位置
-                selectedFrame.origin.y += 1
+//                selectedFrame.origin.y += 1
                 selectedFrame.size.width = self.calendarDayWidth
                 selectedFrame.size.height = self.calendarDayHeight
             }
