@@ -242,7 +242,7 @@ class PRCalendarMonth: UIView {
                 //插入到视图
                 dayButton.insertSubview(bottomLabel, at: 0)
                 //给按钮添加响应动作
-                dayButton.addTarget(self, action: #selector(PRCalendarMonth.dayButtonPressed), for: .touchUpInside)
+                dayButton.addTarget(self, action: #selector(dayButtonPressed), for: .touchUpInside)
                 //添加到视图
                 self.addSubview(dayButton)
                 

@@ -147,7 +147,7 @@ class PRCalendarLogic: NSObject {
         let calendar = Calendar.current
         var monthComponents = calendar.dateComponents([Calendar.Component.month, Calendar.Component.year], from: _referenceDate!)
         let firstDayInMonth = calendar.date(from: monthComponents)
-        monthComponents.day = calendar.range(of: Calendar.Component.day, in: Calendar.Component.month, for: _referenceDate!)?.upperBound
+        monthComponents.day = (calendar.range(of: Calendar.Component.day, in: Calendar.Component.month, for: _referenceDate!)?.upperBound)! - 1
         let lastDayInMonth = calendar.date(from: monthComponents)
         
         // Lower

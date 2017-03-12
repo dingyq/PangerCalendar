@@ -181,7 +181,10 @@ class PRCalendarView: UIView, PRCalendarLogicDelegate, UIGestureRecognizerDelega
             // 结束后条用animationMonthSlideComplete
             UIView.setAnimationDidStop(#selector(animationMonthSlideComplete))
             //移动速度换算成动画时间
-            var velocity:CGFloat = 0.8 - (fabs(self.panVelocity!.x)/10000 * 3)
+            var velocity:CGFloat = 0.15
+            if self.panVelocity != nil {
+                velocity = 0.8 - (fabs(self.panVelocity!.x)/10000 * 3)
+            }
             if velocity < 0.15 {
                 velocity = 0.15
             }
