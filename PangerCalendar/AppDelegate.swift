@@ -16,6 +16,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        self.window = UIWindow(frame:UIScreen.main.bounds)
+        self.window?.backgroundColor = UIColor.white
+        
+        let imgArr = ["tab_permanent_nor", "tab_almanac_nor" ,"tab_notice_nor"];
+        let imgSelArr = ["tab_permanent_sel", "tab_almanac_sel", "tab_notice_sel"]
+        let titleArr = ["万年历", "黄历", "提醒"]
+        let tabBarController = PRTabBarController()
+        let vc1 = PRPermanentViewController()
+        let vc2 = PRAlmanacViewController()
+        let vc3 = PRNoticeViewController()
+        let viewArr = [vc1, vc2, vc3]
+        var viewCtlArr = [UIViewController]()
+        for index in 0..<viewArr.count {
+            let navController = PRNavigationController(rootViewController: viewArr[index])
+            navController.tabBarItem.image = UIImage(named: imgArr[index])
+            navController.tabBarItem.selectedImage = UIImage(named: imgSelArr[index])
+            navController.tabBarItem.title = titleArr[index]
+            viewCtlArr.append(navController)
+        }
+        tabBarController.viewControllers = viewCtlArr
+        
+        
+//        let nav:PRNavigationController = PRNavigationController(rootViewController: tabBarController)
+//        self.window?.rootViewController = nav
+        self.window?.rootViewController = tabBarController
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 
