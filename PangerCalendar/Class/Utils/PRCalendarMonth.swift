@@ -9,30 +9,41 @@
 import UIKit
 import Foundation
 
-fileprivate let S_HEADLABLEHEIGHTSCALE: CGFloat = 0.7                //日历顶部标签占顶部总高度的比例           年月标签/顶部
-fileprivate let S_HEADFOUNTSIZESCALE: CGFloat = 0.4                  //日历顶部标签字体大小与顶部总高度的比例     年月字体/顶部标签
-fileprivate let S_HEADWEEKDAYHEIGHTSCALE: CGFloat = 0.6              //星期行的高度占顶部总高度的比例           星期行/顶部
-fileprivate let S_HEADWEEKDAYFOUNTSIZESCALE: CGFloat = 0.8           //星期行标签字体大小与星期行总高度的比例     星期字体/星期标签
-fileprivate let S_CALENDARDAYFOUNTSIZESCALE: CGFloat = 0.5           //日期按钮标签的字体与日期按钮高度的比例     日期字体/期日按钮
-fileprivate let S_CALENDARDAYMARKSCALE: CGFloat = 0.3                //日期按钮的标记与日期按钮大小的比例         日期标记/期日按钮
-fileprivate let S_CALENDARDAYMARKHEIGHT: CGFloat = 2                 //日期按钮的条标记高度                    日期标记高度
-fileprivate let S_CALENDARDAYBUTTOMFOUNTSIZESCALE: CGFloat = 0.25    //日期按钮底部标签的字体与日期按钮高度的比例   日期底部字体/期日按钮
+
+/// 日历顶部标签占顶部总高度的比例           年月标签/顶部
+fileprivate let S_HEADLABLEHEIGHTSCALE: CGFloat = 0.7
+/// 日历顶部标签字体大小与顶部总高度的比例     年月字体/顶部标签
+fileprivate let S_HEADFOUNTSIZESCALE: CGFloat = 0.4
+/// 星期行的高度占顶部总高度的比例           星期行/顶部
+fileprivate let S_HEADWEEKDAYHEIGHTSCALE: CGFloat = 0.6
+/// 星期行标签字体大小与星期行总高度的比例     星期字体/星期标签
+fileprivate let S_HEADWEEKDAYFOUNTSIZESCALE: CGFloat = 0.8
+/// 日期按钮标签的字体与日期按钮高度的比例     日期字体/期日按钮
+fileprivate let S_CALENDARDAYFOUNTSIZESCALE: CGFloat = 0.4
+/// 日期按钮的标记与日期按钮大小的比例         日期标记/期日按钮
+fileprivate let S_CALENDARDAYMARKSCALE: CGFloat = 0.3
+/// 日期按钮的条标记高度                    日期标记高度
+fileprivate let S_CALENDARDAYMARKHEIGHT: CGFloat = 2
+/// 日期按钮底部标签的字体与日期按钮高度的比例   日期底部字体/期日按钮
+fileprivate let S_CALENDARDAYBUTTOMFOUNTSIZESCALE: CGFloat = 0.2
+
 
 class PRCalendarMonth: UIView {
-    var calendarLogic: PRCalendarLogic?             // 日历逻辑
-    var datesIndex: Array<Date>!                     // 日期数组
-    var buttonsIndex: Array<UIButton>!                   // 按钮数组
-    var markDict: NSMutableDictionary = NSMutableDictionary()        // 标记字典（日期作为索引）
+    public var datesIndex: Array<Date>!                     // 日期数组
+    public var requiredHeight: CGFloat! = 0
+    private var calendarLogic: PRCalendarLogic?             // 日历逻辑
+    private var buttonsIndex: Array<UIButton>!                   // 按钮数组
+    private var markDict: NSMutableDictionary = NSMutableDictionary()        // 标记字典（日期作为索引）
     
-    var numberOfDaysInWeek: Int!                    // 每周几天
-    var numberOfWeeks: Int!                         // 当前月历页面中有几周（行数）
-    var selectedButton: Int!                        // 选中的按钮索引
-    var selectedDate: Date?                         // 选中的日期
+    private var numberOfDaysInWeek: Int!                    // 每周几天
+    private var numberOfWeeks: Int!                         // 当前月历页面中有几周（行数）
+    private var selectedButton: Int!                        // 选中的按钮索引
+    private var selectedDate: Date?                         // 选中的日期
     
-    var headerFrame: CGRect!                        // 日历头大小和位置
-    var calendarFrame: CGRect!                      // 日历大小和位置
-    var calendarDayWidth: CGFloat!                  // 日历中天的宽度
-    var calendarDayHeight: CGFloat!                 // 日历中天的高度
+    private var headerFrame: CGRect!                        // 日历头大小和位置
+    private var calendarFrame: CGRect!                      // 日历大小和位置
+    private var calendarDayWidth: CGFloat!                  // 日历中天的宽度
+    private var calendarDayHeight: CGFloat!                 // 日历中天的高度
     
     
     // MARK: Init
@@ -93,19 +104,19 @@ class PRCalendarMonth: UIView {
         self.calendarDayHeight = self.calendarFrame.size.height / CGFloat(self.numberOfWeeks)            //日历中天的高度
         // 创建顶部标题，用于显示年份
         var aLabel: UILabel
-        /* 不要日历头
-        aLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.headerFrame.size.width, height: self.headerFrame.size.height * S_HEADLABLEHEIGHTSCALE))
-        aLabel.backgroundColor = UIColor.clear
-        //aLabel.textAlignment = UITextAlignmentCenter
-        aLabel.textAlignment = NSTextAlignment.center
-        aLabel.font = UIFont.boldSystemFont(ofSize: self.headerFrame.size.height * S_HEADFOUNTSIZESCALE)   //字体大小
-        aLabel.textColor = UIColor.init(patternImage: UIImage(named: "CalendarTitleColor.png")!) //使用图像填充
-        aLabel.shadowColor = UIColor.white      //阴影颜色
-        aLabel.shadowOffset = CGSize(width: 0, height: 1.0)  //阴影偏移
-        formatter.dateFormat = "yyyy年 MM月"      //日期格式
-        aLabel.text = formatter.string(from: logic.referenceDate)   //返回指定格式的日期
-        self.addSubview(aLabel)    //添加到视图
-        */
+        // 不要日历头
+//        aLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.headerFrame.size.width, height: self.headerFrame.size.height * S_HEADLABLEHEIGHTSCALE))
+//        aLabel.backgroundColor = UIColor.clear
+//        //aLabel.textAlignment = UITextAlignmentCenter
+//        aLabel.textAlignment = NSTextAlignment.center
+//        aLabel.font = UIFont.boldSystemFont(ofSize: self.headerFrame.size.height * S_HEADFOUNTSIZESCALE)   //字体大小
+//        aLabel.textColor = UIColor.init(patternImage: UIImage(named: "CalendarTitleColor.png")!) //使用图像填充
+//        aLabel.shadowColor = UIColor.white      //阴影颜色
+//        aLabel.shadowOffset = CGSize(width: 0, height: 1.0)  //阴影偏移
+//        formatter.dateFormat = "yyyy年 MM月"      //日期格式
+//        aLabel.text = formatter.string(from: logic.referenceDate)   //返回指定格式的日期
+//        self.addSubview(aLabel)    //添加到视图
+ 
         // 分割线视图
 //        let lineView = UIView(frame: CGRect(x: 0, y: self.headerFrame.size.height - 1, width: self.headerFrame.size.width, height: 1))
 //        lineView.backgroundColor = UIColor.lightGray
@@ -115,7 +126,7 @@ class PRCalendarMonth: UIView {
         // 添加星期名称
         // 获得第一个星期索引
         let firstWeekday = calendar.firstWeekday - 1
-        for aWeekday in 0...self.numberOfDaysInWeek - 1 {
+        for aWeekday in 0..<self.numberOfDaysInWeek {
             // 符号索引为当前循环次数＋第一个星期索引
             var symbolIndex = aWeekday + firstWeekday
             // 如果符号索引大于星期个数，则循环到队列开始位置
@@ -134,10 +145,10 @@ class PRCalendarMonth: UIView {
             aLabel.textAlignment = NSTextAlignment.center
             aLabel.text = symbol
             // 周末高亮
-            if (aWeekday == 0 || aWeekday == numberOfDaysInWeek-1) {
-                aLabel.textColor = UIColor(red: 0.5, green: 0.2, blue: 0, alpha: 1)
+            if (aWeekday == 0 || aWeekday == self.numberOfDaysInWeek-1) {
+                aLabel.textColor = PRTheme.current().weekendTipColor
             } else {
-                aLabel.textColor = UIColor.darkGray
+                aLabel.textColor = PRTheme.current().weekdayTipColor
             }
             aLabel.font = UIFont.boldSystemFont(ofSize: weekdayHeight * S_HEADWEEKDAYFOUNTSIZESCALE)    //字体大小
             aLabel.shadowColor = UIColor.white
@@ -148,21 +159,22 @@ class PRCalendarMonth: UIView {
         // Build calendar buttons (6 weeks of 7 days)
         // 建立日历按钮（宽高：6周7天）
         let aDatesIndex = NSMutableArray()
-//            NSMutableArray()      //日期索引
         let aButtonsIndex = NSMutableArray()    //按钮索引
-        
         //每次循环绘制一列
-        for aWeek in 0...self.numberOfWeeks - 1 {
+        for aWeek in 0..<self.numberOfWeeks {
             //当前行y坐标
             let positionY = (CGFloat(aWeek) * self.calendarDayHeight) + self.headerFrame.size.height
+            self.requiredHeight = positionY + self.calendarDayHeight
             //每次循环绘制一行
+            var continueDraw = true
             for aWeekday in 1...self.numberOfDaysInWeek {
+                //根据行列获得日期
+                let dayDate = PRCalendarLogic.date(weekday: aWeekday, week: aWeek, referenceDate: logic.referenceDate)
+                let dayButtonBottomEdgeInset = self.calendarDayHeight/4
                 //当前列x坐标
                 let positionX = (CGFloat(aWeekday - 1) * self.calendarDayWidth) - 1
                 //当前日期位置
                 let dayFrame = CGRect(x: positionX, y: positionY, width: self.calendarDayWidth, height: self.calendarDayHeight)
-                //根据行列获得日期
-                let dayDate = PRCalendarLogic.date(weekday: aWeekday, week: aWeek, referenceDate: logic.referenceDate)
                 //转换成格式化日期
                 var dayComponents = calendar.dateComponents([Calendar.Component.day], from: dayDate)
                 //创建一个日期按钮，样式为UIButtonTypeCustom
@@ -171,84 +183,101 @@ class PRCalendarMonth: UIView {
                 dayButton.clipsToBounds = false
                 dayButton.clearsContextBeforeDrawing = false
                 dayButton.frame = dayFrame
-                dayButton.titleLabel?.shadowOffset = CGSize(width: 0, height: 1)
-                dayButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: self.calendarDayHeight * S_CALENDARDAYFOUNTSIZESCALE)
+//                dayButton.titleLabel?.shadowOffset = CGSize(width: 0, height: 0)
+                dayButton.titleLabel?.font = UIFont.systemFont(ofSize: self.calendarDayHeight * S_CALENDARDAYFOUNTSIZESCALE)
                 dayButton.tag = aDatesIndex.count                            //tag(当前个数)
                 dayButton.adjustsImageWhenHighlighted = false                     //变化时发光
                 dayButton.adjustsImageWhenDisabled = false                        //变化时禁用
                 //dayButton.showsTouchWhenHighlighted = true                    //点击时发光
+                dayButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: dayButtonBottomEdgeInset, right: 0)
                 //设置日期颜色
-                var titleColor = UIColor(patternImage: UIImage(named: "CalendarTitleColor.png")!)
+                var titleColor = PRTheme.current().weekdayInMonthColor
                 //如果日期和当前日期间隔大于1个月（不是本月的日期），则使用不同的颜色
                 if logic.distanceOfDateFromCurrentMonth(date: dayDate) != 0 {
-                    titleColor = UIColor(patternImage: UIImage(named: "CalendarTitleDimColor.png")!)
-                    //取消标题阴影
-                    dayButton.titleLabel?.shadowOffset = CGSize(width: 0, height: 0)
+                    if (aWeekday == 1 || aWeekday == self.numberOfDaysInWeek) {
+                        titleColor = PRTheme.current().weekendOutMonthColor
+                    } else {
+                        titleColor = PRTheme.current().weekdayOutMonthColor
+                    }
+                } else {
+                    if (aWeekday == 1 || aWeekday == self.numberOfDaysInWeek) {
+                        titleColor = PRTheme.current().weekendInMonthColor
+                    }
                 }
                 
-                // Normal
-                //添加 UIControlStateNormal－正常状态 时的标题
                 dayButton.setTitle(String.init(format: "%i", dayComponents.day!), for: UIControlState.normal)
-
-                // Selected
-                //选中状态时标题颜色和阴影颜色
                 dayButton.setTitleColor(titleColor, for: UIControlState.selected)
-                dayButton.setTitleShadowColor(UIColor.black, for: UIControlState.selected)
-                
-                //是否是今天
+//                dayButton.setTitleShadowColor(UIColor.black, for: UIControlState.selected)
                 if (dayDate.compare(todayDate) != ComparisonResult.orderedSame) {
-                    // Normal
-                    //正常状态时，按钮标题颜色，阴影。按钮背景
                     dayButton.setTitleColor(titleColor, for: UIControlState.normal)
-                    dayButton.setTitleShadowColor(UIColor.black, for: UIControlState.normal)
+//                    dayButton.setTitleShadowColor(UIColor.black, for: UIControlState.normal)
                     dayButton.setBackgroundImage(UIImage(named: "CalendarDayTile.png"), for: UIControlState.normal)
-                    
-                    // Selected
-                    //选中状态时，按钮背景
                     dayButton.setBackgroundImage(UIImage(named: "CalendarDaySelected.png"), for: UIControlState.selected)
                 } else {
-                    // Normal
-                    //正常状态时，按钮标题颜色，阴影。按钮背景
                     dayButton.setTitleColor(titleColor, for: UIControlState.normal)
-                    dayButton.setTitleShadowColor(UIColor.black, for: UIControlState.normal)
+//                    dayButton.setTitleShadowColor(UIColor.black, for: UIControlState.normal)
                     dayButton.setBackgroundImage(UIImage(named: "CalendarDayToday.png"), for: UIControlState.normal)
-        
+                    dayButton.setBackgroundImage(UIImage(named: "CalendarDayTodaySelected.png"), for: UIControlState.selected)
                     //创建图像视图，今天
                     let todayMark = UIImageView(image: UIImage(named: "CalendarDayTodayMark.png"))
                     //[todayMark setFrame:];
                     todayMark.contentMode = UIViewContentMode.topLeft
                     todayMark.frame = dayButton.frame
                     self.addSubview(todayMark)
-                
-                    // Selected
-                    //选中状态时，按钮背景
-                    dayButton.setBackgroundImage(UIImage(named: "CalendarDayTodaySelected.png"), for: UIControlState.selected)
                 }
                 //添加阴历和节日信息
                 let bottomLabel = UILabel()
                 let bottomLabelHeight = self.calendarDayHeight * S_CALENDARDAYBUTTOMFOUNTSIZESCALE
                 bottomLabel.text = PRLunarDate.lunarDateWithNSDate(date: dayDate).priorityLabel
                 
-                bottomLabel.font = UIFont.boldSystemFont(ofSize: bottomLabelHeight)
-                bottomLabel.frame = CGRect(x: 0, y: dayButton.frame.size.height - bottomLabelHeight - 2, width: dayButton.frame.size.width, height: bottomLabelHeight+2)
+                bottomLabel.font = UIFont.systemFont(ofSize: bottomLabelHeight)
+                bottomLabel.frame = CGRect(x: 0, y: dayButton.frame.size.height - bottomLabelHeight - dayButtonBottomEdgeInset + 2, width: dayButton.frame.size.width, height: bottomLabelHeight + 2)
                 bottomLabel.textAlignment = NSTextAlignment.center;
                 //根据标签类型修改文本颜色
-                if(PRLunarDate.lunarDateWithNSDate(date: dayDate).priorityLabelType == PRDatePriorityLabelType.day) {
-                    bottomLabel.textColor = UIColor(red: 0.3, green: 0.3, blue: 0.3, alpha: 1)
+                let dayType = PRLunarDate.lunarDateWithNSDate(date: dayDate).priorityLabelType
+                if logic.distanceOfDateFromCurrentMonth(date: dayDate) != 0 {
+                    switch dayType {
+                    case .day:
+                        bottomLabel.textColor = PRTheme.current().weekdayOutMonthColor
+                        break;
+                    case .solarterm:
+                        bottomLabel.textColor = PRTheme.current().sosolarTermOutMonthColor
+                        break;
+                    default:
+                        bottomLabel.textColor = PRTheme.current().festivalOutMonthColor
+                    }
                 } else {
-                    bottomLabel.textColor = UIColor(red: 0.5, green: 0.2, blue: 0, alpha: 1)
+                    switch dayType {
+                    case .day:
+                        bottomLabel.textColor = PRTheme.current().weekdayInMonthColor
+                        break;
+                    case .solarterm:
+                        bottomLabel.textColor = PRTheme.current().sosolarTermInMonthColor
+                        break;
+                    default:
+                        bottomLabel.textColor = PRTheme.current().festivalInMonthColor
+                    }
                 }
+  
                 bottomLabel.backgroundColor = UIColor.clear
-                //插入到视图
                 dayButton.insertSubview(bottomLabel, at: 0)
-                //给按钮添加响应动作
                 dayButton.addTarget(self, action: #selector(dayButtonPressed), for: .touchUpInside)
-                //添加到视图
-                self.addSubview(dayButton)
                 
-                // Save
-                aDatesIndex.add(dayDate)        //日期添加到日期数组
-                aButtonsIndex.add(dayButton)    //按钮添加到按钮数组
+                if aWeek == self.numberOfWeeks - 1 && aWeekday == 1 {
+                    if logic.distanceOfDateFromCurrentMonth(date: dayDate) != 0 {
+                        continueDraw = false
+                        // 最后一行都不在本月内，不予绘制
+                        self.requiredHeight = self.requiredHeight - self.calendarDayHeight
+                        var vFrame = self.frame
+                        vFrame.size.height = self.requiredHeight
+                        self.frame = vFrame
+                    }
+                }
+                if continueDraw {
+                    self.addSubview(dayButton)
+                }
+                aButtonsIndex.add(dayButton)
+                aDatesIndex.add(dayDate)
             }
         }
         // save
@@ -351,6 +380,9 @@ class PRCalendarMonth: UIView {
             // 当前选择置空
             self.selectedButton = -1;
             self.selectedDate = nil;
+        }
+        if self.calendarLogic?.distanceOfDateFromCurrentMonth(date: date) != 0 {
+            return
         }
         //如果要选中的期日不为空
         if date != nil {

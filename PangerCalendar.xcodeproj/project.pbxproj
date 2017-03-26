@@ -15,9 +15,6 @@
 		E30612271E05B4F200EE83FC /* CalendarDayTile.png in Resources */ = {isa = PBXBuildFile; fileRef = E306121C1E05B4F200EE83FC /* CalendarDayTile.png */; };
 		E30612281E05B4F200EE83FC /* CalendarDayToday.png in Resources */ = {isa = PBXBuildFile; fileRef = E306121D1E05B4F200EE83FC /* CalendarDayToday.png */; };
 		E30612291E05B4F200EE83FC /* CalendarDayTodaySelected.png in Resources */ = {isa = PBXBuildFile; fileRef = E306121E1E05B4F200EE83FC /* CalendarDayTodaySelected.png */; };
-		E306122A1E05B4F200EE83FC /* CalendarShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = E306121F1E05B4F200EE83FC /* CalendarShadow.png */; };
-		E306122B1E05B4F200EE83FC /* CalendarTitleColor.png in Resources */ = {isa = PBXBuildFile; fileRef = E30612201E05B4F200EE83FC /* CalendarTitleColor.png */; };
-		E306122C1E05B4F200EE83FC /* CalendarTitleDimColor.png in Resources */ = {isa = PBXBuildFile; fileRef = E30612211E05B4F200EE83FC /* CalendarTitleDimColor.png */; };
 		E35460311DC5FDB800C05867 /* huangli.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = E35460301DC5FDB800C05867 /* huangli.sqlite */; };
 		E35460371DC7A08F00C05867 /* PRDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35460361DC7A08F00C05867 /* PRDatabaseManager.swift */; };
 		E36A18481E864D89006195E3 /* PRPermanentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36A18471E864D89006195E3 /* PRPermanentViewController.swift */; };
@@ -33,6 +30,12 @@
 		E36A18661E867063006195E3 /* PRNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36A18631E867063006195E3 /* PRNavigationController.swift */; };
 		E36A18671E867063006195E3 /* PRTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36A18641E867063006195E3 /* PRTabBarController.swift */; };
 		E36A186B1E867444006195E3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E36A186D1E867444006195E3 /* Localizable.strings */; };
+		E36A18771E875F5D006195E3 /* PRTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36A18761E875F5D006195E3 /* PRTheme.swift */; };
+		E36A18791E8762BB006195E3 /* UIColor+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36A18781E8762BB006195E3 /* UIColor+Category.swift */; };
+		E36A187C1E87758A006195E3 /* CalendarDayTodayMark.png in Resources */ = {isa = PBXBuildFile; fileRef = E36A187E1E87758A006195E3 /* CalendarDayTodayMark.png */; };
+		E36A18811E87CB0E006195E3 /* PRCommonConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36A18801E87CB0E006195E3 /* PRCommonConstant.swift */; };
+		E36A18831E87E4B4006195E3 /* PRDayDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36A18821E87E4B4006195E3 /* PRDayDetailView.swift */; };
+		E36A18851E88132E006195E3 /* Date+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36A18841E88132E006195E3 /* Date+Category.swift */; };
 		E376A0001DC5AEDA00C2B383 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3769FFF1DC5AEDA00C2B383 /* AppDelegate.swift */; };
 		E376A0071DC5AEDA00C2B383 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E376A0061DC5AEDA00C2B383 /* Assets.xcassets */; };
 		E376A0151DC5AEDA00C2B383 /* PangerCalendarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E376A0141DC5AEDA00C2B383 /* PangerCalendarTests.swift */; };
@@ -84,9 +87,6 @@
 		E306121C1E05B4F200EE83FC /* CalendarDayTile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalendarDayTile.png; sourceTree = "<group>"; };
 		E306121D1E05B4F200EE83FC /* CalendarDayToday.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalendarDayToday.png; sourceTree = "<group>"; };
 		E306121E1E05B4F200EE83FC /* CalendarDayTodaySelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalendarDayTodaySelected.png; sourceTree = "<group>"; };
-		E306121F1E05B4F200EE83FC /* CalendarShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalendarShadow.png; sourceTree = "<group>"; };
-		E30612201E05B4F200EE83FC /* CalendarTitleColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalendarTitleColor.png; sourceTree = "<group>"; };
-		E30612211E05B4F200EE83FC /* CalendarTitleDimColor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalendarTitleDimColor.png; sourceTree = "<group>"; };
 		E333A1FDD7A1C6F7CC1CAAD4 /* Pods-PangerCalendarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PangerCalendarTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PangerCalendarTests/Pods-PangerCalendarTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E35460301DC5FDB800C05867 /* huangli.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = huangli.sqlite; sourceTree = "<group>"; };
 		E35460331DC7A00C00C05867 /* PRBridgeHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRBridgeHeader.h; sourceTree = "<group>"; };
@@ -107,6 +107,13 @@
 		E36A186F1E867490006195E3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E36A18721E86B7C9006195E3 /* Masonry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Masonry.framework; path = "../../../../Library/Developer/Xcode/DerivedData/PangerCalendar-akwxhkhpjdmghvfhtvltzxzihjow/Build/Products/Debug-iphonesimulator/Masonry/Masonry.framework"; sourceTree = "<group>"; };
 		E36A18741E86B7CF006195E3 /* FMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FMDB.framework; path = "../../../../Library/Developer/Xcode/DerivedData/PangerCalendar-akwxhkhpjdmghvfhtvltzxzihjow/Build/Products/Debug-iphonesimulator/FMDB/FMDB.framework"; sourceTree = "<group>"; };
+		E36A18761E875F5D006195E3 /* PRTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRTheme.swift; sourceTree = "<group>"; };
+		E36A18781E8762BB006195E3 /* UIColor+Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Category.swift"; sourceTree = "<group>"; };
+		E36A187D1E87758A006195E3 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "zh-Hant"; path = "zh-Hant.lproj/CalendarDayTodayMark.png"; sourceTree = "<group>"; };
+		E36A187F1E877590006195E3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "zh-Hans"; path = "zh-Hans.lproj/CalendarDayTodayMark.png"; sourceTree = "<group>"; };
+		E36A18801E87CB0E006195E3 /* PRCommonConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRCommonConstant.swift; sourceTree = "<group>"; };
+		E36A18821E87E4B4006195E3 /* PRDayDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRDayDetailView.swift; sourceTree = "<group>"; };
+		E36A18841E88132E006195E3 /* Date+Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Category.swift"; sourceTree = "<group>"; };
 		E3769FFC1DC5AEDA00C2B383 /* PangerCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PangerCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3769FFF1DC5AEDA00C2B383 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E376A0061DC5AEDA00C2B383 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -198,9 +205,7 @@
 				E306121C1E05B4F200EE83FC /* CalendarDayTile.png */,
 				E306121D1E05B4F200EE83FC /* CalendarDayToday.png */,
 				E306121E1E05B4F200EE83FC /* CalendarDayTodaySelected.png */,
-				E306121F1E05B4F200EE83FC /* CalendarShadow.png */,
-				E30612201E05B4F200EE83FC /* CalendarTitleColor.png */,
-				E30612211E05B4F200EE83FC /* CalendarTitleDimColor.png */,
+				E36A187E1E87758A006195E3 /* CalendarDayTodayMark.png */,
 			);
 			name = Images;
 			path = PangerCalendar/Class/Module/Images;
@@ -334,6 +339,9 @@
 			children = (
 				E3856A781DC5D28500FEAD80 /* PRDatabaseOperate.swift */,
 				E35460361DC7A08F00C05867 /* PRDatabaseManager.swift */,
+				E36A18781E8762BB006195E3 /* UIColor+Category.swift */,
+				E36A18801E87CB0E006195E3 /* PRCommonConstant.swift */,
+				E36A18841E88132E006195E3 /* Date+Category.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -342,6 +350,7 @@
 			isa = PBXGroup;
 			children = (
 				E36A18681E86706B006195E3 /* Common */,
+				E36A18821E87E4B4006195E3 /* PRDayDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -366,11 +375,11 @@
 		E3EAAE3F1DFDC1DA001478E4 /* ChinaCalendar */ = {
 			isa = PBXGroup;
 			children = (
-				E3F289011E2546CE00974C67 /* unused */,
+				E3EAAE4B1E01B12E001478E4 /* PRLunarDate.swift */,
 				E3EAAE4A1E01B12E001478E4 /* PRChineseFestivalsMgr.swift */,
 				E3F288FD1E0FAFF600974C67 /* PRLunarDateAlgorithm.swift */,
-				E3EAAE4B1E01B12E001478E4 /* PRLunarDate.swift */,
 				E3EAAE4E1E01B12E001478E4 /* PRSolarTermsMgr.swift */,
+				E3F289011E2546CE00974C67 /* unused */,
 			);
 			name = ChinaCalendar;
 			sourceTree = "<group>";
@@ -378,6 +387,7 @@
 		E3EAAE461E005930001478E4 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				E36A18761E875F5D006195E3 /* PRTheme.swift */,
 				E3EAAE381DFB2255001478E4 /* Calendar */,
 			);
 			path = Module;
@@ -515,20 +525,18 @@
 			files = (
 				E36A186B1E867444006195E3 /* Localizable.strings in Resources */,
 				E30612281E05B4F200EE83FC /* CalendarDayToday.png in Resources */,
-				E306122C1E05B4F200EE83FC /* CalendarTitleDimColor.png in Resources */,
 				E36A185B1E8655C7006195E3 /* tab_almanac_nor@3x.png in Resources */,
 				E36A18591E8655C7006195E3 /* tab_notice_nor@3x.png in Resources */,
-				E306122A1E05B4F200EE83FC /* CalendarShadow.png in Resources */,
 				E36A18581E8655C7006195E3 /* tab_permanent_sel@3x.png in Resources */,
 				E36A18571E8655C7006195E3 /* tab_permanent_nor@3x.png in Resources */,
 				E376A0071DC5AEDA00C2B383 /* Assets.xcassets in Resources */,
+				E36A187C1E87758A006195E3 /* CalendarDayTodayMark.png in Resources */,
 				E30612291E05B4F200EE83FC /* CalendarDayTodaySelected.png in Resources */,
 				E36A185A1E8655C7006195E3 /* tab_notice_sel@3x.png in Resources */,
 				E35460311DC5FDB800C05867 /* huangli.sqlite in Resources */,
 				E30612271E05B4F200EE83FC /* CalendarDayTile.png in Resources */,
 				E36A185C1E8655C7006195E3 /* tab_almanac_sel@3x.png in Resources */,
 				E30612261E05B4F200EE83FC /* CalendarDaySelected.png in Resources */,
-				E306122B1E05B4F200EE83FC /* CalendarTitleColor.png in Resources */,
 				E30612251E05B4F200EE83FC /* CalendarBackground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -695,17 +703,22 @@
 				E36A18481E864D89006195E3 /* PRPermanentViewController.swift in Sources */,
 				E3EAAE531E01B12E001478E4 /* PRSolarTermsManager.swift in Sources */,
 				E3F886711E7401AC00007B01 /* PRCalendarViewScrollDelegate.swift in Sources */,
+				E36A18771E875F5D006195E3 /* PRTheme.swift in Sources */,
 				E3F288FE1E0FAFF600974C67 /* PRLunarDateAlgorithm.swift in Sources */,
 				E36A184D1E864E67006195E3 /* PRAlmanacViewController.swift in Sources */,
+				E36A18831E87E4B4006195E3 /* PRDayDetailView.swift in Sources */,
 				E3856A791DC5D28500FEAD80 /* PRDatabaseOperate.swift in Sources */,
 				E376A0001DC5AEDA00C2B383 /* AppDelegate.swift in Sources */,
 				E3EAAE481E01B0DC001478E4 /* PRCalendarLogic.swift in Sources */,
+				E36A18811E87CB0E006195E3 /* PRCommonConstant.swift in Sources */,
+				E36A18851E88132E006195E3 /* Date+Category.swift in Sources */,
 				E3EAAE521E01B12E001478E4 /* PRSolarTermsFormulaCompute.swift in Sources */,
 				E3EAAE4F1E01B12E001478E4 /* PRCalendarView.swift in Sources */,
 				E3EAAE541E01B12E001478E4 /* PRSolarTermsMgr.swift in Sources */,
 				E36A18661E867063006195E3 /* PRNavigationController.swift in Sources */,
 				E3F8866F1E73FCB000007B01 /* PRCalendarViewDelegate.swift in Sources */,
 				E36A18651E867063006195E3 /* PRCustomTabBarController.swift in Sources */,
+				E36A18791E8762BB006195E3 /* UIColor+Category.swift in Sources */,
 				E30612181E059CCC00EE83FC /* PRCalendarMonth.swift in Sources */,
 				E36A184A1E864E11006195E3 /* PRNoticeViewController.swift in Sources */,
 				E3EAAE501E01B12E001478E4 /* PRChineseFestivalsMgr.swift in Sources */,
@@ -756,6 +769,15 @@
 				E36A186F1E867490006195E3 /* zh-Hant */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		E36A187E1E87758A006195E3 /* CalendarDayTodayMark.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E36A187D1E87758A006195E3 /* zh-Hant */,
+				E36A187F1E877590006195E3 /* zh-Hans */,
+			);
+			name = CalendarDayTodayMark.png;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

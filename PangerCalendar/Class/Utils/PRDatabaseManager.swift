@@ -45,6 +45,10 @@ class PRDatabaseManager: NSObject {
         return false
     }
     
+    func queryDataWithDateInt(year: Int, month: Int, day: Int) -> [[String: String]] {
+        return self.queryDataWithDate(year: String.init(format: "%i", year), month: String.init(format: "%i", month), day: String.init(format: "%i", day))
+    }
+    
     func queryDataWithDate(year: String, month: String, day: String) -> [[String: String]] {
         //查询数据
         let sql = "select * from 黄历数据库 where 字段1="+year+" and 字段2="+month+" and 字段3="+day

@@ -12,28 +12,49 @@ import UIKit
 class PRPermanentViewController: UIViewController, PRCalendarViewDelegate {
 
     private var calendarView: PRCalendarView!
+    private var calendarContainer: UIView!
+    
+    private var dayDetailView: PRDayDetailView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
         self.title = "万年历"
-        
         /// sqlite
 //        let result = PRDatabaseOperate.shareMgr().queryDataWithDate(year: "1991", month: "5", day: "25")
 //        print(result["fit"]!, result["avoid"]!)
-
-        /// fmdb
-//        let result1 = PRDatabaseManager.manager.queryDataWithDate(year: "1991", month: "5", day: "25")
-//        for dic in result1 {
-//            print(dic["fit"]!, dic["avoid"]!)
-//        }
-//        print(PRChineseFestivalsMgr.shareMgr().festival(month: 5, day: 1))
         
-//        ---
-        self.calendarView = PRCalendarView(frame: CGRect(x: 10, y: 64, width: 355, height: 300))
+        let viewWidth = UIScreen.main.bounds.size.width
+        let vFrame = CGRect(x: 0, y: 64, width: viewWidth, height: 325)
+//        self.calendarContainer = UIView(frame: vFrame)
+//        self.view.addSubview(self.calendarContainer)
+        weak var weakSelf = self
+//        self.calendarContainer.mas_makeConstraints { (make) in
+//            make?.left.right().equalTo()(weakSelf?.view)?.setOffset(0)
+//            make?.top.equalTo()(weakSelf?.view)?.setOffset(64)
+//            make?.height.setOffset(325)
+//        }
+        
+        self.calendarView = PRCalendarView(frame: CGRect(x: 10, y: 64, width: viewWidth - 20, height: vFrame.size.height-1))
         self.calendarView.calendarViewDelegate = self
         self.view.addSubview(self.calendarView)
+//        self.calendarView.mas_makeConstraints { (make) in
+//            make?.left.equalTo()(weakSelf?.view)?.setOffset(10)
+//            make?.right.equalTo()(weakSelf?.view)?.setOffset(-10)
+//            make?.top.equalTo()(weakSelf?.view)?.setOffset(64)
+//            make?.height.setOffset(324)
+//        }
+        
+        self.dayDetailView = PRDayDetailView(frame: CGRect(x: 0, y: 0, width: viewWidth, height: 172))
+        self.view.addSubview(self.dayDetailView)
+        self.dayDetailView.mas_makeConstraints { (make) in
+            make?.left.right().equalTo()(weakSelf?.view)?.setOffset(0)
+            make?.top.equalTo()(weakSelf?.calendarView.mas_bottom)?.setOffset(0)
+            make?.height.setOffset(172)
+        }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(calenderViewChanged), name: kPRCalenderViewFrameChangedNotify, object: nil)
+        
 //        --- 节气公式算法
 //        let solarTerms = PRSolarTermsFormulaCompute.shareMgr().calculateSoloarTerms(year: 2016)
 //        for solar in solarTerms {
@@ -44,15 +65,8 @@ class PRPermanentViewController: UIViewController, PRCalendarViewDelegate {
 //        let index: Int = PRSolarTermsMgr.shareMgr().solartermIndex(year: 2050, month: 7, day: 22)
 //        print(PRSolarTermsMgr.shareMgr().solartermName(index: index))
         
-//        ---
-        let lunarMgr = PRLunarDateAlgorithm.shareMgr()
-        let lunar = lunarMgr.lunardateFromSolar(year: 1991, month: 5, day: 25)
-        print(lunarMgr.lunarDateTianGan(lunarYear: lunar.year), lunarMgr.lunarDateDiZhi(lunarYear: lunar.year), lunarMgr.lunarDateZodiac(lunarYear: lunar.year))
-        print(lunarMgr.lunarDateMonth(lunarMonth: lunar.month), lunarMgr.lunarDateDay(lunarDay: lunar.day))
-        
-//        ---
-//        var cLogic1 = PRCalendarLogic().referenceDate
-        
+//        ---        
+        self.dayDetailView.update(date: self.calendarView.selectedDate)
         
     }
 
@@ -61,27 +75,21 @@ class PRPermanentViewController: UIViewController, PRCalendarViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: NSNotification
+    
+    func calenderViewChanged(notify: Notification) {
+        UIView.animate(withDuration: 0.2) { 
+            
+        }
+    }
     
     // MARK: Protocol Method(PRCalendarViewDelegate)
     func calendarView(aCalendarView: PRCalendarView?, dateChanged: Date?) {
-        if dateChanged == nil {
-            return
-        }
-        let components = Calendar.current.dateComponents([Calendar.Component.day, Calendar.Component.month, Calendar.Component.year], from: dateChanged!)
-        let lunarMgr = PRLunarDateAlgorithm.shareMgr()
-        let lunar = lunarMgr.lunardateFromSolar(year: components.year!, month: components.month!, day: components.day!)
-        NSLog("%@%@ %@年 %@%@",
-              lunarMgr.lunarDateTianGan(lunarYear: lunar.year),
-              lunarMgr.lunarDateDiZhi(lunarYear: lunar.year),
-              lunarMgr.lunarDateZodiac(lunarYear: lunar.year),
-              lunarMgr.lunarDateMonth(lunarMonth: lunar.month),
-              lunarMgr.lunarDateDay(lunarDay: lunar.day))
+        self.dayDetailView.update(date: dateChanged)
     }
     
     func calendarView(aCalendarView: PRCalendarView?, mouthChanged: Date?) {
-        
     }
-
 }
 
 //let db = SQLiteDB.sha

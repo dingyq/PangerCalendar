@@ -56,12 +56,11 @@ class PRCalendarView: UIView, PRCalendarLogicDelegate, UIGestureRecognizerDelega
         _selectedDate = PRCalendarLogic.dateForToday()
         
         self.calendarLogic = PRCalendarLogic(delegate: self, aDate: self.selectedDate!)
-        // 创建日历的一个月历视图，指定范围和日期逻辑
-        self.calendarMonthFrame = CGRect.init(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height);
-        
-        self.calendarMonth = PRCalendarMonth(frame: self.calendarMonthFrame, logic: self.calendarLogic)
+        self.calendarMonthFrame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height);
+        self.calendarMonth = PRCalendarMonth(frame: self.calendarMonthFrame, logic: self.calendarLogic)        
         self.calendarMonth.selectButton(date: self.selectedDate)
         self.addSubview(self.calendarMonth)
+        self.updateSelfHeight(height: self.calendarMonth.requiredHeight)
         self.isViewLoaded = true
         
         let panGestureRecognizer: UIPanGestureRecognizer = UIPanGestureRecognizer.init(target: self, action: #selector(handlePanFrom))
@@ -71,6 +70,11 @@ class PRCalendarView: UIView, PRCalendarLogicDelegate, UIGestureRecognizerDelega
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        NotificationCenter.default.post(name: kPRCalenderViewFrameChangedNotify, object: nil)
     }
     
     // MARK: Private Method
@@ -120,7 +124,7 @@ class PRCalendarView: UIView, PRCalendarLogicDelegate, UIGestureRecognizerDelega
     /// 获取当前日历视图中的所有日期
     ///
     /// - Returns: 当前日历中的所有日期(NSDate类型，格林尼治标准时间)，按照顺序排列
-    func getAllDatesInView() -> NSArray {
+    private func getAllDatesInView() -> NSArray {
         return self.calendarMonth.datesIndex as NSArray
     }
     
@@ -130,7 +134,7 @@ class PRCalendarView: UIView, PRCalendarLogicDelegate, UIGestureRecognizerDelega
     ///   - date: 日期
     ///   - imageName: 用做标记的图片
     ///   - location: 相对位置
-    func addMark(date: Date, imageName: String, location: PRCalendarMonthMarkLocation) {
+    private func addMark(date: Date, imageName: String, location: PRCalendarMonthMarkLocation) {
         self.calendarMonth.addMark(date: date, imageName: imageName, location: location)
     }
     
@@ -139,7 +143,7 @@ class PRCalendarView: UIView, PRCalendarLogicDelegate, UIGestureRecognizerDelega
     /// - Parameters:
     ///   - date: 日期
     ///   - location: 相对位置
-    func removeMark(date: Date, location: PRCalendarMonthMarkLocation) {
+    private func removeMark(date: Date, location: PRCalendarMonthMarkLocation) {
         self.calendarMonth.removeMark(date: date, location: location)
     }
     
@@ -166,10 +170,10 @@ class PRCalendarView: UIView, PRCalendarLogicDelegate, UIGestureRecognizerDelega
         self.rightBtn?.isUserInteractionEnabled = false
         let aCalendarMonth:PRCalendarMonth = PRCalendarMonth(frame: CGRect(x: distance, y: 0, width: self.calendarMonthFrame.size.width, height: self.calendarMonthFrame.size.height), logic: aLogic!)
         aCalendarMonth.isUserInteractionEnabled = false
-        // 如果日历逻辑的当前月 到本月的日期距离等于0
-        if self.calendarLogic.distanceOfDateFromCurrentMonth(date: self.selectedDate) == 0 {
-            aCalendarMonth.selectButton(date: self.selectedDate)
-        }
+//        // 如果日历逻辑的当前月 到本月的日期距离等于0
+//        if self.calendarLogic.distanceOfDateFromCurrentMonth(date: self.selectedDate) == 0 {
+//            aCalendarMonth.selectButton(date: self.selectedDate)
+//        }
         // 插入视图aCalendarMonth到calendarMonth视图的上一层
         self.insertSubview(aCalendarMonth, belowSubview: self.calendarMonth)
         self.calendarMonthNew = aCalendarMonth
@@ -181,21 +185,25 @@ class PRCalendarView: UIView, PRCalendarLogicDelegate, UIGestureRecognizerDelega
             // 结束后条用animationMonthSlideComplete
             UIView.setAnimationDidStop(#selector(animationMonthSlideComplete))
             //移动速度换算成动画时间
-            var velocity:CGFloat = 0.15
+            var velocity: CGFloat = 0.2
             if self.panVelocity != nil {
                 velocity = 0.8 - (fabs(self.panVelocity!.x)/10000 * 3)
             }
-            if velocity < 0.15 {
-                velocity = 0.15
+            if velocity < 0.2 {
+                velocity = 0.2
             }
             UIView.setAnimationDuration(TimeInterval(velocity))
             UIView.setAnimationCurve(UIViewAnimationCurve.easeInOut)
         }
-        
+        // 如果日历逻辑的当前月 到本月的日期距离等于0
+        if self.calendarLogic.distanceOfDateFromCurrentMonth(date: self.selectedDate) == 0 {
+            aCalendarMonth.selectButton(date: self.selectedDate)
+        }
+
         // 设置月历视图的偏移
         self.calendarMonth.frame = self.calendarMonth.frame.offsetBy(dx: -distance, dy: 0)
         self.calendarMonthNew?.frame = (self.calendarMonthNew?.frame)!.offsetBy(dx: -distance, dy: 0);
-        
+        self.updateSelfHeight(height: self.calendarMonthNew?.requiredHeight)
         // 如果当前视图已加载完成
         if (animate) {
             // 提交动画
@@ -205,6 +213,21 @@ class PRCalendarView: UIView, PRCalendarLogicDelegate, UIGestureRecognizerDelega
             self.animationMonthSlideComplete()
         }
     }
+    
+//    override func updateConstraints() {
+//        if self.superview != nil {
+//            weak var weakSelf = self
+//            //            var vFrame = self.frame
+//            //            vFrame.size.height = (self.calendarMonthNew?.requiredHeight)!
+//            //            self.frame = vFrame
+//            self.mas_updateConstraints({ (make) in
+//                make?.height.setOffset((weakSelf?.calendarMonthNew?.requiredHeight)!)
+//            })
+//            self.setNeedsUpdateConstraints()
+//            self.updateConstraintsIfNeeded()
+//        }
+//        super.updateConstraints()
+//    }
     
     /// 月历滑动动画完成
     func animationMonthSlideComplete() {
@@ -223,6 +246,10 @@ class PRCalendarView: UIView, PRCalendarLogicDelegate, UIGestureRecognizerDelega
         self.rightBtn?.isUserInteractionEnabled = true
         self.calendarMonth.isUserInteractionEnabled = true
         
+//        if self.calendarLogic.distanceOfDateFromCurrentMonth(date: self.selectedDate) == 0 {
+//            self.calendarMonth.selectButton(date: self.selectedDate)
+//        }
+        
         //通知代理滚动完成
         self.calendarViewScrollDelegate?.calendarViewDidScroll(aCalendarView: self, allDatesInView: self.calendarMonth.datesIndex as NSArray?)
         //展示的月份发生变化，aCalendarView－一个日历视图,aDate-变化的日期
@@ -230,5 +257,12 @@ class PRCalendarView: UIView, PRCalendarLogicDelegate, UIGestureRecognizerDelega
         self.isViewLoaded = true
     }
     
-    
+    private func updateSelfHeight(height: CGFloat?) {
+        if height == nil {
+            return
+        }
+        var vFrame = self.frame
+        vFrame.size.height = height!
+        self.frame = vFrame
+    }
 }

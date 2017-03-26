@@ -64,6 +64,7 @@ class PRLunarDate: NSObject {
         return PRLunarDate.lunarDateWithYear(year: components.year!, month: components.month!, day: components.day!)
     }
     
+    
     public init(year: Int, month: Int, day: Int) {
         super.init()
         let lunarDateAlMgr = PRLunarDateAlgorithm.shareMgr()
