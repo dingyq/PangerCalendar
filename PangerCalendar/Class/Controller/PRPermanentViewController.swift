@@ -13,13 +13,19 @@ class PRPermanentViewController: UIViewController, PRCalendarViewDelegate {
 
     private var calendarView: PRCalendarView!
     private var calendarContainer: UIView!
-    
     private var dayDetailView: PRDayDetailView!
+    private var navigationTitleView: PRCurrentMonthTitleView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.title = "万年历"
+        
+        self.navigationTitleView = PRCurrentMonthTitleView(frame:CGRect(x: 0, y: 0, width: 200, height: 44))
+        self.navigationItem.titleView = self.navigationTitleView
+        
+        //        self.navigationController?.navigationItem.titleView = PRCurrentMonthTitleView()
+        
         /// sqlite
 //        let result = PRDatabaseOperate.shareMgr().queryDataWithDate(year: "1991", month: "5", day: "25")
 //        print(result["fit"]!, result["avoid"]!)
@@ -67,6 +73,7 @@ class PRPermanentViewController: UIViewController, PRCalendarViewDelegate {
         
 //        ---        
         self.dayDetailView.update(date: self.calendarView.selectedDate)
+        self.navigationTitleView.update(date: self.calendarView.selectedDate)
         
     }
 
@@ -88,7 +95,9 @@ class PRPermanentViewController: UIViewController, PRCalendarViewDelegate {
         self.dayDetailView.update(date: dateChanged)
     }
     
-    func calendarView(aCalendarView: PRCalendarView?, mouthChanged: Date?) {
+    func calendarView(aCalendarView: PRCalendarView?, monthChanged: Date?) {
+        self.navigationTitleView.update(date: monthChanged)
+        
     }
 }
 

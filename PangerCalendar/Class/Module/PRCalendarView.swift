@@ -253,7 +253,7 @@ class PRCalendarView: UIView, PRCalendarLogicDelegate, UIGestureRecognizerDelega
         //通知代理滚动完成
         self.calendarViewScrollDelegate?.calendarViewDidScroll(aCalendarView: self, allDatesInView: self.calendarMonth.datesIndex as NSArray?)
         //展示的月份发生变化，aCalendarView－一个日历视图,aDate-变化的日期
-        self.calendarViewDelegate?.calendarView(aCalendarView: self, mouthChanged: self.calendarLogic.referenceDate)
+        self.calendarViewDelegate?.calendarView(aCalendarView: self, monthChanged: self.calendarLogic.referenceDate)
         self.isViewLoaded = true
     }
     

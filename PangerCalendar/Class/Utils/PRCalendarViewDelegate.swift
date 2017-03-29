@@ -22,6 +22,6 @@ protocol PRCalendarViewDelegate {
     /// - Parameters:
     ///   - aCalendarView: 一个日历视图
     ///   - mouthChanged: 变化的日期
-    func calendarView(aCalendarView: PRCalendarView?, mouthChanged: Date?)
+    func calendarView(aCalendarView: PRCalendarView?, monthChanged: Date?)
     
 }
