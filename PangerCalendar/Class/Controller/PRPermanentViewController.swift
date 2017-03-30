@@ -9,12 +9,14 @@
 import UIKit
 //import Foundation
 
-class PRPermanentViewController: UIViewController, PRCalendarViewDelegate {
+class PRPermanentViewController: UIViewController, PRCalendarViewDelegate, PRCurrentMonthTitleViewDelegate {
 
     private var calendarView: PRCalendarView!
     private var calendarContainer: UIView!
     private var dayDetailView: PRDayDetailView!
     private var navigationTitleView: PRCurrentMonthTitleView!
+    
+    private var datePickerView: PRDatePickView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,7 @@ class PRPermanentViewController: UIViewController, PRCalendarViewDelegate {
         
         self.navigationTitleView = PRCurrentMonthTitleView(frame:CGRect(x: 0, y: 0, width: 200, height: 44))
         self.navigationItem.titleView = self.navigationTitleView
+        self.navigationTitleView.delegate = self
         
         //        self.navigationController?.navigationItem.titleView = PRCurrentMonthTitleView()
         
@@ -75,6 +78,9 @@ class PRPermanentViewController: UIViewController, PRCalendarViewDelegate {
         self.dayDetailView.update(date: self.calendarView.selectedDate)
         self.navigationTitleView.update(date: self.calendarView.selectedDate)
         
+        
+        self.datePickerView = PRDatePickView(frame: UIScreen.main.bounds)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -98,6 +104,11 @@ class PRPermanentViewController: UIViewController, PRCalendarViewDelegate {
     func calendarView(aCalendarView: PRCalendarView?, monthChanged: Date?) {
         self.navigationTitleView.update(date: monthChanged)
         
+    }
+    
+    // MARK: Protocol Method(PRCurrentMonthTitleViewDelegate)
+    func titleViewClicked() {
+        self.datePickerView.show()
     }
 }
 

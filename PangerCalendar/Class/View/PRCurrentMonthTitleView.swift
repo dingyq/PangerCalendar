@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol PRCurrentMonthTitleViewDelegate {
+    func titleViewClicked()
+}
+
 class PRCurrentMonthTitleView: UIView {
 
     /*
@@ -17,8 +21,7 @@ class PRCurrentMonthTitleView: UIView {
         // Drawing code
     }
     */
-
-//    var monthBtn: UIButton!
+    var delegate: PRCurrentMonthTitleViewDelegate?
     
     private var monthLabel: UILabel!
     
@@ -79,8 +82,8 @@ class PRCurrentMonthTitleView: UIView {
     }
     
     func monthButtonPressed(sender: UIButton) {
-        
+        if self.delegate != nil {
+            self.delegate?.titleViewClicked()
+        }
     }
-    
-    
 }

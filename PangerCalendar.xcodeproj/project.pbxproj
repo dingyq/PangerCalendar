@@ -16,6 +16,7 @@
 		E30612281E05B4F200EE83FC /* CalendarDayToday.png in Resources */ = {isa = PBXBuildFile; fileRef = E306121D1E05B4F200EE83FC /* CalendarDayToday.png */; };
 		E30612291E05B4F200EE83FC /* CalendarDayTodaySelected.png in Resources */ = {isa = PBXBuildFile; fileRef = E306121E1E05B4F200EE83FC /* CalendarDayTodaySelected.png */; };
 		E313E78F1E8BFFD8005F5845 /* PRCurrentMonthTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E313E78E1E8BFFD8005F5845 /* PRCurrentMonthTitleView.swift */; };
+		E313E7911E8D5F2C005F5845 /* PRDatePickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E313E7901E8D5F2C005F5845 /* PRDatePickView.swift */; };
 		E35460311DC5FDB800C05867 /* huangli.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = E35460301DC5FDB800C05867 /* huangli.sqlite */; };
 		E35460371DC7A08F00C05867 /* PRDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35460361DC7A08F00C05867 /* PRDatabaseManager.swift */; };
 		E36A18481E864D89006195E3 /* PRPermanentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36A18471E864D89006195E3 /* PRPermanentViewController.swift */; };
@@ -89,6 +90,7 @@
 		E306121D1E05B4F200EE83FC /* CalendarDayToday.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalendarDayToday.png; sourceTree = "<group>"; };
 		E306121E1E05B4F200EE83FC /* CalendarDayTodaySelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CalendarDayTodaySelected.png; sourceTree = "<group>"; };
 		E313E78E1E8BFFD8005F5845 /* PRCurrentMonthTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRCurrentMonthTitleView.swift; sourceTree = "<group>"; };
+		E313E7901E8D5F2C005F5845 /* PRDatePickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRDatePickView.swift; sourceTree = "<group>"; };
 		E333A1FDD7A1C6F7CC1CAAD4 /* Pods-PangerCalendarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PangerCalendarTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PangerCalendarTests/Pods-PangerCalendarTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E35460301DC5FDB800C05867 /* huangli.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = huangli.sqlite; sourceTree = "<group>"; };
 		E35460331DC7A00C00C05867 /* PRBridgeHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRBridgeHeader.h; sourceTree = "<group>"; };
@@ -354,6 +356,7 @@
 				E36A18681E86706B006195E3 /* Common */,
 				E36A18821E87E4B4006195E3 /* PRDayDetailView.swift */,
 				E313E78E1E8BFFD8005F5845 /* PRCurrentMonthTitleView.swift */,
+				E313E7901E8D5F2C005F5845 /* PRDatePickView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -726,6 +729,7 @@
 				E30612181E059CCC00EE83FC /* PRCalendarMonth.swift in Sources */,
 				E36A184A1E864E11006195E3 /* PRNoticeViewController.swift in Sources */,
 				E3EAAE501E01B12E001478E4 /* PRChineseFestivalsMgr.swift in Sources */,
+				E313E7911E8D5F2C005F5845 /* PRDatePickView.swift in Sources */,
 				E3F289001E15777800974C67 /* PRCalendarMonthMarkLocation.swift in Sources */,
 				E3EAAE561E01B19D001478E4 /* PRCalendarLogicDelegate.swift in Sources */,
 				E35460371DC7A08F00C05867 /* PRDatabaseManager.swift in Sources */,
