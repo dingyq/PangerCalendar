@@ -9,24 +9,20 @@
 import UIKit
 //import Foundation
 
-class PRPermanentViewController: UIViewController, PRCalendarViewDelegate, PRCurrentMonthTitleViewDelegate {
+class PRPermanentViewController: UIViewController, PRCalendarViewDelegate, PRCurrentMonthTitleViewDelegate, PRDatePickViewDelegate {
 
     private var calendarView: PRCalendarView!
     private var calendarContainer: UIView!
     private var dayDetailView: PRDayDetailView!
     private var navigationTitleView: PRCurrentMonthTitleView!
-    
     private var datePickerView: PRDatePickView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.title = "万年历"
-        
-        self.navigationTitleView = PRCurrentMonthTitleView(frame:CGRect(x: 0, y: 0, width: 200, height: 44))
-        self.navigationItem.titleView = self.navigationTitleView
-        self.navigationTitleView.delegate = self
-        
+        self.resetNavigationItem()
         //        self.navigationController?.navigationItem.titleView = PRCurrentMonthTitleView()
         
         /// sqlite
@@ -80,6 +76,7 @@ class PRPermanentViewController: UIViewController, PRCalendarViewDelegate, PRCur
         
         
         self.datePickerView = PRDatePickView(frame: UIScreen.main.bounds)
+        self.datePickerView.delegate = self
         
     }
 
@@ -88,8 +85,32 @@ class PRPermanentViewController: UIViewController, PRCalendarViewDelegate, PRCur
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: NSNotification
+    // MARK: Private Method
+    private func resetNavigationItem() {
+        let width = UIScreen.main.bounds.size.width - 100
+        self.navigationTitleView = PRCurrentMonthTitleView(frame:CGRect(x: 0, y: 0, width: width, height: 44))
+        self.navigationItem.titleView = self.navigationTitleView
+        self.navigationTitleView.delegate = self
     
+        let addBtn = UIButton()
+        addBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 40)
+        addBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        addBtn.setTitle(NSLocalizedString("+", comment: ""), for: .normal)
+        addBtn.setTitle(NSLocalizedString("+", comment: ""), for: .highlighted)
+        addBtn.setTitleColor(UIColor.black, for: .normal)
+        addBtn.setTitleColor(UIColor.black, for: .highlighted)
+        addBtn.addTarget(self, action: #selector(addButtonClicked), for: .touchUpInside)
+        
+        let btnItem = UIBarButtonItem(customView: addBtn)
+        self.navigationItem.rightBarButtonItem = btnItem
+    }
+    
+    // MARK: Public Method
+    func addButtonClicked(sender: UIButton) {
+
+    }
+    
+    // MARK: NSNotification
     func calenderViewChanged(notify: Notification) {
         UIView.animate(withDuration: 0.2) { 
             
@@ -109,6 +130,19 @@ class PRPermanentViewController: UIViewController, PRCalendarViewDelegate, PRCur
     // MARK: Protocol Method(PRCurrentMonthTitleViewDelegate)
     func titleViewClicked() {
         self.datePickerView.show()
+    }
+    
+    func resetToDate(date: Date) {
+        self.calendarView.selectedDate = date
+        self.dayDetailView.update(date: date)
+        self.navigationTitleView.update(date: date)
+    }
+    
+    // MARK: Protocol Method(PRDatePickViewDelegate)
+    func datePickDone(date: Date) {
+        self.calendarView.selectedDate = date
+        self.dayDetailView.update(date: date)
+        self.navigationTitleView.update(date: date)
     }
 }
 

@@ -57,8 +57,16 @@ class PRDatabaseManager: NSObject {
         if let rs = db?.executeQuery(sql, withArgumentsIn: nil) {
             while rs.next() {
                 let id4 = rs.string(forColumnIndex: 4)
+                var fit = ""
+                if id4 != nil {
+                    fit = id4!
+                }
                 let id5 = rs.string(forColumnIndex: 5)
-                let dict = ["fit": id4!, "avoid": id5!]
+                var avoid = ""
+                if id5 != nil {
+                    avoid = id5!
+                }
+                let dict = ["fit": fit, "avoid": avoid]
                 resultArray.append(dict as [String: String])
             }
         } else {

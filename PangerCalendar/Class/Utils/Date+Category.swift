@@ -9,6 +9,25 @@
 import Foundation
 
 extension Date {
+    
+    static func appMinDate() -> Date {
+        var components = DateComponents()
+        components.timeZone = TimeZone(abbreviation: "GMT")
+        components.year = 1901
+        components.month = 1
+        components.day = 1
+        return Calendar.current.date(from: components)!
+    }
+    
+    static func appMaxDate() -> Date {
+        var components = DateComponents()
+        components.timeZone = TimeZone(abbreviation: "GMT")
+        components.year = 2100
+        components.month = 12
+        components.day = 31
+        return Calendar.current.date(from: components)!
+    }
+    
     func weekOfYearStr() -> String {
         let calendar = Calendar.current
         let comps = calendar.dateComponents([Calendar.Component.weekOfYear], from: self)

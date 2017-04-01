@@ -10,6 +10,7 @@ import UIKit
 
 protocol PRCurrentMonthTitleViewDelegate {
     func titleViewClicked()
+    func resetToDate(date: Date)
 }
 
 class PRCurrentMonthTitleView: UIView {
@@ -65,12 +66,29 @@ class PRCurrentMonthTitleView: UIView {
             make?.width.setOffset(15.0)
         }
         
+        let todayBtn = UIButton()
+        todayBtn.titleLabel?.font = PRTheme.current().defaultFont
+        todayBtn.setTitle(NSLocalizedString("今", comment: ""), for: .normal)
+        todayBtn.setTitle(NSLocalizedString("今", comment: ""), for: .highlighted)
+        todayBtn.setTitleColor(UIColor.black, for: .normal)
+        todayBtn.setTitleColor(UIColor.black, for: .highlighted)
+        todayBtn.addTarget(self, action: #selector(todayButtonClicked), for: .touchUpInside)
+        self.addSubview(todayBtn)
+        todayBtn.mas_makeConstraints { (make) in
+            make?.trailing.equalTo()(self)?.setOffset(0)
+            make?.centerY.equalTo()(self)?.setOffset(0)
+            make?.width.height().setOffset(40)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    func todayButtonClicked(sender: UIButton) {
+        self.delegate?.resetToDate(date: Date())
+    }
+    
     func update(date: Date?) {
         if date == nil {
             return
@@ -82,8 +100,6 @@ class PRCurrentMonthTitleView: UIView {
     }
     
     func monthButtonPressed(sender: UIButton) {
-        if self.delegate != nil {
-            self.delegate?.titleViewClicked()
-        }
+        self.delegate?.titleViewClicked()
     }
 }
