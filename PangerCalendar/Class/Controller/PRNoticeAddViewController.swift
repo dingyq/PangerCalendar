@@ -55,7 +55,7 @@ class PRMissonItemView: PRBaseView {
         }
         lineBottomeView.backgroundColor = PRTheme.current().borderLineColor
         
-        let tipImage = PRBaseImageView()
+        let tipImage = PRBaseImageView(frame: CGRect.zero)
         self.addSubview(tipImage)
         tipImage.mas_makeConstraints { (make) in
             make?.left.equalTo()(self)?.setOffset(8)
@@ -64,7 +64,7 @@ class PRMissonItemView: PRBaseView {
         }
         self.tipImageView = tipImage
         
-        let tip = PRBaseLabel()
+        let tip = PRBaseLabel(frame: CGRect.zero)
         self.addSubview(tip)
         tip.mas_makeConstraints { (make) in
             make?.left.equalTo()(self.mas_left)?.setOffset(40)
@@ -77,7 +77,7 @@ class PRMissonItemView: PRBaseView {
         tip.textColor = PRCurrentTheme().blackCustomColor
         self.tipLabel = tip
         
-        let pickButton = PRBaseButton()
+        let pickButton = PRBaseButton(frame: CGRect.zero)
         self.addSubview(pickButton)
         pickButton.addTarget(self, action: #selector(self.pickButtonClicked), for: .touchUpInside)
         pickButton.mas_makeConstraints { (make) in
@@ -87,7 +87,7 @@ class PRMissonItemView: PRBaseView {
             make?.centerY.equalTo()(self.mas_centerY)?.setOffset(0)
         }
         
-        let clearBtn = PRBaseButton()
+        let clearBtn = PRBaseButton(frame: CGRect.zero)
         self.addSubview(clearBtn)
         clearBtn.isHidden = true
         clearBtn.setImage(PRThemedImage(name:"close_button_nor"), for: .normal)
@@ -120,7 +120,7 @@ class PRMissonItemView: PRBaseView {
         if str.isEmpty {
             switch self.type {
             case .time:
-                str = "没有截止时间"
+                str = NSLocalizedString("没有截止时间", comment: "")
                 break
             case .duty:
                 str = ""
@@ -179,6 +179,11 @@ class PRNoticeAddViewController: PRBaseViewController, PRDatePickViewDelegate, P
         // Dispose of any resources that can be recreated.
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        self.view.endEditing(true)
+    }
+    
     // MARK: Private Method
     
     private func setupViews() {
@@ -191,13 +196,13 @@ class PRNoticeAddViewController: PRBaseViewController, PRDatePickViewDelegate, P
             make?.height.setOffset(200)
         }
         
-        let text = PRBaseTextField()
+        let text = PRBaseTextField(frame: CGRect.zero)
         contentView.addSubview(text)
         self.contentTextField = text
         text.layer.cornerRadius = 2
         text.layer.borderWidth = 1
         text.layer.borderColor = PRCurrentTheme().borderLineColor.cgColor
-        text.placeholder = "任务内容"
+        text.placeholder = NSLocalizedString("任务内容", comment: "")
         text.font = PRCurrentTheme().bigFont
         text.textColor = PRCurrentTheme().blackCustomColor
         text.mas_makeConstraints { (make) in
@@ -232,7 +237,7 @@ class PRNoticeAddViewController: PRBaseViewController, PRDatePickViewDelegate, P
         self.timeTipView?.updateTipText(self.misstionDate?.yyyyMDDStr())
         
         // set up add Button
-        let addButton = PRBaseButton()
+        let addButton = PRBaseButton(frame: CGRect.zero)
         contentView.addSubview(addButton)
         addButton.layer.borderWidth = 1
         addButton.layer.borderColor = PRCurrentTheme().redCustomColor.cgColor
@@ -240,8 +245,8 @@ class PRNoticeAddViewController: PRBaseViewController, PRDatePickViewDelegate, P
         addButton.titleLabel?.font = PRCurrentTheme().bigFont
         addButton.setTitleColor(PRCurrentTheme().blackCustomColor, for: .normal)
         addButton.setTitleColor(PRCurrentTheme().blackCustomColor, for: .highlighted)
-        addButton.setTitle("添加提醒", for: .normal)
-        addButton.setTitle("添加提醒", for: .highlighted)
+        addButton.setTitle(NSLocalizedString("添加提醒", comment: ""), for: .normal)
+        addButton.setTitle(NSLocalizedString("添加提醒", comment: ""), for: .highlighted)
         addButton.addTarget(self, action: #selector(self.addNoticeButtonClicked), for: .touchUpInside)
         addButton.mas_makeConstraints { (make) in
             make?.left.equalTo()(contentView.mas_left)?.setOffset(100)
@@ -252,7 +257,7 @@ class PRNoticeAddViewController: PRBaseViewController, PRDatePickViewDelegate, P
     }
     
     private func resetNavigationItem() {
-        let backBtn = PRBaseButton()
+        let backBtn = PRBaseButton(frame: CGRect.zero)
         backBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 40)
         backBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         backBtn.setImage(PRThemedImage(name:"back_button_nor"), for: .normal)
@@ -272,7 +277,8 @@ class PRNoticeAddViewController: PRBaseViewController, PRDatePickViewDelegate, P
     }
     
     func addNoticeButtonClicked(sender: UIButton) {
-        self.contentTextField.resignFirstResponder()
+        self.view.endEditing(true)
+        
         let content = self.contentTextField.text
         if (content?.isEmpty)! {
             return
@@ -292,7 +298,7 @@ class PRNoticeAddViewController: PRBaseViewController, PRDatePickViewDelegate, P
     
     // MARK: Protocol Method(PRMissonItemViewDelegate)
     func pickTargetData(sender: PRMissonItemView) {
-        self.contentTextField.resignFirstResponder()
+        self.view.endEditing(true)
         
         if sender == self.timeTipView {
             self.datePickerView.show()
@@ -303,7 +309,8 @@ class PRNoticeAddViewController: PRBaseViewController, PRDatePickViewDelegate, P
     }
     
     func clearTargetData(sender: PRMissonItemView) {
-        self.contentTextField.resignFirstResponder()
+        self.view.endEditing(true)
+        
         if sender == self.timeTipView {
             self.misstionDate = nil
         } else if sender == self.dutyTipView {

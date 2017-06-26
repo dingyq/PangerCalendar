@@ -22,11 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let imgArr = ["tab_permanent_nor", "tab_almanac_nor" ,"tab_notice_nor"];
         let imgSelArr = ["tab_permanent_sel", "tab_almanac_sel", "tab_notice_sel"]
-        let titleArr = ["万年历", "黄历", "提醒"]
+        let titleArr = ["日历", "提醒", "我的"]
         let tabBarController = PRTabBarController()
         let vc1 = PRPermanentViewController()
-        let vc2 = PRAlmanacViewController()
-        let vc3 = PRNoticeListViewController()
+        let vc2 = PRNoticeListViewController()
+//        let vc3 = PRAlmanacViewController() // 黄历
+        let vc3 = PRMineViewController()
+        
         let viewArr = [vc1, vc2, vc3]
         var viewCtlArr = [UIViewController]()
         for index in 0..<viewArr.count {

@@ -30,7 +30,7 @@ class PRPermanentViewController: PRBaseViewController, PRCalendarViewDelegate, P
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.title = "万年历"
+        self.title = NSLocalizedString("日历", comment: "")
         self.resetNavigationItem()
         //        self.navigationController?.navigationItem.titleView = PRCurrentMonthTitleView()
         

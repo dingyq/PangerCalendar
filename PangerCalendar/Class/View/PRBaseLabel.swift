@@ -17,5 +17,23 @@ class PRBaseLabel: UILabel {
         // Drawing code
     }
     */
+    
+    convenience init() {
+        self.init(frame: CGRect.zero)
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.setDefaultConfig()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setDefaultConfig() {
+        self.font = PRCurrentTheme().bigFont
+        self.textColor = PRCurrentTheme().blackCustomColor
+    }
 
 }

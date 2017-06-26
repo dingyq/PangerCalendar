@@ -36,6 +36,8 @@
 		E3237F831EFF77C5000A703F /* PRUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3237F821EFF77C5000A703F /* PRUserInfo.swift */; };
 		E3237F851EFF7AD3000A703F /* PRMissionNoticeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3237F841EFF7AD3000A703F /* PRMissionNoticeModel.swift */; };
 		E3237F871EFF8A70000A703F /* PRUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3237F861EFF8A70000A703F /* PRUserModel.swift */; };
+		E3237F891F0174D7000A703F /* PRBaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3237F881F0174D7000A703F /* PRBaseTableView.swift */; };
+		E3237F8B1F017E01000A703F /* PRMineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3237F8A1F017E01000A703F /* PRMineViewController.swift */; };
 		E35460311DC5FDB800C05867 /* huangli.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = E35460301DC5FDB800C05867 /* huangli.sqlite */; };
 		E35460371DC7A08F00C05867 /* PRDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35460361DC7A08F00C05867 /* PRDatabaseManager.swift */; };
 		E36A18481E864D89006195E3 /* PRPermanentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36A18471E864D89006195E3 /* PRPermanentViewController.swift */; };
@@ -129,6 +131,8 @@
 		E3237F821EFF77C5000A703F /* PRUserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRUserInfo.swift; path = ../Utils/PRUserInfo.swift; sourceTree = "<group>"; };
 		E3237F841EFF7AD3000A703F /* PRMissionNoticeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRMissionNoticeModel.swift; sourceTree = "<group>"; };
 		E3237F861EFF8A70000A703F /* PRUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRUserModel.swift; sourceTree = "<group>"; };
+		E3237F881F0174D7000A703F /* PRBaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRBaseTableView.swift; sourceTree = "<group>"; };
+		E3237F8A1F017E01000A703F /* PRMineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRMineViewController.swift; sourceTree = "<group>"; };
 		E333A1FDD7A1C6F7CC1CAAD4 /* Pods-PangerCalendarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PangerCalendarTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PangerCalendarTests/Pods-PangerCalendarTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E35460301DC5FDB800C05867 /* huangli.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = huangli.sqlite; sourceTree = "<group>"; };
 		E35460331DC7A00C00C05867 /* PRBridgeHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRBridgeHeader.h; sourceTree = "<group>"; };
@@ -289,6 +293,14 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		E3237F8C1F017E0A000A703F /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				E3237F8A1F017E01000A703F /* PRMineViewController.swift */,
+			);
+			name = Mine;
+			sourceTree = "<group>";
+		};
 		E35460351DC7A04C00C05867 /* Bridge */ = {
 			isa = PBXGroup;
 			children = (
@@ -331,6 +343,7 @@
 				91BF5EDD1F013842007993E7 /* PRBaseTextField.swift */,
 				91BF5EDF1F013AE7007993E7 /* PRBaseButton.swift */,
 				91BF5EE11F013B18007993E7 /* PRBaseImageView.swift */,
+				E3237F881F0174D7000A703F /* PRBaseTableView.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -416,6 +429,7 @@
 				E3237F761EFE9A83000A703F /* Permanent */,
 				E3237F771EFE9AA8000A703F /* Notice */,
 				E3237F781EFE9ABA000A703F /* Almanac */,
+				E3237F8C1F017E0A000A703F /* Mine */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -804,6 +818,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3237F891F0174D7000A703F /* PRBaseTableView.swift in Sources */,
 				E36A18481E864D89006195E3 /* PRPermanentViewController.swift in Sources */,
 				E3EAAE531E01B12E001478E4 /* PRSolarTermsManager.swift in Sources */,
 				E3F886711E7401AC00007B01 /* PRCalendarViewScrollDelegate.swift in Sources */,
@@ -843,6 +858,7 @@
 				E35460371DC7A08F00C05867 /* PRDatabaseManager.swift in Sources */,
 				E3EAAE511E01B12E001478E4 /* PRLunarDate.swift in Sources */,
 				E36A18671E867063006195E3 /* PRTabBarController.swift in Sources */,
+				E3237F8B1F017E01000A703F /* PRMineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

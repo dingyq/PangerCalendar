@@ -29,7 +29,7 @@ class PRCurrentMonthTitleView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        let monthBtn = PRBaseButton()
+        let monthBtn = PRBaseButton(frame: CGRect.zero)
         monthBtn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         monthBtn.adjustsImageWhenHighlighted = false
         monthBtn.adjustsImageWhenDisabled = false
@@ -38,7 +38,7 @@ class PRCurrentMonthTitleView: UIView {
         monthBtn.addTarget(self, action: #selector(monthButtonPressed), for: .touchUpInside)
         self.addSubview(monthBtn)
         
-        self.monthLabel = PRBaseLabel()
+        self.monthLabel = PRBaseLabel(frame: CGRect.zero)
         self.monthLabel.backgroundColor = UIColor.clear
         self.monthLabel.textAlignment = NSTextAlignment.center
         self.monthLabel.font = UIFont.systemFont(ofSize: 18)
