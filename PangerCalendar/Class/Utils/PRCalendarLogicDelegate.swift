@@ -8,7 +8,7 @@
 
 import Foundation
 // 日历逻辑代理，将日期选择，月份变化（翻页）等实现交由代理完成
-protocol PRCalendarLogicDelegate {
+protocol PRCalendarLogicDelegate : NSObjectProtocol {
     
     /// 日期被选择
     ///

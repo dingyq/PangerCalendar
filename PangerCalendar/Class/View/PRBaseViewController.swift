@@ -1,20 +1,19 @@
 //
-//  PRNoticeViewController.swift
+//  PRBaseViewController.swift
 //  PangerCalendar
 //
-//  Created by bigqiang on 2017/3/25.
+//  Created by bigqiang on 2017/6/24.
 //  Copyright © 2017年 panger. All rights reserved.
 //
 
 import UIKit
 
-class PRNoticeViewController: UIViewController {
+class PRBaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.title = "提醒"
     }
 
     override func didReceiveMemoryWarning() {

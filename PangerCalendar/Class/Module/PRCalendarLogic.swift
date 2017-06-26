@@ -10,7 +10,7 @@ import Foundation
 
 class PRCalendarLogic: NSObject {
  
-    var calendarLogicDelegate: PRCalendarLogicDelegate?
+    weak open var calendarLogicDelegate: PRCalendarLogicDelegate?
     private var _referenceDate: Date?
 
     var referenceDate: Date! {

@@ -8,11 +8,35 @@
 
 import UIKit
 
+protocol PRCalendarViewDelegate : NSObjectProtocol {
+    
+    /// 选择的日期发生变化
+    ///
+    /// - Parameters:
+    ///   - aCalendarView: 一个日历视图
+    ///   - dateChanged: 变化的日期
+    func calendarView(aCalendarView: PRCalendarView?, dateChanged: Date?)
+    
+    /// 展示的月份发生变化
+    ///
+    /// - Parameters:
+    ///   - aCalendarView: 一个日历视图
+    ///   - mouthChanged: 变化的日期
+    func calendarView(aCalendarView: PRCalendarView?, monthChanged: Date?)
+    
+    /// 日历frame变化
+    ///
+    /// - Parameters:
+    ///   - aCalendarView: 一个日历视图
+    func calendarViewFrameChanged(aCalendarView: PRCalendarView?)
+    
+}
+
 class PRCalendarView: UIView, PRCalendarLogicDelegate, UIGestureRecognizerDelegate {
     
     // MARK: Public Ivars
-    var calendarViewDelegate: PRCalendarViewDelegate?
-    var calendarViewScrollDelegate: PRCalendarViewScrollDelegate?
+    weak var calendarViewDelegate: PRCalendarViewDelegate?
+    weak var calendarViewScrollDelegate: PRCalendarViewScrollDelegate?
     
     var selectedDate: Date! {
         set(newDate) {
@@ -74,7 +98,8 @@ class PRCalendarView: UIView, PRCalendarLogicDelegate, UIGestureRecognizerDelega
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        NotificationCenter.default.post(name: kPRCalenderViewFrameChangedNotify, object: nil)
+//        NotificationCenter.default.post(name: kPRCalenderViewFrameChangedNotify, object: nil)
+        self.calendarViewDelegate?.calendarViewFrameChanged(aCalendarView: self)
     }
     
     // MARK: Private Method

@@ -1,5 +1,5 @@
 //
-//  PRAlmanacViewController.swift
+//  PRNoticeListViewController.swift
 //  PangerCalendar
 //
 //  Created by bigqiang on 2017/3/25.
@@ -8,15 +8,15 @@
 
 import UIKit
 
-class PRAlmanacViewController: PRBaseViewController {
+class PRNoticeListViewController: PRBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-//        self.title = NSLocalizedString("黄历", comment: "")
-        self.title = "黄历"
+        self.title = "提醒"
     }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

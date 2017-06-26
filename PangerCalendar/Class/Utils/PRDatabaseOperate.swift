@@ -6,7 +6,7 @@
 //  Copyright © 2016年 panger. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 private let s_Instance: PRDatabaseOperate = PRDatabaseOperate()
 

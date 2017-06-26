@@ -93,7 +93,7 @@ class PRCustomTabBarController: UITabBarController {
     private func initViewControllers() {
         let firstTabView = PRPermanentViewController()
         let secondTabView = PRAlmanacViewController()
-        let thirdTabView = PRNoticeViewController()
+        let thirdTabView = PRNoticeListViewController()
         
         let viewArr = [firstTabView, secondTabView, thirdTabView]
         var viewCtlArr = [UIViewController]()

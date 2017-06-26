@@ -9,14 +9,17 @@
 import UIKit
 //import Foundation
 
-class PRPermanentViewController: UIViewController, PRCalendarViewDelegate, PRCurrentMonthTitleViewDelegate, PRDatePickViewDelegate {
+class PRPermanentViewController: PRBaseViewController, PRCalendarViewDelegate, PRCurrentMonthTitleViewDelegate, PRDatePickViewDelegate {
 
     private var calendarView: PRCalendarView!
     private var calendarContainer: UIView!
     private var dayDetailView: PRDayDetailView!
     private var navigationTitleView: PRCurrentMonthTitleView!
     private var datePickerView: PRDatePickView!
-    
+    private lazy var addNoticeVC: PRNoticeAddViewController = {
+        var tmpAddVC: PRNoticeAddViewController = PRNoticeAddViewController()
+        return tmpAddVC
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +61,7 @@ class PRPermanentViewController: UIViewController, PRCalendarViewDelegate, PRCur
             make?.height.setOffset(172)
         }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(calenderViewChanged), name: kPRCalenderViewFrameChangedNotify, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(calenderViewChanged), name: kPRCalenderViewFrameChangedNotify, object: nil)
         
 //        --- 节气公式算法
 //        let solarTerms = PRSolarTermsFormulaCompute.shareMgr().calculateSoloarTerms(year: 2016)
@@ -95,8 +98,8 @@ class PRPermanentViewController: UIViewController, PRCalendarViewDelegate, PRCur
         let addBtn = UIButton()
         addBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 40)
         addBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-        addBtn.setTitle(NSLocalizedString("+", comment: ""), for: .normal)
-        addBtn.setTitle(NSLocalizedString("+", comment: ""), for: .highlighted)
+        addBtn.setImage(UIImage(named:"add_notice_button"), for: .normal)
+        addBtn.setImage(UIImage(named:"add_notice_button"), for: .highlighted)
         addBtn.setTitleColor(UIColor.black, for: .normal)
         addBtn.setTitleColor(UIColor.black, for: .highlighted)
         addBtn.addTarget(self, action: #selector(addButtonClicked), for: .touchUpInside)
@@ -107,11 +110,12 @@ class PRPermanentViewController: UIViewController, PRCalendarViewDelegate, PRCur
     
     // MARK: Public Method
     func addButtonClicked(sender: UIButton) {
-
+        let navController = PRNavigationController(rootViewController: self.addNoticeVC)
+        self.present(navController, animated: false, completion: nil)
     }
     
     // MARK: NSNotification
-    func calenderViewChanged(notify: Notification) {
+    func calenderViewChanged(notify: Notification?) {
         UIView.animate(withDuration: 0.2) { 
             
         }
@@ -125,6 +129,10 @@ class PRPermanentViewController: UIViewController, PRCalendarViewDelegate, PRCur
     func calendarView(aCalendarView: PRCalendarView?, monthChanged: Date?) {
         self.navigationTitleView.update(date: monthChanged)
         
+    }
+    
+    func calendarViewFrameChanged(aCalendarView: PRCalendarView?) {
+        self.calenderViewChanged(notify: nil)
     }
     
     // MARK: Protocol Method(PRCurrentMonthTitleViewDelegate)

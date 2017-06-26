@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabBarController = PRTabBarController()
         let vc1 = PRPermanentViewController()
         let vc2 = PRAlmanacViewController()
-        let vc3 = PRNoticeViewController()
+        let vc3 = PRNoticeListViewController()
         let viewArr = [vc1, vc2, vc3]
         var viewCtlArr = [UIViewController]()
         for index in 0..<viewArr.count {
@@ -37,7 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             viewCtlArr.append(navController)
         }
         tabBarController.viewControllers = viewCtlArr
-        
         
 //        let nav:PRNavigationController = PRNavigationController(rootViewController: tabBarController)
 //        self.window?.rootViewController = nav

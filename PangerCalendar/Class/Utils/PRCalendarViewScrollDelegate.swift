@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol PRCalendarViewScrollDelegate {
+protocol PRCalendarViewScrollDelegate : NSObjectProtocol {
     
     /// 日历换页结束
     ///

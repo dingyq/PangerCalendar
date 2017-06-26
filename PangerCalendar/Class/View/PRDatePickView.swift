@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol PRDatePickViewDelegate {
+protocol PRDatePickViewDelegate : NSObjectProtocol {
     func datePickDone(date: Date)
 }
 
@@ -21,7 +21,7 @@ class PRDatePickView: UIView {
         // Drawing code
     }
     */
-    var delegate: PRDatePickViewDelegate?
+    weak var delegate: PRDatePickViewDelegate?
     
     private var bgPickerView: UIView!
     private var datePick: UIDatePicker!

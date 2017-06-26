@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol PRCurrentMonthTitleViewDelegate {
+protocol PRCurrentMonthTitleViewDelegate : NSObjectProtocol {
     func titleViewClicked()
     func resetToDate(date: Date)
 }
@@ -22,9 +22,10 @@ class PRCurrentMonthTitleView: UIView {
         // Drawing code
     }
     */
-    var delegate: PRCurrentMonthTitleViewDelegate?
+    weak var delegate: PRCurrentMonthTitleViewDelegate?
     
     private var monthLabel: UILabel!
+    private var foldImageTip: UIImageView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -41,14 +42,14 @@ class PRCurrentMonthTitleView: UIView {
         self.monthLabel.backgroundColor = UIColor.clear
         self.monthLabel.textAlignment = NSTextAlignment.center
         self.monthLabel.font = UIFont.systemFont(ofSize: 18)
-//        self.monthLabel.textColor = UIColor.white
         self.monthLabel.isUserInteractionEnabled = false
         self.addSubview(self.monthLabel)
         
         let imgTip = UIImageView(frame: CGRect(x: 0, y: 0, width: 5, height: 5))
-        imgTip.backgroundColor = UIColor.red
         imgTip.isUserInteractionEnabled = false
+        imgTip.image = UIImage(named: "calendar_more_unfold")
         self.addSubview(imgTip)
+        self.foldImageTip = imgTip
         
         monthBtn.mas_makeConstraints { (make) in
             make?.top.bottom().leading().trailing().equalTo()(self)?.setOffset(0)
