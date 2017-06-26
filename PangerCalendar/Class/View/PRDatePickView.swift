@@ -29,6 +29,9 @@ class PRDatePickView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        print("PRDatePickView init ")
+        
+        
         self.backgroundColor = RGBACOLOR(r: 0, 0, 0, 0)
         
         let button = UIButton()

@@ -24,12 +24,12 @@ class PRCurrentMonthTitleView: UIView {
     */
     weak var delegate: PRCurrentMonthTitleViewDelegate?
     
-    private var monthLabel: UILabel!
-    private var foldImageTip: UIImageView!
+    private var monthLabel: PRBaseLabel!
+    private var foldImageTip: PRBaseImageView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        let monthBtn = UIButton()
+        let monthBtn = PRBaseButton()
         monthBtn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         monthBtn.adjustsImageWhenHighlighted = false
         monthBtn.adjustsImageWhenDisabled = false
@@ -38,16 +38,16 @@ class PRCurrentMonthTitleView: UIView {
         monthBtn.addTarget(self, action: #selector(monthButtonPressed), for: .touchUpInside)
         self.addSubview(monthBtn)
         
-        self.monthLabel = UILabel()
+        self.monthLabel = PRBaseLabel()
         self.monthLabel.backgroundColor = UIColor.clear
         self.monthLabel.textAlignment = NSTextAlignment.center
         self.monthLabel.font = UIFont.systemFont(ofSize: 18)
         self.monthLabel.isUserInteractionEnabled = false
         self.addSubview(self.monthLabel)
         
-        let imgTip = UIImageView(frame: CGRect(x: 0, y: 0, width: 5, height: 5))
+        let imgTip = PRBaseImageView(frame: CGRect(x: 0, y: 0, width: 5, height: 5))
         imgTip.isUserInteractionEnabled = false
-        imgTip.image = UIImage(named: "calendar_more_unfold")
+        imgTip.image = PRThemedImage(name: "calendar_more_unfold")
         self.addSubview(imgTip)
         self.foldImageTip = imgTip
         

@@ -19,8 +19,10 @@ class PRUserInfo: NSObject {
         super.init()
     }
     
-    func add(missonNotice: PRMissionNoticeModel) {
+    func add(missonNotice: PRMissionNoticeModel) -> Bool {
         self.missonList.append(missonNotice)
+        
+        return true
     }
 }
 

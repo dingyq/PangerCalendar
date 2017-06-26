@@ -57,17 +57,17 @@ class PRCustomTabBarController: UITabBarController {
         let tabBarX = tabBarOffsetX/2 - tabBarWidth/2
         let tabBarY = tabBarViewHeight/2 - tabBarHeight/2 - 6
         
-        let tabBarView = UIView(frame: CGRect(x: 0, y: screenHeight! - tabBarViewHeight, width: screenWidth!, height: tabBarViewHeight))
+        let tabBarView = PRBaseView(frame: CGRect(x: 0, y: screenHeight! - tabBarViewHeight, width: screenWidth!, height: tabBarViewHeight))
         tabBarView.backgroundColor = UIColor.black
         self.view.addSubview(tabBarView)
         
         for index in 0..<imgArr.count {
             let tabBar_X = (CGFloat)(index) * tabBarOffsetX
-            let btn:UIButton = UIButton(frame: CGRect(x: tabBarX + tabBar_X, y: tabBarY, width: tabBarWidth, height: tabBarHeight))
+            let btn:PRBaseButton = PRBaseButton(frame: CGRect(x: tabBarX + tabBar_X, y: tabBarY, width: tabBarWidth, height: tabBarHeight))
             if(index == 0) {
-                btn.setBackgroundImage(UIImage(named: imgSelArr[index]), for: UIControlState.normal)
+                btn.setBackgroundImage(PRThemedImage(name: imgSelArr[index]), for: UIControlState.normal)
             } else {
-                btn.setBackgroundImage(UIImage(named: imgArr[index]), for: UIControlState.normal)
+                btn.setBackgroundImage(PRThemedImage(name: imgArr[index]), for: UIControlState.normal)
             }
             
             btn.tag = index + 100
@@ -83,9 +83,9 @@ class PRCustomTabBarController: UITabBarController {
         self.selectedIndex = indexSel
         for index in 0..<tabButtons.count {
             if(index == indexSel) {
-                tabButtons[index].setBackgroundImage(UIImage(named: imgSelArr[index]), for: UIControlState.normal)
+                tabButtons[index].setBackgroundImage(PRThemedImage(name: imgSelArr[index]), for: UIControlState.normal)
             } else {
-                tabButtons[index].setBackgroundImage(UIImage(named: imgArr[index]), for: UIControlState.normal)
+                tabButtons[index].setBackgroundImage(PRThemedImage(name: imgArr[index]), for: UIControlState.normal)
             }
         }
     }

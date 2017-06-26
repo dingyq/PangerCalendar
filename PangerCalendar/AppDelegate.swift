@@ -31,8 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var viewCtlArr = [UIViewController]()
         for index in 0..<viewArr.count {
             let navController = PRNavigationController(rootViewController: viewArr[index])
-            navController.tabBarItem.image = UIImage(named: imgArr[index])
-            navController.tabBarItem.selectedImage = UIImage(named: imgSelArr[index])
+            navController.tabBarItem.image = PRThemedImage(name: imgArr[index])
+            navController.tabBarItem.selectedImage = PRThemedImage(name: imgSelArr[index])
             navController.tabBarItem.title = titleArr[index]
             viewCtlArr.append(navController)
         }

@@ -12,6 +12,7 @@ private let s_Instance: PRTheme = PRTheme()
 
 class PRTheme: NSObject {
     // MARK: Font
+    var font14: UIFont = UIFont.systemFont(ofSize: 14)
     var defaultFont: UIFont = UIFont.systemFont(ofSize: 13)
     var smallFont: UIFont = UIFont.systemFont(ofSize: 11)
     var bigFont: UIFont = UIFont.systemFont(ofSize: 15)
@@ -26,6 +27,10 @@ class PRTheme: NSObject {
     var blueCustomColor: UIColor = RGBCOLOR(r: 77, 177, 218)
     var blueCustomLightColor: UIColor = RGBACOLOR(r: 77, 177, 218, 0.25)
     
+    var grayColor220 = RGBCOLOR(r: 220, 220, 220)
+    
+    var bgColor = RGBCOLOR(r: 255, 255, 255)
+    
     var weekendTipColor: UIColor!
     var weekendInMonthColor: UIColor!
     var weekendOutMonthColor: UIColor!
@@ -38,6 +43,9 @@ class PRTheme: NSObject {
     var sosolarTermOutMonthColor: UIColor!
     var festivalInMonthColor: UIColor!
     var festivalOutMonthColor: UIColor!
+    
+    var borderLineColor: UIColor!
+    
     
     class func current() -> PRTheme {
         return s_Instance
@@ -58,6 +66,24 @@ class PRTheme: NSObject {
         
         festivalInMonthColor = blueCustomColor
         festivalOutMonthColor = blueCustomLightColor
+        
+        borderLineColor = grayColor220
     }
     
+    func image(name: String?) -> UIImage? {
+        var image: UIImage?
+        if name != nil {
+            image = UIImage(named: name!)
+        }
+        return image
+    }
+    
+}
+
+func PRCurrentTheme() -> PRTheme {
+    return PRTheme.current()
+}
+
+func PRThemedImage(name: String?) -> UIImage? {
+    return PRTheme.current().image(name: name)
 }

@@ -87,6 +87,13 @@ extension Date {
         return ""
     }
     
+    func yyyyMDDStr() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy年M月dd日"
+        let strDate = formatter.string(from: self)
+        return strDate
+    }
+    
 //    comps =[calendar components:(NSWeekCalendarUnit | NSWeekdayCalendarUnit |NSWeekdayOrdinalCalendarUnit)
 //    
 //    

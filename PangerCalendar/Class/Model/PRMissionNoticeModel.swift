@@ -27,6 +27,7 @@ class PRMissionNoticeModel: NSObject {
     init(content: String?, _ time: Date?) {
         self.missonId = randomMissonId()
         self.content = content
+        self.time = time
         super.init()
     }
     
@@ -37,7 +38,7 @@ class PRMissionNoticeModel: NSObject {
     }
  
     override var description: String {
-        return "missonId=\(missonId) content=\(String(describing: content)) time=\(String(describing: time))"
+        return "missonId=\(missonId) content=\(String(describing: content)) time=\(String(describing: self.time?.yyyyMDDStr()))"
     }
     
 }

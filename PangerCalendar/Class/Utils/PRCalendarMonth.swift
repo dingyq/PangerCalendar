@@ -28,7 +28,7 @@ fileprivate let S_CALENDARDAYMARKHEIGHT: CGFloat = 2
 fileprivate let S_CALENDARDAYBUTTOMFOUNTSIZESCALE: CGFloat = 0.2
 
 
-class PRCalendarMonth: UIView {
+class PRCalendarMonth: PRBaseView {
     public var datesIndex: Array<Date>!                     // 日期数组
     public var requiredHeight: CGFloat! = 0
     private var calendarLogic: PRCalendarLogic?             // 日历逻辑
@@ -83,12 +83,12 @@ class PRCalendarMonth: UIView {
         //日历部分位置和大小
         self.calendarFrame = CGRect(x: 0, y: headerHeight, width: frame.size.width, height: frame.size.height - self.headerFrame.size.height)
         // 创建图像视图，上边栏
-        let headerBackground = UIImageView(image: UIImage(named: "CalendarBackground.png"))
+        let headerBackground = PRBaseImageView(image: PRThemedImage(name: "CalendarBackground.png"))
         headerBackground.frame = self.headerFrame
         self.addSubview(headerBackground)
 
         // 创建图像视图，月历内容
-        let calendarBackground = UIImageView(image: UIImage(named: "CalendarBackground.png"))
+        let calendarBackground = PRBaseImageView(image: PRThemedImage(name: "CalendarBackground.png"))
         calendarBackground.frame = self.calendarFrame
         self.addSubview(calendarBackground)
         
@@ -110,7 +110,7 @@ class PRCalendarMonth: UIView {
 //        //aLabel.textAlignment = UITextAlignmentCenter
 //        aLabel.textAlignment = NSTextAlignment.center
 //        aLabel.font = UIFont.boldSystemFont(ofSize: self.headerFrame.size.height * S_HEADFOUNTSIZESCALE)   //字体大小
-//        aLabel.textColor = UIColor.init(patternImage: UIImage(named: "CalendarTitleColor.png")!) //使用图像填充
+//        aLabel.textColor = UIColor.init(patternImage: PRThemedImage(name: "CalendarTitleColor.png")!) //使用图像填充
 //        aLabel.shadowColor = UIColor.white      //阴影颜色
 //        aLabel.shadowOffset = CGSize(width: 0, height: 1.0)  //阴影偏移
 //        formatter.dateFormat = "yyyy年 MM月"      //日期格式
@@ -211,15 +211,15 @@ class PRCalendarMonth: UIView {
                 if (dayDate.compare(todayDate) != ComparisonResult.orderedSame) {
                     dayButton.setTitleColor(titleColor, for: UIControlState.normal)
 //                    dayButton.setTitleShadowColor(UIColor.black, for: UIControlState.normal)
-                    dayButton.setBackgroundImage(UIImage(named: "CalendarDayTile.png"), for: UIControlState.normal)
-                    dayButton.setBackgroundImage(UIImage(named: "CalendarDaySelected.png"), for: UIControlState.selected)
+                    dayButton.setBackgroundImage(PRThemedImage(name: "CalendarDayTile.png"), for: UIControlState.normal)
+                    dayButton.setBackgroundImage(PRThemedImage(name: "CalendarDaySelected.png"), for: UIControlState.selected)
                 } else {
                     dayButton.setTitleColor(titleColor, for: UIControlState.normal)
 //                    dayButton.setTitleShadowColor(UIColor.black, for: UIControlState.normal)
-                    dayButton.setBackgroundImage(UIImage(named: "CalendarDayToday.png"), for: UIControlState.normal)
-                    dayButton.setBackgroundImage(UIImage(named: "CalendarDayTodaySelected.png"), for: UIControlState.selected)
+                    dayButton.setBackgroundImage(PRThemedImage(name: "CalendarDayToday.png"), for: UIControlState.normal)
+                    dayButton.setBackgroundImage(PRThemedImage(name: "CalendarDayTodaySelected.png"), for: UIControlState.selected)
                     //创建图像视图，今天
-                    let todayMark = UIImageView(image: UIImage(named: "CalendarDayTodayMark.png"))
+                    let todayMark = PRBaseImageView(image: PRThemedImage(name: "CalendarDayTodayMark.png"))
                     //[todayMark setFrame:];
                     todayMark.contentMode = UIViewContentMode.topLeft
                     todayMark.frame = dayButton.frame
@@ -311,7 +311,7 @@ class PRCalendarMonth: UIView {
     ///   - date: 日期
     ///   - location: 相对位置
     func removeMark(date: Date, location: PRCalendarMonthMarkLocation) {
-        let remark:UIImageView? = self.markDict.object(forKey: date) as? UIImageView
+        let remark:PRBaseImageView? = self.markDict.object(forKey: date) as? PRBaseImageView
         if remark != nil {
             remark?.removeFromSuperview()
             self.markDict.removeObject(forKey: date)
@@ -331,7 +331,7 @@ class PRCalendarMonth: UIView {
         }
         let button = self.buttonsIndex[dateIndex]
         self.removeMark(date: date, location: PRCalendarMonthMarkLocation.defaultt)
-        let mark = UIImageView(image: UIImage(named: imageName))
+        let mark = PRBaseImageView(image: PRThemedImage(name: imageName))
         switch location {
         case .topRight:
 

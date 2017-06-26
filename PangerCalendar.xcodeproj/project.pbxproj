@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		26EF798A7C616D6BC1825FCE /* Pods_PangerCalendarTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58D295B3B4041CFCACECC67 /* Pods_PangerCalendarTests.framework */; };
+		913A50D51F0100A9002757AD /* PRBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913A50D41F0100A9002757AD /* PRBaseView.swift */; };
+		9163DD411F0128DF00E709B8 /* close_button_nor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9163DD3F1F0128DF00E709B8 /* close_button_nor@3x.png */; };
+		9163DD421F0128DF00E709B8 /* close_button_sel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9163DD401F0128DF00E709B8 /* close_button_sel@3x.png */; };
+		9163DD461F012D3700E709B8 /* time_clock@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9163DD451F012D3700E709B8 /* time_clock@3x.png */; };
+		91BF5EDC1F01382C007993E7 /* PRBaseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF5EDB1F01382C007993E7 /* PRBaseLabel.swift */; };
+		91BF5EDE1F013842007993E7 /* PRBaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF5EDD1F013842007993E7 /* PRBaseTextField.swift */; };
+		91BF5EE01F013AE7007993E7 /* PRBaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF5EDF1F013AE7007993E7 /* PRBaseButton.swift */; };
+		91BF5EE21F013B18007993E7 /* PRBaseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF5EE11F013B18007993E7 /* PRBaseImageView.swift */; };
+		91BF5EE41F0149E6007993E7 /* account_filling@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91BF5EE31F0149E6007993E7 /* account_filling@3x.png */; };
 		9B6359689EDDD23F4EA9321E /* Pods_PangerCalendarUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5883086E00ACC3325256CA30 /* Pods_PangerCalendarUITests.framework */; };
 		E30612181E059CCC00EE83FC /* PRCalendarMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30612171E059CCC00EE83FC /* PRCalendarMonth.swift */; };
 		E30612251E05B4F200EE83FC /* CalendarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = E306121A1E05B4F200EE83FC /* CalendarBackground.png */; };
@@ -91,6 +100,15 @@
 		4FD3FFE20DB8262D94A722DA /* Pods-PangerCalendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PangerCalendar.release.xcconfig"; path = "Pods/Target Support Files/Pods-PangerCalendar/Pods-PangerCalendar.release.xcconfig"; sourceTree = "<group>"; };
 		5883086E00ACC3325256CA30 /* Pods_PangerCalendarUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PangerCalendarUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67EBC8D145520D245DF22331 /* Pods-PangerCalendarUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PangerCalendarUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PangerCalendarUITests/Pods-PangerCalendarUITests.release.xcconfig"; sourceTree = "<group>"; };
+		913A50D41F0100A9002757AD /* PRBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRBaseView.swift; sourceTree = "<group>"; };
+		9163DD3F1F0128DF00E709B8 /* close_button_nor@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close_button_nor@3x.png"; sourceTree = "<group>"; };
+		9163DD401F0128DF00E709B8 /* close_button_sel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close_button_sel@3x.png"; sourceTree = "<group>"; };
+		9163DD451F012D3700E709B8 /* time_clock@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "time_clock@3x.png"; sourceTree = "<group>"; };
+		91BF5EDB1F01382C007993E7 /* PRBaseLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRBaseLabel.swift; sourceTree = "<group>"; };
+		91BF5EDD1F013842007993E7 /* PRBaseTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRBaseTextField.swift; sourceTree = "<group>"; };
+		91BF5EDF1F013AE7007993E7 /* PRBaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRBaseButton.swift; sourceTree = "<group>"; };
+		91BF5EE11F013B18007993E7 /* PRBaseImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRBaseImageView.swift; sourceTree = "<group>"; };
+		91BF5EE31F0149E6007993E7 /* account_filling@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account_filling@3x.png"; sourceTree = "<group>"; };
 		B58D295B3B4041CFCACECC67 /* Pods_PangerCalendarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PangerCalendarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8EC0B514E480A8B103CF244 /* Pods-PangerCalendarUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PangerCalendarUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PangerCalendarUITests/Pods-PangerCalendarUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E30612171E059CCC00EE83FC /* PRCalendarMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRCalendarMonth.swift; sourceTree = "<group>"; };
@@ -282,6 +300,10 @@
 		E36A185D1E8655CD006195E3 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				91BF5EE31F0149E6007993E7 /* account_filling@3x.png */,
+				9163DD451F012D3700E709B8 /* time_clock@3x.png */,
+				9163DD3F1F0128DF00E709B8 /* close_button_nor@3x.png */,
+				9163DD401F0128DF00E709B8 /* close_button_sel@3x.png */,
 				E3237F7E1EFF661A000A703F /* back_button_nor@3x.png */,
 				E3237F7F1EFF661A000A703F /* back_button_sel@3x.png */,
 				E36A18511E8655C7006195E3 /* tab_permanent_nor@3x.png */,
@@ -304,6 +326,11 @@
 				E36A18631E867063006195E3 /* PRNavigationController.swift */,
 				E36A18641E867063006195E3 /* PRTabBarController.swift */,
 				E3237F7A1EFE9B9B000A703F /* PRBaseViewController.swift */,
+				913A50D41F0100A9002757AD /* PRBaseView.swift */,
+				91BF5EDB1F01382C007993E7 /* PRBaseLabel.swift */,
+				91BF5EDD1F013842007993E7 /* PRBaseTextField.swift */,
+				91BF5EDF1F013AE7007993E7 /* PRBaseButton.swift */,
+				91BF5EE11F013B18007993E7 /* PRBaseImageView.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -592,6 +619,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E36A186B1E867444006195E3 /* Localizable.strings in Resources */,
+				9163DD411F0128DF00E709B8 /* close_button_nor@3x.png in Resources */,
 				E30612281E05B4F200EE83FC /* CalendarDayToday.png in Resources */,
 				E36A185B1E8655C7006195E3 /* tab_almanac_nor@3x.png in Resources */,
 				E36A18591E8655C7006195E3 /* tab_notice_nor@3x.png in Resources */,
@@ -603,11 +631,14 @@
 				E3237F751EFE9816000A703F /* calendar_more_fold@3x.png in Resources */,
 				E376A0071DC5AEDA00C2B383 /* Assets.xcassets in Resources */,
 				E36A187C1E87758A006195E3 /* CalendarDayTodayMark.png in Resources */,
+				91BF5EE41F0149E6007993E7 /* account_filling@3x.png in Resources */,
+				9163DD421F0128DF00E709B8 /* close_button_sel@3x.png in Resources */,
 				E30612291E05B4F200EE83FC /* CalendarDayTodaySelected.png in Resources */,
 				E36A185A1E8655C7006195E3 /* tab_notice_sel@3x.png in Resources */,
 				E35460311DC5FDB800C05867 /* huangli.sqlite in Resources */,
 				E3237F711EFE9771000A703F /* add_notice_button@3x.png in Resources */,
 				E30612271E05B4F200EE83FC /* CalendarDayTile.png in Resources */,
+				9163DD461F012D3700E709B8 /* time_clock@3x.png in Resources */,
 				E36A185C1E8655C7006195E3 /* tab_almanac_sel@3x.png in Resources */,
 				E30612261E05B4F200EE83FC /* CalendarDaySelected.png in Resources */,
 				E30612251E05B4F200EE83FC /* CalendarBackground.png in Resources */,
@@ -779,8 +810,10 @@
 				E36A18771E875F5D006195E3 /* PRTheme.swift in Sources */,
 				E3F288FE1E0FAFF600974C67 /* PRLunarDateAlgorithm.swift in Sources */,
 				E36A184D1E864E67006195E3 /* PRAlmanacViewController.swift in Sources */,
+				913A50D51F0100A9002757AD /* PRBaseView.swift in Sources */,
 				E36A18831E87E4B4006195E3 /* PRDayDetailView.swift in Sources */,
 				E3856A791DC5D28500FEAD80 /* PRDatabaseOperate.swift in Sources */,
+				91BF5EDC1F01382C007993E7 /* PRBaseLabel.swift in Sources */,
 				E3237F871EFF8A70000A703F /* PRUserModel.swift in Sources */,
 				E376A0001DC5AEDA00C2B383 /* AppDelegate.swift in Sources */,
 				E3EAAE481E01B0DC001478E4 /* PRCalendarLogic.swift in Sources */,
@@ -791,14 +824,17 @@
 				E3EAAE521E01B12E001478E4 /* PRSolarTermsFormulaCompute.swift in Sources */,
 				E3EAAE4F1E01B12E001478E4 /* PRCalendarView.swift in Sources */,
 				E3EAAE541E01B12E001478E4 /* PRSolarTermsMgr.swift in Sources */,
+				91BF5EE01F013AE7007993E7 /* PRBaseButton.swift in Sources */,
 				E36A18661E867063006195E3 /* PRNavigationController.swift in Sources */,
 				E313E78F1E8BFFD8005F5845 /* PRCurrentMonthTitleView.swift in Sources */,
 				E3F8866F1E73FCB000007B01 /* PRCalendarViewDelegate.swift in Sources */,
 				E36A18651E867063006195E3 /* PRCustomTabBarController.swift in Sources */,
+				91BF5EE21F013B18007993E7 /* PRBaseImageView.swift in Sources */,
 				E36A18791E8762BB006195E3 /* UIColor+Category.swift in Sources */,
 				E30612181E059CCC00EE83FC /* PRCalendarMonth.swift in Sources */,
 				E36A184A1E864E11006195E3 /* PRNoticeListViewController.swift in Sources */,
 				E3EAAE501E01B12E001478E4 /* PRChineseFestivalsMgr.swift in Sources */,
+				91BF5EDE1F013842007993E7 /* PRBaseTextField.swift in Sources */,
 				E3237F831EFF77C5000A703F /* PRUserInfo.swift in Sources */,
 				E3237F7B1EFE9B9B000A703F /* PRBaseViewController.swift in Sources */,
 				E313E7911E8D5F2C005F5845 /* PRDatePickView.swift in Sources */,
@@ -886,6 +922,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: 勇强 丁 (CSD7QYN5Q7)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -938,7 +975,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 勇强 丁 (CSD7QYN5Q7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: dingyq.nwpu@gmail.com (JRJ38QL476)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;

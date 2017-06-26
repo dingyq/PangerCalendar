@@ -15,7 +15,13 @@ class PRPermanentViewController: PRBaseViewController, PRCalendarViewDelegate, P
     private var calendarContainer: UIView!
     private var dayDetailView: PRDayDetailView!
     private var navigationTitleView: PRCurrentMonthTitleView!
-    private var datePickerView: PRDatePickView!
+   
+    private lazy var datePickerView: PRDatePickView = {
+        var pickView = PRDatePickView(frame: UIScreen.main.bounds)
+        pickView.delegate = self
+        return pickView
+    }()
+    
     private lazy var addNoticeVC: PRNoticeAddViewController = {
         var tmpAddVC: PRNoticeAddViewController = PRNoticeAddViewController()
         return tmpAddVC
@@ -76,11 +82,6 @@ class PRPermanentViewController: PRBaseViewController, PRCalendarViewDelegate, P
 //        ---        
         self.dayDetailView.update(date: self.calendarView.selectedDate)
         self.navigationTitleView.update(date: self.calendarView.selectedDate)
-        
-        
-        self.datePickerView = PRDatePickView(frame: UIScreen.main.bounds)
-        self.datePickerView.delegate = self
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -95,11 +96,11 @@ class PRPermanentViewController: PRBaseViewController, PRCalendarViewDelegate, P
         self.navigationItem.titleView = self.navigationTitleView
         self.navigationTitleView.delegate = self
     
-        let addBtn = UIButton()
+        let addBtn = PRBaseButton()
         addBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 40)
         addBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-        addBtn.setImage(UIImage(named:"add_notice_button"), for: .normal)
-        addBtn.setImage(UIImage(named:"add_notice_button"), for: .highlighted)
+        addBtn.setImage(PRThemedImage(name:"add_notice_button"), for: .normal)
+        addBtn.setImage(PRThemedImage(name:"add_notice_button"), for: .highlighted)
         addBtn.setTitleColor(UIColor.black, for: .normal)
         addBtn.setTitleColor(UIColor.black, for: .highlighted)
         addBtn.addTarget(self, action: #selector(addButtonClicked), for: .touchUpInside)
@@ -110,8 +111,9 @@ class PRPermanentViewController: PRBaseViewController, PRCalendarViewDelegate, P
     
     // MARK: Public Method
     func addButtonClicked(sender: UIButton) {
+        self.addNoticeVC.misstionDate = self.calendarView.selectedDate
         let navController = PRNavigationController(rootViewController: self.addNoticeVC)
-        self.present(navController, animated: false, completion: nil)
+        self.present(navController, animated: true, completion: nil)
     }
     
     // MARK: NSNotification
