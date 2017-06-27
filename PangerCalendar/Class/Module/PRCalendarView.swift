@@ -235,7 +235,7 @@ class PRCalendarView: UIView, PRCalendarLogicDelegate, UIGestureRecognizerDelega
             UIView.commitAnimations()
         } else {
             // 没使用动画，则直接调用结束处理
-            self.animationMonthSlideComplete()
+//            self.animationMonthSlideComplete()
         }
     }
     

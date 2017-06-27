@@ -9,10 +9,19 @@
 import UIKit
 
 class PRUserModel: NSObject {
-    var userId:Int64?
-    var name:String?
+    let userId:Int64?
+    var userName:String?
     
     override init() {
-        
+        self.userId = -1
+        self.userName = ""
+        super.init()
     }
+    
+    init(userId: Int64, name: String) {
+        self.userId = userId
+        self.userName = name
+        super.init()
+    }
+    
 }

@@ -69,7 +69,7 @@ extension Date {
     
     func yiZuoStr() -> String {
         let components = Calendar.current.dateComponents([Calendar.Component.day, Calendar.Component.month, Calendar.Component.year], from: self)
-        let result1 = PRDatabaseManager.manager.queryDataWithDateInt(year: components.year!, month: components.month!, day: components.day!)
+        let result1 = PRHuangliData.manager.queryDataWithDateInt(year: components.year!, month: components.month!, day: components.day!)
         if result1.count > 0 {
             let dic: Dictionary = result1.first!
             return String.init(format:"%@", dic["fit"]!)
@@ -79,12 +79,19 @@ extension Date {
     
     func jiZuoStr() -> String {
         let components = Calendar.current.dateComponents([Calendar.Component.day, Calendar.Component.month, Calendar.Component.year], from: self)
-        let result1 = PRDatabaseManager.manager.queryDataWithDateInt(year: components.year!, month: components.month!, day: components.day!)
+        let result1 = PRHuangliData.manager.queryDataWithDateInt(year: components.year!, month: components.month!, day: components.day!)
         if result1.count > 0 {
             let dic: Dictionary = result1.first!
             return String.init(format:"%@", dic["avoid"]!)
         }
         return ""
+    }
+    
+    func mDDStr() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "M/dd"
+        let strDate = formatter.string(from: self)
+        return strDate
     }
     
     func yyyyMDDStr() -> String {

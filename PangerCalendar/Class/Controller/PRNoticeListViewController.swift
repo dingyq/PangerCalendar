@@ -11,6 +11,8 @@ import UIKit
 class PRMissionTVCell: PRBaseTableViewCell {
     
     private var contentLabel: PRBaseLabel!
+    private var timeLabel: PRBaseLabel!
+    private var dutyLabel: PRBaseLabel!
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -22,19 +24,39 @@ class PRMissionTVCell: PRBaseTableViewCell {
     }
     
     private func setupViews() {
-        let cLabel = PRBaseLabel(frame: CGRect.zero)
-        self.addSubview(cLabel)
-        cLabel.mas_makeConstraints { (make) in
-            make?.left.setOffset(20)
-            make?.right.setOffset(-20)
+        let label = PRBaseLabel()
+        self.addSubview(label)
+        label.mas_makeConstraints { (make) in
+            make?.left.setOffset(10)
             make?.centerY.setOffset(0)
-            make?.height.setOffset(20)
+            make?.width.mas_lessThanOrEqualTo()(240)
         }
-        self.contentLabel = cLabel
+        self.contentLabel = label
+        
+        let label1 = PRBaseLabel()
+        self.addSubview(label1)
+        label1.mas_makeConstraints { (make) in
+            make?.left.equalTo()(label.mas_right)?.setOffset(6)
+            make?.centerY.setOffset(0)
+            make?.width.mas_lessThanOrEqualTo()(72)
+        }
+        self.dutyLabel = label1
+        
+        let label2 = PRBaseLabel()
+        self.addSubview(label2)
+        label2.mas_makeConstraints { (make) in
+            make?.left.equalTo()(label1.mas_right)?.setOffset(6)
+            make?.centerY.setOffset(0)
+        }
+        self.timeLabel = label2
+        
     }
  
     func bindData(model: PRMissionNoticeModel!) {
+//        let str = "\(model.content ?? "")  \(model.dutyPerson?.userName ?? "") \(model.time?.mDDStr() ?? "")"
         self.contentLabel.text = model.content
+        self.dutyLabel.text = model.dutyPerson?.userName
+        self.timeLabel.text = model.time?.mDDStr()
     }
 }
 
@@ -63,6 +85,7 @@ class PRNoticeListViewController: PRBaseViewController, UITableViewDelegate, UIT
         let listTV = PRBaseTableView()
         self.noticeListTV = listTV
         self.view.addSubview(listTV)
+        listTV.separatorStyle = .none
         listTV.mas_makeConstraints { (make) in
             make?.left.and().right().setOffset(0)
             make?.bottom.setOffset(0)

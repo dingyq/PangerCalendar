@@ -24,14 +24,14 @@ class PRBaseLabel: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.setDefaultConfig()
+        self.setDefaultParams()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setDefaultConfig() {
+    private func setDefaultParams() {
         self.font = PRCurrentTheme().bigFont
         self.textColor = PRCurrentTheme().blackCustomColor
     }

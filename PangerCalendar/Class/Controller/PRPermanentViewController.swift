@@ -99,8 +99,8 @@ class PRPermanentViewController: PRBaseViewController, PRCalendarViewDelegate, P
         let addBtn = PRBaseButton()
         addBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 40)
         addBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-        addBtn.setImage(PRThemedImage(name:"add_notice_button"), for: .normal)
-        addBtn.setImage(PRThemedImage(name:"add_notice_button"), for: .highlighted)
+        addBtn.setImage(PRThemedImage(name:"add_notice_button_nor"), for: .normal)
+        addBtn.setImage(PRThemedImage(name:"add_notice_button_sel"), for: .highlighted)
         addBtn.setTitleColor(UIColor.black, for: .normal)
         addBtn.setTitleColor(UIColor.black, for: .highlighted)
         addBtn.addTarget(self, action: #selector(addButtonClicked), for: .touchUpInside)
@@ -112,6 +112,7 @@ class PRPermanentViewController: PRBaseViewController, PRCalendarViewDelegate, P
     // MARK: Public Method
     func addButtonClicked(sender: UIButton) {
         self.addNoticeVC.misstionDate = self.calendarView.selectedDate
+        self.addNoticeVC.dutyPerson = PRUserData.profile
         let navController = PRNavigationController(rootViewController: self.addNoticeVC)
         self.present(navController, animated: true, completion: nil)
     }

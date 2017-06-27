@@ -45,17 +45,17 @@ class PRMissonItemView: PRBaseView {
     }
     
     func setupViews() {
-        let lineBottomeView = PRBaseView()
-        self.addSubview(lineBottomeView)
-        lineBottomeView.mas_makeConstraints { (make) in
+        let borderView = PRBorderView()
+        self.addSubview(borderView)
+        borderView.mas_makeConstraints { (make) in
             make?.left.and().right().setOffset(0)
             make?.bottom.equalTo()(self)?.setOffset(0)
             make?.height.setOffset(1)
             
         }
-        lineBottomeView.backgroundColor = PRTheme.current().borderLineColor
+//        lineBottomeView.backgroundColor = PRTheme.current().borderLineColor
         
-        let tipImage = PRBaseImageView(frame: CGRect.zero)
+        let tipImage = PRBaseImageView()
         self.addSubview(tipImage)
         tipImage.mas_makeConstraints { (make) in
             make?.left.equalTo()(self)?.setOffset(8)
@@ -64,7 +64,7 @@ class PRMissonItemView: PRBaseView {
         }
         self.tipImageView = tipImage
         
-        let tip = PRBaseLabel(frame: CGRect.zero)
+        let tip = PRBaseLabel()
         self.addSubview(tip)
         tip.mas_makeConstraints { (make) in
             make?.left.equalTo()(self.mas_left)?.setOffset(40)
@@ -73,11 +73,9 @@ class PRMissonItemView: PRBaseView {
             make?.centerY.equalTo()(self.mas_centerY)?.setOffset(0)
         }
         tip.textAlignment = .left
-        tip.font = PRCurrentTheme().bigFont
-        tip.textColor = PRCurrentTheme().blackCustomColor
         self.tipLabel = tip
         
-        let pickButton = PRBaseButton(frame: CGRect.zero)
+        let pickButton = PRBaseButton()
         self.addSubview(pickButton)
         pickButton.addTarget(self, action: #selector(self.pickButtonClicked), for: .touchUpInside)
         pickButton.mas_makeConstraints { (make) in
@@ -87,7 +85,7 @@ class PRMissonItemView: PRBaseView {
             make?.centerY.equalTo()(self.mas_centerY)?.setOffset(0)
         }
         
-        let clearBtn = PRBaseButton(frame: CGRect.zero)
+        let clearBtn = PRBaseButton()
         self.addSubview(clearBtn)
         clearBtn.isHidden = true
         clearBtn.setImage(PRThemedImage(name:"close_button_nor"), for: .normal)
@@ -111,10 +109,10 @@ class PRMissonItemView: PRBaseView {
     }
     
     // MARK: Public Method
-    func updateTipText(_ timeStr: String?) {
+    func updateTipText(_ text: String?) {
         var str = ""
-        if timeStr != nil {
-            str = timeStr!
+        if text != nil {
+            str = text!
         }
         self.clearButton.isHidden = str.isEmpty
         if str.isEmpty {
@@ -123,7 +121,7 @@ class PRMissonItemView: PRBaseView {
                 str = NSLocalizedString("没有截止时间", comment: "")
                 break
             case .duty:
-                str = ""
+                str = NSLocalizedString("选择负责人", comment: "")
                 break
             default: break
                 
@@ -154,7 +152,18 @@ class PRNoticeAddViewController: PRBaseViewController, PRDatePickViewDelegate, P
         }
     }
     
-    private var dutyPerson: PRUserModel?
+    private var _dutyPerson: PRUserModel?
+    var dutyPerson: PRUserModel? {
+        set(newPerson) {
+            if _dutyPerson != newPerson {
+                _dutyPerson = newPerson
+                self.dutyTipView?.updateTipText(newPerson?.userName)
+            }
+        }
+        get {
+            return _dutyPerson
+        }
+    }
     
     private var contentTextField: PRBaseTextField!
     private var dutyTipView: PRMissonItemView!
@@ -172,6 +181,13 @@ class PRNoticeAddViewController: PRBaseViewController, PRDatePickViewDelegate, P
         self.view.backgroundColor = PRCurrentTheme().bgColor
         self.resetNavigationItem()
         self.setupViews()
+        
+        self.timeTipView?.updateTipText(self.misstionDate?.yyyyMDDStr())
+        self.dutyTipView?.updateTipText(self.dutyPerson?.userName)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
 
     override func didReceiveMemoryWarning() {
@@ -196,21 +212,33 @@ class PRNoticeAddViewController: PRBaseViewController, PRDatePickViewDelegate, P
             make?.height.setOffset(200)
         }
         
-        let text = PRBaseTextField(frame: CGRect.zero)
-        contentView.addSubview(text)
+        let textContainer = PRBaseView()
+        contentView.addSubview(textContainer)
+        textContainer.mas_makeConstraints { (make) in
+            make?.left.and().right().setOffset(0)
+            make?.top.setOffset(2)
+            make?.height.setOffset(45)
+        }
+        
+        let text = PRBaseTextField()
+        textContainer.addSubview(text)
         self.contentTextField = text
-        text.layer.cornerRadius = 2
-        text.layer.borderWidth = 1
-        text.layer.borderColor = PRCurrentTheme().borderLineColor.cgColor
         text.placeholder = NSLocalizedString("任务内容", comment: "")
-        text.font = PRCurrentTheme().bigFont
-        text.textColor = PRCurrentTheme().blackCustomColor
         text.mas_makeConstraints { (make) in
-            make?.left.equalTo()(contentView.mas_left)?.setOffset(6)
-            make?.right.equalTo()(contentView.mas_right)?.setOffset(-6)
-            make?.top.equalTo()(contentView.mas_top)?.setOffset(2)
+            make?.left.setOffset(6)
+            make?.right.setOffset(-6)
+            make?.top.setOffset(0)
             make?.height.setOffset(40)
         }
+        
+        let borderView = PRBorderView()
+        textContainer.addSubview(borderView)
+        borderView.mas_makeConstraints { (make) in
+            make?.left.and().right().setOffset(0)
+            make?.bottom.setOffset(0)
+            make?.height.setOffset(1)
+        }
+        
 
         let lineHeight: CGFloat = 40
         let dutyTip = PRMissonItemView(frame: CGRect.zero, imageName: "account_filling")
@@ -220,7 +248,7 @@ class PRNoticeAddViewController: PRBaseViewController, PRDatePickViewDelegate, P
         dutyTip.mas_makeConstraints { (make) in
             make?.left.and().right().setOffset(0)
             make?.height.setOffset(lineHeight)
-            make?.top.equalTo()(text.mas_bottom)?.setOffset(5)
+            make?.top.equalTo()(textContainer.mas_bottom)?.setOffset(0)
         }
         self.dutyTipView = dutyTip
         
@@ -234,17 +262,13 @@ class PRNoticeAddViewController: PRBaseViewController, PRDatePickViewDelegate, P
             make?.top.equalTo()(dutyTip.mas_bottom)?.setOffset(0)
             make?.height.setOffset(lineHeight)
         }
-        self.timeTipView?.updateTipText(self.misstionDate?.yyyyMDDStr())
         
         // set up add Button
-        let addButton = PRBaseButton(frame: CGRect.zero)
+        let addButton = PRBaseButton()
         contentView.addSubview(addButton)
         addButton.layer.borderWidth = 1
         addButton.layer.borderColor = PRCurrentTheme().redCustomColor.cgColor
         addButton.layer.cornerRadius = 3
-        addButton.titleLabel?.font = PRCurrentTheme().bigFont
-        addButton.setTitleColor(PRCurrentTheme().blackCustomColor, for: .normal)
-        addButton.setTitleColor(PRCurrentTheme().blackCustomColor, for: .highlighted)
         addButton.setTitle(NSLocalizedString("添加提醒", comment: ""), for: .normal)
         addButton.setTitle(NSLocalizedString("添加提醒", comment: ""), for: .highlighted)
         addButton.addTarget(self, action: #selector(self.addNoticeButtonClicked), for: .touchUpInside)
@@ -257,7 +281,7 @@ class PRNoticeAddViewController: PRBaseViewController, PRDatePickViewDelegate, P
     }
     
     private func resetNavigationItem() {
-        let backBtn = PRBaseButton(frame: CGRect.zero)
+        let backBtn = PRBaseButton()
         backBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 40)
         backBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         backBtn.setImage(PRThemedImage(name:"back_button_nor"), for: .normal)
@@ -283,7 +307,8 @@ class PRNoticeAddViewController: PRBaseViewController, PRDatePickViewDelegate, P
         if (content?.isEmpty)! {
             return
         }
-        let result = PRUserData.add(missonNotice: PRMissionNoticeModel(content: self.contentTextField.text, self.misstionDate))
+        let mission = PRMissionNoticeModel(content: self.contentTextField.text, self.misstionDate, self.dutyPerson)
+        let result = PRUserData.add(misson: mission)
         if result {
             self.contentTextField.text = ""
             self.backButtonClicked(sender: nil)

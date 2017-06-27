@@ -24,9 +24,16 @@ class PRBaseButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.setDefaultParams()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setDefaultParams() {
+        self.titleLabel?.font = PRCurrentTheme().bigFont
+        self.setTitleColor(PRCurrentTheme().blackCustomColor, for: .normal)
+        self.setTitleColor(PRCurrentTheme().blackCustomColor, for: .highlighted)
     }
 }

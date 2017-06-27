@@ -11,25 +11,22 @@ import Foundation
 
 class PRDatabaseManager: NSObject {
     
-    static let manager: PRDatabaseManager = PRDatabaseManager()
-    
     override init() {
         super.init()
-        openDB()
     }
     
-    var db: FMDatabase?
-    func openDB() {
-        let path = Bundle.main.path(forResource: "huangli", ofType: "sqlite")!
+    private var db: FMDatabase?
+    func openDB(path: String) -> Bool {
         db = FMDatabase(path: path)
         if !db!.open() {
             print("打开数据库失败")
-            return
+            return false
         }
         
         if !createTable() {
-            return
+
         }
+        return true
     }
     
     func createTable() -> Bool {
@@ -45,35 +42,11 @@ class PRDatabaseManager: NSObject {
         return false
     }
     
-    func queryDataWithDateInt(year: Int, month: Int, day: Int) -> [[String: String]] {
-        return self.queryDataWithDate(year: String.init(format: "%i", year), month: String.init(format: "%i", month), day: String.init(format: "%i", day))
+    func executeQuery(_ sql: String) -> FMResultSet? {
+        return db?.executeQuery(sql, withArgumentsIn: nil)
     }
     
-    func queryDataWithDate(year: String, month: String, day: String) -> [[String: String]] {
-        //查询数据
-        let sql = "select * from 黄历数据库 where 字段1="+year+" and 字段2="+month+" and 字段3="+day
-
-        var resultArray: [[String: String]] = []
-        if let rs = db?.executeQuery(sql, withArgumentsIn: nil) {
-            while rs.next() {
-                let id4 = rs.string(forColumnIndex: 4)
-                var fit = ""
-                if id4 != nil {
-                    fit = id4!
-                }
-                let id5 = rs.string(forColumnIndex: 5)
-                var avoid = ""
-                if id5 != nil {
-                    avoid = id5!
-                }
-                let dict = ["fit": fit, "avoid": avoid]
-                resultArray.append(dict as [String: String])
-            }
-        } else {
-            print("select failed: \(db?.lastErrorMessage())")
-        }
-        return resultArray
+    func lastErrorMessage() -> String {
+        return db?.lastErrorMessage() ?? ""
     }
-    
-    
 }

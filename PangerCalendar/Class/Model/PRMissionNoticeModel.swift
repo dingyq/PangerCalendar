@@ -24,16 +24,18 @@ class PRMissionNoticeModel: NSObject {
     var time:Date?
     var dutyPerson:PRUserModel?
     
-    init(content: String?, _ time: Date?) {
+    init(content: String?, _ time: Date?, _ duty: PRUserModel?) {
         self.missonId = randomMissonId()
         self.content = content
         self.time = time
+        self.dutyPerson = duty
         super.init()
     }
     
     init(missionId: Int, content: String?, _ time: Date?) {
         self.missonId = missionId
         self.content = content
+        self.time = time
         super.init()
     }
  
