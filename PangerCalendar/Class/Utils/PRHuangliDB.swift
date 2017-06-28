@@ -1,5 +1,5 @@
 //
-//  PRHuangliData.swift
+//  PRHuangliDB.swift
 //  PangerCalendar
 //
 //  Created by yongqiang on 2017/6/27.
@@ -8,23 +8,20 @@
 
 import UIKit
 
-class PRHuangliData: NSObject {
-    static let manager: PRHuangliData = PRHuangliData()
+class PRHuangliDB: NSObject {
+    static let manager: PRHuangliDB = PRHuangliDB()
     
     private var dbMgr: PRDatabaseManager!
     
     override init() {
         super.init()
-        dbMgr = PRDatabaseManager()
-        openDB()
+        let path = Bundle.main.path(forResource: "huangli", ofType: "sqlite")!
+        dbMgr = PRDatabaseManager(path: path)
+        self.openDB()
     }
     
     func openDB() {
-        let path = Bundle.main.path(forResource: "huangli", ofType: "sqlite")!
-        let result = dbMgr.openDB(path: path)
-        if result {
-            
-        }
+        let _ = dbMgr.openDB()
     }
     
     func queryDataWithDateInt(year: Int, month: Int, day: Int) -> [[String: String]] {

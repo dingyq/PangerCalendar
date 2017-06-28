@@ -69,7 +69,7 @@ extension Date {
     
     func yiZuoStr() -> String {
         let components = Calendar.current.dateComponents([Calendar.Component.day, Calendar.Component.month, Calendar.Component.year], from: self)
-        let result1 = PRHuangliData.manager.queryDataWithDateInt(year: components.year!, month: components.month!, day: components.day!)
+        let result1 = PRHuangliDB.manager.queryDataWithDateInt(year: components.year!, month: components.month!, day: components.day!)
         if result1.count > 0 {
             let dic: Dictionary = result1.first!
             return String.init(format:"%@", dic["fit"]!)
@@ -79,7 +79,7 @@ extension Date {
     
     func jiZuoStr() -> String {
         let components = Calendar.current.dateComponents([Calendar.Component.day, Calendar.Component.month, Calendar.Component.year], from: self)
-        let result1 = PRHuangliData.manager.queryDataWithDateInt(year: components.year!, month: components.month!, day: components.day!)
+        let result1 = PRHuangliDB.manager.queryDataWithDateInt(year: components.year!, month: components.month!, day: components.day!)
         if result1.count > 0 {
             let dic: Dictionary = result1.first!
             return String.init(format:"%@", dic["avoid"]!)

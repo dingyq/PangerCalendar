@@ -8,5 +8,5 @@
 
 import Foundation
 
-
+let kPathOfDocument: String = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first!
 let kPRCalenderViewFrameChangedNotify = NSNotification.Name(rawValue: "kPRCalenderViewFrameChangedNotify")

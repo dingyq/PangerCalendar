@@ -15,8 +15,11 @@
 		919209C41F02703800CA5243 /* PRBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919209C31F02703800CA5243 /* PRBorderView.swift */; };
 		919209C71F02747000CA5243 /* add_notice_button_nor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 919209C51F02747000CA5243 /* add_notice_button_nor@3x.png */; };
 		919209C81F02747000CA5243 /* add_notice_button_sel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 919209C61F02747000CA5243 /* add_notice_button_sel@3x.png */; };
-		919209CC1F0289E300CA5243 /* PRHuangliData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919209CB1F0289E300CA5243 /* PRHuangliData.swift */; };
+		919209CC1F0289E300CA5243 /* PRHuangliDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919209CB1F0289E300CA5243 /* PRHuangliDB.swift */; };
 		919209CE1F028FCA00CA5243 /* PRMissonsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919209CD1F028FCA00CA5243 /* PRMissonsData.swift */; };
+		919209E61F03860900CA5243 /* PRMissonNoticeTable.plist in Resources */ = {isa = PBXBuildFile; fileRef = 919209E51F03860900CA5243 /* PRMissonNoticeTable.plist */; };
+		919209E91F039A1500CA5243 /* PRUserInfoDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919209E81F039A1500CA5243 /* PRUserInfoDB.swift */; };
+		919209F01F039F0000CA5243 /* String+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919209EF1F039F0000CA5243 /* String+Category.swift */; };
 		91BF5EDC1F01382C007993E7 /* PRBaseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF5EDB1F01382C007993E7 /* PRBaseLabel.swift */; };
 		91BF5EDE1F013842007993E7 /* PRBaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF5EDD1F013842007993E7 /* PRBaseTextField.swift */; };
 		91BF5EE01F013AE7007993E7 /* PRBaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF5EDF1F013AE7007993E7 /* PRBaseButton.swift */; };
@@ -113,8 +116,11 @@
 		919209C31F02703800CA5243 /* PRBorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRBorderView.swift; sourceTree = "<group>"; };
 		919209C51F02747000CA5243 /* add_notice_button_nor@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_notice_button_nor@3x.png"; sourceTree = "<group>"; };
 		919209C61F02747000CA5243 /* add_notice_button_sel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_notice_button_sel@3x.png"; sourceTree = "<group>"; };
-		919209CB1F0289E300CA5243 /* PRHuangliData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRHuangliData.swift; sourceTree = "<group>"; };
+		919209CB1F0289E300CA5243 /* PRHuangliDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRHuangliDB.swift; sourceTree = "<group>"; };
 		919209CD1F028FCA00CA5243 /* PRMissonsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRMissonsData.swift; sourceTree = "<group>"; };
+		919209E51F03860900CA5243 /* PRMissonNoticeTable.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PRMissonNoticeTable.plist; sourceTree = "<group>"; };
+		919209E81F039A1500CA5243 /* PRUserInfoDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRUserInfoDB.swift; sourceTree = "<group>"; };
+		919209EF1F039F0000CA5243 /* String+Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Category.swift"; sourceTree = "<group>"; };
 		91BF5EDB1F01382C007993E7 /* PRBaseLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRBaseLabel.swift; sourceTree = "<group>"; };
 		91BF5EDD1F013842007993E7 /* PRBaseTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRBaseTextField.swift; sourceTree = "<group>"; };
 		91BF5EDF1F013AE7007993E7 /* PRBaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRBaseButton.swift; sourceTree = "<group>"; };
@@ -236,6 +242,36 @@
 				67EBC8D145520D245DF22331 /* Pods-PangerCalendarUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		919209E71F03860F00CA5243 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				919209E51F03860900CA5243 /* PRMissonNoticeTable.plist */,
+			);
+			name = Config;
+			sourceTree = "<group>";
+		};
+		919209EA1F039E8C00CA5243 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				E36A18781E8762BB006195E3 /* UIColor+Category.swift */,
+				E36A18841E88132E006195E3 /* Date+Category.swift */,
+				919209EF1F039F0000CA5243 /* String+Category.swift */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
+		919209EB1F039E9200CA5243 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				E3856A781DC5D28500FEAD80 /* PRDatabaseOperate.swift */,
+				E35460361DC7A08F00C05867 /* PRDatabaseManager.swift */,
+				919209CB1F0289E300CA5243 /* PRHuangliDB.swift */,
+				919209E81F039A1500CA5243 /* PRUserInfoDB.swift */,
+				919209CD1F028FCA00CA5243 /* PRMissonsData.swift */,
+			);
+			name = DataBase;
 			sourceTree = "<group>";
 		};
 		CFE0C8695219B46EEBF7C746 /* Frameworks */ = {
@@ -414,6 +450,7 @@
 		E3856A711DC5D10200FEAD80 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				919209E71F03860F00CA5243 /* Config */,
 				E36A185D1E8655CD006195E3 /* Image */,
 				E35460301DC5FDB800C05867 /* huangli.sqlite */,
 				E36A186D1E867444006195E3 /* Localizable.strings */,
@@ -457,13 +494,9 @@
 		E3856A771DC5D24B00FEAD80 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				E3856A781DC5D28500FEAD80 /* PRDatabaseOperate.swift */,
-				E35460361DC7A08F00C05867 /* PRDatabaseManager.swift */,
-				919209CB1F0289E300CA5243 /* PRHuangliData.swift */,
-				919209CD1F028FCA00CA5243 /* PRMissonsData.swift */,
-				E36A18781E8762BB006195E3 /* UIColor+Category.swift */,
+				919209EB1F039E9200CA5243 /* DataBase */,
+				919209EA1F039E8C00CA5243 /* Category */,
 				E36A18801E87CB0E006195E3 /* PRCommonConstant.swift */,
-				E36A18841E88132E006195E3 /* Date+Category.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -655,6 +688,7 @@
 				E3237F741EFE9816000A703F /* calendar_more_unfold@3x.png in Resources */,
 				E3237F811EFF661A000A703F /* back_button_sel@3x.png in Resources */,
 				E36A18571E8655C7006195E3 /* tab_permanent_nor@3x.png in Resources */,
+				919209E61F03860900CA5243 /* PRMissonNoticeTable.plist in Resources */,
 				E3237F751EFE9816000A703F /* calendar_more_fold@3x.png in Resources */,
 				E376A0071DC5AEDA00C2B383 /* Assets.xcassets in Resources */,
 				E36A187C1E87758A006195E3 /* CalendarDayTodayMark.png in Resources */,
@@ -832,12 +866,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3237F891F0174D7000A703F /* PRBaseTableView.swift in Sources */,
-				919209CC1F0289E300CA5243 /* PRHuangliData.swift in Sources */,
+				919209CC1F0289E300CA5243 /* PRHuangliDB.swift in Sources */,
 				E36A18481E864D89006195E3 /* PRPermanentViewController.swift in Sources */,
 				E3EAAE531E01B12E001478E4 /* PRSolarTermsManager.swift in Sources */,
 				E3F886711E7401AC00007B01 /* PRCalendarViewScrollDelegate.swift in Sources */,
 				E36A18771E875F5D006195E3 /* PRTheme.swift in Sources */,
 				E3F288FE1E0FAFF600974C67 /* PRLunarDateAlgorithm.swift in Sources */,
+				919209E91F039A1500CA5243 /* PRUserInfoDB.swift in Sources */,
 				E36A184D1E864E67006195E3 /* PRAlmanacViewController.swift in Sources */,
 				913A50D51F0100A9002757AD /* PRBaseView.swift in Sources */,
 				E36A18831E87E4B4006195E3 /* PRDayDetailView.swift in Sources */,
@@ -868,6 +903,7 @@
 				E3237F831EFF77C5000A703F /* PRUserInfo.swift in Sources */,
 				E3237F7B1EFE9B9B000A703F /* PRBaseViewController.swift in Sources */,
 				E313E7911E8D5F2C005F5845 /* PRDatePickView.swift in Sources */,
+				919209F01F039F0000CA5243 /* String+Category.swift in Sources */,
 				E3F289001E15777800974C67 /* PRCalendarMonthMarkLocation.swift in Sources */,
 				919209CE1F028FCA00CA5243 /* PRMissonsData.swift in Sources */,
 				E3EAAE561E01B19D001478E4 /* PRCalendarLogicDelegate.swift in Sources */,
