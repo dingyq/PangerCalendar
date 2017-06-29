@@ -7,8 +7,54 @@
 	<key>TableName</key>
 	<string>MissonNotice</string>
 	<key>OCType</key>
-	<dict/>
+	<dict>
+		<key>missonId</key>
+		<string>NSNumber</string>
+		<key>sortId</key>
+		<string>NSNumber</string>
+		<key>type</key>
+		<string>NSNumber</string>
+		<key>state</key>
+		<string>NSNumber</string>
+		<key>content</key>
+		<string>NSString</string>
+		<key>createTime</key>
+		<string>NSNumber</string>
+		<key>completeTime</key>
+		<string>NSNumber</string>
+		<key>dutyId</key>
+		<string>NSNumber</string>
+		<key>dutyName</key>
+		<string>NSString</string>
+		<key>createUserId</key>
+		<string>NSNumber</string>
+		<key>createUserName</key>
+		<string>NSString</string>
+	</dict>
 	<key>DBType</key>
-	<dict/>
+	<dict>
+		<key>missonId</key>
+		<string>INTEGER</string>
+		<key>sortId</key>
+		<string>INTEGER</string>
+		<key>type</key>
+		<string>INTEGER</string>
+		<key>state</key>
+		<string>INTEGER</string>
+		<key>content</key>
+		<string>VARCHAR(1000)</string>
+		<key>createTime</key>
+		<string>INTEGER</string>
+		<key>completeTime</key>
+		<string>INTEGER</string>
+		<key>dutyId</key>
+		<string>VARCHAR(150)</string>
+		<key>dutyName</key>
+		<string>VARCHAR(150)</string>
+		<key>createUserId</key>
+		<string>VARCHAR(150)</string>
+		<key>createUserTime</key>
+		<string>VARCHAR(150)</string>
+	</dict>
 </dict>
 </plist>

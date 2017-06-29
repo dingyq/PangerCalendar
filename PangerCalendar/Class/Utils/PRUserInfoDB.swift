@@ -8,38 +8,17 @@
 
 import UIKit
 
+let PRUserInfoDBMgr = PRUserInfoDB().manager
 
 class PRUserInfoDB: NSObject {
-    static let manager: PRUserInfoDB = PRUserInfoDB()
-    
-    private var dbMgr: PRDatabaseManager!
+    var manager: PRDatabaseManager!
     private var dbPath: String!
     
     override init() {
         super.init()
         self.dbPath = kPathOfDocument.appendingPathComponent(path: "PRUserInfoDB.sqlite")
-        self.dbMgr = PRDatabaseManager(path: self.dbPath)
-        self.openDB()
-    }
-    
-    func openDB() {
-        let _ = self.dbMgr.openDB()
-    }
-    
-    func closeDB() {
-        let _ = self.dbMgr.closeDB()
-    }
-    
-    func eraseData(_ name: String) -> Bool {
-        return self.dbMgr.eraseTable(name)
-    }
-    
-    func insertData(_ name: String, columnDic: NSDictionary, columnTypeDic: NSDictionary, valueDic: NSDictionary) -> Bool {
-        return self.dbMgr.insertData(name, columnDic: columnDic, columnTypeDic: columnTypeDic, valueDic: valueDic)
-    }
-    
-    func deleteData(_ name: String, key: String, value: Int) -> Bool {
-        return self.dbMgr.deleteData(name, key: key, value: value)
+        self.manager = PRDatabaseManager(path: self.dbPath)
+        let _ = self.manager.openDB()
     }
     
 }
