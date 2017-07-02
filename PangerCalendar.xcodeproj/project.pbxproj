@@ -25,6 +25,21 @@
 		91BF5EE01F013AE7007993E7 /* PRBaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF5EDF1F013AE7007993E7 /* PRBaseButton.swift */; };
 		91BF5EE21F013B18007993E7 /* PRBaseImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF5EE11F013B18007993E7 /* PRBaseImageView.swift */; };
 		91BF5EE41F0149E6007993E7 /* account_filling@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91BF5EE31F0149E6007993E7 /* account_filling@3x.png */; };
+		91D4C4BB1F090AD0009A000D /* MeConfigList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 91D4C4BA1F090AD0009A000D /* MeConfigList.plist */; };
+		91D4C4BD1F090B5A009A000D /* PRSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D4C4BC1F090B5A009A000D /* PRSettingViewController.swift */; };
+		91D4C4C21F091170009A000D /* tab_mine_nor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D4C4BE1F091170009A000D /* tab_mine_nor@3x.png */; };
+		91D4C4C31F091170009A000D /* tab_mine_sel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D4C4BF1F091170009A000D /* tab_mine_sel@3x.png */; };
+		91D4C4C41F091170009A000D /* tab_remind_nor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D4C4C01F091170009A000D /* tab_remind_nor@3x.png */; };
+		91D4C4C51F091170009A000D /* tab_remind_sel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D4C4C11F091170009A000D /* tab_remind_sel@3x.png */; };
+		91D4C4C81F0911FD009A000D /* account_set_sel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D4C4C61F0911FD009A000D /* account_set_sel@3x.png */; };
+		91D4C4C91F0911FD009A000D /* account_set_nor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D4C4C71F0911FD009A000D /* account_set_nor@3x.png */; };
+		91D4C4CB1F0913AD009A000D /* PRMineListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D4C4CA1F0913AD009A000D /* PRMineListItem.swift */; };
+		91D4C4DA1F091A93009A000D /* account_about_sel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D4C4D81F091A93009A000D /* account_about_sel@3x.png */; };
+		91D4C4DB1F091A93009A000D /* account_about_nor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D4C4D91F091A93009A000D /* account_about_nor@3x.png */; };
+		91D4C4DD1F091AB7009A000D /* PRAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D4C4DC1F091AB7009A000D /* PRAboutViewController.swift */; };
+		91D4C4DF1F091D80009A000D /* NSObject+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D4C4DE1F091D80009A000D /* NSObject+Category.swift */; };
+		91D4C4E21F091F93009A000D /* more_data_nor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D4C4E01F091F93009A000D /* more_data_nor@3x.png */; };
+		91D4C4E31F091F93009A000D /* more_data_sel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D4C4E11F091F93009A000D /* more_data_sel@3x.png */; };
 		9B6359689EDDD23F4EA9321E /* Pods_PangerCalendarUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5883086E00ACC3325256CA30 /* Pods_PangerCalendarUITests.framework */; };
 		E30612181E059CCC00EE83FC /* PRCalendarMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30612171E059CCC00EE83FC /* PRCalendarMonth.swift */; };
 		E30612251E05B4F200EE83FC /* CalendarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = E306121A1E05B4F200EE83FC /* CalendarBackground.png */; };
@@ -50,10 +65,6 @@
 		E36A18481E864D89006195E3 /* PRPermanentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36A18471E864D89006195E3 /* PRPermanentViewController.swift */; };
 		E36A184A1E864E11006195E3 /* PRNoticeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36A18491E864E11006195E3 /* PRNoticeListViewController.swift */; };
 		E36A184D1E864E67006195E3 /* PRAlmanacViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36A184B1E864E67006195E3 /* PRAlmanacViewController.swift */; };
-		E36A18571E8655C7006195E3 /* tab_permanent_nor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E36A18511E8655C7006195E3 /* tab_permanent_nor@3x.png */; };
-		E36A18581E8655C7006195E3 /* tab_permanent_sel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E36A18521E8655C7006195E3 /* tab_permanent_sel@3x.png */; };
-		E36A18591E8655C7006195E3 /* tab_notice_nor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E36A18531E8655C7006195E3 /* tab_notice_nor@3x.png */; };
-		E36A185A1E8655C7006195E3 /* tab_notice_sel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E36A18541E8655C7006195E3 /* tab_notice_sel@3x.png */; };
 		E36A185B1E8655C7006195E3 /* tab_almanac_nor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E36A18551E8655C7006195E3 /* tab_almanac_nor@3x.png */; };
 		E36A185C1E8655C7006195E3 /* tab_almanac_sel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E36A18561E8655C7006195E3 /* tab_almanac_sel@3x.png */; };
 		E36A18651E867063006195E3 /* PRCustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36A18621E867063006195E3 /* PRCustomTabBarController.swift */; };
@@ -126,6 +137,21 @@
 		91BF5EDF1F013AE7007993E7 /* PRBaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRBaseButton.swift; sourceTree = "<group>"; };
 		91BF5EE11F013B18007993E7 /* PRBaseImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRBaseImageView.swift; sourceTree = "<group>"; };
 		91BF5EE31F0149E6007993E7 /* account_filling@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account_filling@3x.png"; sourceTree = "<group>"; };
+		91D4C4BA1F090AD0009A000D /* MeConfigList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MeConfigList.plist; sourceTree = "<group>"; };
+		91D4C4BC1F090B5A009A000D /* PRSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRSettingViewController.swift; sourceTree = "<group>"; };
+		91D4C4BE1F091170009A000D /* tab_mine_nor@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_mine_nor@3x.png"; sourceTree = "<group>"; };
+		91D4C4BF1F091170009A000D /* tab_mine_sel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_mine_sel@3x.png"; sourceTree = "<group>"; };
+		91D4C4C01F091170009A000D /* tab_remind_nor@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_remind_nor@3x.png"; sourceTree = "<group>"; };
+		91D4C4C11F091170009A000D /* tab_remind_sel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_remind_sel@3x.png"; sourceTree = "<group>"; };
+		91D4C4C61F0911FD009A000D /* account_set_sel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account_set_sel@3x.png"; sourceTree = "<group>"; };
+		91D4C4C71F0911FD009A000D /* account_set_nor@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account_set_nor@3x.png"; sourceTree = "<group>"; };
+		91D4C4CA1F0913AD009A000D /* PRMineListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRMineListItem.swift; sourceTree = "<group>"; };
+		91D4C4D81F091A93009A000D /* account_about_sel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account_about_sel@3x.png"; sourceTree = "<group>"; };
+		91D4C4D91F091A93009A000D /* account_about_nor@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account_about_nor@3x.png"; sourceTree = "<group>"; };
+		91D4C4DC1F091AB7009A000D /* PRAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRAboutViewController.swift; sourceTree = "<group>"; };
+		91D4C4DE1F091D80009A000D /* NSObject+Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+Category.swift"; sourceTree = "<group>"; };
+		91D4C4E01F091F93009A000D /* more_data_nor@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more_data_nor@3x.png"; sourceTree = "<group>"; };
+		91D4C4E11F091F93009A000D /* more_data_sel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "more_data_sel@3x.png"; sourceTree = "<group>"; };
 		B58D295B3B4041CFCACECC67 /* Pods_PangerCalendarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PangerCalendarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8EC0B514E480A8B103CF244 /* Pods-PangerCalendarUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PangerCalendarUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PangerCalendarUITests/Pods-PangerCalendarUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E30612171E059CCC00EE83FC /* PRCalendarMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRCalendarMonth.swift; sourceTree = "<group>"; };
@@ -154,10 +180,6 @@
 		E36A18471E864D89006195E3 /* PRPermanentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRPermanentViewController.swift; sourceTree = "<group>"; };
 		E36A18491E864E11006195E3 /* PRNoticeListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRNoticeListViewController.swift; sourceTree = "<group>"; };
 		E36A184B1E864E67006195E3 /* PRAlmanacViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRAlmanacViewController.swift; sourceTree = "<group>"; };
-		E36A18511E8655C7006195E3 /* tab_permanent_nor@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_permanent_nor@3x.png"; sourceTree = "<group>"; };
-		E36A18521E8655C7006195E3 /* tab_permanent_sel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_permanent_sel@3x.png"; sourceTree = "<group>"; };
-		E36A18531E8655C7006195E3 /* tab_notice_nor@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_notice_nor@3x.png"; sourceTree = "<group>"; };
-		E36A18541E8655C7006195E3 /* tab_notice_sel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_notice_sel@3x.png"; sourceTree = "<group>"; };
 		E36A18551E8655C7006195E3 /* tab_almanac_nor@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_almanac_nor@3x.png"; sourceTree = "<group>"; };
 		E36A18561E8655C7006195E3 /* tab_almanac_sel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_almanac_sel@3x.png"; sourceTree = "<group>"; };
 		E36A18621E867063006195E3 /* PRCustomTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRCustomTabBarController.swift; sourceTree = "<group>"; };
@@ -248,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				919209E51F03860900CA5243 /* PRMissonNoticeTable.plist */,
+				91D4C4BA1F090AD0009A000D /* MeConfigList.plist */,
 			);
 			name = Config;
 			sourceTree = "<group>";
@@ -255,6 +278,7 @@
 		919209EA1F039E8C00CA5243 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				91D4C4DE1F091D80009A000D /* NSObject+Category.swift */,
 				E36A18781E8762BB006195E3 /* UIColor+Category.swift */,
 				E36A18841E88132E006195E3 /* Date+Category.swift */,
 				919209EF1F039F0000CA5243 /* String+Category.swift */,
@@ -341,6 +365,8 @@
 			isa = PBXGroup;
 			children = (
 				E3237F8A1F017E01000A703F /* PRMineViewController.swift */,
+				91D4C4BC1F090B5A009A000D /* PRSettingViewController.swift */,
+				91D4C4DC1F091AB7009A000D /* PRAboutViewController.swift */,
 			);
 			name = Mine;
 			sourceTree = "<group>";
@@ -366,11 +392,17 @@
 				E3237F731EFE9816000A703F /* calendar_more_fold@3x.png */,
 				E36A18551E8655C7006195E3 /* tab_almanac_nor@3x.png */,
 				E36A18561E8655C7006195E3 /* tab_almanac_sel@3x.png */,
-				E36A18511E8655C7006195E3 /* tab_permanent_nor@3x.png */,
-				E36A18521E8655C7006195E3 /* tab_permanent_sel@3x.png */,
-				E36A18531E8655C7006195E3 /* tab_notice_nor@3x.png */,
-				E36A18541E8655C7006195E3 /* tab_notice_sel@3x.png */,
+				91D4C4BE1F091170009A000D /* tab_mine_nor@3x.png */,
+				91D4C4BF1F091170009A000D /* tab_mine_sel@3x.png */,
+				91D4C4C01F091170009A000D /* tab_remind_nor@3x.png */,
+				91D4C4C11F091170009A000D /* tab_remind_sel@3x.png */,
 				91BF5EE31F0149E6007993E7 /* account_filling@3x.png */,
+				91D4C4C61F0911FD009A000D /* account_set_sel@3x.png */,
+				91D4C4C71F0911FD009A000D /* account_set_nor@3x.png */,
+				91D4C4D81F091A93009A000D /* account_about_sel@3x.png */,
+				91D4C4D91F091A93009A000D /* account_about_nor@3x.png */,
+				91D4C4E01F091F93009A000D /* more_data_nor@3x.png */,
+				91D4C4E11F091F93009A000D /* more_data_sel@3x.png */,
 				9163DD451F012D3700E709B8 /* time_clock@3x.png */,
 			);
 			name = Image;
@@ -487,6 +519,7 @@
 				E3237F821EFF77C5000A703F /* PRUserInfo.swift */,
 				E3237F841EFF7AD3000A703F /* PRMissionNoticeModel.swift */,
 				E3237F861EFF8A70000A703F /* PRUserModel.swift */,
+				91D4C4CA1F0913AD009A000D /* PRMineListItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -681,26 +714,33 @@
 				9163DD411F0128DF00E709B8 /* close_button_nor@3x.png in Resources */,
 				E30612281E05B4F200EE83FC /* CalendarDayToday.png in Resources */,
 				E36A185B1E8655C7006195E3 /* tab_almanac_nor@3x.png in Resources */,
-				E36A18591E8655C7006195E3 /* tab_notice_nor@3x.png in Resources */,
-				E36A18581E8655C7006195E3 /* tab_permanent_sel@3x.png in Resources */,
 				E3237F801EFF661A000A703F /* back_button_nor@3x.png in Resources */,
+				91D4C4DB1F091A93009A000D /* account_about_nor@3x.png in Resources */,
 				919209C81F02747000CA5243 /* add_notice_button_sel@3x.png in Resources */,
+				91D4C4E31F091F93009A000D /* more_data_sel@3x.png in Resources */,
+				91D4C4C51F091170009A000D /* tab_remind_sel@3x.png in Resources */,
 				E3237F741EFE9816000A703F /* calendar_more_unfold@3x.png in Resources */,
 				E3237F811EFF661A000A703F /* back_button_sel@3x.png in Resources */,
-				E36A18571E8655C7006195E3 /* tab_permanent_nor@3x.png in Resources */,
 				919209E61F03860900CA5243 /* PRMissonNoticeTable.plist in Resources */,
 				E3237F751EFE9816000A703F /* calendar_more_fold@3x.png in Resources */,
+				91D4C4E21F091F93009A000D /* more_data_nor@3x.png in Resources */,
 				E376A0071DC5AEDA00C2B383 /* Assets.xcassets in Resources */,
+				91D4C4DA1F091A93009A000D /* account_about_sel@3x.png in Resources */,
 				E36A187C1E87758A006195E3 /* CalendarDayTodayMark.png in Resources */,
+				91D4C4C91F0911FD009A000D /* account_set_nor@3x.png in Resources */,
+				91D4C4C31F091170009A000D /* tab_mine_sel@3x.png in Resources */,
 				919209C71F02747000CA5243 /* add_notice_button_nor@3x.png in Resources */,
+				91D4C4C81F0911FD009A000D /* account_set_sel@3x.png in Resources */,
 				91BF5EE41F0149E6007993E7 /* account_filling@3x.png in Resources */,
+				91D4C4C21F091170009A000D /* tab_mine_nor@3x.png in Resources */,
+				91D4C4C41F091170009A000D /* tab_remind_nor@3x.png in Resources */,
 				9163DD421F0128DF00E709B8 /* close_button_sel@3x.png in Resources */,
 				E30612291E05B4F200EE83FC /* CalendarDayTodaySelected.png in Resources */,
-				E36A185A1E8655C7006195E3 /* tab_notice_sel@3x.png in Resources */,
 				E35460311DC5FDB800C05867 /* huangli.sqlite in Resources */,
 				E30612271E05B4F200EE83FC /* CalendarDayTile.png in Resources */,
 				9163DD461F012D3700E709B8 /* time_clock@3x.png in Resources */,
 				E36A185C1E8655C7006195E3 /* tab_almanac_sel@3x.png in Resources */,
+				91D4C4BB1F090AD0009A000D /* MeConfigList.plist in Resources */,
 				E30612261E05B4F200EE83FC /* CalendarDaySelected.png in Resources */,
 				E30612251E05B4F200EE83FC /* CalendarBackground.png in Resources */,
 			);
@@ -880,11 +920,13 @@
 				91BF5EDC1F01382C007993E7 /* PRBaseLabel.swift in Sources */,
 				E3237F871EFF8A70000A703F /* PRUserModel.swift in Sources */,
 				919209C41F02703800CA5243 /* PRBorderView.swift in Sources */,
+				91D4C4BD1F090B5A009A000D /* PRSettingViewController.swift in Sources */,
 				E376A0001DC5AEDA00C2B383 /* AppDelegate.swift in Sources */,
 				E3EAAE481E01B0DC001478E4 /* PRCalendarLogic.swift in Sources */,
 				E3237F7D1EFE9BC1000A703F /* PRNoticeAddViewController.swift in Sources */,
 				E36A18811E87CB0E006195E3 /* PRCommonConstant.swift in Sources */,
 				E36A18851E88132E006195E3 /* Date+Category.swift in Sources */,
+				91D4C4CB1F0913AD009A000D /* PRMineListItem.swift in Sources */,
 				E3237F851EFF7AD3000A703F /* PRMissionNoticeModel.swift in Sources */,
 				E3EAAE521E01B12E001478E4 /* PRSolarTermsFormulaCompute.swift in Sources */,
 				E3EAAE4F1E01B12E001478E4 /* PRCalendarView.swift in Sources */,
@@ -896,7 +938,9 @@
 				E36A18651E867063006195E3 /* PRCustomTabBarController.swift in Sources */,
 				91BF5EE21F013B18007993E7 /* PRBaseImageView.swift in Sources */,
 				E36A18791E8762BB006195E3 /* UIColor+Category.swift in Sources */,
+				91D4C4DD1F091AB7009A000D /* PRAboutViewController.swift in Sources */,
 				E30612181E059CCC00EE83FC /* PRCalendarMonth.swift in Sources */,
+				91D4C4DF1F091D80009A000D /* NSObject+Category.swift in Sources */,
 				E36A184A1E864E11006195E3 /* PRNoticeListViewController.swift in Sources */,
 				E3EAAE501E01B12E001478E4 /* PRChineseFestivalsMgr.swift in Sources */,
 				91BF5EDE1F013842007993E7 /* PRBaseTextField.swift in Sources */,

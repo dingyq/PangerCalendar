@@ -5,7 +5,7 @@
 	<key>PrimaryKey</key>
 	<string>missonId</string>
 	<key>TableName</key>
-	<string>MissonNotice</string>
+	<string>T_MissonNotice</string>
 	<key>OCType</key>
 	<dict>
 		<key>missonId</key>
@@ -42,19 +42,19 @@
 		<key>state</key>
 		<string>INTEGER</string>
 		<key>content</key>
-		<string>VARCHAR(1000)</string>
+		<string>TEXT</string>
 		<key>createTime</key>
 		<string>INTEGER</string>
 		<key>completeTime</key>
 		<string>INTEGER</string>
 		<key>dutyId</key>
-		<string>VARCHAR(150)</string>
+		<string>INTEGER</string>
 		<key>dutyName</key>
-		<string>VARCHAR(150)</string>
+		<string>TEXT</string>
 		<key>createUserId</key>
-		<string>VARCHAR(150)</string>
-		<key>createUserTime</key>
-		<string>VARCHAR(150)</string>
+		<string>INTEGER</string>
+		<key>createUserName</key>
+		<string>TEXT</string>
 	</dict>
 </dict>
 </plist>

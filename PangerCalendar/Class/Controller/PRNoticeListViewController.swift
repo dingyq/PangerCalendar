@@ -56,7 +56,7 @@ class PRMissionTVCell: PRBaseTableViewCell {
 //        let str = "\(model.content ?? "")  \(model.dutyPerson?.userName ?? "") \(model.time?.mDDStr() ?? "")"
         self.contentLabel.text = model.content
         self.dutyLabel.text = model.dutyPerson?.userName
-        self.timeLabel.text = model.time?.mDDStr()
+        self.timeLabel.text = Date(timeIntervalSince1970: model.createTime).mDDStr()
     }
 }
 

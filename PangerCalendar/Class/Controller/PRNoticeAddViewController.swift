@@ -148,6 +148,9 @@ class PRNoticeAddViewController: PRBaseViewController, PRDatePickViewDelegate, P
         }
         
         get {
+            if _misstionDate == nil {
+                _misstionDate = Date()
+            }
             return _misstionDate
         }
     }
@@ -307,8 +310,9 @@ class PRNoticeAddViewController: PRBaseViewController, PRDatePickViewDelegate, P
         if (content?.isEmpty)! {
             return
         }
-        let mission = PRMissionNoticeModel(content: self.contentTextField.text, self.misstionDate, self.dutyPerson)
+        let mission = PRMissionNoticeModel(content: content!, self.misstionDate!, self.dutyPerson)
         let result = PRUserData.add(misson: mission)
+        PRMissonsDataMgr.syncData(dataArr: [mission.serializeToDictionary()])
         if result {
             self.contentTextField.text = ""
             self.backButtonClicked(sender: nil)

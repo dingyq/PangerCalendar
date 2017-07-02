@@ -19,6 +19,11 @@ class PRUserInfo: NSObject {
     override init() {
         self.profile = PRUserModel(userId: 1000, name: "yongqiang")
         self.missonList = []
+        let result = PRMissonsDataMgr.getLatestData(0)
+        for dic in result {
+            let model = PRMissionNoticeModel(dic)
+            self.missonList.append(model)
+        }
         self.relationList = [self.profile]
         super.init()
     }

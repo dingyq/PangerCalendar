@@ -14,51 +14,53 @@ fileprivate let kPageSize = 10
 
 class PRMissonsData: NSObject {
 
-    private var primaryKey: String!
-    private var tableName: String!
-    private var ocType: NSDictionary!
-    private var dbType: NSDictionary!
+    private var primaryKey: String
+    private var tableName: String
+    private var ocType: NSDictionary
+    private var dbType: NSDictionary
     
     override init() {
-        super.init()
         let path = Bundle.main.path(forResource: "PRMissonNoticeTable", ofType: "plist")
-        if path != nil {
-            let configDic = NSDictionary(contentsOfFile: path!)
-            self.primaryKey = configDic?.value(forKey: "PrimaryKey") as? String
-            self.tableName = configDic?.value(forKey: "TableName") as? String
-            self.ocType = configDic?.value(forKey: "OCType") as? NSDictionary
-            self.dbType = configDic?.value(forKey: "DBType") as? NSDictionary
-        }
+        assert(path != nil, "缺失配置文件: PRMissonNoticeTable.plist")
+        let configDic = NSDictionary(contentsOfFile: path!)
+        primaryKey = configDic!.value(forKey: "PrimaryKey") as! String
+        tableName = configDic!.value(forKey: "TableName") as! String
+        ocType = configDic!.value(forKey: "OCType") as! NSDictionary
+        dbType = configDic!.value(forKey: "DBType") as! NSDictionary
+        super.init()
         let _ = self.createTable()
     }
     
     func clearAllData() {
-        let _ = PRUserInfoDBMgr?.eraseTable(self.tableName)
+        let _ = PRUserInfoDBMgr!.eraseTable(self.tableName)
     }
     
     func insertData(valueDic: NSDictionary) {
-        let _ = PRUserInfoDBMgr?.insertData(self.tableName, columnDic: self.ocType, columnTypeDic: self.dbType, valueDic: valueDic)
+        let _ = PRUserInfoDBMgr!.insertData(self.tableName, dbTypeDic: self.dbType, ocTypeDic: self.ocType, valueDic: valueDic)
     }
     
     func deleteData(valueDic: NSDictionary) {
-        let _ = PRUserInfoDBMgr?.deleteData(self.tableName, key: self.primaryKey, value: valueDic.value(forKey: self.primaryKey) as! Int)
+        let _ = PRUserInfoDBMgr!.deleteData(self.tableName, key: self.primaryKey, value: valueDic.value(forKey: self.primaryKey) as! Int)
     }
   
     func updateData(valueDic: NSDictionary, primaryKey: String) {
-        let _ = PRUserInfoDBMgr?.updateData(self.tableName, valueDic: valueDic, primaryKey: primaryKey)
+        let _ = PRUserInfoDBMgr!.updateData(self.tableName, valueDic: valueDic, primaryKey: primaryKey)
     }
     
     func queryData(missionId: Int) -> Array<NSDictionary>? {
         let dic = [self.primaryKey: NSNumber(value: missionId)]
-        return PRUserInfoDBMgr?.queryTable(self.tableName, paramDic: dic as NSDictionary)
+        return PRUserInfoDBMgr!.queryTable(self.tableName, paramDic: dic as NSDictionary)
     }
     
-    func getLatestData(sortId: Int) -> Array<NSDictionary>? {
-        var sql = "select * from \(self.tableName) where sortId < \(sortId) order by sortId desc LIMIT \(kPageSize)"
-        if sortId == 0 {
-            sql = "select * from \(self.tableName) order by sortId desc LIMIT \(kPageSize)"
+    func getLatestData(_ sortId: Int?) -> Array<NSDictionary> {
+        let tableStr = self.tableName
+        var sql = "select * from \(tableStr)"
+        if (sortId != nil && sortId != 0) {
+            sql = "select * from \(tableStr) where sortId < \(sortId!) order by sortId desc LIMIT \(kPageSize)"
+        } else {
+            sql = "select * from \(tableStr) order by sortId desc LIMIT \(kPageSize)"
         }
-        return PRUserInfoDBMgr?.queryTableWithCustomSql(sql: sql)
+        return PRUserInfoDBMgr!.queryTableWithCustomSql(sql: sql)
     }
     
     func deleteData(dataArr: Array<NSDictionary>) {
@@ -70,16 +72,16 @@ class PRMissonsData: NSObject {
         }
     }
     
-    func syncDataToDB(dataArr: Array<NSDictionary>) {
+    func syncData(dataArr: Array<NSDictionary>) {
         for index in 0..<dataArr.count {
             let tmpDic = dataArr[index]
-            let typeKeyArr = self.dbType.allKeys
+            let typeKeyArr = self.ocType.allKeys
             var dict: Dictionary<String, AnyObject> = [:]
             for key in typeKeyArr {
                 let keyStr = key as! String
                 var tmpObj = tmpDic.value(forKey: keyStr)
                 if tmpObj == nil {
-                    if ((self.dbType.value(forKey: keyStr) as! NSString).isEqual(to: "NSString")) {
+                    if ((self.ocType.value(forKey: keyStr) as! NSString).isEqual(to: "NSString")) {
                         tmpObj = ""
                     } else {
                         tmpObj = NSNumber(value: 0)
@@ -98,11 +100,11 @@ class PRMissonsData: NSObject {
     }
     
     func createTable() -> Bool {
-        if (PRUserInfoDBMgr?.isTableExist(self.tableName))! {
+        if (PRUserInfoDBMgr!.isTableExist(self.tableName)) {
             print("Table \(self.tableName) already exist")
             return false
         } else {
-            return (PRUserInfoDBMgr?.createTable(self.tableName, columnDic: self.ocType))!
+            return (PRUserInfoDBMgr!.createTable(self.tableName, dbTypeDic: self.dbType))
         }
     }
     

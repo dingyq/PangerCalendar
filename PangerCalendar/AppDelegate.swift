@@ -20,8 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame:UIScreen.main.bounds)
         self.window?.backgroundColor = UIColor.white
         
-        let imgArr = ["tab_permanent_nor", "tab_almanac_nor" ,"tab_notice_nor"];
-        let imgSelArr = ["tab_permanent_sel", "tab_almanac_sel", "tab_notice_sel"]
+        let imgArr = ["tab_almanac_nor", "tab_remind_nor" ,"tab_mine_nor"];
+        let imgSelArr = ["tab_almanac_sel", "tab_remind_sel", "tab_mine_sel"]
         let titleArr = ["日历", "提醒", "我的"]
         let tabBarController = PRTabBarController()
         let vc1 = PRPermanentViewController()

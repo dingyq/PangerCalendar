@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<array>
+		<dict>
+			<key>CellImage</key>
+			<string>account_set_nor</string>
+			<key>CellTitle</key>
+			<string>设置</string>
+			<key>ControllerClassName</key>
+			<string>PRSettingViewController</string>
+		</dict>
+		<dict>
+			<key>CellImage</key>
+			<string>account_about_nor</string>
+			<key>CellTitle</key>
+			<string>关于</string>
+			<key>ControllerClassName</key>
+			<string>PRAboutViewController</string>
+		</dict>
+	</array>
+</array>
+</plist>
