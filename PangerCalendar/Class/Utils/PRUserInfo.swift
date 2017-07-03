@@ -13,23 +13,23 @@ let PRUserData:PRUserInfo = s_Instance
 
 class PRUserInfo: NSObject {
     var profile:PRUserModel
-    var missonList:Array<PRMissionNoticeModel>
+    var missionList:Array<PRMissionNoticeModel>
     var relationList:Array<PRUserModel>
     
     override init() {
         self.profile = PRUserModel(userId: 1000, name: "yongqiang")
-        self.missonList = []
-        let result = PRMissonsDataMgr.getLatestData(0)
+        self.missionList = []
+        let result = PRMissionsDataMgr.getLatestData(0)
         for dic in result {
             let model = PRMissionNoticeModel(dic)
-            self.missonList.append(model)
+            self.missionList.append(model)
         }
         self.relationList = [self.profile]
         super.init()
     }
     
-    func add(misson: PRMissionNoticeModel) -> Bool {
-        self.missonList.append(misson)
+    func add(mission: PRMissionNoticeModel) -> Bool {
+        self.missionList.append(mission)
         return true
     }
     

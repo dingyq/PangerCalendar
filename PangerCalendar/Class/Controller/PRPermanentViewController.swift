@@ -22,8 +22,8 @@ class PRPermanentViewController: PRBaseViewController, PRCalendarViewDelegate, P
         return pickView
     }()
     
-    private lazy var addNoticeVC: PRNoticeAddViewController = {
-        var tmpAddVC: PRNoticeAddViewController = PRNoticeAddViewController()
+    private lazy var addNoticeVC: PRMissionAddViewController = {
+        var tmpAddVC = PRMissionAddViewController()
         return tmpAddVC
     }()
     

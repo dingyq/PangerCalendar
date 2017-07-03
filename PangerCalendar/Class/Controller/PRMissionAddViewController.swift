@@ -1,5 +1,5 @@
 //
-//  PRNoticeAddViewController.swift
+//  PRMissionAddViewController.swift
 //  PangerCalendar
 //
 //  Created by bigqiang on 2017/6/24.
@@ -8,34 +8,34 @@
 
 import UIKit
 
-enum PRMissonItemViewType: Int {
+enum PRMissionItemViewType: Int {
     case none = 0
     case duty = 1
     case time = 2
 }
 
 
-protocol PRMissonItemViewDelegate: NSObjectProtocol {
-    func pickTargetData(sender: PRMissonItemView)
-    func clearTargetData(sender: PRMissonItemView)
+protocol PRMissionItemViewDelegate: NSObjectProtocol {
+    func pickTargetData(sender: PRMissionItemView)
+    func clearTargetData(sender: PRMissionItemView)
 }
 
-class PRMissonItemView: PRBaseView {
-    weak var delegate: PRMissonItemViewDelegate?
-    var type: PRMissonItemViewType
+class PRMissionItemView: PRBaseView {
+    weak var delegate: PRMissionItemViewDelegate?
+    var type: PRMissionItemViewType
     private var tipLabel: PRBaseLabel!
     private var tipImageView: PRBaseImageView!
     private var clearButton: PRBaseButton!
     
     init(frame: CGRect, imageName: String) {
-        self.type = PRMissonItemViewType.none
+        self.type = PRMissionItemViewType.none
         super.init(frame: frame)
         self.setupViews()
         self.updateTipImage(imageName)
     }
     
     override init(frame: CGRect) {
-        self.type = PRMissonItemViewType.none
+        self.type = PRMissionItemViewType.none
         super.init(frame: frame)
         self.setupViews()
     }
@@ -137,7 +137,7 @@ class PRMissonItemView: PRBaseView {
 }
 
 
-class PRNoticeAddViewController: PRBaseViewController, PRDatePickViewDelegate, PRMissonItemViewDelegate {
+class PRMissionAddViewController: PRBaseViewController, PRDatePickViewDelegate, PRMissionItemViewDelegate {
     private var _misstionDate: Date?
     var misstionDate: Date? {
         set(newDate) {
@@ -169,8 +169,8 @@ class PRNoticeAddViewController: PRBaseViewController, PRDatePickViewDelegate, P
     }
     
     private var contentTextField: PRBaseTextField!
-    private var dutyTipView: PRMissonItemView!
-    private var timeTipView: PRMissonItemView!
+    private var dutyTipView: PRMissionItemView!
+    private var timeTipView: PRMissionItemView!
     
     private lazy var datePickerView: PRDatePickView = {
         var pickView = PRDatePickView(frame: UIScreen.main.bounds)
@@ -180,7 +180,7 @@ class PRNoticeAddViewController: PRBaseViewController, PRDatePickViewDelegate, P
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "新建提醒"
+        self.title = NSLocalizedString("新建提醒", comment: "")
         self.resetLeftNavigationItemForDismiss()
         self.setupViews()
         
@@ -243,7 +243,7 @@ class PRNoticeAddViewController: PRBaseViewController, PRDatePickViewDelegate, P
         
 
         let lineHeight: CGFloat = 40
-        let dutyTip = PRMissonItemView(frame: CGRect.zero, imageName: "account_filling")
+        let dutyTip = PRMissionItemView(frame: CGRect.zero, imageName: "account_filling")
         contentView.addSubview(dutyTip)
         dutyTip.type = .duty
         dutyTip.delegate = self;
@@ -255,7 +255,7 @@ class PRNoticeAddViewController: PRBaseViewController, PRDatePickViewDelegate, P
         self.dutyTipView = dutyTip
         
         // set up time view
-        self.timeTipView = PRMissonItemView(frame: CGRect.zero, imageName: "time_clock")
+        self.timeTipView = PRMissionItemView(frame: CGRect.zero, imageName: "time_clock")
         contentView.addSubview(self.timeTipView!)
         self.timeTipView.type = .time
         self.timeTipView.delegate = self;
@@ -290,8 +290,8 @@ class PRNoticeAddViewController: PRBaseViewController, PRDatePickViewDelegate, P
             return
         }
         let mission = PRMissionNoticeModel(content: content!, self.misstionDate!, self.dutyPerson)
-        let result = PRUserData.add(misson: mission)
-        PRMissonsDataMgr.syncData(dataArr: [mission.serializeToDictionary()])
+        let result = PRUserData.add(mission: mission)
+        PRMissionsDataMgr.syncData(dataArr: [mission.serializeToDictionary()])
         if result {
             self.contentTextField.text = ""
             self.dismissSelf()
@@ -304,8 +304,8 @@ class PRNoticeAddViewController: PRBaseViewController, PRDatePickViewDelegate, P
         self.misstionDate = date
     }
     
-    // MARK: Protocol Method(PRMissonItemViewDelegate)
-    func pickTargetData(sender: PRMissonItemView) {
+    // MARK: Protocol Method(PRMissionItemViewDelegate)
+    func pickTargetData(sender: PRMissionItemView) {
         self.view.endEditing(true)
         
         if sender == self.timeTipView {
@@ -316,7 +316,7 @@ class PRNoticeAddViewController: PRBaseViewController, PRDatePickViewDelegate, P
         
     }
     
-    func clearTargetData(sender: PRMissonItemView) {
+    func clearTargetData(sender: PRMissionItemView) {
         self.view.endEditing(true)
         
         if sender == self.timeTipView {

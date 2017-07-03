@@ -28,13 +28,13 @@ private func randomInRange(range: Range<Int64>) -> Int64 {
     return Int64(arc4random_uniform(count)) + range.lowerBound
 }
 
-private func randomMissonId() -> Int64 {
+private func randomMissionId() -> Int64 {
     return randomInRange(range: 100000..<9999999)
 }
 
 
 class PRMissionNoticeModel: NSObject {
-    var missonId:Int64
+    var missionId:Int64
     var sortId: Int64
     var type: PRMissionType
     var state: PRMissionState
@@ -46,7 +46,7 @@ class PRMissionNoticeModel: NSObject {
     var dutyPerson:PRUserModel?
     
     init(_ dic: NSDictionary) {
-        self.missonId = Int64("\(dic.object(forKey: "missonId")!)")!
+        self.missionId = Int64("\(dic.object(forKey: "missionId")!)")!
         self.sortId = Int64("\(dic.object(forKey: "sortId")!)")!
         self.type = PRMissionType(rawValue: Int("\(dic.object(forKey: "type")!)")!)!
         self.state = PRMissionState(rawValue: Int("\(dic.object(forKey: "state")!)")!)!
@@ -64,7 +64,7 @@ class PRMissionNoticeModel: NSObject {
     }
     
     init(content: String, _ time: Date, _ duty: PRUserModel?) {
-        self.missonId = randomMissonId()
+        self.missionId = randomMissionId()
         self.sortId = -1
         self.type = .common
         self.state = .new
@@ -78,7 +78,7 @@ class PRMissionNoticeModel: NSObject {
     }
     
     init(missionId: Int64, content: String, _ time: Date) {
-        self.missonId = missionId
+        self.missionId = missionId
         self.content = content
         self.sortId = -1
         self.type = .common
@@ -93,13 +93,13 @@ class PRMissionNoticeModel: NSObject {
  
     override var description: String {
         let date = Date(timeIntervalSince1970: self.createTime)
-        return "missonId=\(missonId) content=\(String(describing: content)) time=\(String(describing: date.yyyyMDDStr()))"
+        return "missionId=\(missionId) content=\(String(describing: content)) time=\(String(describing: date.yyyyMDDStr()))"
     }
     
     func serializeToDictionary() -> NSDictionary {
         
         let tmpDic = NSMutableDictionary()
-        tmpDic.setValue(NSNumber(value: self.missonId), forKey: "missonId")
+        tmpDic.setValue(NSNumber(value: self.missionId), forKey: "missionId")
         tmpDic.setValue(NSNumber(value: self.sortId), forKey: "sortId")
         tmpDic.setValue(NSNumber(value: self.type.rawValue), forKey: "type")
         tmpDic.setValue(NSNumber(value: self.state.rawValue), forKey: "state")

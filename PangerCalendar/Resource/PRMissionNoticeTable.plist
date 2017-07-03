@@ -3,12 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>PrimaryKey</key>
-	<string>missonId</string>
+	<string>missionId</string>
 	<key>TableName</key>
-	<string>T_MissonNotice</string>
+	<string>T_MissionNotice</string>
 	<key>OCType</key>
 	<dict>
-		<key>missonId</key>
+		<key>missionId</key>
 		<string>NSNumber</string>
 		<key>sortId</key>
 		<string>NSNumber</string>
@@ -33,7 +33,7 @@
 	</dict>
 	<key>DBType</key>
 	<dict>
-		<key>missonId</key>
+		<key>missionId</key>
 		<string>INTEGER</string>
 		<key>sortId</key>
 		<string>INTEGER</string>

@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let titleArr = ["日历", "提醒", "我的"]
         let tabBarController = PRTabBarController()
         let vc1 = PRPermanentViewController()
-        let vc2 = PRNoticeListViewController()
+        let vc2 = PRMissionListViewController()
 //        let vc3 = PRAlmanacViewController() // 黄历
         let vc3 = PRMineViewController()
         

@@ -65,7 +65,7 @@ private class PRMineTVCell: PRBaseTableViewCell {
 class PRMineViewController: PRBaseViewController, UITableViewDelegate, UITableViewDataSource {
     
     private var mineListTV: PRBaseTableView!
-    private var mineListArr: Array<Array<PRMineListItem>>!
+    private var mineListArr: Array<PRMineListItem>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,13 +76,9 @@ class PRMineViewController: PRBaseViewController, UITableViewDelegate, UITableVi
         assert(path != nil, "缺失配置文件: MeConfigList.plist")
         let configArr = NSArray(contentsOfFile: path!)
         
-        for subArr in configArr! {
-            var tmpArr = [PRMineListItem]()
-            for dic in subArr as! NSArray {
-                let model = PRMineListItem(dic: dic as! NSDictionary)
-                tmpArr.append(model)
-            }
-            self.mineListArr.append(tmpArr)
+        for dic in configArr! {
+            let model = PRMineListItem(dic: dic as! NSDictionary)
+            self.mineListArr.append(model)
         }
         
         self.setupViews()
@@ -112,12 +108,12 @@ class PRMineViewController: PRBaseViewController, UITableViewDelegate, UITableVi
         listTV.dataSource = self
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return self.mineListArr.count
-    }
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return self.mineListArr.count
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.mineListArr[section].count
+        return self.mineListArr.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -130,13 +126,13 @@ class PRMineViewController: PRBaseViewController, UITableViewDelegate, UITableVi
         if cell == nil {
             cell = PRMineTVCell(style: .default, reuseIdentifier: identifier)
         }
-        cell!.bindData(model: self.mineListArr[indexPath.section][indexPath.row])
+        cell!.bindData(model: self.mineListArr[indexPath.row])
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        let item: PRMineListItem = self.mineListArr[indexPath.section][indexPath.row]
+        let item: PRMineListItem = self.mineListArr[indexPath.row]
         if item.hasMoreData {
             let vc = NSObject.fromClassName(className: item.controllerClassName)
             vc.title = item.title

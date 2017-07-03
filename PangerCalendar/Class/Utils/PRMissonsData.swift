@@ -1,5 +1,5 @@
 //
-//  PRMissonsData.swift
+//  PRMissionsData.swift
 //  PangerCalendar
 //
 //  Created by yongqiang on 2017/6/27.
@@ -8,11 +8,11 @@
 
 import UIKit
 
-let PRMissonsDataMgr = PRMissonsData()
+let PRMissionsDataMgr = PRMissionsData()
 
 fileprivate let kPageSize = 10
 
-class PRMissonsData: NSObject {
+class PRMissionsData: NSObject {
 
     private var primaryKey: String
     private var tableName: String
@@ -20,8 +20,8 @@ class PRMissonsData: NSObject {
     private var dbType: NSDictionary
     
     override init() {
-        let path = Bundle.main.path(forResource: "PRMissonNoticeTable", ofType: "plist")
-        assert(path != nil, "缺失配置文件: PRMissonNoticeTable.plist")
+        let path = Bundle.main.path(forResource: "PRMissionNoticeTable", ofType: "plist")
+        assert(path != nil, "缺失配置文件: PRMissionNoticeTable.plist")
         let configDic = NSDictionary(contentsOfFile: path!)
         primaryKey = configDic!.value(forKey: "PrimaryKey") as! String
         tableName = configDic!.value(forKey: "TableName") as! String

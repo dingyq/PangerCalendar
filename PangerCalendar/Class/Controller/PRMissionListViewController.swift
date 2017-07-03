@@ -1,5 +1,5 @@
 //
-//  PRNoticeListViewController.swift
+//  PRMissionListViewController.swift
 //  PangerCalendar
 //
 //  Created by bigqiang on 2017/3/25.
@@ -61,9 +61,13 @@ class PRMissionTVCell: PRBaseTableViewCell {
 }
 
 
-class PRNoticeListViewController: PRBaseViewController, UITableViewDelegate, UITableViewDataSource {
+class PRMissionListViewController: PRBaseViewController, UITableViewDelegate, UITableViewDataSource {
 
     private var noticeListTV: PRBaseTableView!
+    private lazy var missionDetailVC: PRMissionDetailViewController = {
+        var tmpMissionVC = PRMissionDetailViewController()
+        return tmpMissionVC
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,7 +112,7 @@ class PRNoticeListViewController: PRBaseViewController, UITableViewDelegate, UIT
 
     // MARK: Protocol Method(UITableViewDelegate/UITableViewDataSource)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return PRUserData.missonList.count
+        return PRUserData.missionList.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -125,8 +129,13 @@ class PRNoticeListViewController: PRBaseViewController, UITableViewDelegate, UIT
         if cell == nil {
             cell = PRMissionTVCell(style: .default, reuseIdentifier: identifier)
         }
-        cell!.bindData(model: PRUserData.missonList[indexPath.row])
+        cell!.bindData(model: PRUserData.missionList[indexPath.row])
         return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        self.navigationController?.pushViewController(self.missionDetailVC, animated: true)
     }
     
 }
