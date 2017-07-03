@@ -181,8 +181,7 @@ class PRNoticeAddViewController: PRBaseViewController, PRDatePickViewDelegate, P
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "新建提醒"
-        self.view.backgroundColor = PRCurrentTheme().bgColor
-        self.resetNavigationItem()
+        self.resetLeftNavigationItemForDismiss()
         self.setupViews()
         
         self.timeTipView?.updateTipText(self.misstionDate?.yyyyMDDStr())
@@ -283,26 +282,6 @@ class PRNoticeAddViewController: PRBaseViewController, PRDatePickViewDelegate, P
         }
     }
     
-    private func resetNavigationItem() {
-        let backBtn = PRBaseButton()
-        backBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 40)
-        backBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-        backBtn.setImage(PRThemedImage(name:"back_button_nor"), for: .normal)
-        backBtn.setImage(PRThemedImage(name:"back_button_sel"), for: .highlighted)
-//        backBtn.setTitleColor(PRCurrentTheme().blackCustomColor, for: .normal)
-//        backBtn.setTitleColor(PRCurrentTheme().blackCustomColor, for: .highlighted)
-        backBtn.addTarget(self, action: #selector(self.backButtonClicked), for: .touchUpInside)
-        
-        let btnItem = UIBarButtonItem(customView: backBtn)
-        self.navigationItem.leftBarButtonItem = btnItem
-    }
-    
-    // MARK: Private Method(Action)
-    
-    @objc private func backButtonClicked(sender: UIButton?) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
     func addNoticeButtonClicked(sender: UIButton) {
         self.view.endEditing(true)
         
@@ -315,7 +294,7 @@ class PRNoticeAddViewController: PRBaseViewController, PRDatePickViewDelegate, P
         PRMissonsDataMgr.syncData(dataArr: [mission.serializeToDictionary()])
         if result {
             self.contentTextField.text = ""
-            self.backButtonClicked(sender: nil)
+            self.dismissSelf()
         }
         
     }

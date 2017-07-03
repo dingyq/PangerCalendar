@@ -12,7 +12,8 @@ class PRAboutViewController: PRBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = NSLocalizedString("关于", comment: "")
+        self.resetLeftNavigationItemForPop()
         // Do any additional setup after loading the view.
     }
 

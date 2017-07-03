@@ -10,6 +10,8 @@
 			<string>设置</string>
 			<key>ControllerClassName</key>
 			<string>PRSettingViewController</string>
+			<key>hasMoreData</key>
+			<true/>
 		</dict>
 		<dict>
 			<key>CellImage</key>
@@ -18,6 +20,18 @@
 			<string>关于</string>
 			<key>ControllerClassName</key>
 			<string>PRAboutViewController</string>
+			<key>hasMoreData</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>CellImage</key>
+			<string>link_nor</string>
+			<key>CellTitle</key>
+			<string>邀请成员</string>
+			<key>ControllerClassName</key>
+			<string></string>
+			<key>hasMoreData</key>
+			<false/>
 		</dict>
 	</array>
 </array>

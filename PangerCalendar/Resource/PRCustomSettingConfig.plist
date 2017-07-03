@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<array>
+		<dict>
+            <key>uuid</key>
+            <string>AE46FFFF-9032-49DA-8C2B-17C27A40DCDC</string>
+			<key>title</key>
+			<string>生日</string>
+			<key>defaultValue</key>
+			<true/>
+		</dict>
+		<dict>
+            <key>uuid</key>
+            <string>7988507F-67CE-46B6-9C67-EAD04D99FA7B</string>
+			<key>title</key>
+			<string>节假日</string>
+			<key>defaultValue</key>
+			<true/>
+		</dict>
+		<dict>
+            <key>uuid</key>
+            <string>B6F74F9F-4D61-4495-95D8-FFBD81C12580</string>
+			<key>title</key>
+			<string>日常任务</string>
+			<key>defaultValue</key>
+			<true/>
+		</dict>
+	</array>
+	<array>
+    </array>
+</array>
+</plist>

@@ -13,6 +13,7 @@ private class PRMineTVCell: PRBaseTableViewCell {
     
     private var tipImageView: PRBaseImageView!
     private var titleLabel: PRBaseLabel!
+    private var moreImageView: PRBaseImageView!
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -51,14 +52,13 @@ private class PRMineTVCell: PRBaseTableViewCell {
             make?.width.and().height().setOffset(20)
         }
         imageV1.image = PRThemedImage(name: "more_data_nor")
+        self.moreImageView = imageV1
     }
     
     func bindData(model: PRMineListItem!) {
-        //        let str = "\(model.content ?? "")  \(model.dutyPerson?.userName ?? "") \(model.time?.mDDStr() ?? "")"
         self.tipImageView.image = PRThemedImage(name: model.imageName)
         self.titleLabel.text = model.title
-//        self.dutyLabel.text = model.dutyPerson?.userName
-//        self.timeLabel.text = Date(timeIntervalSince1970: model.createTime).mDDStr()
+        self.moreImageView.isHidden = !model.hasMoreData
     }
 }
 
@@ -125,7 +125,7 @@ class PRMineViewController: PRBaseViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let identifier = "missionCellView"
+        let identifier = "mineCellView"
         var cell: PRMineTVCell? = tableView.dequeueReusableCell(withIdentifier: identifier) as? PRMineTVCell
         if cell == nil {
             cell = PRMineTVCell(style: .default, reuseIdentifier: identifier)
@@ -137,12 +137,14 @@ class PRMineViewController: PRBaseViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         let item: PRMineListItem = self.mineListArr[indexPath.section][indexPath.row]
-        
-        let className = Bundle.main.infoDictionary!["CFBundleName"] as! String + "." + item.controllerClassName
-        let aClass = NSClassFromString(className) as! UIViewController.Type
-        let vc = aClass.init()
-        vc.title = item.title
-        self.navigationController?.pushViewController(vc, animated: true)
+        if item.hasMoreData {
+            let vc = NSObject.fromClassName(className: item.controllerClassName)
+            vc.title = item.title
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            
+        }
     }
 
 }

@@ -12,12 +12,13 @@ class PRMineListItem: NSObject {
     var imageName: String
     var title: String
     var controllerClassName: String
+    var hasMoreData: Bool
     
     init(dic: NSDictionary) {
         self.imageName = dic.object(forKey: "CellImage") as! String
         self.title = dic.object(forKey: "CellTitle") as! String
         self.controllerClassName = dic.object(forKey: "ControllerClassName") as! String
-        
+        self.hasMoreData = dic.object(forKey: "hasMoreData") as! Bool
         super.init()
     }
 

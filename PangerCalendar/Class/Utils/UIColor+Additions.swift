@@ -1,5 +1,5 @@
 //
-//  UIColor+Category.swift
+//  UIColor+Additions.swift
 //  PangerCalendar
 //
 //  Created by bigqiang on 2017/3/26.

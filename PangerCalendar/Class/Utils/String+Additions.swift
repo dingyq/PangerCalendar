@@ -1,5 +1,5 @@
 //
-//  String+Category.swift
+//  String+Additions.swift
 //  PangerCalendar
 //
 //  Created by yongqiang on 2017/6/28.

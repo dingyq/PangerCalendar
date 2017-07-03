@@ -1,5 +1,5 @@
 //
-//  NSObject+Category.swift
+//  NSObject+Additions.swift
 //  PangerCalendar
 //
 //  Created by yongqiang on 2017/7/2.
@@ -10,7 +10,7 @@ import Foundation
 
 extension NSObject {
     
-    class func fromClassName(className : String) -> NSObject {
+    class func fromClassName(className : String) -> UIViewController {
         let className = Bundle.main.infoDictionary!["CFBundleName"] as! String + "." + className
         let aClass = NSClassFromString(className) as! UIViewController.Type
         return aClass.init()

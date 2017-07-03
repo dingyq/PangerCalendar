@@ -31,7 +31,7 @@ class PRPermanentViewController: PRBaseViewController, PRCalendarViewDelegate, P
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.title = NSLocalizedString("日历", comment: "")
-        self.resetNavigationItem()
+        self.resetNavigationTitle()
         //        self.navigationController?.navigationItem.titleView = PRCurrentMonthTitleView()
         
         /// sqlite
@@ -90,7 +90,7 @@ class PRPermanentViewController: PRBaseViewController, PRCalendarViewDelegate, P
     }
     
     // MARK: Private Method
-    private func resetNavigationItem() {
+    private func resetNavigationTitle() {
         let width = UIScreen.main.bounds.size.width - 100
         self.navigationTitleView = PRCurrentMonthTitleView(frame:CGRect(x: 0, y: 0, width: width, height: 44))
         self.navigationItem.titleView = self.navigationTitleView
