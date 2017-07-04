@@ -45,6 +45,8 @@
 		91D4C5091F0A2EAD009A000D /* PRCustomSettingConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 91D4C5081F0A2EAD009A000D /* PRCustomSettingConfig.plist */; };
 		91D4C50B1F0A3BF3009A000D /* PRSettingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D4C50A1F0A3BF3009A000D /* PRSettingItem.swift */; };
 		91D4C50D1F0A6B05009A000D /* UserDefaults+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D4C50C1F0A6B05009A000D /* UserDefaults+Additions.swift */; };
+		91D4C5101F0BB94D009A000D /* button_check@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D4C50E1F0BB94C009A000D /* button_check@3x.png */; };
+		91D4C5111F0BB94D009A000D /* button_uncheck@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D4C50F1F0BB94D009A000D /* button_uncheck@3x.png */; };
 		9B6359689EDDD23F4EA9321E /* Pods_PangerCalendarUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5883086E00ACC3325256CA30 /* Pods_PangerCalendarUITests.framework */; };
 		E30612181E059CCC00EE83FC /* PRCalendarMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30612171E059CCC00EE83FC /* PRCalendarMonth.swift */; };
 		E30612251E05B4F200EE83FC /* CalendarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = E306121A1E05B4F200EE83FC /* CalendarBackground.png */; };
@@ -164,6 +166,8 @@
 		91D4C5081F0A2EAD009A000D /* PRCustomSettingConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PRCustomSettingConfig.plist; sourceTree = "<group>"; };
 		91D4C50A1F0A3BF3009A000D /* PRSettingItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRSettingItem.swift; sourceTree = "<group>"; };
 		91D4C50C1F0A6B05009A000D /* UserDefaults+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Additions.swift"; sourceTree = "<group>"; };
+		91D4C50E1F0BB94C009A000D /* button_check@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_check@3x.png"; sourceTree = "<group>"; };
+		91D4C50F1F0BB94D009A000D /* button_uncheck@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_uncheck@3x.png"; sourceTree = "<group>"; };
 		B58D295B3B4041CFCACECC67 /* Pods_PangerCalendarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PangerCalendarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8EC0B514E480A8B103CF244 /* Pods-PangerCalendarUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PangerCalendarUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PangerCalendarUITests/Pods-PangerCalendarUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E30612171E059CCC00EE83FC /* PRCalendarMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRCalendarMonth.swift; sourceTree = "<group>"; };
@@ -400,6 +404,8 @@
 		E36A185D1E8655CD006195E3 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				91D4C50E1F0BB94C009A000D /* button_check@3x.png */,
+				91D4C50F1F0BB94D009A000D /* button_uncheck@3x.png */,
 				919209C51F02747000CA5243 /* add_notice_button_nor@3x.png */,
 				919209C61F02747000CA5243 /* add_notice_button_sel@3x.png */,
 				9163DD3F1F0128DF00E709B8 /* close_button_nor@3x.png */,
@@ -750,6 +756,7 @@
 				91D4C4DA1F091A93009A000D /* account_about_sel@3x.png in Resources */,
 				E36A187C1E87758A006195E3 /* CalendarDayTodayMark.png in Resources */,
 				91D4C4C91F0911FD009A000D /* account_set_nor@3x.png in Resources */,
+				91D4C5111F0BB94D009A000D /* button_uncheck@3x.png in Resources */,
 				91D4C4C31F091170009A000D /* tab_mine_sel@3x.png in Resources */,
 				919209C71F02747000CA5243 /* add_notice_button_nor@3x.png in Resources */,
 				91D4C4C81F0911FD009A000D /* account_set_sel@3x.png in Resources */,
@@ -766,6 +773,7 @@
 				91D4C4BB1F090AD0009A000D /* MeConfigList.plist in Resources */,
 				E30612261E05B4F200EE83FC /* CalendarDaySelected.png in Resources */,
 				91D4C4FB1F0A1FA2009A000D /* link_sel@3x.png in Resources */,
+				91D4C5101F0BB94D009A000D /* button_check@3x.png in Resources */,
 				E30612251E05B4F200EE83FC /* CalendarBackground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

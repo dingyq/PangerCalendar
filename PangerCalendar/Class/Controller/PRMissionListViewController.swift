@@ -10,9 +10,11 @@ import UIKit
 
 class PRMissionTVCell: PRBaseTableViewCell {
     
+    private var checkButton: PRBaseButton!
     private var contentLabel: PRBaseLabel!
     private var timeLabel: PRBaseLabel!
     private var dutyLabel: PRBaseLabel!
+    private var missionModel: PRMissionNoticeModel?
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -24,10 +26,22 @@ class PRMissionTVCell: PRBaseTableViewCell {
     }
     
     private func setupViews() {
+        let btn = PRBaseButton()
+        self.addSubview(btn)
+        btn.setImage(PRThemedImage(name: "button_uncheck"), for: .normal)
+        btn.setImage(PRThemedImage(name: "button_uncheck"), for: .highlighted)
+        btn.addTarget(self, action: #selector(self.checkButtonClicked), for: .touchUpInside)
+        btn.mas_makeConstraints { (make) in
+            make?.left.setOffset(10)
+            make?.centerY.setOffset(0)
+            make?.width.and().height().setOffset(20)
+        }
+        self.checkButton = btn
+        
         let label = PRBaseLabel()
         self.addSubview(label)
         label.mas_makeConstraints { (make) in
-            make?.left.setOffset(10)
+            make?.left.equalTo()(btn.mas_right)?.setOffset(6)
             make?.centerY.setOffset(0)
             make?.width.mas_lessThanOrEqualTo()(240)
         }
@@ -50,13 +64,50 @@ class PRMissionTVCell: PRBaseTableViewCell {
         }
         self.timeLabel = label2
         
+        let borderView = PRBorderView()
+        self.addSubview(borderView)
+        borderView.mas_makeConstraints { (make) in
+            make?.left.setOffset(10)
+            make?.right.setOffset(0)
+            make?.height.setOffset(1)
+            make?.bottom.setOffset(0)
+        }
+        
+    }
+    
+    @objc private func checkButtonClicked(sender: PRBaseButton) {
+        if self.missionModel != nil {
+            switch self.missionModel!.state {
+            case .new:
+                self.missionModel!.state = .done
+                break
+            case .doing:
+                self.missionModel!.state = .done
+                break
+            case .done:
+                self.missionModel!.state = .doing
+                break
+            }
+        }
+        self.updateCheckButtonState()
+    }
+    
+    private func updateCheckButtonState() {
+        if self.missionModel?.state == .done {
+            self.checkButton.setImage(PRThemedImage(name: "button_check"), for: .normal)
+            self.checkButton.setImage(PRThemedImage(name: "button_check"), for: .highlighted)
+        } else {
+            self.checkButton.setImage(PRThemedImage(name: "button_uncheck"), for: .normal)
+            self.checkButton.setImage(PRThemedImage(name: "button_uncheck"), for: .highlighted)
+        }
     }
  
     func bindData(model: PRMissionNoticeModel!) {
-//        let str = "\(model.content ?? "")  \(model.dutyPerson?.userName ?? "") \(model.time?.mDDStr() ?? "")"
+        self.missionModel = model
         self.contentLabel.text = model.content
         self.dutyLabel.text = model.dutyPerson?.userName
         self.timeLabel.text = Date(timeIntervalSince1970: model.createTime).mDDStr()
+        self.updateCheckButtonState()
     }
 }
 
@@ -64,6 +115,12 @@ class PRMissionTVCell: PRBaseTableViewCell {
 class PRMissionListViewController: PRBaseViewController, UITableViewDelegate, UITableViewDataSource {
 
     private var noticeListTV: PRBaseTableView!
+    
+    private lazy var addMissionNoticeVC: PRMissionAddViewController = {
+        var tmpAddVC = PRMissionAddViewController()
+        return tmpAddVC
+    }()
+    
     private lazy var missionDetailVC: PRMissionDetailViewController = {
         var tmpMissionVC = PRMissionDetailViewController()
         return tmpMissionVC
@@ -86,6 +143,18 @@ class PRMissionListViewController: PRBaseViewController, UITableViewDelegate, UI
     }
     
     private func setupViews() {
+        let addBtn = PRBaseButton()
+        addBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 40)
+        addBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        addBtn.setImage(PRThemedImage(name:"add_notice_button_nor"), for: .normal)
+        addBtn.setImage(PRThemedImage(name:"add_notice_button_sel"), for: .highlighted)
+        addBtn.setTitleColor(UIColor.black, for: .normal)
+        addBtn.setTitleColor(UIColor.black, for: .highlighted)
+        addBtn.addTarget(self, action: #selector(self.addButtonClicked), for: .touchUpInside)
+        
+        let btnItem = UIBarButtonItem(customView: addBtn)
+        self.navigationItem.rightBarButtonItem = btnItem
+        
         let listTV = PRBaseTableView()
         self.noticeListTV = listTV
         self.view.addSubview(listTV)
@@ -100,15 +169,11 @@ class PRMissionListViewController: PRBaseViewController, UITableViewDelegate, UI
     }
 
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // MARK: Private Method (Action)
+    @objc private func addButtonClicked(sender: UIButton) {
+        let navController = PRNavigationController(rootViewController: self.addMissionNoticeVC)
+        self.present(navController, animated: true, completion: nil)
     }
-    */
 
     // MARK: Protocol Method(UITableViewDelegate/UITableViewDataSource)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -116,7 +181,7 @@ class PRMissionListViewController: PRBaseViewController, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 30.0
+        return 36.0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

@@ -103,14 +103,16 @@ class PRPermanentViewController: PRBaseViewController, PRCalendarViewDelegate, P
         addBtn.setImage(PRThemedImage(name:"add_notice_button_sel"), for: .highlighted)
         addBtn.setTitleColor(UIColor.black, for: .normal)
         addBtn.setTitleColor(UIColor.black, for: .highlighted)
-        addBtn.addTarget(self, action: #selector(addButtonClicked), for: .touchUpInside)
+        addBtn.addTarget(self, action: #selector(self.addButtonClicked), for: .touchUpInside)
         
         let btnItem = UIBarButtonItem(customView: addBtn)
         self.navigationItem.rightBarButtonItem = btnItem
     }
     
     // MARK: Public Method
-    func addButtonClicked(sender: UIButton) {
+    
+    // MARK: Private Method (Action)
+    @objc private func addButtonClicked(sender: UIButton) {
         self.addNoticeVC.misstionDate = self.calendarView.selectedDate
         self.addNoticeVC.dutyPerson = PRUserData.profile
         let navController = PRNavigationController(rootViewController: self.addNoticeVC)
