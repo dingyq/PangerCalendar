@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		26EF798A7C616D6BC1825FCE /* Pods_PangerCalendarTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58D295B3B4041CFCACECC67 /* Pods_PangerCalendarTests.framework */; };
+		912E061B1F0E3E9100FAAF6E /* button_misson_state_doing@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 912E06171F0E3E9100FAAF6E /* button_misson_state_doing@3x.png */; };
+		912E061C1F0E3E9100FAAF6E /* button_misson_state_done@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 912E06181F0E3E9100FAAF6E /* button_misson_state_done@3x.png */; };
+		912E061D1F0E3E9100FAAF6E /* button_misson_state_fresh@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 912E06191F0E3E9100FAAF6E /* button_misson_state_fresh@3x.png */; };
+		912E061E1F0E3E9100FAAF6E /* button_misson_state_timeout@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 912E061A1F0E3E9100FAAF6E /* button_misson_state_timeout@3x.png */; };
+		912E06201F0E80D100FAAF6E /* PRMissionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912E061F1F0E80D100FAAF6E /* PRMissionDetailViewController.swift */; };
 		913A50D51F0100A9002757AD /* PRBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913A50D41F0100A9002757AD /* PRBaseView.swift */; };
 		9163DD411F0128DF00E709B8 /* close_button_nor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9163DD3F1F0128DF00E709B8 /* close_button_nor@3x.png */; };
 		9163DD421F0128DF00E709B8 /* close_button_sel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9163DD401F0128DF00E709B8 /* close_button_sel@3x.png */; };
@@ -45,8 +50,6 @@
 		91D4C5091F0A2EAD009A000D /* PRCustomSettingConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 91D4C5081F0A2EAD009A000D /* PRCustomSettingConfig.plist */; };
 		91D4C50B1F0A3BF3009A000D /* PRSettingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D4C50A1F0A3BF3009A000D /* PRSettingItem.swift */; };
 		91D4C50D1F0A6B05009A000D /* UserDefaults+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D4C50C1F0A6B05009A000D /* UserDefaults+Additions.swift */; };
-		91D4C5101F0BB94D009A000D /* button_check@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D4C50E1F0BB94C009A000D /* button_check@3x.png */; };
-		91D4C5111F0BB94D009A000D /* button_uncheck@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91D4C50F1F0BB94D009A000D /* button_uncheck@3x.png */; };
 		9B6359689EDDD23F4EA9321E /* Pods_PangerCalendarUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5883086E00ACC3325256CA30 /* Pods_PangerCalendarUITests.framework */; };
 		E30612181E059CCC00EE83FC /* PRCalendarMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30612171E059CCC00EE83FC /* PRCalendarMonth.swift */; };
 		E30612251E05B4F200EE83FC /* CalendarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = E306121A1E05B4F200EE83FC /* CalendarBackground.png */; };
@@ -67,7 +70,7 @@
 		E3237F871EFF8A70000A703F /* PRUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3237F861EFF8A70000A703F /* PRUserModel.swift */; };
 		E3237F891F0174D7000A703F /* PRBaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3237F881F0174D7000A703F /* PRBaseTableView.swift */; };
 		E3237F8B1F017E01000A703F /* PRMineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3237F8A1F017E01000A703F /* PRMineViewController.swift */; };
-		E3237F8E1F0AAD95000A703F /* PRMissionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3237F8D1F0AAD95000A703F /* PRMissionDetailViewController.swift */; };
+		E3237F8E1F0AAD95000A703F /* PRMissionEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3237F8D1F0AAD95000A703F /* PRMissionEditViewController.swift */; };
 		E3237F901F0AADB9000A703F /* PRTimeLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3237F8F1F0AADB9000A703F /* PRTimeLineViewController.swift */; };
 		E35460311DC5FDB800C05867 /* huangli.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = E35460301DC5FDB800C05867 /* huangli.sqlite */; };
 		E35460371DC7A08F00C05867 /* PRDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35460361DC7A08F00C05867 /* PRDatabaseManager.swift */; };
@@ -129,6 +132,11 @@
 		4FD3FFE20DB8262D94A722DA /* Pods-PangerCalendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PangerCalendar.release.xcconfig"; path = "Pods/Target Support Files/Pods-PangerCalendar/Pods-PangerCalendar.release.xcconfig"; sourceTree = "<group>"; };
 		5883086E00ACC3325256CA30 /* Pods_PangerCalendarUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PangerCalendarUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		67EBC8D145520D245DF22331 /* Pods-PangerCalendarUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PangerCalendarUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PangerCalendarUITests/Pods-PangerCalendarUITests.release.xcconfig"; sourceTree = "<group>"; };
+		912E06171F0E3E9100FAAF6E /* button_misson_state_doing@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_misson_state_doing@3x.png"; sourceTree = "<group>"; };
+		912E06181F0E3E9100FAAF6E /* button_misson_state_done@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_misson_state_done@3x.png"; sourceTree = "<group>"; };
+		912E06191F0E3E9100FAAF6E /* button_misson_state_fresh@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_misson_state_fresh@3x.png"; sourceTree = "<group>"; };
+		912E061A1F0E3E9100FAAF6E /* button_misson_state_timeout@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_misson_state_timeout@3x.png"; sourceTree = "<group>"; };
+		912E061F1F0E80D100FAAF6E /* PRMissionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRMissionDetailViewController.swift; sourceTree = "<group>"; };
 		913A50D41F0100A9002757AD /* PRBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRBaseView.swift; sourceTree = "<group>"; };
 		9163DD3F1F0128DF00E709B8 /* close_button_nor@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close_button_nor@3x.png"; sourceTree = "<group>"; };
 		9163DD401F0128DF00E709B8 /* close_button_sel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close_button_sel@3x.png"; sourceTree = "<group>"; };
@@ -166,8 +174,6 @@
 		91D4C5081F0A2EAD009A000D /* PRCustomSettingConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PRCustomSettingConfig.plist; sourceTree = "<group>"; };
 		91D4C50A1F0A3BF3009A000D /* PRSettingItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRSettingItem.swift; sourceTree = "<group>"; };
 		91D4C50C1F0A6B05009A000D /* UserDefaults+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Additions.swift"; sourceTree = "<group>"; };
-		91D4C50E1F0BB94C009A000D /* button_check@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_check@3x.png"; sourceTree = "<group>"; };
-		91D4C50F1F0BB94D009A000D /* button_uncheck@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_uncheck@3x.png"; sourceTree = "<group>"; };
 		B58D295B3B4041CFCACECC67 /* Pods_PangerCalendarTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PangerCalendarTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8EC0B514E480A8B103CF244 /* Pods-PangerCalendarUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PangerCalendarUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PangerCalendarUITests/Pods-PangerCalendarUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E30612171E059CCC00EE83FC /* PRCalendarMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRCalendarMonth.swift; sourceTree = "<group>"; };
@@ -189,7 +195,7 @@
 		E3237F861EFF8A70000A703F /* PRUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRUserModel.swift; sourceTree = "<group>"; };
 		E3237F881F0174D7000A703F /* PRBaseTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRBaseTableView.swift; sourceTree = "<group>"; };
 		E3237F8A1F017E01000A703F /* PRMineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRMineViewController.swift; sourceTree = "<group>"; };
-		E3237F8D1F0AAD95000A703F /* PRMissionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRMissionDetailViewController.swift; sourceTree = "<group>"; };
+		E3237F8D1F0AAD95000A703F /* PRMissionEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRMissionEditViewController.swift; sourceTree = "<group>"; };
 		E3237F8F1F0AADB9000A703F /* PRTimeLineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRTimeLineViewController.swift; sourceTree = "<group>"; };
 		E333A1FDD7A1C6F7CC1CAAD4 /* Pods-PangerCalendarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PangerCalendarTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PangerCalendarTests/Pods-PangerCalendarTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E35460301DC5FDB800C05867 /* huangli.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = huangli.sqlite; sourceTree = "<group>"; };
@@ -357,9 +363,10 @@
 		E3237F771EFE9AA8000A703F /* Notice */ = {
 			isa = PBXGroup;
 			children = (
+				912E061F1F0E80D100FAAF6E /* PRMissionDetailViewController.swift */,
 				E36A18491E864E11006195E3 /* PRMissionListViewController.swift */,
 				E3237F7C1EFE9BC1000A703F /* PRMissionAddViewController.swift */,
-				E3237F8D1F0AAD95000A703F /* PRMissionDetailViewController.swift */,
+				E3237F8D1F0AAD95000A703F /* PRMissionEditViewController.swift */,
 			);
 			name = Notice;
 			sourceTree = "<group>";
@@ -404,8 +411,10 @@
 		E36A185D1E8655CD006195E3 /* Image */ = {
 			isa = PBXGroup;
 			children = (
-				91D4C50E1F0BB94C009A000D /* button_check@3x.png */,
-				91D4C50F1F0BB94D009A000D /* button_uncheck@3x.png */,
+				912E06171F0E3E9100FAAF6E /* button_misson_state_doing@3x.png */,
+				912E06181F0E3E9100FAAF6E /* button_misson_state_done@3x.png */,
+				912E06191F0E3E9100FAAF6E /* button_misson_state_fresh@3x.png */,
+				912E061A1F0E3E9100FAAF6E /* button_misson_state_timeout@3x.png */,
 				919209C51F02747000CA5243 /* add_notice_button_nor@3x.png */,
 				919209C61F02747000CA5243 /* add_notice_button_sel@3x.png */,
 				9163DD3F1F0128DF00E709B8 /* close_button_nor@3x.png */,
@@ -745,6 +754,7 @@
 				E3237F801EFF661A000A703F /* back_button_nor@3x.png in Resources */,
 				91D4C4DB1F091A93009A000D /* account_about_nor@3x.png in Resources */,
 				919209C81F02747000CA5243 /* add_notice_button_sel@3x.png in Resources */,
+				912E061C1F0E3E9100FAAF6E /* button_misson_state_done@3x.png in Resources */,
 				91D4C4E31F091F93009A000D /* more_data_sel@3x.png in Resources */,
 				91D4C4C51F091170009A000D /* tab_remind_sel@3x.png in Resources */,
 				E3237F741EFE9816000A703F /* calendar_more_unfold@3x.png in Resources */,
@@ -752,15 +762,17 @@
 				919209E61F03860900CA5243 /* PRMissionNoticeTable.plist in Resources */,
 				E3237F751EFE9816000A703F /* calendar_more_fold@3x.png in Resources */,
 				91D4C4E21F091F93009A000D /* more_data_nor@3x.png in Resources */,
+				912E061D1F0E3E9100FAAF6E /* button_misson_state_fresh@3x.png in Resources */,
 				E376A0071DC5AEDA00C2B383 /* Assets.xcassets in Resources */,
 				91D4C4DA1F091A93009A000D /* account_about_sel@3x.png in Resources */,
+				912E061B1F0E3E9100FAAF6E /* button_misson_state_doing@3x.png in Resources */,
 				E36A187C1E87758A006195E3 /* CalendarDayTodayMark.png in Resources */,
 				91D4C4C91F0911FD009A000D /* account_set_nor@3x.png in Resources */,
-				91D4C5111F0BB94D009A000D /* button_uncheck@3x.png in Resources */,
 				91D4C4C31F091170009A000D /* tab_mine_sel@3x.png in Resources */,
 				919209C71F02747000CA5243 /* add_notice_button_nor@3x.png in Resources */,
 				91D4C4C81F0911FD009A000D /* account_set_sel@3x.png in Resources */,
 				91BF5EE41F0149E6007993E7 /* account_filling@3x.png in Resources */,
+				912E061E1F0E3E9100FAAF6E /* button_misson_state_timeout@3x.png in Resources */,
 				91D4C4C21F091170009A000D /* tab_mine_nor@3x.png in Resources */,
 				91D4C4C41F091170009A000D /* tab_remind_nor@3x.png in Resources */,
 				9163DD421F0128DF00E709B8 /* close_button_sel@3x.png in Resources */,
@@ -773,7 +785,6 @@
 				91D4C4BB1F090AD0009A000D /* MeConfigList.plist in Resources */,
 				E30612261E05B4F200EE83FC /* CalendarDaySelected.png in Resources */,
 				91D4C4FB1F0A1FA2009A000D /* link_sel@3x.png in Resources */,
-				91D4C5101F0BB94D009A000D /* button_check@3x.png in Resources */,
 				E30612251E05B4F200EE83FC /* CalendarBackground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -978,9 +989,10 @@
 				91D4C50D1F0A6B05009A000D /* UserDefaults+Additions.swift in Sources */,
 				E36A184A1E864E11006195E3 /* PRMissionListViewController.swift in Sources */,
 				E3EAAE501E01B12E001478E4 /* PRChineseFestivalsMgr.swift in Sources */,
-				E3237F8E1F0AAD95000A703F /* PRMissionDetailViewController.swift in Sources */,
+				E3237F8E1F0AAD95000A703F /* PRMissionEditViewController.swift in Sources */,
 				91BF5EDE1F013842007993E7 /* PRBaseTextField.swift in Sources */,
 				E3237F831EFF77C5000A703F /* PRUserInfo.swift in Sources */,
+				912E06201F0E80D100FAAF6E /* PRMissionDetailViewController.swift in Sources */,
 				E3237F7B1EFE9B9B000A703F /* PRBaseViewController.swift in Sources */,
 				E313E7911E8D5F2C005F5845 /* PRDatePickView.swift in Sources */,
 				919209F01F039F0000CA5243 /* String+Additions.swift in Sources */,

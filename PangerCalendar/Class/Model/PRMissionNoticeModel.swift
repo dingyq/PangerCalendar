@@ -38,9 +38,10 @@ class PRMissionNoticeModel: NSObject {
     var sortId: Int64
     var type: PRMissionType
     var state: PRMissionState
-    var content:String
-    var createTime:Double
-    var completeTime:Double
+    var content: String
+    var createTime: Double
+    var deadlineTime: Double
+    var completeTime: Double
     var createUserId: Int64
     var createUserName: String
     var dutyPerson:PRUserModel?
@@ -52,6 +53,7 @@ class PRMissionNoticeModel: NSObject {
         self.state = PRMissionState(rawValue: Int("\(dic.object(forKey: "state")!)")!)!
         self.content = dic.object(forKey: "content") as! String
         self.createTime = Double("\(dic.object(forKey: "createTime")!)")!
+        self.deadlineTime = Double("\(dic.object(forKey: "deadlineTime")!)")!
         self.completeTime = Double("\(dic.object(forKey: "completeTime")!)")!
         self.createUserId = Int64("\(dic.object(forKey: "createUserId")!)")!
         self.createUserName = dic.object(forKey: "createUserName") as! String
@@ -69,7 +71,8 @@ class PRMissionNoticeModel: NSObject {
         self.type = .common
         self.state = .new
         self.content = content
-        self.createTime = Double(time.timeIntervalSince1970)
+        self.createTime = Double(Date().timeIntervalSince1970)
+        self.deadlineTime = Double(time.timeIntervalSince1970)
         self.completeTime = 0
         self.createUserId = PRUserData.profile.userId
         self.createUserName = PRUserData.profile.userName
@@ -84,7 +87,8 @@ class PRMissionNoticeModel: NSObject {
         self.type = .common
         self.state = .new
         self.content = content
-        self.createTime = Double(time.timeIntervalSince1970)
+        self.createTime = Double(Date().timeIntervalSince1970)
+        self.deadlineTime = Double(time.timeIntervalSince1970)
         self.completeTime = 0
         self.createUserId = PRUserData.profile.userId
         self.createUserName = PRUserData.profile.userName
@@ -105,6 +109,7 @@ class PRMissionNoticeModel: NSObject {
         tmpDic.setValue(NSNumber(value: self.state.rawValue), forKey: "state")
         tmpDic.setValue(self.content, forKey: "content")
         tmpDic.setValue(NSNumber(value: self.createTime), forKey: "createTime")
+        tmpDic.setValue(NSNumber(value: self.deadlineTime), forKey: "deadlineTime")
         tmpDic.setValue(NSNumber(value: self.completeTime), forKey: "completeTime")
         tmpDic.setValue(NSNumber(value: self.createUserId), forKey: "createUserId")
         tmpDic.setValue(self.createUserName, forKey: "createUserName")

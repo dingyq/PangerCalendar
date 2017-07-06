@@ -9,10 +9,9 @@
 import Foundation
 
 extension Date {
-    
     static func appMinDate() -> Date {
         var components = DateComponents()
-        components.timeZone = TimeZone(abbreviation: "GMT")
+        components.timeZone = kPRTimeZone
         components.year = 1901
         components.month = 1
         components.day = 1
@@ -21,11 +20,27 @@ extension Date {
     
     static func appMaxDate() -> Date {
         var components = DateComponents()
-        components.timeZone = TimeZone(abbreviation: "GMT")
+        components.timeZone = kPRTimeZone
         components.year = 2100
         components.month = 12
         components.day = 31
         return Calendar.current.date(from: components)!
+    }
+    
+    func midnight() -> Date {
+        return self.assign(hour: 23, minute: 59)
+    }
+    
+    func assign(hour: Int, minute: Int) -> Date {
+        let selfCom = Calendar.current.dateComponents([.year, .month, .day], from: self)
+        var tempCom = DateComponents()
+        tempCom.timeZone = kPRTimeZone
+        tempCom.year = selfCom.year
+        tempCom.month = selfCom.month
+        tempCom.day = selfCom.day
+        tempCom.hour = hour
+        tempCom.minute = minute
+        return Calendar.current.date(from: tempCom)!
     }
     
     func weekOfYearStr() -> String {
@@ -40,6 +55,7 @@ extension Date {
         let calendar = Calendar.current
         let comps = calendar.dateComponents([Calendar.Component.weekday], from: self)
         let dateFmt = DateFormatter()
+        dateFmt.timeZone = kPRTimeZone
         let daySymbols = dateFmt.shortWeekdaySymbols!
         let weekday = (abs(comps.weekday! - 1))%7
         return daySymbols[weekday]
@@ -89,13 +105,15 @@ extension Date {
     
     func mDDStr() -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "M/dd"
+        formatter.timeZone = kPRTimeZone
+        formatter.dateFormat = "MM/dd"
         let strDate = formatter.string(from: self)
         return strDate
     }
     
     func yyyyMDDStr() -> String {
         let formatter = DateFormatter()
+        formatter.timeZone = kPRTimeZone
         formatter.dateFormat = "yyyy年M月dd日"
         let strDate = formatter.string(from: self)
         return strDate

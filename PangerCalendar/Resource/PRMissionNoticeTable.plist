@@ -20,6 +20,8 @@
 		<string>NSString</string>
 		<key>createTime</key>
 		<string>NSNumber</string>
+        <key>deadlineTime</key>
+        <string>NSNumber</string>
 		<key>completeTime</key>
 		<string>NSNumber</string>
 		<key>dutyId</key>
@@ -45,6 +47,8 @@
 		<string>TEXT</string>
 		<key>createTime</key>
 		<string>INTEGER</string>
+        <key>deadlineTime</key>
+        <string>INTEGER</string>
 		<key>completeTime</key>
 		<string>INTEGER</string>
 		<key>dutyId</key>

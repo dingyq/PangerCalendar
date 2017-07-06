@@ -28,8 +28,6 @@ class PRMissionTVCell: PRBaseTableViewCell {
     private func setupViews() {
         let btn = PRBaseButton()
         self.addSubview(btn)
-        btn.setImage(PRThemedImage(name: "button_uncheck"), for: .normal)
-        btn.setImage(PRThemedImage(name: "button_uncheck"), for: .highlighted)
         btn.addTarget(self, action: #selector(self.checkButtonClicked), for: .touchUpInside)
         btn.mas_makeConstraints { (make) in
             make?.left.setOffset(10)
@@ -79,35 +77,54 @@ class PRMissionTVCell: PRBaseTableViewCell {
         if self.missionModel != nil {
             switch self.missionModel!.state {
             case .new:
-                self.missionModel!.state = .done
+                self.missionModel!.state = .doing
                 break
             case .doing:
                 self.missionModel!.state = .done
                 break
             case .done:
-                self.missionModel!.state = .doing
+                self.missionModel!.state = .new
                 break
             }
         }
-        self.updateCheckButtonState()
+        self.updateView()
     }
     
-    private func updateCheckButtonState() {
-        if self.missionModel?.state == .done {
-            self.checkButton.setImage(PRThemedImage(name: "button_check"), for: .normal)
-            self.checkButton.setImage(PRThemedImage(name: "button_check"), for: .highlighted)
-        } else {
-            self.checkButton.setImage(PRThemedImage(name: "button_uncheck"), for: .normal)
-            self.checkButton.setImage(PRThemedImage(name: "button_uncheck"), for: .highlighted)
+    private func updateView() {
+        var imageName = "button_misson_state_fresh"
+        var textColor = PRCurrentTheme().blackCustomColor
+        if self.missionModel != nil {
+            switch self.missionModel!.state {
+            case .new:
+                imageName = "button_misson_state_fresh"
+                if (self.missionModel!.deadlineTime != 0 && self.missionModel!.deadlineTime < Double(Date().timeIntervalSince1970)) {
+                    imageName = "button_misson_state_timeout"
+                    textColor = PRCurrentTheme().redCustomColor
+                }
+                break
+            case .doing:
+                imageName = "button_misson_state_doing"
+                textColor = PRCurrentTheme().greenCustomColor
+                break
+            case .done:
+                imageName = "button_misson_state_done"
+                textColor = PRCurrentTheme().blackCustomLightColor
+                break
+            }
         }
+        self.checkButton.setImage(PRThemedImage(name: imageName), for: .normal)
+        self.checkButton.setImage(PRThemedImage(name: imageName), for: .highlighted)
+        self.contentLabel.textColor = textColor
+        self.dutyLabel.textColor = textColor
+        self.timeLabel.textColor = textColor
     }
  
     func bindData(model: PRMissionNoticeModel!) {
         self.missionModel = model
         self.contentLabel.text = model.content
         self.dutyLabel.text = model.dutyPerson?.userName
-        self.timeLabel.text = Date(timeIntervalSince1970: model.createTime).mDDStr()
-        self.updateCheckButtonState()
+        self.timeLabel.text = Date(timeIntervalSince1970: model.deadlineTime).mDDStr()
+        self.updateView()
     }
 }
 
@@ -121,8 +138,8 @@ class PRMissionListViewController: PRBaseViewController, UITableViewDelegate, UI
         return tmpAddVC
     }()
     
-    private lazy var missionDetailVC: PRMissionDetailViewController = {
-        var tmpMissionVC = PRMissionDetailViewController()
+    private lazy var missionDetailVC: PRMissionEditViewController = {
+        var tmpMissionVC = PRMissionEditViewController()
         return tmpMissionVC
     }()
     

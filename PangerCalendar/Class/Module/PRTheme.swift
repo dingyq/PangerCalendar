@@ -21,6 +21,9 @@ class PRTheme: NSObject {
     var redCustomColor: UIColor = RGBCOLOR(r: 187, 36, 13)
     var redCustomLightColor: UIColor = RGBACOLOR(r: 187, 36, 13, 0.25)
     
+    var greenCustomColor: UIColor = RGBCOLOR(r: 37, 192, 28)
+    var greenCustomLightColor: UIColor = RGBACOLOR(r: 37, 192, 28, 0.25)
+    
     var blackCustomColor: UIColor = RGBCOLOR(r: 51, 51, 51)
     var blackCustomLightColor: UIColor = RGBACOLOR(r: 51, 51, 51, 0.25)
  
