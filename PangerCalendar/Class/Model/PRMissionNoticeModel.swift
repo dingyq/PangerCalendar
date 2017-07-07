@@ -38,6 +38,7 @@ class PRMissionNoticeModel: NSObject {
     var sortId: Int64
     var type: PRMissionType
     var state: PRMissionState
+    var title: String
     var content: String
     var createTime: Double
     var deadlineTime: Double
@@ -51,6 +52,7 @@ class PRMissionNoticeModel: NSObject {
         self.sortId = Int64("\(dic.object(forKey: "sortId")!)")!
         self.type = PRMissionType(rawValue: Int("\(dic.object(forKey: "type")!)")!)!
         self.state = PRMissionState(rawValue: Int("\(dic.object(forKey: "state")!)")!)!
+        self.title = dic.object(forKey: "title") as! String
         self.content = dic.object(forKey: "content") as! String
         self.createTime = Double("\(dic.object(forKey: "createTime")!)")!
         self.deadlineTime = Double("\(dic.object(forKey: "deadlineTime")!)")!
@@ -65,14 +67,23 @@ class PRMissionNoticeModel: NSObject {
         super.init()
     }
     
-    init(content: String, _ time: Date, _ duty: PRUserModel?) {
+    init(title: String?, _ time: Date?, _ duty: PRUserModel?) {
         self.missionId = randomMissionId()
         self.sortId = -1
         self.type = .common
         self.state = .new
-        self.content = content
+        var tmpTitle = title
+        if title == nil {
+            tmpTitle = ""
+        }
+        self.title = tmpTitle!
+        self.content = ""
         self.createTime = Double(Date().timeIntervalSince1970)
-        self.deadlineTime = Double(time.timeIntervalSince1970)
+        if time == nil {
+            self.deadlineTime = 0
+        } else {
+            self.deadlineTime = Double(time!.timeIntervalSince1970)
+        }
         self.completeTime = 0
         self.createUserId = PRUserData.profile.userId
         self.createUserName = PRUserData.profile.userName
@@ -80,13 +91,13 @@ class PRMissionNoticeModel: NSObject {
         super.init()
     }
     
-    init(missionId: Int64, content: String, _ time: Date) {
+    init(missionId: Int64, title: String, _ time: Date) {
         self.missionId = missionId
-        self.content = content
         self.sortId = -1
         self.type = .common
         self.state = .new
-        self.content = content
+        self.title = title
+        self.content = ""
         self.createTime = Double(Date().timeIntervalSince1970)
         self.deadlineTime = Double(time.timeIntervalSince1970)
         self.completeTime = 0
@@ -97,7 +108,7 @@ class PRMissionNoticeModel: NSObject {
  
     override var description: String {
         let date = Date(timeIntervalSince1970: self.createTime)
-        return "missionId=\(missionId) content=\(String(describing: content)) time=\(String(describing: date.yyyyMDDStr()))"
+        return "missionId=\(missionId) title=\(String(describing: title)) time=\(String(describing: date.yyyyMDDStr()))"
     }
     
     func serializeToDictionary() -> NSDictionary {
@@ -107,6 +118,7 @@ class PRMissionNoticeModel: NSObject {
         tmpDic.setValue(NSNumber(value: self.sortId), forKey: "sortId")
         tmpDic.setValue(NSNumber(value: self.type.rawValue), forKey: "type")
         tmpDic.setValue(NSNumber(value: self.state.rawValue), forKey: "state")
+        tmpDic.setValue(self.title, forKey: "title")
         tmpDic.setValue(self.content, forKey: "content")
         tmpDic.setValue(NSNumber(value: self.createTime), forKey: "createTime")
         tmpDic.setValue(NSNumber(value: self.deadlineTime), forKey: "deadlineTime")
@@ -119,6 +131,28 @@ class PRMissionNoticeModel: NSObject {
         }
         
         return tmpDic
+    }
+    
+    func isTimeOut() -> Bool {
+        return (self.deadlineTime != 0 && self.deadlineTime < Double(Date().timeIntervalSince1970))
+    }
+    
+    func stateDescription() -> String {
+        let descriptionArr = ["进行中", "超期", "待办", "已完成"]
+        var des = ""
+        switch self.state {
+        case .new:
+            if self.isTimeOut() {
+                des = descriptionArr[1]
+            } else {
+                des = descriptionArr[2]
+            }
+        case .doing:
+            des = descriptionArr[0]
+        case .done:
+            des = descriptionArr[3]
+        }
+        return des
     }
     
 }

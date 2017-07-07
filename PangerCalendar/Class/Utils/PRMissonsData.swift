@@ -52,7 +52,7 @@ class PRMissionsData: NSObject {
         return PRUserInfoDBMgr!.queryTable(self.tableName, paramDic: dic as NSDictionary)
     }
     
-    func getLatestData(_ sortId: Int?) -> Array<NSDictionary> {
+    func moreData(sortId: Int?) -> Array<NSDictionary> {
         let tableStr = self.tableName
         var sql = "select * from \(tableStr)"
         if (sortId != nil && sortId != 0) {
@@ -61,6 +61,14 @@ class PRMissionsData: NSObject {
             sql = "select * from \(tableStr) order by sortId desc LIMIT \(kPageSize)"
         }
         return PRUserInfoDBMgr!.queryTableWithCustomSql(sql: sql)
+    }
+    
+    func dataSortByDeadlineTime() -> Array<NSDictionary>? {
+        return nil
+    }
+    
+    func dataSortByCompleteTime() -> Array<NSDictionary>? {
+        return nil
     }
     
     func deleteData(dataArr: Array<NSDictionary>) {

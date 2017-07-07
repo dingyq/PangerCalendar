@@ -69,10 +69,8 @@ class PRCurrentMonthTitleView: UIView {
         
         let todayBtn = UIButton()
         todayBtn.titleLabel?.font = PRTheme.current().defaultFont
-        todayBtn.setTitle(NSLocalizedString("今", comment: ""), for: .normal)
-        todayBtn.setTitle(NSLocalizedString("今", comment: ""), for: .highlighted)
-        todayBtn.setTitleColor(UIColor.black, for: .normal)
-        todayBtn.setTitleColor(UIColor.black, for: .highlighted)
+        todayBtn.setImage(PRThemedImage(name: "button_today_nor"), for: .normal)
+        todayBtn.setImage(PRThemedImage(name: "button_today_sel"), for: .highlighted)
         todayBtn.addTarget(self, action: #selector(todayButtonClicked), for: .touchUpInside)
         self.addSubview(todayBtn)
         todayBtn.mas_makeConstraints { (make) in

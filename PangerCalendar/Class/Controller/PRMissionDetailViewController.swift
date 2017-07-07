@@ -136,7 +136,7 @@ class PRMissionItemView: PRBaseView {
         self.tipLabel.text = str
     }
     
-    func updateTipImage(_ name: String?) {
+    private func updateTipImage(_ name: String?) {
         self.tipImageView.image = PRThemedImage(name: name)
     }
 }
@@ -146,6 +146,8 @@ class PRMissionItemView: PRBaseView {
 
 class PRMissionDetailViewController: PRBaseViewController, PRDatePickViewDelegate, PRMissionItemViewDelegate {
 
+    var editingMission: PRMissionNoticeModel?
+    
     private var _deadlineDate: Date?
     var deadlineDate: Date? {
         set(newDate) {
@@ -156,9 +158,6 @@ class PRMissionDetailViewController: PRBaseViewController, PRDatePickViewDelegat
         }
         
         get {
-            if _deadlineDate == nil {
-                _deadlineDate = Date().midnight()
-            }
             return _deadlineDate
         }
     }
@@ -178,10 +177,11 @@ class PRMissionDetailViewController: PRBaseViewController, PRDatePickViewDelegat
     
     var vcType = PRMissionDetailVCType.add
     
-    private var contentView: PRBaseView!
-    private var contentTextField: PRBaseTextField!
-    private var dutyTipView: PRMissionItemView!
-    private var timeTipView: PRMissionItemView!
+    private var contentView: PRBaseView?
+    private var titleTextField: PRBaseTextField?
+    private var contentTextView: PRBaseTextView?
+    private var dutyTipView: PRMissionItemView?
+    private var timeTipView: PRMissionItemView?
     
     private lazy var datePickerView: PRDatePickView = {
         var pickView = PRDatePickView(frame: UIScreen.main.bounds)
@@ -198,6 +198,9 @@ class PRMissionDetailViewController: PRBaseViewController, PRDatePickViewDelegat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if self.vcType == .edit {
+            self.updateView(mission: self.editingMission)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -208,6 +211,18 @@ class PRMissionDetailViewController: PRBaseViewController, PRDatePickViewDelegat
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         self.view.endEditing(true)
+    }
+    
+    // MARK: Public Method
+    
+    func updateView(mission: PRMissionNoticeModel?) {
+        if mission == nil {
+            return
+        }
+        self.titleTextField?.text = mission!.title
+        self.contentTextView?.text = mission!.content
+        self.dutyPerson = mission!.dutyPerson
+        self.deadlineDate = Date(timeIntervalSince1970: mission!.deadlineTime)
     }
     
     // MARK: Private Method
@@ -221,7 +236,7 @@ class PRMissionDetailViewController: PRBaseViewController, PRDatePickViewDelegat
         contentView.mas_makeConstraints { (make) in
             make?.left.right().equalTo()(weakSelf?.view)?.setOffset(0)
             make?.top.equalTo()(weakSelf?.view)?.setOffset(65)
-            make?.height.setOffset(200)
+            make?.bottom.setOffset(0)
         }
         
         let textContainer = PRBaseView()
@@ -229,21 +244,42 @@ class PRMissionDetailViewController: PRBaseViewController, PRDatePickViewDelegat
         textContainer.mas_makeConstraints { (make) in
             make?.left.and().right().setOffset(0)
             make?.top.setOffset(2)
-            make?.height.setOffset(45)
+            make?.height.setOffset(45 + 85)
         }
         
         let text = PRBaseTextField()
         textContainer.addSubview(text)
-        self.contentTextField = text
-        text.placeholder = NSLocalizedString("任务内容", comment: "")
+        self.titleTextField = text
+        text.backgroundColor = PRCurrentTheme().bgColor
+        text.placeholder = NSLocalizedString("任务标题", comment: "")
         text.mas_makeConstraints { (make) in
-            make?.left.setOffset(6)
-            make?.right.setOffset(-6)
+            make?.left.setOffset(8)
+            make?.right.setOffset(-8)
             make?.top.setOffset(0)
             make?.height.setOffset(40)
         }
         
-        let borderView = PRBorderView()
+        var borderView = PRBorderView()
+        textContainer.addSubview(borderView)
+        borderView.mas_makeConstraints { (make) in
+            make?.left.setOffset(8)
+            make?.right.setOffset(0)
+            make?.top.equalTo()(text.mas_bottom)?.setOffset(1)
+            make?.height.setOffset(1)
+        }
+        
+        let text1 = PRBaseTextView()
+        textContainer.addSubview(text1)
+        self.contentTextView = text1
+        text1.backgroundColor = PRCurrentTheme().bgColor
+        text1.mas_makeConstraints { (make) in
+            make?.left.setOffset(6)
+            make?.right.setOffset(-6)
+            make?.top.equalTo()(borderView.mas_bottom)?.setOffset(1)
+            make?.bottom.setOffset(-2)
+        }
+        
+        borderView = PRBorderView()
         textContainer.addSubview(borderView)
         borderView.mas_makeConstraints { (make) in
             make?.left.and().right().setOffset(0)
@@ -265,15 +301,16 @@ class PRMissionDetailViewController: PRBaseViewController, PRDatePickViewDelegat
         self.dutyTipView = dutyTip
         
         // set up time view
-        self.timeTipView = PRMissionItemView(frame: CGRect.zero, imageName: "time_clock")
-        contentView.addSubview(self.timeTipView!)
-        self.timeTipView.type = .time
-        self.timeTipView.delegate = self;
-        self.timeTipView.mas_makeConstraints { (make) in
+        let timeView = PRMissionItemView(frame: CGRect.zero, imageName: "time_clock")
+        contentView.addSubview(timeView)
+        timeView.type = .time
+        timeView.delegate = self;
+        timeView.mas_makeConstraints { (make) in
             make?.left.and().right().setOffset(0)
             make?.top.equalTo()(dutyTip.mas_bottom)?.setOffset(0)
             make?.height.setOffset(lineHeight)
         }
+        self.timeTipView = timeView
         
         // set up add Button
         let confirmButton = PRBaseButton()
@@ -296,31 +333,44 @@ class PRMissionDetailViewController: PRBaseViewController, PRDatePickViewDelegat
             make?.left.equalTo()(contentView.mas_left)?.setOffset(100)
             make?.right.equalTo()(contentView.mas_right)?.setOffset(-100)
             make?.height.setOffset(32)
-            make?.bottom.equalTo()(contentView)?.setOffset(0)
+            make?.top.equalTo()(timeView.mas_bottom)?.setOffset(20)
         }
     }
     
-    // MARK: Private Method    
+    // MARK: Private Method (Action)
     @objc private func editMissonButtonClicked(sender: UIButton) {
         self.view.endEditing(true)
         
-        let content = self.contentTextField.text
-        if (content?.isEmpty)! {
+        let titleStr = self.titleTextField?.text
+        if (titleStr?.isEmpty)! {
             return
         }
         switch self.vcType {
         case .add:
-            let mission = PRMissionNoticeModel(content: content!, self.deadlineDate!, self.dutyPerson)
+            let mission = PRMissionNoticeModel(title: titleStr, self.deadlineDate, self.dutyPerson)
+            mission.content = self.contentTextView!.text
             let result = PRUserData.add(mission: mission)
             PRMissionsDataMgr.syncData(dataArr: [mission.serializeToDictionary()])
             if result {
-                self.contentTextField.text = ""
+                self.titleTextField?.text = ""
                 self.dismissSelf()
             }
             break
         case .edit:
-            break
+            self.editingMission?.title = titleStr!
+            self.editingMission?.content = (self.contentTextView?.text)!
+            self.editingMission?.dutyPerson = self.dutyPerson
+            var time: Double = 0
+            if self.deadlineDate != nil {
+                time = Double(self.deadlineDate!.timeIntervalSince1970)
+            }
+            self.editingMission?.deadlineTime = time
             
+            if self.editingMission != nil {
+                PRUserData.markMissionDataEdited()
+                PRMissionsDataMgr.syncData(dataArr: [self.editingMission!.serializeToDictionary()])
+                self.popSelf()
+            }
         }
     }
     

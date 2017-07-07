@@ -13,6 +13,12 @@
 		912E061D1F0E3E9100FAAF6E /* button_misson_state_fresh@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 912E06191F0E3E9100FAAF6E /* button_misson_state_fresh@3x.png */; };
 		912E061E1F0E3E9100FAAF6E /* button_misson_state_timeout@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 912E061A1F0E3E9100FAAF6E /* button_misson_state_timeout@3x.png */; };
 		912E06201F0E80D100FAAF6E /* PRMissionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912E061F1F0E80D100FAAF6E /* PRMissionDetailViewController.swift */; };
+		912FB7251F0FAE5F0040CE64 /* PRBaseTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 912FB7241F0FAE5F0040CE64 /* PRBaseTextView.swift */; };
+		912FB7281F0FC5EB0040CE64 /* button_today_sel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 912FB7261F0FC5EB0040CE64 /* button_today_sel@3x.png */; };
+		912FB7291F0FC5EB0040CE64 /* button_today_nor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 912FB7271F0FC5EB0040CE64 /* button_today_nor@3x.png */; };
+		912FB72E1F0FD1510040CE64 /* CalendarDayTodayMark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 912FB72D1F0FD1510040CE64 /* CalendarDayTodayMark@3x.png */; };
+		912FB7301F0FD2A50040CE64 /* CalendarDayTodaySelected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 912FB72F1F0FD2A50040CE64 /* CalendarDayTodaySelected@3x.png */; };
+		912FB7321F0FD2E30040CE64 /* CalendarDaySelected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 912FB7311F0FD2E30040CE64 /* CalendarDaySelected@3x.png */; };
 		913A50D51F0100A9002757AD /* PRBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913A50D41F0100A9002757AD /* PRBaseView.swift */; };
 		9163DD411F0128DF00E709B8 /* close_button_nor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9163DD3F1F0128DF00E709B8 /* close_button_nor@3x.png */; };
 		9163DD421F0128DF00E709B8 /* close_button_sel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9163DD401F0128DF00E709B8 /* close_button_sel@3x.png */; };
@@ -137,6 +143,12 @@
 		912E06191F0E3E9100FAAF6E /* button_misson_state_fresh@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_misson_state_fresh@3x.png"; sourceTree = "<group>"; };
 		912E061A1F0E3E9100FAAF6E /* button_misson_state_timeout@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_misson_state_timeout@3x.png"; sourceTree = "<group>"; };
 		912E061F1F0E80D100FAAF6E /* PRMissionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRMissionDetailViewController.swift; sourceTree = "<group>"; };
+		912FB7241F0FAE5F0040CE64 /* PRBaseTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRBaseTextView.swift; sourceTree = "<group>"; };
+		912FB7261F0FC5EB0040CE64 /* button_today_sel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_today_sel@3x.png"; sourceTree = "<group>"; };
+		912FB7271F0FC5EB0040CE64 /* button_today_nor@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_today_nor@3x.png"; sourceTree = "<group>"; };
+		912FB72D1F0FD1510040CE64 /* CalendarDayTodayMark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalendarDayTodayMark@3x.png"; sourceTree = "<group>"; };
+		912FB72F1F0FD2A50040CE64 /* CalendarDayTodaySelected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalendarDayTodaySelected@3x.png"; sourceTree = "<group>"; };
+		912FB7311F0FD2E30040CE64 /* CalendarDaySelected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalendarDaySelected@3x.png"; sourceTree = "<group>"; };
 		913A50D41F0100A9002757AD /* PRBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRBaseView.swift; sourceTree = "<group>"; };
 		9163DD3F1F0128DF00E709B8 /* close_button_nor@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close_button_nor@3x.png"; sourceTree = "<group>"; };
 		9163DD401F0128DF00E709B8 /* close_button_sel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close_button_sel@3x.png"; sourceTree = "<group>"; };
@@ -340,6 +352,9 @@
 		E30612191E05B4F200EE83FC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				912FB7311F0FD2E30040CE64 /* CalendarDaySelected@3x.png */,
+				912FB72F1F0FD2A50040CE64 /* CalendarDayTodaySelected@3x.png */,
+				912FB72D1F0FD1510040CE64 /* CalendarDayTodayMark@3x.png */,
 				E306121A1E05B4F200EE83FC /* CalendarBackground.png */,
 				E306121B1E05B4F200EE83FC /* CalendarDaySelected.png */,
 				E306121C1E05B4F200EE83FC /* CalendarDayTile.png */,
@@ -411,6 +426,8 @@
 		E36A185D1E8655CD006195E3 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				912FB7261F0FC5EB0040CE64 /* button_today_sel@3x.png */,
+				912FB7271F0FC5EB0040CE64 /* button_today_nor@3x.png */,
 				912E06171F0E3E9100FAAF6E /* button_misson_state_doing@3x.png */,
 				912E06181F0E3E9100FAAF6E /* button_misson_state_done@3x.png */,
 				912E06191F0E3E9100FAAF6E /* button_misson_state_fresh@3x.png */,
@@ -457,6 +474,7 @@
 				91BF5EE11F013B18007993E7 /* PRBaseImageView.swift */,
 				E3237F881F0174D7000A703F /* PRBaseTableView.swift */,
 				919209C31F02703800CA5243 /* PRBorderView.swift */,
+				912FB7241F0FAE5F0040CE64 /* PRBaseTextView.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -756,13 +774,16 @@
 				919209C81F02747000CA5243 /* add_notice_button_sel@3x.png in Resources */,
 				912E061C1F0E3E9100FAAF6E /* button_misson_state_done@3x.png in Resources */,
 				91D4C4E31F091F93009A000D /* more_data_sel@3x.png in Resources */,
+				912FB7321F0FD2E30040CE64 /* CalendarDaySelected@3x.png in Resources */,
 				91D4C4C51F091170009A000D /* tab_remind_sel@3x.png in Resources */,
+				912FB7301F0FD2A50040CE64 /* CalendarDayTodaySelected@3x.png in Resources */,
 				E3237F741EFE9816000A703F /* calendar_more_unfold@3x.png in Resources */,
 				E3237F811EFF661A000A703F /* back_button_sel@3x.png in Resources */,
 				919209E61F03860900CA5243 /* PRMissionNoticeTable.plist in Resources */,
 				E3237F751EFE9816000A703F /* calendar_more_fold@3x.png in Resources */,
 				91D4C4E21F091F93009A000D /* more_data_nor@3x.png in Resources */,
 				912E061D1F0E3E9100FAAF6E /* button_misson_state_fresh@3x.png in Resources */,
+				912FB7291F0FC5EB0040CE64 /* button_today_nor@3x.png in Resources */,
 				E376A0071DC5AEDA00C2B383 /* Assets.xcassets in Resources */,
 				91D4C4DA1F091A93009A000D /* account_about_sel@3x.png in Resources */,
 				912E061B1F0E3E9100FAAF6E /* button_misson_state_doing@3x.png in Resources */,
@@ -778,7 +799,9 @@
 				9163DD421F0128DF00E709B8 /* close_button_sel@3x.png in Resources */,
 				E30612291E05B4F200EE83FC /* CalendarDayTodaySelected.png in Resources */,
 				E35460311DC5FDB800C05867 /* huangli.sqlite in Resources */,
+				912FB7281F0FC5EB0040CE64 /* button_today_sel@3x.png in Resources */,
 				E30612271E05B4F200EE83FC /* CalendarDayTile.png in Resources */,
+				912FB72E1F0FD1510040CE64 /* CalendarDayTodayMark@3x.png in Resources */,
 				91D4C5091F0A2EAD009A000D /* PRCustomSettingConfig.plist in Resources */,
 				9163DD461F012D3700E709B8 /* time_clock@3x.png in Resources */,
 				E36A185C1E8655C7006195E3 /* tab_almanac_sel@3x.png in Resources */,
@@ -952,6 +975,7 @@
 				919209CC1F0289E300CA5243 /* PRHuangliDB.swift in Sources */,
 				E36A18481E864D89006195E3 /* PRPermanentViewController.swift in Sources */,
 				E3EAAE531E01B12E001478E4 /* PRSolarTermsManager.swift in Sources */,
+				912FB7251F0FAE5F0040CE64 /* PRBaseTextView.swift in Sources */,
 				E3F886711E7401AC00007B01 /* PRCalendarViewScrollDelegate.swift in Sources */,
 				E36A18771E875F5D006195E3 /* PRTheme.swift in Sources */,
 				E3F288FE1E0FAFF600974C67 /* PRLunarDateAlgorithm.swift in Sources */,

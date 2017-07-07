@@ -196,11 +196,11 @@ class PRDatabaseManager: NSObject {
         for index in 0..<keys.count {
             let keyStr = keys[index] as! String
             let valueStr = valueDic.value(forKey: keyStr)!
-            sqlStr.append("\(keyStr) = '\(valueStr)'")
+            sqlStr.append("\(keyStr)='\(valueStr)', ")
         }
         sqlStr.deleteCharacters(in: NSMakeRange(sqlStr.length - 2, 2))
         let primaryValue = valueDic.value(forKey: primaryKey)!
-        sqlStr.append(" WHERE \(primaryKey) = '\(primaryValue)'")
+        sqlStr.append(" WHERE \(primaryKey) = '\(primaryValue)';")
         
         let result = self.db.executeUpdate(sqlStr as String!, withArgumentsIn: nil)
         assert(result, "更新数据 \(tableName)失败")

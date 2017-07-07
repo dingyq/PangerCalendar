@@ -16,8 +16,10 @@
 		<string>NSNumber</string>
 		<key>state</key>
 		<string>NSNumber</string>
-		<key>content</key>
+		<key>title</key>
 		<string>NSString</string>
+        <key>content</key>
+        <string>NSString</string>
 		<key>createTime</key>
 		<string>NSNumber</string>
         <key>deadlineTime</key>
@@ -43,6 +45,8 @@
 		<string>INTEGER</string>
 		<key>state</key>
 		<string>INTEGER</string>
+        <key>title</key>
+        <string>TEXT</string>
 		<key>content</key>
 		<string>TEXT</string>
 		<key>createTime</key>

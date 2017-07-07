@@ -8,13 +8,25 @@
 
 import UIKit
 
+private protocol PRMissionTVCellDelegate: NSObjectProtocol {
+    func stateChanged(mission: PRMissionNoticeModel?)
+}
+private extension PRMissionTVCellDelegate {
+    func stateChanged(mission: PRMissionNoticeModel?) {
+        print("missionModelStateChanged")
+    }
+}
+
+
 class PRMissionTVCell: PRBaseTableViewCell {
     
     private var checkButton: PRBaseButton!
-    private var contentLabel: PRBaseLabel!
+    private var titleLabel: PRBaseLabel!
     private var timeLabel: PRBaseLabel!
     private var dutyLabel: PRBaseLabel!
+    private var seperatorLine: PRBaseView!
     private var missionModel: PRMissionNoticeModel?
+    weak fileprivate var delegate: PRMissionTVCellDelegate?
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -30,20 +42,20 @@ class PRMissionTVCell: PRBaseTableViewCell {
         self.addSubview(btn)
         btn.addTarget(self, action: #selector(self.checkButtonClicked), for: .touchUpInside)
         btn.mas_makeConstraints { (make) in
-            make?.left.setOffset(10)
+            make?.left.setOffset(0)
             make?.centerY.setOffset(0)
-            make?.width.and().height().setOffset(20)
+            make?.width.and().height().setOffset(40)
         }
         self.checkButton = btn
         
         let label = PRBaseLabel()
         self.addSubview(label)
         label.mas_makeConstraints { (make) in
-            make?.left.equalTo()(btn.mas_right)?.setOffset(6)
+            make?.left.equalTo()(btn.mas_right)?.setOffset(-3)
             make?.centerY.setOffset(0)
             make?.width.mas_lessThanOrEqualTo()(240)
         }
-        self.contentLabel = label
+        self.titleLabel = label
         
         let label1 = PRBaseLabel()
         self.addSubview(label1)
@@ -70,6 +82,7 @@ class PRMissionTVCell: PRBaseTableViewCell {
             make?.height.setOffset(1)
             make?.bottom.setOffset(0)
         }
+        self.seperatorLine = borderView
         
     }
     
@@ -86,8 +99,10 @@ class PRMissionTVCell: PRBaseTableViewCell {
                 self.missionModel!.state = .new
                 break
             }
+            self.updateView()
+            PRUserData.markMissionDataEdited()
+            self.delegate?.stateChanged(mission: self.missionModel)
         }
-        self.updateView()
     }
     
     private func updateView() {
@@ -114,23 +129,29 @@ class PRMissionTVCell: PRBaseTableViewCell {
         }
         self.checkButton.setImage(PRThemedImage(name: imageName), for: .normal)
         self.checkButton.setImage(PRThemedImage(name: imageName), for: .highlighted)
-        self.contentLabel.textColor = textColor
+        self.titleLabel.textColor = textColor
         self.dutyLabel.textColor = textColor
         self.timeLabel.textColor = textColor
     }
  
-    func bindData(model: PRMissionNoticeModel!) {
+    func bindData(model: PRMissionNoticeModel!, hideSeperator: Bool) {
         self.missionModel = model
-        self.contentLabel.text = model.content
+        self.titleLabel.text = model.title
         self.dutyLabel.text = model.dutyPerson?.userName
-        self.timeLabel.text = Date(timeIntervalSince1970: model.deadlineTime).mDDStr()
+        if model.deadlineTime > 0 {
+            self.timeLabel.text = Date(timeIntervalSince1970: model.deadlineTime).mDDStr()
+        } else {
+            self.timeLabel.text = ""
+        }
         self.updateView()
+        self.seperatorLine.isHidden = hideSeperator
     }
 }
 
 
-class PRMissionListViewController: PRBaseViewController, UITableViewDelegate, UITableViewDataSource {
-
+class PRMissionListViewController: PRBaseViewController, UITableViewDelegate, UITableViewDataSource, PRMissionTVCellDelegate {
+    
+    private var tbDataSource: Array<Array<PRMissionNoticeModel>> = []
     private var noticeListTV: PRBaseTableView!
     
     private lazy var addMissionNoticeVC: PRMissionAddViewController = {
@@ -138,8 +159,9 @@ class PRMissionListViewController: PRBaseViewController, UITableViewDelegate, UI
         return tmpAddVC
     }()
     
-    private lazy var missionDetailVC: PRMissionEditViewController = {
+    private lazy var missionEditVC: PRMissionEditViewController = {
         var tmpMissionVC = PRMissionEditViewController()
+        tmpMissionVC.hidesBottomBarWhenPushed = true
         return tmpMissionVC
     }()
     
@@ -149,14 +171,16 @@ class PRMissionListViewController: PRBaseViewController, UITableViewDelegate, UI
         self.setupViews()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if PRUserData.isMissionDataEdited() {
+            self.reloadData()
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.noticeListTV.reloadData()
     }
     
     private func setupViews() {
@@ -184,25 +208,72 @@ class PRMissionListViewController: PRBaseViewController, UITableViewDelegate, UI
         listTV.delegate = self
         listTV.dataSource = self
     }
-
+    
+    private func reloadData() {
+        self.updateTBDataSource()
+        self.noticeListTV.reloadData()
+    }
+    
+    private func updateTBDataSource() {
+        self.tbDataSource.removeAll()
+        let tmpArr = PRUserData.missionClassifiedList()
+        for arr in tmpArr {
+            if arr.count > 0 {
+                self.tbDataSource.append(arr)
+            }
+        }
+    }
     
     // MARK: Private Method (Action)
     @objc private func addButtonClicked(sender: UIButton) {
+        self.addMissionNoticeVC.deadlineDate = Date()
+        self.addMissionNoticeVC.dutyPerson = PRUserData.profile
         let navController = PRNavigationController(rootViewController: self.addMissionNoticeVC)
         self.present(navController, animated: true, completion: nil)
     }
 
+    // MARK: Protocol Method(PRMissionTVCellDelegate)
+    
+    func stateChanged(mission: PRMissionNoticeModel?) {
+        if mission == nil {
+            return
+        }
+        self.reloadData()
+    }
+    
     // MARK: Protocol Method(UITableViewDelegate/UITableViewDataSource)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return PRUserData.missionList.count
+        return self.tbDataSource[section].count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 36.0
+        return 40.0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return self.tbDataSource.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 16
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = PRBaseView()
+        view.backgroundColor = PRCurrentTheme().grayColor247
+        let label = PRBaseLabel()
+        label.textAlignment = .left
+        label.font = PRCurrentTheme().smallFont
+        view.addSubview(label)
+        label.mas_makeConstraints { (make) in
+            make?.left.setOffset(6)
+            make?.top.and().bottom().setOffset(0)
+        }
+        let arr = self.tbDataSource[section]
+        if arr.count > 0 {
+            label.text = arr.first?.stateDescription()
+        }
+        return view
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -210,14 +281,17 @@ class PRMissionListViewController: PRBaseViewController, UITableViewDelegate, UI
         var cell: PRMissionTVCell? = tableView.dequeueReusableCell(withIdentifier: identifier) as? PRMissionTVCell
         if cell == nil {
             cell = PRMissionTVCell(style: .default, reuseIdentifier: identifier)
+            cell?.delegate = self
         }
-        cell!.bindData(model: PRUserData.missionList[indexPath.row])
+        let arr = self.tbDataSource[indexPath.section]
+        cell!.bindData(model: arr[indexPath.row], hideSeperator:(arr.count == indexPath.row + 1))
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        self.navigationController?.pushViewController(self.missionDetailVC, animated: true)
+        self.missionEditVC.editingMission = self.tbDataSource[indexPath.section][indexPath.row]
+        self.navigationController?.pushViewController(self.missionEditVC, animated: true)
     }
     
 }

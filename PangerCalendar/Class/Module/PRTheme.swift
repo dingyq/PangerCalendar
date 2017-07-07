@@ -31,6 +31,7 @@ class PRTheme: NSObject {
     var blueCustomLightColor: UIColor = RGBACOLOR(r: 77, 177, 218, 0.25)
     
     var grayColor220 = RGBCOLOR(r: 220, 220, 220)
+    var grayColor247 = RGBCOLOR(r: 247, 247, 247)
     
     var bgColor = RGBCOLOR(r: 255, 255, 255)
     
