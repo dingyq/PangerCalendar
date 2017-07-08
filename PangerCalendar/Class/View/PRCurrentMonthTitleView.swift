@@ -10,7 +10,7 @@ import UIKit
 
 protocol PRCurrentMonthTitleViewDelegate : NSObjectProtocol {
     func titleViewClicked()
-    func resetToDate(date: Date)
+    func backToToday()
 }
 
 class PRCurrentMonthTitleView: UIView {
@@ -85,7 +85,7 @@ class PRCurrentMonthTitleView: UIView {
     }
 
     func todayButtonClicked(sender: UIButton) {
-        self.delegate?.resetToDate(date: Date())
+        self.delegate?.backToToday()
     }
     
     func update(date: Date?) {

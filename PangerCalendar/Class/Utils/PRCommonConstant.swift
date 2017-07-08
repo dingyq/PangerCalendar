@@ -10,6 +10,17 @@ import Foundation
 
 //let kPRTimeZone = "GMT + 8"
 
+let kPRAppMinDate = Date.appMin()
+let kPRAppMaxDate = Date.appMax()
+
+var kPRScreenWidth:CGFloat {
+    return UIScreen.main.bounds.width
+}
+
+var kPRScreenHeight:CGFloat {
+    return UIScreen.main.bounds.height
+}
+
 let kPRTimeZone = NSTimeZone.system
 
 let kPathOfDocument: String = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first!

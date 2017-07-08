@@ -9,16 +9,19 @@
 import UIKit
 //import Foundation
 
-class PRPermanentViewController: PRBaseViewController, PRCalendarViewDelegate, PRCurrentMonthTitleViewDelegate, PRDatePickViewDelegate {
+class PRPermanentViewController: PRBaseViewController {
 
-    private var calendarView: PRCalendarView!
-    private var calendarContainer: UIView!
-    private var dayDetailView: PRDayDetailView!
-    private var navigationTitleView: PRCurrentMonthTitleView!
+    fileprivate var calendarView = PRCalendarView(frame: CGRect(x: 10, y: 64, width: kPRScreenWidth - 20, height: 324))
+    fileprivate var dayDetailView = PRDayDetailView(frame: CGRect(x: 0, y: 0, width: kPRScreenWidth, height: 172))
+    fileprivate var navigationTitleView = PRCurrentMonthTitleView(frame:CGRect(x: 0, y: 0, width: kPRScreenWidth - 100, height: 44))
    
-    private lazy var datePickerView: PRDatePickView = {
+    fileprivate lazy var datePickerView: PRDatePickView = {
         var pickView = PRDatePickView(frame: UIScreen.main.bounds)
-        pickView.delegate = self
+        pickView.datePickDone = { [unowned self] date in
+            self.calendarView.selectedDate = date
+            self.dayDetailView.update(date: date)
+            self.navigationTitleView.update(date: date)
+        }
         return pickView
     }()
     
@@ -32,38 +35,16 @@ class PRPermanentViewController: PRBaseViewController, PRCalendarViewDelegate, P
         // Do any additional setup after loading the view, typically from a nib.
         self.title = NSLocalizedString("日历", comment: "")
         self.resetNavigationTitle()
-        //        self.navigationController?.navigationItem.titleView = PRCurrentMonthTitleView()
-        
         /// sqlite
 //        let result = PRDatabaseOperate.shareMgr().queryDataWithDate(year: "1991", month: "5", day: "25")
 //        print(result["fit"]!, result["avoid"]!)
-        
-        let viewWidth = UIScreen.main.bounds.size.width
-        let vFrame = CGRect(x: 0, y: 64, width: viewWidth, height: 325)
-//        self.calendarContainer = UIView(frame: vFrame)
-//        self.view.addSubview(self.calendarContainer)
-        weak var weakSelf = self
-//        self.calendarContainer.mas_makeConstraints { (make) in
-//            make?.left.right().equalTo()(weakSelf?.view)?.setOffset(0)
-//            make?.top.equalTo()(weakSelf?.view)?.setOffset(64)
-//            make?.height.setOffset(325)
-//        }
-        
-        self.calendarView = PRCalendarView(frame: CGRect(x: 10, y: 64, width: viewWidth - 20, height: vFrame.size.height-1))
-        self.calendarView.calendarViewDelegate = self
         self.view.addSubview(self.calendarView)
-//        self.calendarView.mas_makeConstraints { (make) in
-//            make?.left.equalTo()(weakSelf?.view)?.setOffset(10)
-//            make?.right.equalTo()(weakSelf?.view)?.setOffset(-10)
-//            make?.top.equalTo()(weakSelf?.view)?.setOffset(64)
-//            make?.height.setOffset(324)
-//        }
+        self.calendarView.calendarViewDelegate = self
         
-        self.dayDetailView = PRDayDetailView(frame: CGRect(x: 0, y: 0, width: viewWidth, height: 172))
         self.view.addSubview(self.dayDetailView)
         self.dayDetailView.mas_makeConstraints { (make) in
-            make?.left.right().equalTo()(weakSelf?.view)?.setOffset(0)
-            make?.top.equalTo()(weakSelf?.calendarView.mas_bottom)?.setOffset(0)
+            make?.left.right().equalTo()(self.view)?.setOffset(0)
+            make?.top.equalTo()(self.calendarView.mas_bottom)?.setOffset(0)
             make?.height.setOffset(172)
         }
         
@@ -91,8 +72,6 @@ class PRPermanentViewController: PRBaseViewController, PRCalendarViewDelegate, P
     
     // MARK: Private Method
     private func resetNavigationTitle() {
-        let width = UIScreen.main.bounds.size.width - 100
-        self.navigationTitleView = PRCurrentMonthTitleView(frame:CGRect(x: 0, y: 0, width: width, height: 44))
         self.navigationItem.titleView = self.navigationTitleView
         self.navigationTitleView.delegate = self
     
@@ -110,9 +89,7 @@ class PRPermanentViewController: PRBaseViewController, PRCalendarViewDelegate, P
     }
     
     // MARK: Public Method
-    
-    // MARK: Private Method (Action)
-    @objc private func addButtonClicked(sender: UIButton) {
+    @objc private func addButtonClicked(_ sender: UIButton) {
         self.addNoticeVC.deadlineDate = self.calendarView.selectedDate
         self.addNoticeVC.dutyPerson = PRUserData.profile
         let navController = PRNavigationController(rootViewController: self.addNoticeVC)
@@ -125,38 +102,33 @@ class PRPermanentViewController: PRBaseViewController, PRCalendarViewDelegate, P
             
         }
     }
-    
-    // MARK: Protocol Method(PRCalendarViewDelegate)
+}
+
+extension PRPermanentViewController: PRCalendarViewDelegate {
     func calendarView(aCalendarView: PRCalendarView?, dateChanged: Date?) {
         self.dayDetailView.update(date: dateChanged)
     }
     
     func calendarView(aCalendarView: PRCalendarView?, monthChanged: Date?) {
         self.navigationTitleView.update(date: monthChanged)
-        
     }
     
     func calendarViewFrameChanged(aCalendarView: PRCalendarView?) {
         self.calenderViewChanged(notify: nil)
     }
-    
-    // MARK: Protocol Method(PRCurrentMonthTitleViewDelegate)
+}
+
+
+extension PRPermanentViewController: PRCurrentMonthTitleViewDelegate {
     func titleViewClicked() {
         self.datePickerView.show()
     }
     
-    func resetToDate(date: Date) {
-        self.calendarView.selectedDate = date
-        self.dayDetailView.update(date: date)
-        self.navigationTitleView.update(date: date)
-    }
-    
-    // MARK: Protocol Method(PRDatePickViewDelegate)
-    func datePickDone(date: Date) {
+    func backToToday() {
+        let date = Date()
         self.calendarView.selectedDate = date
         self.dayDetailView.update(date: date)
         self.navigationTitleView.update(date: date)
     }
 }
 
-//let db = SQLiteDB.sha

@@ -239,10 +239,8 @@ class PRCalendarMonth: PRBaseView {
                     switch dayType {
                     case .day:
                         bottomLabel.textColor = PRTheme.current().weekdayOutMonthColor
-                        break;
                     case .solarterm:
                         bottomLabel.textColor = PRTheme.current().sosolarTermOutMonthColor
-                        break;
                     default:
                         bottomLabel.textColor = PRTheme.current().festivalOutMonthColor
                     }
@@ -250,10 +248,8 @@ class PRCalendarMonth: PRBaseView {
                     switch dayType {
                     case .day:
                         bottomLabel.textColor = PRTheme.current().weekdayInMonthColor
-                        break;
                     case .solarterm:
                         bottomLabel.textColor = PRTheme.current().sosolarTermInMonthColor
-                        break;
                     default:
                         bottomLabel.textColor = PRTheme.current().festivalInMonthColor
                     }
@@ -342,7 +338,6 @@ class PRCalendarMonth: PRBaseView {
         case .defaultt:
             mark.frame = CGRect(x: 0, y: button.frame.size.height/2, width: button.frame.size.width, height: S_CALENDARDAYMARKHEIGHT)
             //mark.autoresizingMask = UIViewAutoresizing.None
-            break
         }
         //保存
         self.markDict[date] = mark

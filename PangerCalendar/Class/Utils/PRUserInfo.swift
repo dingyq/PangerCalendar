@@ -72,13 +72,10 @@ class PRUserInfo: NSObject {
                     } else {
                         newArr.append(item)
                     }
-                    break
                 case .doing:
                     doingArr.append(item)
-                    break
                 case .done:
                     doneArr.append(item)
-                    break
                 }
             }
             self.missionClassifiedListArr.append(doingArr)

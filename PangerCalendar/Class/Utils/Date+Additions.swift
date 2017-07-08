@@ -9,22 +9,12 @@
 import Foundation
 
 extension Date {
-    static func appMinDate() -> Date {
-        var components = DateComponents()
-        components.timeZone = kPRTimeZone
-        components.year = 1901
-        components.month = 1
-        components.day = 1
-        return Calendar.current.date(from: components)!
+    static func appMin() -> Date {
+        return Calendar.current.date(from: DateComponents.appMin())!
     }
     
-    static func appMaxDate() -> Date {
-        var components = DateComponents()
-        components.timeZone = kPRTimeZone
-        components.year = 2100
-        components.month = 12
-        components.day = 31
-        return Calendar.current.date(from: components)!
+    static func appMax() -> Date {
+        return Calendar.current.date(from: DateComponents.appMax())!
     }
     
     func midnight() -> Date {

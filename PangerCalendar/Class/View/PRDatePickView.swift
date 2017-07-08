@@ -8,36 +8,19 @@
 
 import UIKit
 
-protocol PRDatePickViewDelegate : NSObjectProtocol {
-    func datePickDone(date: Date)
-}
-
 class PRDatePickView: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-    weak var delegate: PRDatePickViewDelegate?
-    
+    var datePickDone: ((_ date: Date) -> Void)?
     private var bgPickerView: UIView!
     private var datePick: UIDatePicker!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        print("PRDatePickView init ")
-        
-        
         self.backgroundColor = RGBACOLOR(r: 0, 0, 0, 0)
         
-        let button = UIButton()
+        let button = PRBaseButton()
         self.addSubview(button)
         button.setTitle("", for: .normal)
-        button.addTarget(self, action: #selector(hiddenClick), for: .touchUpInside)
+        button.addTarget(self, action: #selector(self.hiddenClick), for: .touchUpInside)
         button.mas_makeConstraints { (make) in
             make?.top.bottom().leading().trailing().equalTo()(self)?.setOffset(0)
         }
@@ -57,14 +40,12 @@ class PRDatePickView: UIView {
             make?.height.setOffset(40)
         }
         
-        let cancelBtn = UIButton()
+        let cancelBtn = PRBaseButton()
         header.addSubview(cancelBtn)
         cancelBtn.titleLabel?.font = PRTheme.current().defaultFont
         cancelBtn.setTitle(NSLocalizedString("取消", comment: ""), for: .normal)
         cancelBtn.setTitle(NSLocalizedString("取消", comment: ""), for: .highlighted)
-        cancelBtn.setTitleColor(UIColor.black, for: .normal)
-        cancelBtn.setTitleColor(UIColor.black, for: .highlighted)
-        cancelBtn.addTarget(self, action: #selector(hiddenClick), for: .touchUpInside)
+        cancelBtn.addTarget(self, action: #selector(self.hiddenClick), for: .touchUpInside)
         cancelBtn.mas_makeConstraints { (make) in
             make?.centerY.equalTo()(header.mas_centerY)?.setOffset(0)
             make?.leading.equalTo()(header.mas_leading)?.setOffset(6)
@@ -72,14 +53,12 @@ class PRDatePickView: UIView {
             make?.width.setOffset(50)
         }
 
-        let confirmBtn = UIButton()
+        let confirmBtn = PRBaseButton()
         header.addSubview(confirmBtn)
         confirmBtn.titleLabel?.font = PRTheme.current().defaultFont
         confirmBtn.setTitle(NSLocalizedString("确定", comment: ""), for: .normal)
         confirmBtn.setTitle(NSLocalizedString("确定", comment: ""), for: .highlighted)
-        confirmBtn.setTitleColor(UIColor.black, for: .normal)
-        confirmBtn.setTitleColor(UIColor.black, for: .highlighted)
-        confirmBtn.addTarget(self, action: #selector(datePickedConfirm), for: .touchUpInside)
+        confirmBtn.addTarget(self, action: #selector(self.datePickedConfirm), for: .touchUpInside)
         confirmBtn.mas_makeConstraints { (make) in
             make?.centerY.equalTo()(header.mas_centerY)?.setOffset(0)
             make?.trailing.equalTo()(header.mas_trailing)?.setOffset(-6)
@@ -88,13 +67,13 @@ class PRDatePickView: UIView {
         }
 
         self.datePick = UIDatePicker.init(frame: CGRect.zero)
-        self.datePick.minimumDate = Date.appMinDate()
-        self.datePick.maximumDate = Date.appMaxDate()
+        self.datePick.minimumDate = kPRAppMinDate
+        self.datePick.maximumDate = kPRAppMaxDate
         self.datePick.locale = Locale.init(identifier: "zh_CN")
         self.datePick.timeZone = NSTimeZone.local
         self.datePick.setDate(Date(), animated: true)
         self.datePick.datePickerMode = UIDatePickerMode.date
-        self.datePick.addTarget(self, action: #selector(datePickValueChanged), for: .touchUpInside)
+        self.datePick.addTarget(self, action: #selector(self.datePickValueChanged), for: .touchUpInside)
         self.bgPickerView.addSubview(self.datePick)
         
         self.datePick.mas_makeConstraints { (make) in
@@ -107,10 +86,7 @@ class PRDatePickView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func datePickValueChanged() {
-        
-    }
-    
+    // MARK: Public Method
     func show() {
         UIApplication.shared.keyWindow?.addSubview(self)
         UIView.animate(withDuration: 0.3) {
@@ -122,12 +98,19 @@ class PRDatePickView: UIView {
         }
     }
     
-    func hiddenClick(sender: UIButton) {
+    // MARK: Private Method
+    @objc private func datePickValueChanged() {
+        
+    }
+    
+    @objc private func hiddenClick(sender: UIButton) {
         self.hide()
     }
 
-    func datePickedConfirm(sender: UIButton) {
-        self.delegate?.datePickDone(date: self.datePick.date)
+    @objc private func datePickedConfirm(sender: UIButton) {
+        if self.datePickDone != nil {
+            self.datePickDone!(self.datePick.date)
+        }
         self.hide()
     }
     

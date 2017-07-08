@@ -9,10 +9,9 @@
 import UIKit
 
 private class PRSettingTVCell: PRBaseTableViewCell {
-    
-//    private var tipImageView: PRBaseImageView!
-    private var titleLabel: PRBaseLabel!
-    private var switchButton: UISwitch!
+    fileprivate static let reuseId = "PRSettingTVCell"
+    private var titleLabel = PRBaseLabel()
+    private var switchButton = UISwitch()
     private var setModel: PRSettingItem!
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -25,23 +24,19 @@ private class PRSettingTVCell: PRBaseTableViewCell {
     }
     
     private func setupViews() {
-        let label = PRBaseLabel()
-        self.addSubview(label)
-        label.mas_makeConstraints { (make) in
+        self.addSubview(titleLabel)
+        titleLabel.mas_makeConstraints { (make) in
             make?.left.setOffset(10)
             make?.centerY.setOffset(0)
             make?.width.mas_lessThanOrEqualTo()(240)
         }
-        self.titleLabel = label
         
-        let button = UISwitch()
-        self.addSubview(button)
-        button.mas_makeConstraints { (make) in
+        self.addSubview(switchButton)
+        switchButton.mas_makeConstraints { (make) in
             make?.right.setOffset(-10)
             make?.centerY.setOffset(0)
         }
-        button.addTarget(self, action: #selector(self.switchButtonClicked), for: .touchUpInside)
-        self.switchButton = button
+        switchButton.addTarget(self, action: #selector(self.switchButtonClicked), for: .touchUpInside)
         
         let borderView = PRBorderView()
         self.addSubview(borderView)
@@ -51,7 +46,6 @@ private class PRSettingTVCell: PRBaseTableViewCell {
             make?.right.setOffset(0)
             make?.height.setOffset(1)
         }
-        
     }
     
     @objc private func switchButtonClicked(sender: UISwitch) {
@@ -66,10 +60,10 @@ private class PRSettingTVCell: PRBaseTableViewCell {
     }
 }
 
-class PRSettingViewController: PRBaseViewController, UITableViewDelegate, UITableViewDataSource {
+class PRSettingViewController: PRBaseViewController {
     
-    private var settingListTV: PRBaseTableView!
-    private var settingConfigList: Array<Array<PRSettingItem>>!
+    private var settingListTV = PRBaseTableView()
+    fileprivate var settingConfigList: Array<Array<PRSettingItem>>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,19 +94,20 @@ class PRSettingViewController: PRBaseViewController, UITableViewDelegate, UITabl
     }
     
     private func setupViews() {
-        let listTV = PRBaseTableView()
-        self.settingListTV = listTV
-        self.view.addSubview(listTV)
-        listTV.separatorStyle = .none
-        listTV.mas_makeConstraints { (make) in
+        self.view.addSubview(settingListTV)
+        settingListTV.separatorStyle = .none
+        settingListTV.mas_makeConstraints { (make) in
             make?.left.and().right().setOffset(0)
             make?.bottom.setOffset(0)
             make?.top.setOffset(0)
         }
-        listTV.delegate = self
-        listTV.dataSource = self
+        settingListTV.delegate = self
+        settingListTV.dataSource = self
+        settingListTV.register(PRSettingTVCell.self, forCellReuseIdentifier: PRSettingTVCell.reuseId)
     }
+}
 
+extension PRSettingViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.settingConfigList.count
     }
@@ -155,17 +150,12 @@ class PRSettingViewController: PRBaseViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let identifier = "setCellView"
-        var cell: PRSettingTVCell? = tableView.dequeueReusableCell(withIdentifier: identifier) as? PRSettingTVCell
-        if cell == nil {
-            cell = PRSettingTVCell(style: .default, reuseIdentifier: identifier)
-        }
-        cell!.bindData(model: self.settingConfigList[indexPath.section][indexPath.row])
-        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: PRSettingTVCell.reuseId) as! PRSettingTVCell
+        cell.bindData(model: self.settingConfigList[indexPath.section][indexPath.row])
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
     }
-
 }

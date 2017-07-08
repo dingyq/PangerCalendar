@@ -78,6 +78,8 @@
 		E3237F8B1F017E01000A703F /* PRMineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3237F8A1F017E01000A703F /* PRMineViewController.swift */; };
 		E3237F8E1F0AAD95000A703F /* PRMissionEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3237F8D1F0AAD95000A703F /* PRMissionEditViewController.swift */; };
 		E3237F901F0AADB9000A703F /* PRTimeLineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3237F8F1F0AADB9000A703F /* PRTimeLineViewController.swift */; };
+		E33B399C1F11084A0053DFA3 /* PRTimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33B399B1F11084A0053DFA3 /* PRTimePickerView.swift */; };
+		E33B399F1F113CA80053DFA3 /* DateComponents+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E33B399E1F113CA80053DFA3 /* DateComponents+Additions.swift */; };
 		E35460311DC5FDB800C05867 /* huangli.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = E35460301DC5FDB800C05867 /* huangli.sqlite */; };
 		E35460371DC7A08F00C05867 /* PRDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35460361DC7A08F00C05867 /* PRDatabaseManager.swift */; };
 		E36A18481E864D89006195E3 /* PRPermanentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36A18471E864D89006195E3 /* PRPermanentViewController.swift */; };
@@ -210,6 +212,8 @@
 		E3237F8D1F0AAD95000A703F /* PRMissionEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRMissionEditViewController.swift; sourceTree = "<group>"; };
 		E3237F8F1F0AADB9000A703F /* PRTimeLineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRTimeLineViewController.swift; sourceTree = "<group>"; };
 		E333A1FDD7A1C6F7CC1CAAD4 /* Pods-PangerCalendarTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PangerCalendarTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PangerCalendarTests/Pods-PangerCalendarTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E33B399B1F11084A0053DFA3 /* PRTimePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRTimePickerView.swift; sourceTree = "<group>"; };
+		E33B399E1F113CA80053DFA3 /* DateComponents+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateComponents+Additions.swift"; sourceTree = "<group>"; };
 		E35460301DC5FDB800C05867 /* huangli.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = huangli.sqlite; sourceTree = "<group>"; };
 		E35460331DC7A00C00C05867 /* PRBridgeHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PRBridgeHeader.h; sourceTree = "<group>"; };
 		E35460361DC7A08F00C05867 /* PRDatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRDatabaseManager.swift; sourceTree = "<group>"; };
@@ -312,16 +316,17 @@
 			name = Config;
 			sourceTree = "<group>";
 		};
-		919209EA1F039E8C00CA5243 /* Category */ = {
+		919209EA1F039E8C00CA5243 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				91D4C4DE1F091D80009A000D /* NSObject+Additions.swift */,
 				E36A18781E8762BB006195E3 /* UIColor+Additions.swift */,
 				E36A18841E88132E006195E3 /* Date+Additions.swift */,
+				E33B399E1F113CA80053DFA3 /* DateComponents+Additions.swift */,
 				919209EF1F039F0000CA5243 /* String+Additions.swift */,
 				91D4C50C1F0A6B05009A000D /* UserDefaults+Additions.swift */,
 			);
-			name = Category;
+			name = Extension;
 			sourceTree = "<group>";
 		};
 		919209EB1F039E9200CA5243 /* DataBase */ = {
@@ -378,6 +383,7 @@
 		E3237F771EFE9AA8000A703F /* Notice */ = {
 			isa = PBXGroup;
 			children = (
+				E33B399D1F1136330053DFA3 /* View */,
 				912E061F1F0E80D100FAAF6E /* PRMissionDetailViewController.swift */,
 				E36A18491E864E11006195E3 /* PRMissionListViewController.swift */,
 				E3237F7C1EFE9BC1000A703F /* PRMissionAddViewController.swift */,
@@ -413,6 +419,14 @@
 				E3237F8F1F0AADB9000A703F /* PRTimeLineViewController.swift */,
 			);
 			name = Mine;
+			sourceTree = "<group>";
+		};
+		E33B399D1F1136330053DFA3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E33B399B1F11084A0053DFA3 /* PRTimePickerView.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		E35460351DC7A04C00C05867 /* Bridge */ = {
@@ -582,7 +596,7 @@
 			isa = PBXGroup;
 			children = (
 				919209EB1F039E9200CA5243 /* DataBase */,
-				919209EA1F039E8C00CA5243 /* Category */,
+				919209EA1F039E8C00CA5243 /* Extension */,
 				E36A18801E87CB0E006195E3 /* PRCommonConstant.swift */,
 			);
 			path = Utils;
@@ -976,6 +990,7 @@
 				E36A18481E864D89006195E3 /* PRPermanentViewController.swift in Sources */,
 				E3EAAE531E01B12E001478E4 /* PRSolarTermsManager.swift in Sources */,
 				912FB7251F0FAE5F0040CE64 /* PRBaseTextView.swift in Sources */,
+				E33B399F1F113CA80053DFA3 /* DateComponents+Additions.swift in Sources */,
 				E3F886711E7401AC00007B01 /* PRCalendarViewScrollDelegate.swift in Sources */,
 				E36A18771E875F5D006195E3 /* PRTheme.swift in Sources */,
 				E3F288FE1E0FAFF600974C67 /* PRLunarDateAlgorithm.swift in Sources */,
@@ -1026,6 +1041,7 @@
 				E35460371DC7A08F00C05867 /* PRDatabaseManager.swift in Sources */,
 				E3EAAE511E01B12E001478E4 /* PRLunarDate.swift in Sources */,
 				E36A18671E867063006195E3 /* PRTabBarController.swift in Sources */,
+				E33B399C1F11084A0053DFA3 /* PRTimePickerView.swift in Sources */,
 				E3237F8B1F017E01000A703F /* PRMineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

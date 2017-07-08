@@ -124,10 +124,8 @@ class PRMissionItemView: PRBaseView {
             switch self.type {
             case .time:
                 str = NSLocalizedString("没有截止时间", comment: "")
-                break
             case .duty:
                 str = NSLocalizedString("选择负责人", comment: "")
-                break
             default: break
                 
             }
@@ -144,7 +142,7 @@ class PRMissionItemView: PRBaseView {
 
 // MARK: PRMissionDetailViewController
 
-class PRMissionDetailViewController: PRBaseViewController, PRDatePickViewDelegate, PRMissionItemViewDelegate {
+class PRMissionDetailViewController: PRBaseViewController, PRMissionItemViewDelegate {
 
     var editingMission: PRMissionNoticeModel?
     
@@ -183,9 +181,11 @@ class PRMissionDetailViewController: PRBaseViewController, PRDatePickViewDelegat
     private var dutyTipView: PRMissionItemView?
     private var timeTipView: PRMissionItemView?
     
-    private lazy var datePickerView: PRDatePickView = {
-        var pickView = PRDatePickView(frame: UIScreen.main.bounds)
-        pickView.delegate = self
+    private lazy var timePickerView: PRTimePickerView = {
+        var pickView = PRTimePickerView(frame: UIScreen.main.bounds)
+        pickView.timePickDone = {[unowned self](date) in
+            self.deadlineDate = date.midnight()
+        }
         return pickView
     }()
     
@@ -322,7 +322,6 @@ class PRMissionDetailViewController: PRBaseViewController, PRDatePickViewDelegat
         switch self.vcType {
         case .edit:
             btnTitle = "确认修改"
-            break
         default:
             break
         }
@@ -355,7 +354,6 @@ class PRMissionDetailViewController: PRBaseViewController, PRDatePickViewDelegat
                 self.titleTextField?.text = ""
                 self.dismissSelf()
             }
-            break
         case .edit:
             self.editingMission?.title = titleStr!
             self.editingMission?.content = (self.contentTextView?.text)!
@@ -374,17 +372,12 @@ class PRMissionDetailViewController: PRBaseViewController, PRDatePickViewDelegat
         }
     }
     
-    // MARK: Protocol Method(PRDatePickViewDelegate)
-    func datePickDone(date: Date) {
-        self.deadlineDate = date.midnight()
-    }
-    
     // MARK: Protocol Method(PRMissionItemViewDelegate)
     func pickTargetData(sender: PRMissionItemView) {
         self.view.endEditing(true)
         
         if sender == self.timeTipView {
-            self.datePickerView.show()
+            self.timePickerView.show()
         } else if sender == self.dutyTipView {
             
         }

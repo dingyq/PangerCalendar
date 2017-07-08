@@ -10,10 +10,11 @@ import UIKit
 
 
 private class PRMineTVCell: PRBaseTableViewCell {
+    fileprivate static let reuseId = "PRMineTVCell"
     
-    private var tipImageView: PRBaseImageView!
-    private var titleLabel: PRBaseLabel!
-    private var moreImageView: PRBaseImageView!
+    private var tipImageView = PRBaseImageView()
+    private var titleLabel = PRBaseLabel()
+    private var moreImageView = PRBaseImageView()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -25,34 +26,32 @@ private class PRMineTVCell: PRBaseTableViewCell {
     }
     
     private func setupViews() {
+        self.addSubview(tipImageView)
+        self.addSubview(titleLabel)
+        self.addSubview(moreImageView)
+        moreImageView.image = PRThemedImage(name: "more_data_nor")
         
-        let imageV = PRBaseImageView()
-        self.addSubview(imageV)
-        imageV.mas_makeConstraints { (make) in
+        self.setupViewsLayout()
+    }
+    
+    private func setupViewsLayout() {
+        tipImageView.mas_makeConstraints { (make) in
             make?.left.setOffset(10)
             make?.centerY.setOffset(0)
             make?.width.and().height().setOffset(20)
         }
-        self.tipImageView = imageV
         
-        let label = PRBaseLabel()
-        self.addSubview(label)
-        label.mas_makeConstraints { (make) in
-            make?.left.equalTo()(imageV.mas_right)?.setOffset(6)
+        titleLabel.mas_makeConstraints { (make) in
+            make?.left.equalTo()(self.tipImageView.mas_right)?.setOffset(6)
             make?.centerY.setOffset(0)
             make?.width.mas_lessThanOrEqualTo()(240)
         }
-        self.titleLabel = label
         
-        let imageV1 = PRBaseImageView()
-        self.addSubview(imageV1)
-        imageV1.mas_makeConstraints { (make) in
+        moreImageView.mas_makeConstraints { (make) in
             make?.right.setOffset(-10)
             make?.centerY.setOffset(0)
             make?.width.and().height().setOffset(20)
         }
-        imageV1.image = PRThemedImage(name: "more_data_nor")
-        self.moreImageView = imageV1
     }
     
     func bindData(model: PRMineListItem!) {
@@ -62,10 +61,10 @@ private class PRMineTVCell: PRBaseTableViewCell {
     }
 }
 
-class PRMineViewController: PRBaseViewController, UITableViewDelegate, UITableViewDataSource {
+class PRMineViewController: PRBaseViewController {
     
-    private var mineListTV: PRBaseTableView!
-    private var mineListArr: Array<PRMineListItem>!
+    private var mineListTV = PRBaseTableView()
+    fileprivate var mineListArr: Array<PRMineListItem>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,22 +94,23 @@ class PRMineViewController: PRBaseViewController, UITableViewDelegate, UITableVi
     
     
     private func setupViews() {
-        let listTV = PRBaseTableView()
-        self.mineListTV = listTV
-        self.view.addSubview(listTV)
-        listTV.separatorStyle = .none
-        listTV.mas_makeConstraints { (make) in
+        self.view.addSubview(mineListTV)
+        mineListTV.separatorStyle = .none
+        mineListTV.mas_makeConstraints { (make) in
             make?.left.and().right().setOffset(0)
             make?.bottom.setOffset(0)
             make?.top.setOffset(0)
         }
-        listTV.delegate = self
-        listTV.dataSource = self
+        mineListTV.delegate = self
+        mineListTV.dataSource = self
+        mineListTV.register(PRMineTVCell.self, forCellReuseIdentifier: PRMineTVCell.reuseId)
     }
-    
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return self.mineListArr.count
-//    }
+}
+
+extension PRMineViewController: UITableViewDelegate, UITableViewDataSource {
+    //    func numberOfSections(in tableView: UITableView) -> Int {
+    //        return self.mineListArr.count
+    //    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.mineListArr.count
@@ -121,13 +121,9 @@ class PRMineViewController: PRBaseViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let identifier = "mineCellView"
-        var cell: PRMineTVCell? = tableView.dequeueReusableCell(withIdentifier: identifier) as? PRMineTVCell
-        if cell == nil {
-            cell = PRMineTVCell(style: .default, reuseIdentifier: identifier)
-        }
-        cell!.bindData(model: self.mineListArr[indexPath.row])
-        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: PRMineTVCell.reuseId) as! PRMineTVCell
+        cell.bindData(model: self.mineListArr[indexPath.row])
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -142,5 +138,4 @@ class PRMineViewController: PRBaseViewController, UITableViewDelegate, UITableVi
             
         }
     }
-
 }
