@@ -87,7 +87,7 @@ class PRMissionTVCell: PRBaseTableViewCell {
                 self.missionModel!.state = .new
             }
             self.updateView()
-            PRUserData.markMissionDataEdited()
+            PRUserData.markMissionEdited(self.missionModel)
             self.delegate?.stateChanged(mission: self.missionModel)
         }
     }
@@ -123,7 +123,7 @@ class PRMissionTVCell: PRBaseTableViewCell {
         self.titleLabel.text = model.title
         self.dutyLabel.text = model.dutyPerson?.userName
         if model.deadlineTime > 0 {
-            self.timeLabel.text = Date(timeIntervalSince1970: model.deadlineTime).mDDStr()
+            self.timeLabel.text = Date(timeIntervalSince1970: model.deadlineTime).mDDHHStr()
         } else {
             self.timeLabel.text = ""
         }
@@ -193,7 +193,7 @@ class PRMissionListViewController: PRBaseViewController, PRMissionTVCellDelegate
         noticeListTV.rowHeight = UITableViewAutomaticDimension
     }
     
-    private func reloadData() {
+    fileprivate func reloadData() {
         self.updateTBDataSource()
         self.noticeListTV.reloadData()
     }
@@ -210,7 +210,7 @@ class PRMissionListViewController: PRBaseViewController, PRMissionTVCellDelegate
     
     // MARK: Private Method (Action)
     @objc private func addButtonClicked(sender: UIButton) {
-        self.addMissionNoticeVC.deadlineDate = Date()
+        self.addMissionNoticeVC.deadlineDate = Date().defaultMissionTime()
         self.addMissionNoticeVC.dutyPerson = PRUserData.profile
         let navController = PRNavigationController(rootViewController: self.addMissionNoticeVC)
         self.present(navController, animated: true, completion: nil)
@@ -274,5 +274,30 @@ extension PRMissionListViewController : UITableViewDelegate, UITableViewDataSour
         tableView.deselectRow(at: indexPath, animated: true)
         self.missionEditVC.editingMission = self.tbDataSource[indexPath.section][indexPath.row]
         self.navigationController?.pushViewController(self.missionEditVC, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return NSLocalizedString("删除", comment: "")
+    }
+
+//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+//        let rowAction = UITableViewRowAction(style: .default, title: "删除") { (action, indexPath) in
+//            
+//        }
+//        let rowActionSec = UITableViewRowAction(style: .default, title: "备忘") { (action, indexPath) in
+//            
+//        }
+//        let arr = [rowAction, rowActionSec]
+//        return arr
+//    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        let mission = self.tbDataSource[indexPath.section][indexPath.row]
+        let _ = PRUserData.remove(mission: mission)
+        self.reloadData()
     }
 }

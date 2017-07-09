@@ -20,6 +20,8 @@
 		<string>NSString</string>
         <key>content</key>
         <string>NSString</string>
+        <key>needClock</key>
+        <string>NSNumber</string>
 		<key>createTime</key>
 		<string>NSNumber</string>
         <key>deadlineTime</key>
@@ -49,6 +51,8 @@
         <string>TEXT</string>
 		<key>content</key>
 		<string>TEXT</string>
+        <key>needClock</key>
+        <string>INTEGER</string>
 		<key>createTime</key>
 		<string>INTEGER</string>
         <key>deadlineTime</key>

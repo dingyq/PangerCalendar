@@ -208,7 +208,7 @@ class PRDatabaseManager: NSObject {
     }
     
     func deleteData(_ tableName: String, key: String, value: Int) -> Bool {
-        let sql = "DELETE FROM \(tableName) WHERE \(key) = '\(value)'"
+        let sql = "DELETE FROM \(tableName) WHERE \(key)=\(value)"
         let result = self.db.executeUpdate(sql, withArgumentsIn: nil)
         assert(result, "删除数据 \(tableName)失败")
         return result

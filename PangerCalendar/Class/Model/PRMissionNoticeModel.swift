@@ -22,6 +22,10 @@ enum PRMissionType: Int {
     case memorial = 3
 }
 
+enum PRMissionNoticeType: Int {
+    case none = 0
+    case push = 1
+}
 
 private func randomInRange(range: Range<Int64>) -> Int64 {
     let count = UInt32(range.upperBound - range.lowerBound)
@@ -40,6 +44,7 @@ class PRMissionNoticeModel: NSObject {
     var state: PRMissionState
     var title: String
     var content: String
+    var needClock: PRMissionNoticeType
     var createTime: Double
     var deadlineTime: Double
     var completeTime: Double
@@ -54,6 +59,7 @@ class PRMissionNoticeModel: NSObject {
         self.state = PRMissionState(rawValue: Int("\(dic.object(forKey: "state")!)")!)!
         self.title = dic.object(forKey: "title") as! String
         self.content = dic.object(forKey: "content") as! String
+        self.needClock = PRMissionNoticeType(rawValue: Int("\(dic.object(forKey: "needClock")!)")!)!
         self.createTime = Double("\(dic.object(forKey: "createTime")!)")!
         self.deadlineTime = Double("\(dic.object(forKey: "deadlineTime")!)")!
         self.completeTime = Double("\(dic.object(forKey: "completeTime")!)")!
@@ -78,6 +84,7 @@ class PRMissionNoticeModel: NSObject {
         }
         self.title = tmpTitle!
         self.content = ""
+        self.needClock = .push
         self.createTime = Double(Date().timeIntervalSince1970)
         if time == nil {
             self.deadlineTime = 0
@@ -98,6 +105,7 @@ class PRMissionNoticeModel: NSObject {
         self.state = .new
         self.title = title
         self.content = ""
+        self.needClock = .push
         self.createTime = Double(Date().timeIntervalSince1970)
         self.deadlineTime = Double(time.timeIntervalSince1970)
         self.completeTime = 0
@@ -108,7 +116,14 @@ class PRMissionNoticeModel: NSObject {
  
     override var description: String {
         let date = Date(timeIntervalSince1970: self.createTime)
-        return "missionId=\(missionId) title=\(String(describing: title)) time=\(String(describing: date.yyyyMDDStr()))"
+        return "missionId=\(missionId) title=\(String(describing: title)) time=\(String(describing: date.yyyyMDDhhmmStr()))"
+    }
+    
+    func briefDictionary() -> NSMutableDictionary {
+        let tmpDic = NSMutableDictionary()
+        tmpDic.setValue(NSNumber(value: self.missionId), forKey: "missionId")
+        tmpDic.setValue(self.title, forKey: "title")
+        return tmpDic
     }
     
     func serializeToDictionary() -> NSDictionary {
@@ -120,6 +135,7 @@ class PRMissionNoticeModel: NSObject {
         tmpDic.setValue(NSNumber(value: self.state.rawValue), forKey: "state")
         tmpDic.setValue(self.title, forKey: "title")
         tmpDic.setValue(self.content, forKey: "content")
+        tmpDic.setValue(NSNumber(value: self.needClock.rawValue), forKey: "needClock")
         tmpDic.setValue(NSNumber(value: self.createTime), forKey: "createTime")
         tmpDic.setValue(NSNumber(value: self.deadlineTime), forKey: "deadlineTime")
         tmpDic.setValue(NSNumber(value: self.completeTime), forKey: "completeTime")

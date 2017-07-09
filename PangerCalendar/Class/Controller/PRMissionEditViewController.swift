@@ -15,6 +15,14 @@ class PRMissionEditViewController: PRMissionDetailViewController {
         super.viewDidLoad()
         self.title = NSLocalizedString("提醒详情", comment: "")
         self.resetLeftNavigationItemForPop()
+        
+        let deleteButton = PRBaseButton()
+        deleteButton.frame = CGRect(x: 0, y: 0, width: 30, height: 40)
+        deleteButton.setImage(PRThemedImage(name:"button_delete_nor"), for: .normal)
+        deleteButton.setImage(PRThemedImage(name:"button_delete_sel"), for: .highlighted)
+        deleteButton.addTarget(self, action: #selector(self.deleteButtonClicked), for: .touchUpInside)
+        let btnItem = UIBarButtonItem(customView: deleteButton)
+        self.navigationItem.rightBarButtonItem = btnItem
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,7 +30,13 @@ class PRMissionEditViewController: PRMissionDetailViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @objc private func deleteButtonClicked(sender: UIButton) {
+        if self.editingMission != nil {
+            let _ = PRUserData.remove(mission: self.editingMission!)
+            self.popSelf()
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

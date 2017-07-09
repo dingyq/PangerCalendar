@@ -150,8 +150,8 @@ class PRMissionDetailViewController: PRBaseViewController, PRMissionItemViewDele
     var deadlineDate: Date? {
         set(newDate) {
             if _deadlineDate != newDate {
-                _deadlineDate = newDate?.midnight()
-                self.timeTipView?.updateTipText(newDate?.yyyyMDDStr())
+                _deadlineDate = newDate
+                self.timeTipView?.updateTipText(newDate?.yyyyMDDhhmmStr())
             }
         }
         
@@ -184,7 +184,7 @@ class PRMissionDetailViewController: PRBaseViewController, PRMissionItemViewDele
     private lazy var timePickerView: PRTimePickerView = {
         var pickView = PRTimePickerView(frame: UIScreen.main.bounds)
         pickView.timePickDone = {[unowned self](date) in
-            self.deadlineDate = date.midnight()
+            self.deadlineDate = date
         }
         return pickView
     }()
@@ -192,7 +192,7 @@ class PRMissionDetailViewController: PRBaseViewController, PRMissionItemViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupViews()
-        self.timeTipView?.updateTipText(self.deadlineDate?.yyyyMDDStr())
+        self.timeTipView?.updateTipText(self.deadlineDate?.yyyyMDDhhmmStr())
         self.dutyTipView?.updateTipText(self.dutyPerson?.userName)
     }
     
@@ -337,6 +337,7 @@ class PRMissionDetailViewController: PRBaseViewController, PRMissionItemViewDele
     }
     
     // MARK: Private Method (Action)
+    
     @objc private func editMissonButtonClicked(sender: UIButton) {
         self.view.endEditing(true)
         
@@ -349,7 +350,6 @@ class PRMissionDetailViewController: PRBaseViewController, PRMissionItemViewDele
             let mission = PRMissionNoticeModel(title: titleStr, self.deadlineDate, self.dutyPerson)
             mission.content = self.contentTextView!.text
             let result = PRUserData.add(mission: mission)
-            PRMissionsDataMgr.syncData(dataArr: [mission.serializeToDictionary()])
             if result {
                 self.titleTextField?.text = ""
                 self.dismissSelf()
@@ -365,8 +365,7 @@ class PRMissionDetailViewController: PRBaseViewController, PRMissionItemViewDele
             self.editingMission?.deadlineTime = time
             
             if self.editingMission != nil {
-                PRUserData.markMissionDataEdited()
-                PRMissionsDataMgr.syncData(dataArr: [self.editingMission!.serializeToDictionary()])
+                PRUserData.markMissionEdited(self.editingMission)
                 self.popSelf()
             }
         }

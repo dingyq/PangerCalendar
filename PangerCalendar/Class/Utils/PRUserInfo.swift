@@ -27,15 +27,32 @@ class PRUserInfo: NSObject {
         
         let result = PRMissionsDataMgr.moreData(sortId: 0)
         for dic in result {
-            let model = PRMissionNoticeModel(dic)
-            let _ = self.add(mission: model)
+            self.missionList.append(PRMissionNoticeModel(dic))
         }
+        self.missionDataChanged = true
     }
     
     func add(mission: PRMissionNoticeModel) -> Bool {
         self.missionList.append(mission)
         self.missionDataChanged = true
+        if mission.needClock == .push {
+            PRNotificationReminder.default.add(mission: mission)
+        }
+        PRMissionsDataMgr.syncData(dataArr: [mission.serializeToDictionary()])
         return true
+    }
+    
+    func remove(mission: PRMissionNoticeModel) -> Bool {
+        for (index, item) in self.missionList.enumerated() {
+            if item == mission {
+                self.missionList.remove(at: index)
+                self.missionDataChanged = true
+                let _ = PRNotificationReminder.default.remove(mission: mission)
+                PRMissionsDataMgr.deleteData(dataArr: [mission.serializeToDictionary()])
+                return true
+            }
+        }
+        return false
     }
     
     func add(member: PRUserModel) -> Bool {
@@ -51,8 +68,16 @@ class PRUserInfo: NSObject {
         return self.missionDataChanged
     }
     
-    func markMissionDataEdited() {
-        self.missionDataChanged = true
+    func markMissionEdited(_ mission: PRMissionNoticeModel?) {
+        if mission != nil {
+            self.missionDataChanged = true
+            if mission!.state != .done {
+                PRNotificationReminder.default.add(mission: mission!)
+            } else {
+                let _ = PRNotificationReminder.default.remove(mission: mission!)
+            }
+            PRMissionsDataMgr.syncData(dataArr: [mission!.serializeToDictionary()])
+        }
     }
     
     func missionClassifiedList() -> Array<Array<PRMissionNoticeModel>> {

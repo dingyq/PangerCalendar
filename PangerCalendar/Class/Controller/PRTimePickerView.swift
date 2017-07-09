@@ -107,6 +107,8 @@ class PRTimePickerView: PRBaseView {
     @objc private func timePickConfirm(sender: UIButton) {
         var comp = DateComponents()
         comp.day = self.selectedDateIndex
+        comp.hour = self.selectedHour
+        comp.minute = self.selectedMinute
         let date = Calendar.current.date(byAdding: comp, to: kPRAppMinDate)
         if self.timePickDone != nil {
             self.timePickDone!(date!)
@@ -128,7 +130,7 @@ class PRTimePickerView: PRBaseView {
         self.selectedDateIndex = calendar.dateComponents([.day], from: kPRAppMinDate, to: Date()).day!
         let todayComps = DateComponents.today()
         self.selectedHour = (todayComps.hour! + 1)%24;
-        self.selectedMinute = todayComps.minute!;
+//        self.selectedMinute = todayComps.minute!;
         
         self.timePick.selectRow(self.selectedDateIndex, inComponent: 0, animated: true)
         self.timePick.selectRow(self.selectedHour, inComponent: 1, animated: true)

@@ -90,7 +90,7 @@ class PRPermanentViewController: PRBaseViewController {
     
     // MARK: Public Method
     @objc private func addButtonClicked(_ sender: UIButton) {
-        self.addNoticeVC.deadlineDate = self.calendarView.selectedDate
+        self.addNoticeVC.deadlineDate = self.calendarView.selectedDate.defaultMissionTime()
         self.addNoticeVC.dutyPerson = PRUserData.profile
         let navController = PRNavigationController(rootViewController: self.addNoticeVC)
         self.present(navController, animated: true, completion: nil)

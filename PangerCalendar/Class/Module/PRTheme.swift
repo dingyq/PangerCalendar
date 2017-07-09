@@ -12,10 +12,11 @@ private let s_Instance: PRTheme = PRTheme()
 
 class PRTheme: NSObject {
     // MARK: Font
-    var font14: UIFont = UIFont.systemFont(ofSize: 14)
-    var defaultFont: UIFont = UIFont.systemFont(ofSize: 13)
     var smallFont: UIFont = UIFont.systemFont(ofSize: 11)
+    var defaultFont: UIFont = UIFont.systemFont(ofSize: 13)
+    var font14: UIFont = UIFont.systemFont(ofSize: 14)
     var bigFont: UIFont = UIFont.systemFont(ofSize: 15)
+    var font17: UIFont = UIFont.systemFont(ofSize: 17)
     
     // MARK: color
     var redCustomColor: UIColor = RGBCOLOR(r: 187, 36, 13)
