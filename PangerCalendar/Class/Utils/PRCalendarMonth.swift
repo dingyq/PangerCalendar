@@ -67,7 +67,7 @@ class PRCalendarMonth: PRBaseView {
         // 创建一个当前用户的日历对象（NSCalendar用于处理时间相关问题。比如比较时间前后、计算日期所的周别等。）
         let calendar = Calendar.current
         // 创建一个日期组件，并赋予当前日期
-        let components = calendar.dateComponents([Calendar.Component.day, Calendar.Component.month, Calendar.Component.year], from: Date())
+        let components = calendar.dateComponents([.day, .month, .year], from: Date())
         // 返回components指定的时间
         let todayDate = calendar.date(from: components)!
         // Initialization code
@@ -170,13 +170,15 @@ class PRCalendarMonth: PRBaseView {
             for aWeekday in 1...self.numberOfDaysInWeek {
                 //根据行列获得日期
                 let dayDate = PRCalendarLogic.date(weekday: aWeekday, week: aWeek, referenceDate: logic.referenceDate)
+                let dateInfo = PRDate.info(date: dayDate)
+                
                 let dayButtonBottomEdgeInset = self.calendarDayHeight/4
                 //当前列x坐标
                 let positionX = (CGFloat(aWeekday - 1) * self.calendarDayWidth) - 1
                 //当前日期位置
                 let dayFrame = CGRect(x: positionX, y: positionY, width: self.calendarDayWidth, height: self.calendarDayHeight)
                 //转换成格式化日期
-                var dayComponents = calendar.dateComponents([Calendar.Component.day], from: dayDate)
+                var dayComponents = calendar.dateComponents([.day], from: dayDate)
                 //创建一个日期按钮，样式为UIButtonTypeCustom
                 let dayButton = UIButton()
                 dayButton.isOpaque = true
@@ -217,24 +219,30 @@ class PRCalendarMonth: PRBaseView {
                     dayButton.setTitleColor(titleColor, for: UIControlState.normal)
 //                    dayButton.setTitleShadowColor(UIColor.black, for: UIControlState.normal)
                     dayButton.setBackgroundImage(PRThemedImage(name: "CalendarDayToday.png"), for: UIControlState.normal)
-                    dayButton.setBackgroundImage(PRThemedImage(name: "CalendarDayTodaySelected.png"), for: UIControlState.selected)
+                    dayButton.setBackgroundImage(PRThemedImage(name: "CalendarDayTodaySelected"), for: UIControlState.selected)
                     //创建图像视图，今天
                     let todayMark = PRBaseImageView(image: PRThemedImage(name: "CalendarDayTodayMark.png"))
-                    //[todayMark setFrame:];
                     todayMark.contentMode = UIViewContentMode.topLeft
                     todayMark.frame = dayButton.frame
                     self.addSubview(todayMark)
                 }
+                
+                if dateInfo.isHoliday && dayDate.compare(todayDate) != ComparisonResult.orderedSame {
+                    let todayMark = PRBaseImageView(image: PRThemedImage(name: "CalendarHolidayMark"))
+                    todayMark.contentMode = UIViewContentMode.topLeft
+                    todayMark.frame = dayButton.frame
+                    self.addSubview(todayMark)
+                }
+                
                 //添加阴历和节日信息
                 let bottomLabel = UILabel()
                 let bottomLabelHeight = self.calendarDayHeight * S_CALENDARDAYBUTTOMFOUNTSIZESCALE
-                bottomLabel.text = PRLunarDate.lunarDateWithNSDate(date: dayDate).priorityLabel
-                
+                bottomLabel.text = dateInfo.priorityLabel
                 bottomLabel.font = UIFont.systemFont(ofSize: bottomLabelHeight)
                 bottomLabel.frame = CGRect(x: 0, y: dayButton.frame.size.height - bottomLabelHeight - dayButtonBottomEdgeInset + 2, width: dayButton.frame.size.width, height: bottomLabelHeight + 2)
                 bottomLabel.textAlignment = NSTextAlignment.center;
                 //根据标签类型修改文本颜色
-                let dayType = PRLunarDate.lunarDateWithNSDate(date: dayDate).priorityLabelType
+                let dayType = dateInfo.type
                 if logic.distanceOfDateFromCurrentMonth(date: dayDate) != 0 {
                     switch dayType {
                     case .day:

@@ -66,11 +66,11 @@ class PRTheme: NSObject {
         weekdayInMonthColor = blackCustomColor
         weekdayOutMonthColor = blackCustomLightColor
         
-        sosolarTermInMonthColor = redCustomColor
-        sosolarTermOutMonthColor = redCustomLightColor
+        festivalInMonthColor = redCustomColor
+        festivalOutMonthColor = redCustomLightColor
         
-        festivalInMonthColor = blueCustomColor
-        festivalOutMonthColor = blueCustomLightColor
+        sosolarTermInMonthColor = blueCustomColor
+        sosolarTermOutMonthColor = blueCustomLightColor
         
         borderLineColor = grayColor220
     }

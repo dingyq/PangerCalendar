@@ -31,6 +31,7 @@
 		919209E61F03860900CA5243 /* PRMissionNoticeTable.plist in Resources */ = {isa = PBXBuildFile; fileRef = 919209E51F03860900CA5243 /* PRMissionNoticeTable.plist */; };
 		919209E91F039A1500CA5243 /* PRUserInfoDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919209E81F039A1500CA5243 /* PRUserInfoDB.swift */; };
 		919209F01F039F0000CA5243 /* String+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919209EF1F039F0000CA5243 /* String+Additions.swift */; };
+		91ACFC5B1F1B7EE500F0DC6B /* CalendarHolidayMark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 91ACFC5A1F1B7EE500F0DC6B /* CalendarHolidayMark@3x.png */; };
 		91BF5EDC1F01382C007993E7 /* PRBaseLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF5EDB1F01382C007993E7 /* PRBaseLabel.swift */; };
 		91BF5EDE1F013842007993E7 /* PRBaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF5EDD1F013842007993E7 /* PRBaseTextField.swift */; };
 		91BF5EE01F013AE7007993E7 /* PRBaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BF5EDF1F013AE7007993E7 /* PRBaseButton.swift */; };
@@ -111,7 +112,7 @@
 		E3EAAE481E01B0DC001478E4 /* PRCalendarLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EAAE471E01B0DC001478E4 /* PRCalendarLogic.swift */; };
 		E3EAAE4F1E01B12E001478E4 /* PRCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EAAE491E01B12E001478E4 /* PRCalendarView.swift */; };
 		E3EAAE501E01B12E001478E4 /* PRChineseFestivalsMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EAAE4A1E01B12E001478E4 /* PRChineseFestivalsMgr.swift */; };
-		E3EAAE511E01B12E001478E4 /* PRLunarDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EAAE4B1E01B12E001478E4 /* PRLunarDate.swift */; };
+		E3EAAE511E01B12E001478E4 /* PRDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EAAE4B1E01B12E001478E4 /* PRDate.swift */; };
 		E3EAAE521E01B12E001478E4 /* PRSolarTermsFormulaCompute.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EAAE4C1E01B12E001478E4 /* PRSolarTermsFormulaCompute.swift */; };
 		E3EAAE531E01B12E001478E4 /* PRSolarTermsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EAAE4D1E01B12E001478E4 /* PRSolarTermsManager.swift */; };
 		E3EAAE541E01B12E001478E4 /* PRSolarTermsMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EAAE4E1E01B12E001478E4 /* PRSolarTermsMgr.swift */; };
@@ -168,6 +169,7 @@
 		919209E51F03860900CA5243 /* PRMissionNoticeTable.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PRMissionNoticeTable.plist; sourceTree = "<group>"; };
 		919209E81F039A1500CA5243 /* PRUserInfoDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRUserInfoDB.swift; sourceTree = "<group>"; };
 		919209EF1F039F0000CA5243 /* String+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Additions.swift"; sourceTree = "<group>"; };
+		91ACFC5A1F1B7EE500F0DC6B /* CalendarHolidayMark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalendarHolidayMark@3x.png"; sourceTree = "<group>"; };
 		91BF5EDB1F01382C007993E7 /* PRBaseLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRBaseLabel.swift; sourceTree = "<group>"; };
 		91BF5EDD1F013842007993E7 /* PRBaseTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRBaseTextField.swift; sourceTree = "<group>"; };
 		91BF5EDF1F013AE7007993E7 /* PRBaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRBaseButton.swift; sourceTree = "<group>"; };
@@ -261,7 +263,7 @@
 		E3EAAE471E01B0DC001478E4 /* PRCalendarLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRCalendarLogic.swift; path = PangerCalendar/Class/Module/PRCalendarLogic.swift; sourceTree = SOURCE_ROOT; };
 		E3EAAE491E01B12E001478E4 /* PRCalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRCalendarView.swift; path = PangerCalendar/Class/Module/PRCalendarView.swift; sourceTree = SOURCE_ROOT; };
 		E3EAAE4A1E01B12E001478E4 /* PRChineseFestivalsMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRChineseFestivalsMgr.swift; path = PangerCalendar/Class/Module/PRChineseFestivalsMgr.swift; sourceTree = SOURCE_ROOT; };
-		E3EAAE4B1E01B12E001478E4 /* PRLunarDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRLunarDate.swift; path = PangerCalendar/Class/Module/PRLunarDate.swift; sourceTree = SOURCE_ROOT; };
+		E3EAAE4B1E01B12E001478E4 /* PRDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRDate.swift; path = PangerCalendar/Class/Module/PRDate.swift; sourceTree = SOURCE_ROOT; };
 		E3EAAE4C1E01B12E001478E4 /* PRSolarTermsFormulaCompute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRSolarTermsFormulaCompute.swift; path = PangerCalendar/Class/Module/PRSolarTermsFormulaCompute.swift; sourceTree = SOURCE_ROOT; };
 		E3EAAE4D1E01B12E001478E4 /* PRSolarTermsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRSolarTermsManager.swift; path = PangerCalendar/Class/Module/PRSolarTermsManager.swift; sourceTree = SOURCE_ROOT; };
 		E3EAAE4E1E01B12E001478E4 /* PRSolarTermsMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRSolarTermsMgr.swift; path = PangerCalendar/Class/Module/PRSolarTermsMgr.swift; sourceTree = SOURCE_ROOT; };
@@ -369,6 +371,7 @@
 		E30612191E05B4F200EE83FC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				91ACFC5A1F1B7EE500F0DC6B /* CalendarHolidayMark@3x.png */,
 				912FB7311F0FD2E30040CE64 /* CalendarDaySelected@3x.png */,
 				912FB72F1F0FD2A50040CE64 /* CalendarDayTodaySelected@3x.png */,
 				912FB72D1F0FD1510040CE64 /* CalendarDayTodayMark@3x.png */,
@@ -654,7 +657,7 @@
 		E3EAAE3F1DFDC1DA001478E4 /* ChinaCalendar */ = {
 			isa = PBXGroup;
 			children = (
-				E3EAAE4B1E01B12E001478E4 /* PRLunarDate.swift */,
+				E3EAAE4B1E01B12E001478E4 /* PRDate.swift */,
 				E3EAAE4A1E01B12E001478E4 /* PRChineseFestivalsMgr.swift */,
 				E3F288FD1E0FAFF600974C67 /* PRLunarDateAlgorithm.swift */,
 				E3EAAE4E1E01B12E001478E4 /* PRSolarTermsMgr.swift */,
@@ -813,6 +816,7 @@
 				912E061C1F0E3E9100FAAF6E /* button_misson_state_done@3x.png in Resources */,
 				91D4C4E31F091F93009A000D /* more_data_sel@3x.png in Resources */,
 				912FB7321F0FD2E30040CE64 /* CalendarDaySelected@3x.png in Resources */,
+				91ACFC5B1F1B7EE500F0DC6B /* CalendarHolidayMark@3x.png in Resources */,
 				91D4C4C51F091170009A000D /* tab_remind_sel@3x.png in Resources */,
 				912FB7301F0FD2A50040CE64 /* CalendarDayTodaySelected@3x.png in Resources */,
 				E3237F741EFE9816000A703F /* calendar_more_unfold@3x.png in Resources */,
@@ -1067,7 +1071,7 @@
 				919209CE1F028FCA00CA5243 /* PRMissonsData.swift in Sources */,
 				E3EAAE561E01B19D001478E4 /* PRCalendarLogicDelegate.swift in Sources */,
 				E35460371DC7A08F00C05867 /* PRDatabaseManager.swift in Sources */,
-				E3EAAE511E01B12E001478E4 /* PRLunarDate.swift in Sources */,
+				E3EAAE511E01B12E001478E4 /* PRDate.swift in Sources */,
 				E36A18671E867063006195E3 /* PRTabBarController.swift in Sources */,
 				E33B399C1F11084A0053DFA3 /* PRTimePickerView.swift in Sources */,
 				E3237F8B1F017E01000A703F /* PRMineViewController.swift in Sources */,

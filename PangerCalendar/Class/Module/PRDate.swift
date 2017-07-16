@@ -1,5 +1,5 @@
 //
-//  PRLunarDate.swift
+//  PRDate.swift
 //  PangerCalendar
 //
 //  Created by bigqiang on 2016/12/13.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum PRDatePriorityLabelType: Int {
+enum PRDateType: Int {
     case null = -1
     case day  =  0
     case solarterm
@@ -16,7 +16,7 @@ enum PRDatePriorityLabelType: Int {
     case festival
 }
 
-class PRLunarDate: NSObject {
+class PRDate: NSObject {
     //日
     public private(set) var iday: Int?
     //月
@@ -48,20 +48,22 @@ class PRLunarDate: NSObject {
     public private(set) var priorityLabel: String = ""
     
     //优先标签类型
-    public private(set) var priorityLabelType: PRDatePriorityLabelType = PRDatePriorityLabelType.null
+    public private(set) var type: PRDateType = .null
+    
+    public private(set) var isHoliday: Bool = false
     
     //初始化一个农历日期，使用公历的年月日
-    class func lunarDateWithYear(year: Int, month: Int, day: Int) -> PRLunarDate {
-        return PRLunarDate.init(year: year, month: month, day: day)
+    class func lunarDateWithYear(year: Int, month: Int, day: Int) -> PRDate {
+        return PRDate.init(year: year, month: month, day: day)
     }
     
     //初始化一个农历日期，使用公历日期
-    class func lunarDateWithNSDate(date: Date) -> PRLunarDate {
+    class func info(date: Date) -> PRDate {
         //创建一个当前用户的日历对象（NSCalendar用于处理时间相关问题。比如比较时间前后、计算日期所的周别等。）
         let calendar = Calendar.current
         //创建一个日期组件，并赋予当前日期
-        let components = calendar .dateComponents([Calendar.Component.day, Calendar.Component.month, Calendar.Component.year], from: date)
-        return PRLunarDate.lunarDateWithYear(year: components.year!, month: components.month!, day: components.day!)
+        let components = calendar.dateComponents([.day, .month, .year], from: date)
+        return PRDate.lunarDateWithYear(year: components.year!, month: components.month!, day: components.day!)
     }
     
     
@@ -104,9 +106,9 @@ class PRLunarDate: NSObject {
         
         //阳历节日 阴历节日
         let cFestivalsMgr = PRChineseFestivalsMgr.shareMgr()
-        self.festival = cFestivalsMgr.festival(month: month, day: day)
+        self.festival = cFestivalsMgr.soloarFestival(month: month, day: day)
         self.lunarFestival = cFestivalsMgr.lunarFestival(month: lunarDate.month, day: lunarDate.day)
-        
+        self.isHoliday = cFestivalsMgr.isHoliday(year: year, month: month, day: day)
         //优先的农历标签
         self.priorityLabel = self.priorityLunarLabel()
     }
@@ -114,23 +116,23 @@ class PRLunarDate: NSObject {
     private func priorityLunarLabel() -> String {
         if (!self.festival.isEmpty) {
             //阳历节日
-            self.priorityLabelType = PRDatePriorityLabelType.festival
+            self.type = .festival
             return self.festival
         } else if (!self.lunarFestival.isEmpty) {
             //阴历节日
-            self.priorityLabelType = PRDatePriorityLabelType.lunarFestival
+            self.type = .lunarFestival
             return self.lunarFestival
         } else if (!self.solarterm.isEmpty) {
             //节气
-            self.priorityLabelType = PRDatePriorityLabelType.solarterm
+            self.type = .solarterm
             return self.solarterm;
         } else if (!self.day.isEmpty) {
             //日期
-            self.priorityLabelType = PRDatePriorityLabelType.day
+            self.type = .day
             return self.day;
         } else {
             //无效
-            self.priorityLabelType = PRDatePriorityLabelType.null
+            self.type = .null
             return ""
         }
     }

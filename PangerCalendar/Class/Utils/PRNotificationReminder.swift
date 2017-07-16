@@ -30,8 +30,8 @@ class PRNotificationReminder: NSObject {
         
         let notify = UILocalNotification()
         notify.alertBody = mission.title
-//        notify.fireDate = Date(timeIntervalSince1970: mission.deadlineTime)
-                    notify.fireDate = Date().addingTimeInterval(10)
+        notify.fireDate = Date(timeIntervalSince1970: mission.deadlineTime)
+//                    notify.fireDate = Date().addingTimeInterval(10)
         notify.timeZone = kPRTimeZone
         let dic = mission.briefDictionary()
         notify.userInfo = dic as? [AnyHashable : Any]

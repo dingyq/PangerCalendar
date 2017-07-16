@@ -85,15 +85,15 @@ extension Date {
     
     func weekOfYearStr() -> String {
         let calendar = Calendar.current
-        let comps = calendar.dateComponents([Calendar.Component.weekOfYear], from: self)
+        let comps = calendar.dateComponents([.weekOfYear], from: self)
         return String.init(format: "第%i周", comps.weekOfYear!)
         //            [calendar components:(NSWeekCalendarUnit | NSWeekdayCalendarUnit |NSWeekdayOrdinalCalendarUnit)
-        //        let components = calendar.dateComponents([Calendar.Component.day, Calendar.Component.month, Calendar.Component.year], from: Date())
+        //        let components = calendar.dateComponents([.day, .month, .year], from: Date())
     }
     
     func weekDayStr() -> String {
         let calendar = Calendar.current
-        let comps = calendar.dateComponents([Calendar.Component.weekday], from: self)
+        let comps = calendar.dateComponents([.weekday], from: self)
         let dateFmt = DateFormatter()
         dateFmt.timeZone = kPRTimeZone
         let daySymbols = dateFmt.shortWeekdaySymbols!
@@ -102,19 +102,19 @@ extension Date {
     }
     
     func dayStr() -> String {
-        let components = Calendar.current.dateComponents([Calendar.Component.day], from: self)
+        let components = Calendar.current.dateComponents([.day], from: self)
         return String.init(format:"%i", components.day!)
     }
     
     func lunarDateStr() -> String {
-        let components = Calendar.current.dateComponents([Calendar.Component.day, Calendar.Component.month, Calendar.Component.year], from: self)
+        let components = Calendar.current.dateComponents([.day, .month, .year], from: self)
         let lunarMgr = PRLunarDateAlgorithm.shareMgr()
         let lunar = lunarMgr.lunardateFromSolar(year: components.year!, month: components.month!, day: components.day!)
         return String.init(format:"%@%@", lunarMgr.lunarDateMonth(lunarMonth: lunar.month), lunarMgr.lunarDateDay(lunarDay: lunar.day))
     }
     
     func ganZhiZodiacStr() -> String {
-        let components = Calendar.current.dateComponents([Calendar.Component.day, Calendar.Component.month, Calendar.Component.year], from: self)
+        let components = Calendar.current.dateComponents([.day, .month, .year], from: self)
         let lunarMgr = PRLunarDateAlgorithm.shareMgr()
         let lunar = lunarMgr.lunardateFromSolar(year: components.year!, month: components.month!, day: components.day!)
         return String.init(format: "%@%@年【%@】",
@@ -124,7 +124,7 @@ extension Date {
     }
     
     func yiZuoStr() -> String {
-        let components = Calendar.current.dateComponents([Calendar.Component.day, Calendar.Component.month, Calendar.Component.year], from: self)
+        let components = Calendar.current.dateComponents([.day, .month, .year], from: self)
         let result1 = PRHuangliDB.manager.queryDataWithDateInt(year: components.year!, month: components.month!, day: components.day!)
         if result1.count > 0 {
             let dic: Dictionary = result1.first!
@@ -134,7 +134,7 @@ extension Date {
     }
     
     func jiZuoStr() -> String {
-        let components = Calendar.current.dateComponents([Calendar.Component.day, Calendar.Component.month, Calendar.Component.year], from: self)
+        let components = Calendar.current.dateComponents([.day, .month, .year], from: self)
         let result1 = PRHuangliDB.manager.queryDataWithDateInt(year: components.year!, month: components.month!, day: components.day!)
         if result1.count > 0 {
             let dic: Dictionary = result1.first!

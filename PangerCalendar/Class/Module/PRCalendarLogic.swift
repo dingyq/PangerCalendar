@@ -24,7 +24,7 @@ class PRCalendarLogic: NSObject {
             let distance = self.distanceOfDateFromCurrentMonth(date: newDate)
         
             // 创建一个创建一个日期组件，并赋予要设置的日期
-            let components = Calendar.current.dateComponents([Calendar.Component.day, Calendar.Component.month, Calendar.Component.year], from: newDate!)
+            let components = Calendar.current.dateComponents([.day, .month, .year], from: newDate!)
             // 返回日期（统一格式）
             _referenceDate = Calendar.current.date(from: components)
             // Message delegate
@@ -53,7 +53,7 @@ class PRCalendarLogic: NSObject {
         super.init()
         self.calendarLogicDelegate = delegate;
         //创建一个创建一个日期组件，并赋予要设置的日期
-        let components = Calendar.current.dateComponents([Calendar.Component.day, Calendar.Component.month, Calendar.Component.year], from: aDate)
+        let components = Calendar.current.dateComponents([.day, .month, .year], from: aDate)
         // 返回日期（统一格式）
         _referenceDate = Calendar.current.date(from: components)
     }
@@ -61,7 +61,7 @@ class PRCalendarLogic: NSObject {
     // MARK: class function
     /// 返回当前日期
     class func dateForToday() -> Date {
-        let components = Calendar.current.dateComponents([Calendar.Component.day, Calendar.Component.month, Calendar.Component.year], from: Date())
+        let components = Calendar.current.dateComponents([.day, .month, .year], from: Date())
         // 返回日期（统一格式）
         return Calendar.current.date(from: components)!
     }
@@ -69,7 +69,7 @@ class PRCalendarLogic: NSObject {
     /// 构造一个日期。aWeekday－星期几，aWeek－第几周（今年），aReferenceDate－日期（只含月和年）
     class func date(weekday: Int, week: Int, referenceDate: Date) -> Date {
         // 使用参数aReferenceDate构造日期组件
-        let components = Calendar.current.dateComponents([Calendar.Component.month, Calendar.Component.year], from: referenceDate)
+        let components = Calendar.current.dateComponents([.month, .year], from: referenceDate)
         let month = components.month!
         let year = components.year!
         return self.date(weekday: weekday, week: week, month: month, year: year)
@@ -88,9 +88,9 @@ class PRCalendarLogic: NSObject {
         let firstDayDate = calendar.date(from: firstStartDayComponents)
         
         // Grab just the day part.
-        firstStartDayComponents = calendar.dateComponents([Calendar.Component.day], from: firstDayDate!)
+        firstStartDayComponents = calendar.dateComponents([.day], from: firstDayDate!)
         
-        let maxRange = calendar.maximumRange(of: Calendar.Component.weekday)
+        let maxRange = calendar.maximumRange(of: .weekday)
         let numberOfDaysInWeek = maxRange!.upperBound - maxRange!.lowerBound
         
         var firstDay: Int = firstStartDayComponents.day! - numberOfDaysInWeek
@@ -114,7 +114,7 @@ class PRCalendarLogic: NSObject {
     /// - Returns: <#return value description#>
     func indexOfCalendar(date: Date) -> Int {
         let calendar = Calendar.current
-        let components = calendar.dateComponents([Calendar.Component.month, Calendar.Component.weekday, Calendar.Component.weekOfYear, Calendar.Component.year], from: date)
+        let components = calendar.dateComponents([.month, .weekday, .weekOfYear, .year], from: date)
         // Select this month in this year.
         var firstDayComponents = DateComponents()
         firstDayComponents.month = components.month
@@ -122,7 +122,7 @@ class PRCalendarLogic: NSObject {
         let firstDayDate = calendar.date(from: firstDayComponents)
         
         // Turn into week of a year.
-        let firstWeekComponents = calendar.dateComponents([Calendar.Component.weekOfYear], from: firstDayDate!)
+        let firstWeekComponents = calendar.dateComponents([.weekOfYear], from: firstDayDate!)
         var firstWeek = firstWeekComponents.weekOfYear!
         if firstWeek > components.weekOfYear! {
             firstWeek -= 52
@@ -145,18 +145,18 @@ class PRCalendarLogic: NSObject {
         }
         var distance = 0
         let calendar = Calendar.current
-        var monthComponents = calendar.dateComponents([Calendar.Component.month, Calendar.Component.year], from: _referenceDate!)
+        var monthComponents = calendar.dateComponents([.month, .year], from: _referenceDate!)
         let firstDayInMonth = calendar.date(from: monthComponents)
-        monthComponents.day = (calendar.range(of: Calendar.Component.day, in: Calendar.Component.month, for: _referenceDate!)?.upperBound)! - 1
+        monthComponents.day = (calendar.range(of: .day, in: .month, for: _referenceDate!)?.upperBound)! - 1
         let lastDayInMonth = calendar.date(from: monthComponents)
         
         // Lower
-        let distanceFromFirstDay = calendar.dateComponents([Calendar.Component.day], from: firstDayInMonth!, to: date!).day!
+        let distanceFromFirstDay = calendar.dateComponents([.day], from: firstDayInMonth!, to: date!).day!
         if distanceFromFirstDay < 0 {
             distance = distanceFromFirstDay
         }
         // Greater
-        let distanceFromLastDay = calendar.dateComponents([Calendar.Component.day], from: lastDayInMonth!, to: date!).day!
+        let distanceFromLastDay = calendar.dateComponents([.day], from: lastDayInMonth!, to: date!).day!
         if distanceFromLastDay > 0 {
             distance = distanceFromLastDay
         }
