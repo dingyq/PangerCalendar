@@ -38,7 +38,9 @@ class PRNotificationReminder: NSObject {
         notify.hasAction = true
         notify.alertAction = "确定"
         notify.applicationIconBadgeNumber = 1;
-        notify.soundName = UILocalNotificationDefaultSoundName
+        notify.repeatInterval = .quarter
+//        notify.soundName = UILocalNotificationDefaultSoundName
+        notify.soundName = "bell_dreamland.caf"
         UIApplication.shared.scheduleLocalNotification(notify)
     }
     

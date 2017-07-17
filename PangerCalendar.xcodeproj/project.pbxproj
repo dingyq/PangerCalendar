@@ -105,7 +105,6 @@
 		E376A0201DC5AEDA00C2B383 /* PangerCalendarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E376A01F1DC5AEDA00C2B383 /* PangerCalendarUITests.swift */; };
 		E3856A791DC5D28500FEAD80 /* PRDatabaseOperate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3856A781DC5D28500FEAD80 /* PRDatabaseOperate.swift */; };
 		E3856A7B1DC5D69300FEAD80 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E3856A7A1DC5D69300FEAD80 /* libsqlite3.tbd */; };
-		E3A2F5431F11ECA50035747E /* winboard.wav in Resources */ = {isa = PBXBuildFile; fileRef = E3A2F5421F11ECA50035747E /* winboard.wav */; };
 		E3A2F5451F1252000035747E /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3A2F5441F1252000035747E /* UserNotifications.framework */; };
 		E3A2F5481F1290320035747E /* button_delete_sel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3A2F5461F1290320035747E /* button_delete_sel@3x.png */; };
 		E3A2F5491F1290320035747E /* button_delete_nor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E3A2F5471F1290320035747E /* button_delete_nor@3x.png */; };
@@ -170,6 +169,13 @@
 		919209E81F039A1500CA5243 /* PRUserInfoDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRUserInfoDB.swift; sourceTree = "<group>"; };
 		919209EF1F039F0000CA5243 /* String+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Additions.swift"; sourceTree = "<group>"; };
 		91ACFC5A1F1B7EE500F0DC6B /* CalendarHolidayMark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalendarHolidayMark@3x.png"; sourceTree = "<group>"; };
+		91ACFC701F1C8E4800F0DC6B /* bell_cuckoo.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bell_cuckoo.caf; sourceTree = "<group>"; };
+		91ACFC711F1C8E4800F0DC6B /* bell_dreamland.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bell_dreamland.caf; sourceTree = "<group>"; };
+		91ACFC721F1C8E4800F0DC6B /* bell_getup.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bell_getup.caf; sourceTree = "<group>"; };
+		91ACFC731F1C8E4800F0DC6B /* bell_interesting.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bell_interesting.caf; sourceTree = "<group>"; };
+		91ACFC741F1C8E4800F0DC6B /* bell_jingle.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bell_jingle.caf; sourceTree = "<group>"; };
+		91ACFC751F1C8E4800F0DC6B /* bell_lazy_pig.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bell_lazy_pig.caf; sourceTree = "<group>"; };
+		91ACFC761F1C8E4800F0DC6B /* bell_samsung.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bell_samsung.caf; sourceTree = "<group>"; };
 		91BF5EDB1F01382C007993E7 /* PRBaseLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRBaseLabel.swift; sourceTree = "<group>"; };
 		91BF5EDD1F013842007993E7 /* PRBaseTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRBaseTextField.swift; sourceTree = "<group>"; };
 		91BF5EDF1F013AE7007993E7 /* PRBaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRBaseButton.swift; sourceTree = "<group>"; };
@@ -256,7 +262,6 @@
 		E376A0211DC5AEDA00C2B383 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3856A781DC5D28500FEAD80 /* PRDatabaseOperate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRDatabaseOperate.swift; sourceTree = "<group>"; };
 		E3856A7A1DC5D69300FEAD80 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		E3A2F5421F11ECA50035747E /* winboard.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = winboard.wav; sourceTree = "<group>"; };
 		E3A2F5441F1252000035747E /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		E3A2F5461F1290320035747E /* button_delete_sel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_delete_sel@3x.png"; sourceTree = "<group>"; };
 		E3A2F5471F1290320035747E /* button_delete_nor@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_delete_nor@3x.png"; sourceTree = "<group>"; };
@@ -624,7 +629,13 @@
 		E3A2F5411F11EC380035747E /* Sound */ = {
 			isa = PBXGroup;
 			children = (
-				E3A2F5421F11ECA50035747E /* winboard.wav */,
+				91ACFC701F1C8E4800F0DC6B /* bell_cuckoo.caf */,
+				91ACFC711F1C8E4800F0DC6B /* bell_dreamland.caf */,
+				91ACFC721F1C8E4800F0DC6B /* bell_getup.caf */,
+				91ACFC731F1C8E4800F0DC6B /* bell_interesting.caf */,
+				91ACFC741F1C8E4800F0DC6B /* bell_jingle.caf */,
+				91ACFC751F1C8E4800F0DC6B /* bell_lazy_pig.caf */,
+				91ACFC761F1C8E4800F0DC6B /* bell_samsung.caf */,
 			);
 			name = Sound;
 			sourceTree = "<group>";
@@ -825,7 +836,6 @@
 				E3237F751EFE9816000A703F /* calendar_more_fold@3x.png in Resources */,
 				91D4C4E21F091F93009A000D /* more_data_nor@3x.png in Resources */,
 				E3A2F5491F1290320035747E /* button_delete_nor@3x.png in Resources */,
-				E3A2F5431F11ECA50035747E /* winboard.wav in Resources */,
 				912E061D1F0E3E9100FAAF6E /* button_misson_state_fresh@3x.png in Resources */,
 				912FB7291F0FC5EB0040CE64 /* button_today_nor@3x.png in Resources */,
 				E376A0071DC5AEDA00C2B383 /* Assets.xcassets in Resources */,
