@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0800"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "13808E814AA8C5923015D3299C5C0FD9"
+               BlueprintIdentifier = "93CC54D758C7267366BD2D7BB18A50C8"
                BuildableName = "Pods_PangerCalendar.framework"
                BlueprintName = "Pods-PangerCalendar"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13808E814AA8C5923015D3299C5C0FD9"
+            BlueprintIdentifier = "93CC54D758C7267366BD2D7BB18A50C8"
             BuildableName = "Pods_PangerCalendar.framework"
             BlueprintName = "Pods-PangerCalendar"
             ReferencedContainer = "container:Pods.xcodeproj">
@@ -60,15 +60,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "13808E814AA8C5923015D3299C5C0FD9"
-            BuildableName = "Pods_PangerCalendar.framework"
-            BlueprintName = "Pods-PangerCalendar"
-            ReferencedContainer = "container:Pods.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

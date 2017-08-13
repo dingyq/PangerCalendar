@@ -12,5 +12,6 @@
 #include "sqlite3.h"
 #import "FMDB.h"
 #import "Masonry.h"
+#import "AFNetworking.h"
 
 #endif /* PRBridgeHeader_h */

@@ -45,6 +45,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = tabBarController
         self.window?.makeKeyAndVisible()
         
+        let requestUrl = kPRServerHost+"/users/query?id=1"
+        
+        PRNetworkTool.shareInstance.request(requestType: .Get, url: requestUrl, parameters: nil) { (response, error) in
+//            print("result is \(response) error is \(error)")
+            if error == nil {
+                if response != nil {
+//                    let result = (response!["result"])! as Array
+                    for value in response! {
+                        print(value)
+                    }
+                }
+            }
+        }
+        
         
 //        UILocalNotification *localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
 //        if (localNotif)

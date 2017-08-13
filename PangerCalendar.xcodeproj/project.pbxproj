@@ -20,6 +20,8 @@
 		912FB7301F0FD2A50040CE64 /* CalendarDayTodaySelected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 912FB72F1F0FD2A50040CE64 /* CalendarDayTodaySelected@3x.png */; };
 		912FB7321F0FD2E30040CE64 /* CalendarDaySelected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 912FB7311F0FD2E30040CE64 /* CalendarDaySelected@3x.png */; };
 		913A50D51F0100A9002757AD /* PRBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913A50D41F0100A9002757AD /* PRBaseView.swift */; };
+		91489D041F4057A000E9E617 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 91489D031F4057A000E9E617 /* Podfile */; };
+		91489D111F405C2600E9E617 /* PRNetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91489D101F405C2600E9E617 /* PRNetworkTool.swift */; };
 		9163DD411F0128DF00E709B8 /* close_button_nor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9163DD3F1F0128DF00E709B8 /* close_button_nor@3x.png */; };
 		9163DD421F0128DF00E709B8 /* close_button_sel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9163DD401F0128DF00E709B8 /* close_button_sel@3x.png */; };
 		9163DD461F012D3700E709B8 /* time_clock@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9163DD451F012D3700E709B8 /* time_clock@3x.png */; };
@@ -157,6 +159,8 @@
 		912FB72F1F0FD2A50040CE64 /* CalendarDayTodaySelected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalendarDayTodaySelected@3x.png"; sourceTree = "<group>"; };
 		912FB7311F0FD2E30040CE64 /* CalendarDaySelected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CalendarDaySelected@3x.png"; sourceTree = "<group>"; };
 		913A50D41F0100A9002757AD /* PRBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRBaseView.swift; sourceTree = "<group>"; };
+		91489D031F4057A000E9E617 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		91489D101F405C2600E9E617 /* PRNetworkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRNetworkTool.swift; sourceTree = "<group>"; };
 		9163DD3F1F0128DF00E709B8 /* close_button_nor@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close_button_nor@3x.png"; sourceTree = "<group>"; };
 		9163DD401F0128DF00E709B8 /* close_button_sel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close_button_sel@3x.png"; sourceTree = "<group>"; };
 		9163DD451F012D3700E709B8 /* time_clock@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "time_clock@3x.png"; sourceTree = "<group>"; };
@@ -322,6 +326,14 @@
 				67EBC8D145520D245DF22331 /* Pods-PangerCalendarUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		91489D121F405C3300E9E617 /* NetWork */ = {
+			isa = PBXGroup;
+			children = (
+				91489D101F405C2600E9E617 /* PRNetworkTool.swift */,
+			);
+			name = NetWork;
 			sourceTree = "<group>";
 		};
 		919209E71F03860F00CA5243 /* Config */ = {
@@ -540,6 +552,7 @@
 		E3769FFE1DC5AEDA00C2B383 /* PangerCalendar */ = {
 			isa = PBXGroup;
 			children = (
+				91489D031F4057A000E9E617 /* Podfile */,
 				E35460351DC7A04C00C05867 /* Bridge */,
 				E3856A741DC5D20D00FEAD80 /* Class */,
 				E3856A711DC5D10200FEAD80 /* Resource */,
@@ -618,6 +631,7 @@
 		E3856A771DC5D24B00FEAD80 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				91489D121F405C3300E9E617 /* NetWork */,
 				919209EB1F039E9200CA5243 /* DataBase */,
 				919209EA1F039E8C00CA5243 /* Extension */,
 				E36A18801E87CB0E006195E3 /* PRCommonConstant.swift */,
@@ -835,6 +849,7 @@
 				919209E61F03860900CA5243 /* PRMissionNoticeTable.plist in Resources */,
 				E3237F751EFE9816000A703F /* calendar_more_fold@3x.png in Resources */,
 				91D4C4E21F091F93009A000D /* more_data_nor@3x.png in Resources */,
+				91489D041F4057A000E9E617 /* Podfile in Resources */,
 				E3A2F5491F1290320035747E /* button_delete_nor@3x.png in Resources */,
 				912E061D1F0E3E9100FAAF6E /* button_misson_state_fresh@3x.png in Resources */,
 				912FB7291F0FC5EB0040CE64 /* button_today_nor@3x.png in Resources */,
@@ -890,13 +905,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PangerCalendarTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		31310D9137459D84A7D4E38E /* [CP] Copy Pods Resources */ = {
@@ -920,13 +938,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PangerCalendarUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5D267B72174246A6833A12E2 /* [CP] Copy Pods Resources */ = {
@@ -950,13 +971,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PangerCalendar-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		74ADF463BBE082E4953A3F2A /* [CP] Copy Pods Resources */ = {
@@ -995,9 +1019,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-PangerCalendar/Pods-PangerCalendar-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1038,6 +1069,7 @@
 				919209E91F039A1500CA5243 /* PRUserInfoDB.swift in Sources */,
 				E36A184D1E864E67006195E3 /* PRAlmanacViewController.swift in Sources */,
 				913A50D51F0100A9002757AD /* PRBaseView.swift in Sources */,
+				91489D111F405C2600E9E617 /* PRNetworkTool.swift in Sources */,
 				E36A18831E87E4B4006195E3 /* PRDayDetailView.swift in Sources */,
 				E33B39A11F11D04E0053DFA3 /* PRNotificationReminder.swift in Sources */,
 				E3237F901F0AADB9000A703F /* PRTimeLineViewController.swift in Sources */,
@@ -1251,6 +1283,7 @@
 				HEADER_SEARCH_PATHS = (
 					"${PODS_ROOT}/FMDB/src/fmdb",
 					"${PODS_ROOT}/Masonry/Masonry",
+					"${PODS_ROOT}/AFNetworking/AFNetworking",
 				);
 				INFOPLIST_FILE = PangerCalendar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1274,6 +1307,7 @@
 				HEADER_SEARCH_PATHS = (
 					"${PODS_ROOT}/FMDB/src/fmdb",
 					"${PODS_ROOT}/Masonry/Masonry",
+					"${PODS_ROOT}/AFNetworking/AFNetworking",
 				);
 				INFOPLIST_FILE = PangerCalendar/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
