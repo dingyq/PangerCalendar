@@ -22,6 +22,7 @@
 		913A50D51F0100A9002757AD /* PRBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913A50D41F0100A9002757AD /* PRBaseView.swift */; };
 		91489D041F4057A000E9E617 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 91489D031F4057A000E9E617 /* Podfile */; };
 		91489D111F405C2600E9E617 /* PRNetworkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91489D101F405C2600E9E617 /* PRNetworkTool.swift */; };
+		9154C5771F4D6791000EF238 /* PRMissionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9154C5761F4D6791000EF238 /* PRMissionService.swift */; };
 		9163DD411F0128DF00E709B8 /* close_button_nor@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9163DD3F1F0128DF00E709B8 /* close_button_nor@3x.png */; };
 		9163DD421F0128DF00E709B8 /* close_button_sel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9163DD401F0128DF00E709B8 /* close_button_sel@3x.png */; };
 		9163DD461F012D3700E709B8 /* time_clock@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9163DD451F012D3700E709B8 /* time_clock@3x.png */; };
@@ -161,6 +162,7 @@
 		913A50D41F0100A9002757AD /* PRBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRBaseView.swift; sourceTree = "<group>"; };
 		91489D031F4057A000E9E617 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		91489D101F405C2600E9E617 /* PRNetworkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PRNetworkTool.swift; sourceTree = "<group>"; };
+		9154C5761F4D6791000EF238 /* PRMissionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PRMissionService.swift; path = ../Model/PRMissionService.swift; sourceTree = "<group>"; };
 		9163DD3F1F0128DF00E709B8 /* close_button_nor@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close_button_nor@3x.png"; sourceTree = "<group>"; };
 		9163DD401F0128DF00E709B8 /* close_button_sel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close_button_sel@3x.png"; sourceTree = "<group>"; };
 		9163DD451F012D3700E709B8 /* time_clock@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "time_clock@3x.png"; sourceTree = "<group>"; };
@@ -634,6 +636,7 @@
 				91489D121F405C3300E9E617 /* NetWork */,
 				919209EB1F039E9200CA5243 /* DataBase */,
 				919209EA1F039E8C00CA5243 /* Extension */,
+				9154C5761F4D6791000EF238 /* PRMissionService.swift */,
 				E36A18801E87CB0E006195E3 /* PRCommonConstant.swift */,
 				E33B39A01F11D04E0053DFA3 /* PRNotificationReminder.swift */,
 			);
@@ -1102,6 +1105,7 @@
 				91D4C50D1F0A6B05009A000D /* UserDefaults+Additions.swift in Sources */,
 				E36A184A1E864E11006195E3 /* PRMissionListViewController.swift in Sources */,
 				E3EAAE501E01B12E001478E4 /* PRChineseFestivalsMgr.swift in Sources */,
+				9154C5771F4D6791000EF238 /* PRMissionService.swift in Sources */,
 				E3237F8E1F0AAD95000A703F /* PRMissionEditViewController.swift in Sources */,
 				91BF5EDE1F013842007993E7 /* PRBaseTextField.swift in Sources */,
 				E3237F831EFF77C5000A703F /* PRUserInfo.swift in Sources */,

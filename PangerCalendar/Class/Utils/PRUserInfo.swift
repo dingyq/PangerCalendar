@@ -25,34 +25,12 @@ class PRUserInfo: NSObject {
         self.relationList = [self.profile]
         super.init()
         
-        let result = PRMissionsDataMgr.moreData(sortId: 0)
-        for dic in result {
-            self.missionList.append(PRMissionNoticeModel(dic))
-        }
-        self.missionDataChanged = true
-    }
-    
-    func add(mission: PRMissionNoticeModel) -> Bool {
-        self.missionList.append(mission)
-        self.missionDataChanged = true
-        if mission.needClock == .push {
-            PRNotificationReminder.default.add(mission: mission)
-        }
-        PRMissionsDataMgr.syncData(dataArr: [mission.serializeToDictionary()])
-        return true
-    }
-    
-    func remove(mission: PRMissionNoticeModel) -> Bool {
-        for (index, item) in self.missionList.enumerated() {
-            if item == mission {
-                self.missionList.remove(at: index)
-                self.missionDataChanged = true
-                let _ = PRNotificationReminder.default.remove(mission: mission)
-                PRMissionsDataMgr.deleteData(dataArr: [mission.serializeToDictionary()])
-                return true
-            }
-        }
-        return false
+//        let result = PRMissionsDataMgr.moreData(sortId: 0)
+//        for dic in result {
+//            self.missionList.append(PRMissionNoticeModel(dic))
+//        }
+        
+        
     }
     
     func add(member: PRUserModel) -> Bool {
@@ -68,15 +46,56 @@ class PRUserInfo: NSObject {
         return self.missionDataChanged
     }
     
-    func markMissionEdited(_ mission: PRMissionNoticeModel?) {
-        if mission != nil {
+    func querryAll(resultBlock: @escaping(_ requestStatues: Bool, Error?) -> ()) {
+        PRMissionServiceMgr.querryAll(userId: self.profile.userId, success: { (result) in
+            self.missionList = result
             self.missionDataChanged = true
-            if mission!.state != .done {
-                PRNotificationReminder.default.add(mission: mission!)
-            } else {
-                let _ = PRNotificationReminder.default.remove(mission: mission!)
+            resultBlock(true, nil)
+        }) { (error) in
+            resultBlock(false, nil)
+        }
+    }
+    
+    func add(mission: PRMissionNoticeModel) -> Bool {
+        PRMissionServiceMgr.add(mission: mission, success: { (missionR) in
+            if mission.needClock == .push {
+                self.missionList.append(mission)
+                self.missionDataChanged = true
+                PRNotificationReminder.default.add(mission: missionR)
             }
-            PRMissionsDataMgr.syncData(dataArr: [mission!.serializeToDictionary()])
+        }, fail: { (error) in
+            
+        })
+        return true
+    }
+    
+    func remove(mission: PRMissionNoticeModel) -> Bool {
+        PRMissionServiceMgr.remove(mission: mission, success: { (missionR) in
+            for (index, item) in self.missionList.enumerated() {
+                if item == mission {
+                    self.missionList.remove(at: index)
+                }
+            }
+            self.missionDataChanged = true
+            let _ = PRNotificationReminder.default.remove(mission: mission)
+        }, fail: { (error) in
+            
+        })
+        return true;
+    }
+    
+    func update(_ mission: PRMissionNoticeModel?) {
+        if mission != nil {
+            PRMissionServiceMgr.update(mission: mission!, success: { (mission) in
+                self.missionDataChanged = true
+                if mission.state != .done {
+                    PRNotificationReminder.default.add(mission: mission)
+                } else {
+                    let _ = PRNotificationReminder.default.remove(mission: mission)
+                }
+            }) { (error) in
+                
+            }
         }
     }
     
@@ -110,15 +129,5 @@ class PRUserInfo: NSObject {
         }
         return self.missionClassifiedListArr
     }
-    
-//    private func getMissonList(state: PRMissionState) -> Array<PRMissionNoticeModel> {
-//        var tmpArr = Array<PRMissionNoticeModel>()
-//        for item in self.missionList {
-//            if item.state == state {
-//                tmpArr.append(item)
-//            }
-//        }
-//        return tmpArr
-//    }
 }
 

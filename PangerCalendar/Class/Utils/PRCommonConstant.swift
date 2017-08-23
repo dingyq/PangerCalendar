@@ -10,8 +10,8 @@ import Foundation
 
 //let kPRTimeZone = "GMT + 8"
 
-//let kPRServerHost = "http://995078.com:3000"
-let kPRServerHost = "http://localhost:3000"
+let kPRServerHost = "http://995078.com:3000"
+//let kPRServerHost = "http://localhost:3000"
 
 let kPRAppMinDate = Date.appMin()
 let kPRAppMaxDate = Date.appMax()

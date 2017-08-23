@@ -200,6 +200,9 @@ class PRMissionDetailViewController: PRBaseViewController, PRMissionItemViewDele
         super.viewWillAppear(animated)
         if self.vcType == .edit {
             self.updateView(mission: self.editingMission)
+        } else if self.vcType == .add {
+            self.contentTextView?.text = ""
+            self.titleTextField?.text = ""
         }
     }
     
@@ -214,7 +217,6 @@ class PRMissionDetailViewController: PRBaseViewController, PRMissionItemViewDele
     }
     
     // MARK: Public Method
-    
     func updateView(mission: PRMissionNoticeModel?) {
         if mission == nil {
             return
@@ -226,7 +228,6 @@ class PRMissionDetailViewController: PRBaseViewController, PRMissionItemViewDele
     }
     
     // MARK: Private Method
-    
     private func setupViews() {
         let contentView = PRBaseView()
         self.view.addSubview(contentView)
@@ -365,7 +366,7 @@ class PRMissionDetailViewController: PRBaseViewController, PRMissionItemViewDele
             self.editingMission?.deadlineTime = time
             
             if self.editingMission != nil {
-                PRUserData.markMissionEdited(self.editingMission)
+                PRUserData.update(self.editingMission)
                 self.popSelf()
             }
         }

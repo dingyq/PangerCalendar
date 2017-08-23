@@ -87,7 +87,7 @@ class PRMissionTVCell: PRBaseTableViewCell {
                 self.missionModel!.state = .new
             }
             self.updateView()
-            PRUserData.markMissionEdited(self.missionModel)
+            PRUserData.update(self.missionModel)
             self.delegate?.stateChanged(mission: self.missionModel)
         }
     }
@@ -153,6 +153,11 @@ class PRMissionListViewController: PRBaseViewController, PRMissionTVCellDelegate
         super.viewDidLoad()
         self.title = NSLocalizedString("提醒", comment: "") 
         self.setupViews()
+        PRUserData.querryAll { (result, error) in
+            if result {
+                self.reloadData()
+            }
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {

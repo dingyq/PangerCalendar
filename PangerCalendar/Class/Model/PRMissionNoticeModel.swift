@@ -54,7 +54,12 @@ class PRMissionNoticeModel: NSObject {
     
     init(_ dic: NSDictionary) {
         self.missionId = Int64("\(dic.object(forKey: "missionId")!)")!
-        self.sortId = Int64("\(dic.object(forKey: "sortId")!)")!
+        let sortStr = dic.object(forKey: "sortId")
+        if sortStr != nil {
+            self.sortId = Int64("\(sortStr!)")!
+        } else {
+            self.sortId = 0
+        }
         self.type = PRMissionType(rawValue: Int("\(dic.object(forKey: "type")!)")!)!
         self.state = PRMissionState(rawValue: Int("\(dic.object(forKey: "state")!)")!)!
         self.title = dic.object(forKey: "title") as! String
