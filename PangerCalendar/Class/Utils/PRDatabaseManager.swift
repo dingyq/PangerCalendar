@@ -72,6 +72,7 @@ class PRDatabaseManager: NSObject {
     func createTable(_ name: String, dbTypeDic: NSDictionary) -> Bool {
         let arguments = self.generateCreateTableSqlArguments(dbTypeDic: dbTypeDic)
         let sqlStr = "CREATE TABLE IF NOT EXISTS \(name)( \(arguments));"
+        print(sqlStr)
         if (self.db.executeUpdate(sqlStr, withArgumentsIn: nil)) {
             return true
         }
